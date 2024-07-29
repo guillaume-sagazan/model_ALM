@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion de Workflow &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Gestion de la qualité des données" href="framework-dq.html" />
+    <link rel="prev" title="Prisme d’implémentation &amp; Maintenabilité" href="prisme-modelisation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeles/modeles.html">Choix de modélisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exigences-autres/exigences-autres.html">Exigences complémentaires</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="choix-tech.html">Choix techniques</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="framework-df2df.html">Performances &amp; Choix du framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prisme-modelisation.html">Prisme d’implémentation &amp; Maintenabilité</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gestion de Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#liste-des-candidats-retenus">Liste des candidats retenus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparaison-des-candidats">Comparaison des candidats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="framework-dq.html">Gestion de la qualité des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solution-doc-projet.html">Solution de gestion de la documentation projet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="choix-tech.html">Choix techniques</a></li>
+      <li class="breadcrumb-item active">Gestion de Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/choix-tech/gestion-pipelines.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gestion-de-workflow">
+<h1>Gestion de Workflow<a class="headerlink" href="#gestion-de-workflow" title="Lien vers cette rubrique"></a></h1>
+<section id="liste-des-candidats-retenus">
+<h2>Liste des candidats retenus<a class="headerlink" href="#liste-des-candidats-retenus" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Dagster</strong> est un orchestrateur de workflows moderne qui met l’accent sur la gestion des métadonnées et des dépendances. Il offre une interface utilisateur conviviale appelée Dagit, permettant de surveiller et de gérer les pipelines de manière interactive. Dagster est conçu pour faciliter l’intégration avec de nombreux outils de données et infrastructures.</p>
+<p><strong>Apache Airflow</strong> est une plateforme d’orchestration de workflows très populaire et mature, utilisée pour planifier et surveiller des pipelines de données complexes. Il dispose d’une large communauté, de nombreux plugins, et une interface web robuste pour la gestion des workflows. Airflow est largement adopté pour ses capacités d’extensibilité et d’intégration avec divers services.</p>
+<p><strong>Luigi</strong> est un framework open-source développé par Spotify pour la construction de pipelines de données complexes. Il se concentre sur la gestion des dépendances entre les tâches et assure une exécution fiable des workflows. Luigi est apprécié pour sa simplicité et sa capacité à gérer des pipelines de données robustes, bien qu’il soit moins évolutif pour les très grands volumes de données.</p>
+<p><strong>Metaflow</strong>, développé par Netflix, est une bibliothèque de gestion des workflows axée sur la science des données et le machine learning. Conçu pour simplifier le développement et l’exécution de pipelines ML, Metaflow s’intègre de manière transparente avec les services AWS pour le scaling et le déploiement. Il est particulièrement adapté aux grands volumes de données et aux modèles ML complexes.</p>
+<p><strong>Argo Workflows</strong> est un orchestrateur de workflows open-source natif Kubernetes, conçu pour gérer des workflows complexes à grande échelle. En utilisant des fichiers YAML pour définir les workflows, Argo permet une intégration facile avec l’écosystème Kubernetes. Il est idéal pour les environnements nécessitant une haute évolutivité et une orchestration décentralisée.</p>
+<p><strong>Kubeflow</strong> est une plateforme dédiée à l’orchestration des workflows de machine learning sur Kubernetes. Elle permet de développer, déployer et gérer des pipelines ML à grande échelle, en offrant des intégrations natives avec de nombreux outils ML comme TensorFlow et PyTorch. Kubeflow est conçu pour le scaling horizontal et l’optimisation des workflows ML complexes.</p>
+<p><strong>Data Version Control (DVC)</strong> est un outil open-source axé sur la gestion du versioning des données et l’orchestration des pipelines ML. Utilisant Git pour le versioning, DVC permet une gestion efficace des données et des modèles ML, assurant la reproductibilité et le suivi des changements. DVC est particulièrement utile pour les projets ML nécessitant une gestion rigoureuse des données.</p>
+<p><strong>Snakemake</strong> est un moteur de workflows bioinformatique qui permet de créer des pipelines reproductibles et modulaires. Il est largement utilisé dans la communauté scientifique pour la gestion des workflows complexes nécessitant une haute reproductibilité. Snakemake s’intègre bien avec les systèmes de gestion de clusters et les environnements de calcul distribués.</p>
+</section>
+<section id="comparaison-des-candidats">
+<h2>Comparaison des candidats<a class="headerlink" href="#comparaison-des-candidats" title="Lien vers cette rubrique"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Critère</strong></p></th>
+<th class="head"><p><strong>Dagster</strong></p></th>
+<th class="head"><p><strong>Airflow</strong></p></th>
+<th class="head"><p><strong>Luigi</strong></p></th>
+<th class="head"><p><strong>Metaflow</strong></p></th>
+<th class="head"><p><strong>Argo Workflows</strong></p></th>
+<th class="head"><p><strong>Kubeflow</strong></p></th>
+<th class="head"><p><strong>Data Version Control (DVC)</strong></p></th>
+<th class="head"><p><strong>Snakemake</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Langage de Programmation</strong></p></td>
+<td><p>Python</p></td>
+<td><p>Python</p></td>
+<td><p>Python</p></td>
+<td><p>Python</p></td>
+<td><p>YAML</p></td>
+<td><p>Python</p></td>
+<td><p>Python</p></td>
+<td><p>Python</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Orchestration</strong></p></td>
+<td><p>Centralisée</p></td>
+<td><p>Centralisée</p></td>
+<td><p>Centralisée</p></td>
+<td><p>Centralisée</p></td>
+<td><p>Décentralisée</p></td>
+<td><p>Centralisée</p></td>
+<td><p>Centralisée</p></td>
+<td><p>Centralisée</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Scheduler</strong></p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interface Utilisateur</strong></p></td>
+<td><p>Oui (Dagit)</p></td>
+<td><p>Oui (Web UI)</p></td>
+<td><p>Oui (Simple UI)</p></td>
+<td><p>Oui (UI simple)</p></td>
+<td><p>Oui (Web UI)</p></td>
+<td><p>Oui (Web UI)</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Surveillance et Logging</strong></p></td>
+<td><p>Surveillance en temps réel avec Dagit, logs centralisés, visualisation des pipelines, alertes configurables</p></td>
+<td><p>Surveillance en temps réel via l’interface web, logs centralisés, intégration avec Elasticsearch et Kibana pour l’analyse des logs</p></td>
+<td><p>Logs locaux, surveillance basique via interface web, notifications par e-mail</p></td>
+<td><p>Intégration avec les services de logging AWS (CloudWatch), logs centralisés, visualisation des exécutions</p></td>
+<td><p>Surveillance via l’interface web, logs centralisés, intégration avec Prometheus et Grafana</p></td>
+<td><p>Surveillance et logging via l’interface web, intégration avec Prometheus, Grafana, et ELK stack</p></td>
+<td><p>Logs versionnés avec Git, notifications via intégrations Git, suivi des changements</p></td>
+<td><p>Surveillance basique via logs locaux, notifications simples, intégration avec systèmes de gestion de clusters (SLURM, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gestion des Erreurs</strong></p></td>
+<td><p>Gestion des erreurs avec des alertes en temps réel, des visualisations des échecs dans Dagit, et des politiques de reprise automatique</p></td>
+<td><p>Gestion des erreurs avec des notifications par e-mail/SMS, des tentatives de reprise configurables, et des tâches de nettoyage</p></td>
+<td><p>Gestion des erreurs avec des notifications simples, des tentatives de reprise configurables, et des mécanismes de relance</p></td>
+<td><p>Gestion des erreurs avec des notifications AWS, des tentatives de reprise automatique, et des analyses de débogage intégrées</p></td>
+<td><p>Gestion des erreurs avec des notifications configurables, des tentatives de reprise, et des workflows conditionnels</p></td>
+<td><p>Gestion des erreurs avec des notifications Kubernetes, des tentatives de reprise, et des vérifications de statut des pods</p></td>
+<td><p>Gestion des erreurs avec des mécanismes de versioning des données, des notifications via Git, et des politiques de reprise configurables</p></td>
+<td><p>Gestion des erreurs avec des notifications simples, des tentatives de reprise, et des vérifications de cohérence des données</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Reprise sur Erreur</strong></p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Extensibilité (Plugins, Hooks)</strong></p></td>
+<td><p>Possibilité de créer des plugins pour ajouter de nouvelles intégrations, des hooks personnalisés pour les événements, et des extensions pour les fonctionnalités Dagit</p></td>
+<td><p>Large écosystème de plugins et hooks, possibilité de créer des opérateurs personnalisés, des capteurs, et des exécutants</p></td>
+<td><p>Plugins pour les sources de données, les tâches, et les cibles de sortie, possibilité de créer des tâches personnalisées</p></td>
+<td><p>Extensible via des bibliothèques Python, possibilité de créer des plugins pour AWS et d’autres services cloud</p></td>
+<td><p>Extensible avec des templates YAML, des plugins pour les intégrations CI/CD, et des hooks personnalisés</p></td>
+<td><p>Intégrations avec d’autres outils de ML, possibilité de créer des composants et des pipelines personnalisés</p></td>
+<td><p>Hooks personnalisés pour les événements Git, possibilité de créer des extensions pour les fonctionnalités DVC</p></td>
+<td><p>Extensible avec des scripts personnalisés, des règles de workflow, et des intégrations avec des systèmes de gestion de clusters</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Intégrations</strong></p></td>
+<td><p>AWS, GCP, Azure, dbt, Snowflake, Databricks, PostgreSQL, MySQL, Docker, Kubernetes</p></td>
+<td><p>AWS, GCP, Azure, Hadoop, Spark, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, S3</p></td>
+<td><p>Hadoop, Spark, PostgreSQL, MySQL, MongoDB, S3, Docker</p></td>
+<td><p>AWS, S3, DynamoDB, Step Functions, Kinesis, Batch, SageMaker</p></td>
+<td><p>AWS, GCP, Azure, GitHub, GitLab, Jenkins, Tekton, Istio, Knative</p></td>
+<td><p>TensorFlow, PyTorch, Keras, Katib, TFX, Seldon, MLflow</p></td>
+<td><p>Git, GitHub, GitLab, S3, Azure Blob Storage, Google Drive</p></td>
+<td><p>SLURM, Grid Engine, LSF, Torque/PBS, Conda, Docker</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Licence</strong></p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>Apache 2.0</p></td>
+<td><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Communauté et Support</strong></p></td>
+<td><p>Actif</p></td>
+<td><p>Très actif</p></td>
+<td><p>Actif</p></td>
+<td><p>Actif</p></td>
+<td><p>Actif</p></td>
+<td><p>Actif</p></td>
+<td><p>Actif</p></td>
+<td><p>Actif</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Facilité d’Utilisation</strong></p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Facile</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Évolutivité</strong></p></td>
+<td><p>Haute : Supporte des pipelines complexes, intégration avec Kubernetes pour le scaling, gestion efficace des métadonnées et des dépendances</p></td>
+<td><p>Haute : Conçu pour gérer des centaines de tâches quotidiennes, scalabilité horizontale, intégration avec Celery et Kubernetes</p></td>
+<td><p>Moyenne : Bien pour les pipelines de données complexes, mais moins adapté pour le scaling horizontal massif</p></td>
+<td><p>Haute : Conçu pour les grands volumes de données et les modèles ML complexes, intégration native avec AWS pour le scaling</p></td>
+<td><p>Très Haute : Natif Kubernetes, conçu pour le scaling horizontal massif, supporte des workflows très complexes</p></td>
+<td><p>Très Haute : Optimisé pour le machine learning à grande échelle, scalabilité via Kubernetes, gestion avancée des workflows ML</p></td>
+<td><p>Moyenne : Conçu pour le versioning des données et les pipelines ML, mais moins axé sur le scaling horizontal</p></td>
+<td><p>Moyenne : Conçu pour la bioinformatique et les pipelines de données reproductibles, moins adapté pour le scaling horizontal massif</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Documentation</strong></p></td>
+<td><p>Bonne</p></td>
+<td><p>Excellente</p></td>
+<td><p>Bonne</p></td>
+<td><p>Bonne</p></td>
+<td><p>Bonne</p></td>
+<td><p>Bonne</p></td>
+<td><p>Bonne</p></td>
+<td><p>Bonne</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Courbe d’Apprentissage</strong></p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne à Difficile</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Facile</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Moyenne</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cas d’Utilisation Principaux</strong></p></td>
+<td><p>Pipelines de données, ETL</p></td>
+<td><p>Pipelines de données, ETL, DevOps</p></td>
+<td><p>Pipelines de données complexes</p></td>
+<td><p>Science des données, ML</p></td>
+<td><p>Orchestration sur Kubernetes</p></td>
+<td><p>ML, orchestration sur Kubernetes</p></td>
+<td><p>Versioning de données, ML</p></td>
+<td><p>Bioinformatique, pipelines reproductibles</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Technologie du Front Web</strong></p></td>
+<td><p>React</p></td>
+<td><p>Flask, React</p></td>
+<td><p>HTML/CSS</p></td>
+<td><p>HTML/CSS</p></td>
+<td><p>React</p></td>
+<td><p>Angular, Vue.js</p></td>
+<td><p>Non applicable</p></td>
+<td><p>Non applicable</p></td>
+</tr>
+</tbody>
+</table>
+<p>Détails supplémentaires :</p>
+<ul class="simple">
+<li><p><strong>Dagster</strong> : Dagster est une solution moderne qui se concentre sur la gestion des métadonnées et des dépendances des tâches. Il offre une interface utilisateur conviviale nommée Dagit pour surveiller et gérer les pipelines.</p></li>
+<li><p><strong>Airflow</strong> : Apache Airflow est l’une des solutions les plus populaires et matures pour l’orchestration de workflows. Il dispose d’une large communauté et d’un vaste écosystème de plugins.</p></li>
+<li><p><strong>Luigi</strong> : Luigi est un framework open-source conçu pour construire des pipelines de données complexes. Il se concentre sur la gestion des dépendances entre les tâches.</p></li>
+<li><p><strong>Metaflow</strong> : Metaflow est une bibliothèque de flux de travail développée par Netflix pour aider les scientifiques des données à concevoir et à gérer des pipelines de données.</p></li>
+<li><p><strong>Argo Workflows</strong> : Argo Workflows est un moteur de flux de travail open-source pour orchestrer des tâches sur Kubernetes. Il permet de définir des workflows sous forme de YAML.</p></li>
+<li><p><strong>Kubeflow Pipelines</strong></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="prisme-modelisation.html" class="btn btn-neutral float-left" title="Prisme d’implémentation &amp; Maintenabilité" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="framework-dq.html" class="btn btn-neutral float-right" title="Gestion de la qualité des données" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

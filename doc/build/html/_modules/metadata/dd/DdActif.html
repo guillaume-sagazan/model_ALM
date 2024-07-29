@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metadata.dd.DdActif &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">metadata.dd.DdActif</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de metadata.dd.DdActif</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">auto</span><span class="p">,</span> <span class="n">StrEnum</span>
+
+
+<span class="kn">from</span> <span class="nn">utils.VarCatalog</span> <span class="kn">import</span> <span class="n">VarCatalog</span><span class="p">,</span> <span class="n">DataTypeDesc</span>
+<span class="kn">from</span> <span class="nn">utils.StrEnumExt</span> <span class="kn">import</span> <span class="n">StrEnumCaps</span><span class="p">,</span> <span class="n">StrEnumIso</span><span class="p">,</span> <span class="n">StrEnumLower</span>
+
+<div class="viewcode-block" id="CdClasseActif">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdActif.CdClasseActif">[docs]</a>
+<span class="k">class</span> <span class="nc">CdClasseActif</span><span class="p">(</span><span class="n">StrEnumIso</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumération décrivant les différents types de classes d&#39;actifs</span>
+<span class="sd">    :param action: Type d&#39;actif &quot;Action&quot;</span>
+<span class="sd">    :param immobilier: Type d&#39;actif &quot;Immobilier&quot;</span>
+<span class="sd">    :param obligation: Type d&#39;actif &quot;Obligation&quot;</span>
+<span class="sd">    :param monetaire: Type d&#39;actif &quot;Monétaire&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ACTION</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">IMMOBILIER</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">OBLIGATION</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">MONETAIRE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="VarActif">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdActif.VarActif">[docs]</a>
+<span class="k">class</span> <span class="nc">VarActif</span><span class="p">(</span><span class="n">StrEnumLower</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dictionnaire de données relatif à la modélisation des actifs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cdClasseActif</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdClasseActifDetail</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdIsin</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdCqs</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">maturite</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtNominal</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txCpn</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txRemboursement</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbDuration</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtVmAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtVm</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtVcAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtVc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPmvl</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPmvr</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPfi</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtCf</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">txActionT1</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txActionT2</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txActionStrat</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txImmobilier</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPddAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPdd</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPreAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPre</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtVmRn</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txVmRn</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">txTra</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txTraMin</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txTraMax</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtVcTra</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtVcTraMin</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtVcTraMax</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtVcTraError</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbPeriodTerme</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DdActif">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdActif.DdActif">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DdActif</span><span class="p">(</span><span class="n">VarCatalog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">maturite</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Maturité en années d&#39;un cashflow futur&quot;</span>
+                <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Classe d&#39;actif&quot;</span>
+                <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActifDetail</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Classe d&#39;actif détaillée&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">cdCqs</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Credit Default Step de l&#39;actif&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">cdIsin</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Identifiant du MP actif agrégé&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">nbPeriodTerme</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Itération à laquelle l&#39;actif considéré arrive à terme&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtNominal</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant du nominal d&#39;une obligation&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txCpn</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de coupon d&#39;une obligation&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txRemboursement</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de remboursement d&#39;une obligation&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">nbDuration</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Duration de l&#39;actif&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur de marché (avant évènement)&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur de marché&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur comptable (avant évènement)&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur comptable&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+           
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPmvl</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Plus ou moins values latentes disponibles&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPmvr</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Plus ou moins values latentes générés lors de l&#39;évènement&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Produits financier généré par l&#39;évènement&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Cashflow&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txActionT1</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Part de l&#39;actif unitaire à choquer sous S2 avec le choc Action de Type 1&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txActionT2</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Part de l&#39;actif unitaire à choquer sous S2 avec le choc Action de Type 2&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txActionStrat</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Part de l&#39;actif unitaire à choquer sous S2 avec le choc Action Stratégique&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txImmobilier</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Part de l&#39;actif unitaire à choquer sous S2 avec le choc immobilier&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPddAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Provision pour dépréciation durable (avant évènement)&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPdd</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Provision pour dépréciation durable&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPreAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Provision pour risque d&#39;éligibilité (avant évènement)&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPre</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Provision pour risque d&#39;éligibilité&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmRn</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur de marché post risque neutralisation&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txVmRn</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Facteur à appliquer pour risque neutraliser une obligation&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txTra</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Dernier TRA  considéré pour équilibrer la valeur comptable&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txTraMin</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;TRA min considéré pour équilibrer la valeur comptable&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">txTraMax</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;TRA max considéré pour équilibrer la valeur comptable&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcTra</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur comptable calculée avec le dernier TRA considéré&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcTraMin</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur comptable calculée avec le TRA min&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcTraMax</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Valeur comptable calculée avec le TRA max&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcTraError</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Erreur constatée sur le calcul de la valeur comptable avec le dernier TRA considéré&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarActif</span><span class="o">.</span><span class="n">nbPeriodTerme</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de cashflow&quot;</span><span class="p">,</span> <span class="c1"># TODO : Pas la bonne description</span>
+            <span class="p">),</span>
+
+        <span class="p">})</span></div>
+
+
+<span class="n">ddActif</span> <span class="o">=</span> <span class="n">DdActif</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

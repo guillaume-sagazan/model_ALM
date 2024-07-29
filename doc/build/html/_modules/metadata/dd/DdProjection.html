@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metadata.dd.DdProjection &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">metadata.dd.DdProjection</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de metadata.dd.DdProjection</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">StrEnum</span><span class="p">,</span> <span class="n">auto</span>
+
+
+
+<span class="kn">from</span> <span class="nn">utils.VarCatalog</span> <span class="kn">import</span> <span class="n">VarCatalog</span><span class="p">,</span> <span class="n">DataTypeDesc</span>
+<span class="kn">from</span> <span class="nn">utils.StrEnumExt</span> <span class="kn">import</span> <span class="n">StrEnumCaps</span><span class="p">,</span> <span class="n">StrEnumLower</span>
+
+
+<div class="viewcode-block" id="ModeleAlmEvenement">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdProjection.ModeleAlmEvenement">[docs]</a>
+<span class="k">class</span> <span class="nc">ModeleAlmEvenement</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evènements au sein du modèle ALM</span>
+<span class="sd">    :param Init: Initialisation</span>
+<span class="sd">    :param Perf: Performance</span>
+<span class="sd">    :param StratInv: Stratégie d&#39;investissement</span>
+<span class="sd">    :param AlmCr: Stratégie ALM et compte de résultat</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Init</span> <span class="o">=</span> <span class="s1">&#39;0.Init&#39;</span>
+    <span class="n">Perf</span> <span class="o">=</span> <span class="s1">&#39;1.Perf&#39;</span>
+    <span class="n">StratInv</span> <span class="o">=</span> <span class="s1">&#39;2.StratInv&#39;</span>
+    <span class="n">AlmCr</span> <span class="o">=</span> <span class="s1">&#39;3.AlmCr&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="IntraPeriod">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdProjection.IntraPeriod">[docs]</a>
+<span class="k">class</span> <span class="nc">IntraPeriod</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumération permettant de qualifier si un cashflow tombe en début milieu ou fin de période</span>
+
+<span class="sd">    :param BEG: Début de période</span>
+<span class="sd">    :param MID: Milieu de période</span>
+<span class="sd">    :param END: Fin de période</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">BEG</span> <span class="o">=</span> <span class="s1">&#39;Beg&#39;</span>
+    <span class="n">MID</span> <span class="o">=</span> <span class="s1">&#39;Mid&#39;</span>
+    <span class="n">END</span> <span class="o">=</span> <span class="s1">&#39;End&#39;</span></div>
+
+
+<div class="viewcode-block" id="PerfCash">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdProjection.PerfCash">[docs]</a>
+<span class="k">class</span> <span class="nc">PerfCash</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumération permettant de qualifier si un cashflow tombe en début milieu ou fin de période</span>
+<span class="sd">    On essaye de calculer la performance</span>
+<span class="sd">    :param BEG: Début de période</span>
+<span class="sd">    :param MID: Milieu de période</span>
+<span class="sd">    :param END: Fin de période</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">BEG</span> <span class="o">=</span> <span class="s1">&#39;Beg&#39;</span>
+    <span class="n">MID</span> <span class="o">=</span> <span class="s1">&#39;Mid&#39;</span>
+    <span class="n">END</span> <span class="o">=</span> <span class="s1">&#39;End&#39;</span></div>
+
+
+<div class="viewcode-block" id="ModeProjection">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdProjection.ModeProjection">[docs]</a>
+<span class="k">class</span> <span class="nc">ModeProjection</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumeration décrivant les options possibles quant au mode de projection</span>
+<span class="sd">    :param ACTIF_SEUL: Seuls l&#39;actif du bilan est projeté</span>
+<span class="sd">    :param PASSIF_SEUL: Seuls l&#39;actif du bilan est projeté</span>
+<span class="sd">    :param ALM: L&#39;actif et le passif du bilan sont projetés simultanément</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ACTIF_SEUL</span> <span class="o">=</span> <span class="s1">&#39;ACTIF_SEUL&#39;</span>
+    <span class="n">PASSIF_SEUL</span> <span class="o">=</span> <span class="s1">&#39;PASSIF_SEUL&#39;</span>
+    <span class="n">ALM</span> <span class="o">=</span> <span class="s1">&#39;ALM&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="VarProj">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdProjection.VarProj">[docs]</a>
+<span class="k">class</span> <span class="nc">VarProj</span><span class="p">(</span><span class="n">StrEnumLower</span><span class="p">):</span>
+    
+    <span class="n">cdTrajectoire</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>	
+    <span class="n">dtTrajectoire</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">dtTrajectoireAnnee</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">scenario</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">period</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">projAnnee</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">evenement</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">intraperiod</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">projDateDebut</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="DdProj">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdProjection.DdProj">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DdProj</span><span class="p">(</span><span class="n">VarCatalog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">cdTrajectoire</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Trajectoire&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">dtTrajectoire</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Trajectoire&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">dtTrajectoireAnnee</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Trajectoire Année&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">scenario</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Identifiant du scenario&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">period</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Identifiant du pas de temps&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">projAnnee</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Année de projection&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">evenement</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Année de projection&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">intraperiod</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Pour un cash flow donné, tombe t il en début, milieu&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarProj</span><span class="o">.</span><span class="n">projDateDebut</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Date de début de la projection&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">})</span></div>
+
+
+<span class="n">ddProj</span> <span class="o">=</span> <span class="n">DdProj</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

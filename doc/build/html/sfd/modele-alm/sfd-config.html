@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuration d’un traitement &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Variables économiques" href="sfd-var-ecos.html" />
+    <link rel="prev" title="Conception générale" href="sfd-conception-generale.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sfd-conception-generale.html">Conception générale</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configuration d’un traitement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-de-la-projection">Configuration de la projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-des-outputs-souhaites">Configuration des outputs souhaités</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-de-la-gestion-des-erreurs">Configuration de la gestion des erreurs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-var-ecos.html">Variables économiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-passif.html">Modélisation des passifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-actif.html">Modélisation des actifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-stratalm.html">Stratégie ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-tests-modele-alm.html">Modèle ALM - Tests de cohérence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Configuration d’un traitement</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-config.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuration-d-un-traitement">
+<h1>Configuration d’un traitement<a class="headerlink" href="#configuration-d-un-traitement" title="Lien vers cette rubrique"></a></h1>
+<section id="configuration-de-la-projection">
+<h2>Configuration de la projection<a class="headerlink" href="#configuration-de-la-projection" title="Lien vers cette rubrique"></a></h2>
+<p>La configuration des projections à réaliser inclut les paramètres suivants :</p>
+<ul class="simple">
+<li><p><strong>chocS2List :</strong> Liste des chocs Solvabilité à lancer dans le cadre du traitement</p></li>
+<li><p><strong>projModeProjection :</strong> Mode de projection. Peut prendre les valeurs [« ALM », « ACTIF_SEUL », « PASSIF_SEUL »]</p></li>
+<li><p><strong>projHorizon :</strong> Horizon de projection en année</p></li>
+<li><p><strong>societe :</strong> Société à prendre en compte dans le cadre de la projection</p></li>
+<li><p><strong>projDateDebut :</strong> Date de début de la projection (format iso : « YY-MM-DD »)</p></li>
+<li><p><strong>gseScUnivers [« RN », « RW »] :</strong> Précise l’univers de projection</p></li>
+<li><p><strong>gseScCrnAutoBuild [« True », »False »] :</strong> Précise l’univers de projection</p></li>
+<li><p><strong>gseScEcoListStr :</strong> Chaine de caractère précisant les</p></li>
+<li><p><strong>gseObligMaturiteMaxAutoDetect [« True », »False »] :</strong> Précise si la maturité maximum des courbes des taux</p></li>
+<li><p><strong>gseObligMaturiteMax :</strong> Si gseObligMaturiteMaxAutoDetect = False, précise la maturité maximum dans le cas des courbes des taux projetées</p></li>
+<li><p><strong>methodeInitEquilibreBilan :</strong> Méthode utilisée pour équilibrer le bilan en t=0. Peut prendre les valeurs [« CASH », »FONDS_PROPRES »]</p></li>
+<li><p><strong>methodeProjEquilibreBilan :</strong> Méthode utilisée pour équilibrer le bilan en cours de projection. Peut prendre les valeurs [« CASH », »FONDS_PROPRES »]</p></li>
+<li><p><strong>techNbProcesses :</strong> Paramètre indiquant le nombre de processus à lancer en parallèle pour gérer les scenarios économiques</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A noter qu’un test de cohérence doit être effectué afin de vérifier que si gseScCrnAutoBuild = True alors gseScUnivers = « RN » et gseScEcoListStr = « 1 »</p>
+</div>
+<p>A noter que se déduisent de ces paramètres :</p>
+<ul class="simple">
+<li><p><strong>chocS2GseSet :</strong> Liste des chocs S2 impactant les variables économiques</p></li>
+<li><p><strong>chocS2PassifPmEvolSet :</strong> Liste des chocs S2 impactant l’évolution des PM</p></li>
+<li><p><strong>chocS2PassifIcFgxSet :</strong> Liste des chocs S2 impactant les frais généraux intérêts crédités des UC</p></li>
+<li><p><strong>gseScEcoList :</strong> Liste de scenarios économiques au format liste d’entiers</p></li>
+<li><p><strong>projDateDebutAnnee :</strong> Année de début de projection</p></li>
+<li><p><strong>projDtImage :</strong> Date de début de projection au format string</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans la suite des spécifications, on pourra faire référence à ces paramètres comme suit : projCfg. « Nom du paramètre »</p>
+</div>
+</section>
+<section id="configuration-des-outputs-souhaites">
+<h2>Configuration des outputs souhaités<a class="headerlink" href="#configuration-des-outputs-souhaites" title="Lien vers cette rubrique"></a></h2>
+<ul class="simple">
+<li><p><strong>genererOutputDebug :</strong> Booléen d’activation des outputs de Debug</p></li>
+<li><p><strong>genererOutputDebugScListStr :</strong> Liste des scenarios pour lesquels les outputs de debug seront écrits.</p></li>
+<li><p><strong>genererOutputRctLoad :</strong> Booléen d’activation des outputs post chargement des données</p></li>
+<li><p><strong>genererOutputRctInitGse :</strong> Booléen d’activation des outputs de recette relatifs aux variables économiques après initialisation</p></li>
+<li><p><strong>genererOutputRctInitActif :</strong> Booléen d’activation des outputs de recette relatifs aux actifs après initialisation</p></li>
+<li><p><strong>genererOutputRctInitPassif :</strong> Booléen d’activation des outputs de recette relatifs au passif après initialisation</p></li>
+<li><p><strong>genererOutputRctProjActif :</strong> Booléen d’activation des outputs de recette relatifs aux actifs</p></li>
+<li><p><strong>genererOutputRctProjPassif:</strong> Booléen d’activation des outputs de recette relatifs aux passifs</p></li>
+<li><p><strong>genererOutputRctProjStratInv</strong> : Booléen d’activation des outputs de recette relatifs à la stratégie d’investissement</p></li>
+<li><p><strong>genererOutputRctProjProv :</strong> Booléen d’activation des outputs de recette relatifs aux provisions comptables</p></li>
+<li><p><strong>genererOutputRctProjAlmCr :</strong> Booléen d’activation des outputs de recette relatifs à la stratégie ALM</p></li>
+<li><p><strong>genererOutputRctScListStr :</strong> Liste des scenarios pour lesquels les outputs de recette seront écrits.</p></li>
+<li><p><strong>genererOutputPrdAd :</strong> Booléen d’activation des outputs alimentant l’analyse déterministe</p></li>
+<li><p><strong>genererOutputPrdAdScListStr :</strong> Liste des scenarios pour lesquels les outputs alimentant l’analyse déterministe seront écrits.</p></li>
+<li><p><strong>genererOutputPrdQrt :</strong> Booléen d’activation des outputs alimentant l’analyse déterministe</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans la suite des spécifications, on pourra faire référence à ces paramètres comme suit : outputCfg. « Nom du paramètre »</p>
+</div>
+</section>
+<section id="configuration-de-la-gestion-des-erreurs">
+<h2>Configuration de la gestion des erreurs<a class="headerlink" href="#configuration-de-la-gestion-des-erreurs" title="Lien vers cette rubrique"></a></h2>
+<p>La configuration des erreurs du modèle inclut les paramètres suivants :</p>
+<ul class="simple">
+<li><p><strong>errorZero :</strong> Définition du zéro absolu. Tout nombre en valeur absolue inférieur à ce montant est considéré comme nul. La valeur par défaut de ce paramètre est 0.000000000001</p></li>
+<li><p><strong>errorZeroRelatif :</strong> Définition du zéro relatif. Deux nombres sont considérés égaux si l’écart absolu entre ces deux nombres est inférieur en valeur absolu à ce montant.  La valeur par défaut de ce paramètre est 0.0000000001</p></li>
+<li><p><strong>initPassifErrorStrategy [« CONTINUER », « LANCER_EXCEPTION »]:</strong> Stratégie adoptée quand une erreur est détectée dans la projection du passif</p></li>
+<li><p><strong>initActifObligTraIterMax :</strong> Nombre d’itération maximum pour l’initialisation du TRA. La valeur par défaut de ce paramètre est de 10000</p></li>
+<li><p><strong>initActifErrorStrategy [« CONTINUER », « LANCER_EXCEPTION »]:</strong> Stratégie adoptée quand une erreur est détectée dans la projection de l’actif</p></li>
+<li><p><strong>equilibreBilanErrorStrategy [« CONTINUER », « LANCER_EXCEPTION »]:</strong> Stratégie adoptée quand une erreur bilan est détectée au cours de la projection. A noter que si « CONTINUER » est choisi,</p></li>
+<li><p><strong>equilibreBilanErrorMax :</strong> Erreur Bilan maximum acceptée. Au dessus de ce montant, une erreur est reportée, selon la stratégie définie. La valeur par défaut de ce paramètre est 20 euros.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans la suite des spécifications, on pourra faire référence à ces paramètres comme suit : errCfg. « Nom du paramètre »</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="sfd-conception-generale.html" class="btn btn-neutral float-left" title="Conception générale" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="sfd-var-ecos.html" class="btn btn-neutral float-right" title="Variables économiques" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fonctionnalités de haut niveau &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Auditabilité &amp; Qualité des données" href="auditabilite-dq.html" />
+    <link rel="prev" title="Choix de modélisation" href="modeles.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modeles.html">Choix de modélisation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Fonctionnalités de haut niveau</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flexing-vs-full-alm">Flexing vs Full ALM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-des-cantons-portefeuilles-d-actifs">Gestion des cantons &amp; portefeuilles d’actifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pas-de-temps-du-modele-alm">Pas de temps du modèle ALM</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pas-de-temps-mensuel">Pas de temps mensuel</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pas-de-temps-annuel">Pas de temps annuel</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pas-de-temps-trimestriel">Pas de temps trimestriel</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pas-de-temps-variable">Pas de temps variable</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-des-modes-de-projection">Gestion des modes de projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-des-modeles-pour-les-calculs-d-indicateurs-prospectifs">Utilisation des modèles pour les calculs d’indicateurs prospectifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-des-scenarios-economiques-univers-de-projection">Gestion des scenarios économiques &amp; univers de projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-de-l-infra-annuel">Gestion de l’infra-annuel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-de-calages-automatises">Intégration de calages automatisés</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="auditabilite-dq.html">Auditabilité &amp; Qualité des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="referentiels.html">Référentiels transverses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="provisions.html">Titres subordonés &amp; provisions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="passif-epargne.html">Passif Epargne Individuelle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actifs.html">Actifs unitaires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="management-actions.html">Management actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frais-generaux.html">Frais généraux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indicateurs-tests.html">Indicateurs &amp; Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../exigences-autres/exigences-autres.html">Exigences complémentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../choix-tech/choix-tech.html">Choix techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="modeles.html">Choix de modélisation</a></li>
+      <li class="breadcrumb-item active">Fonctionnalités de haut niveau</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/modeles/fonctionnalites-haut-niveau.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fonctionnalites-de-haut-niveau">
+<h1>Fonctionnalités de haut niveau<a class="headerlink" href="#fonctionnalites-de-haut-niveau" title="Lien vers cette rubrique"></a></h1>
+<section id="flexing-vs-full-alm">
+<h2>Flexing vs Full ALM<a class="headerlink" href="#flexing-vs-full-alm" title="Lien vers cette rubrique"></a></h2>
+<p>A écrire.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Dans le cas du modèle ALM Accenture, le choix retenu est de construire le modèle ALM en Full ALM.</p>
+<p>Faire évoluer le modèle de sorte qu’il gère aussi le flexing sera tout à fait possible</p>
+</div>
+</section>
+<section id="gestion-des-cantons-portefeuilles-d-actifs">
+<h2>Gestion des cantons &amp; portefeuilles d’actifs<a class="headerlink" href="#gestion-des-cantons-portefeuilles-d-actifs" title="Lien vers cette rubrique"></a></h2>
+<p>On distinguera deux niveaux de regroupements d’actifs : les cantons et les portefeuilles d’actifs.</p>
+<p>Un portefeuille d’actifs est un regroupement d’actifs unitaires en représentation d’engagements vis à vis des assurés.</p>
+<p>Chaque portefeuille d’actif est soumis à une stratégie d’investissement propre, qui sera définie en input du modèle.</p>
+<p>Un canton peut regrouper plusieurs portefeuilles d’actifs</p>
+<p>Peuvent être distingués trois types de cantons suivants :</p>
+<ul class="simple">
+<li><p>Les cantons de type « <strong>canton assuré</strong> », pour lesquels les actifs sont uniquement en représentation d’engagements vis à vis des assurés.</p></li>
+<li><p>Les cantons de type « <strong>fonds propres</strong> », pour lesquels les actifs sont uniquement en représentation des capitaux propres de la société.</p></li>
+<li><p>Les cantons de type « <strong>fonds général</strong> », pour lesquels les actifs sont en représentation d’engagements vis à vis des assurés et des capitaux propres de la société.</p></li>
+</ul>
+<p>Finalement, le modèle pourrait être conçu pour :</p>
+<ul class="simple">
+<li><p>traiter les cantons de manière totalement silotée</p></li>
+<li><p>projeter l’ensemble des cantons et établir de compte de résultat au niveau de la société en prenant en compte les sources de marges issues de tous les cantons.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Dans le cas du modèle ALM Accenture, le choix retenu est de pouvoir modéliser l’établissement du compte de résultat au niveau de la société, prenant en compte les marges générées par l’ensemble des différents types de cantons, qui seront effectivement modélisés.</p>
+</div>
+</section>
+<section id="pas-de-temps-du-modele-alm">
+<h2>Pas de temps du modèle ALM<a class="headerlink" href="#pas-de-temps-du-modele-alm" title="Lien vers cette rubrique"></a></h2>
+<p>Le pas de temps du modèle peut au choix être mensuel, trimestriel, annuel, ou peut être défini dans le paramétrage du modèle.</p>
+<p>Ci dessous une synthèse des avantages et inconvénients de chaque choix et le choix retenu.</p>
+<section id="pas-de-temps-mensuel">
+<h3>Pas de temps mensuel<a class="headerlink" href="#pas-de-temps-mensuel" title="Lien vers cette rubrique"></a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Avantages</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Permet une bonne finesse dans la projection des cashflows issus des actifs et des passifs</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Permet une bonne finesse pour l’intégration des affaires nouvelles</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Permet d’intégrer le vieillissement des contrats et des actifs dans le modèle, éventuellement à partir de n’importe quelle extraction de fin de mois</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Choix de pas de temps utilisé par au moins deux bancassureurs du marché</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Inconvénients</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Implique une utilisation plus intensive de la mémoire en cours de projection</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Implique un runtime plus important</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Pas de temps non strictement nécessaire du fait que les arrêtés S2 et Ifrs17 sont trimestriels</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pas-de-temps-annuel">
+<h3>Pas de temps annuel<a class="headerlink" href="#pas-de-temps-annuel" title="Lien vers cette rubrique"></a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Avantages</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Simplifie le développement du modèle</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Améliore notablement le runtime du modèle</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Améliore notablement la mémoire nécessaire pour gérer les projections</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Inconvénients</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Modélisation des flux plus grossière</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Rend impossible l’utilisation du modèle pour les vieillissements</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pas-de-temps-trimestriel">
+<h3>Pas de temps trimestriel<a class="headerlink" href="#pas-de-temps-trimestriel" title="Lien vers cette rubrique"></a></h3>
+<p>Ce choix pourrait être vu comme un compromis entre les deux choix précédents.</p>
+</section>
+<section id="pas-de-temps-variable">
+<h3>Pas de temps variable<a class="headerlink" href="#pas-de-temps-variable" title="Lien vers cette rubrique"></a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Avantages</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Peut permettre de gérer les besoins de vieillissement en mensuel et les calculs de Best Estimate en trimestriel / annuel</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Inconvénients</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Complexifie grandement les développements et la recette du modèle. Choix non recommandé pour cette raison.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Lien vers cette rubrique"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Dans le cas du modèle ALM développé par Accenture, le choix retenu est un pas de temps paramétrable en entrée du modèle.
+Gérant le cas le plus complexe, il pourra être adapté aux différents clients sans être réécrit en grande partie si le besoin client diffère du choix retenu chez Accenture.</p>
+<p>NB : A date le pas de temps du modèle est annuel. Le modèle doit évoluer pour intégrer la fonctionnalité de pas de temps variable à court terme.</p>
+</div>
+</section>
+</section>
+<section id="gestion-des-modes-de-projection">
+<h2>Gestion des modes de projection<a class="headerlink" href="#gestion-des-modes-de-projection" title="Lien vers cette rubrique"></a></h2>
+<p>Peut être décidé que le modèle devra gérer les modes de projection suivants :</p>
+<ul class="simple">
+<li><p><strong>ALM :</strong> Dans ce mode de projection, les actifs et les passifs sont lancés simultanément et les interactions actif passif réalisées à chaque période.</p></li>
+<li><p><strong>Actif Seul :</strong> Dans ce mode de projection, seul l’actif est projeté, pourra être inséré une hypothèse de chronique de flux de passif à intégrer.</p></li>
+<li><p><strong>Passif Seul :</strong> Dans ce mode de projection seul le passif est projeté. Sera possible d’alimenter une chronique de taux servi bruts en entrée de ce mode de projection.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Dans le cas du modèle ALM développé par Accenture, est retenu le choix de permettre le fonctionnement du modèle dans ces trois modes de projection.</p>
+<p>NB : Non fonctionnel à date</p>
+</div>
+</section>
+<section id="utilisation-des-modeles-pour-les-calculs-d-indicateurs-prospectifs">
+<h2>Utilisation des modèles pour les calculs d’indicateurs prospectifs<a class="headerlink" href="#utilisation-des-modeles-pour-les-calculs-d-indicateurs-prospectifs" title="Lien vers cette rubrique"></a></h2>
+<p>Le choix de l’utilisation du modèle pour le calcul des indicateurs prospectifs est un choix stucturant.</p>
+<p>Cela implique que le modèle soit en capacité :</p>
+<ul class="simple">
+<li><p>de fonctionner en univers Real World</p></li>
+<li><p>de prendre en entrée des portefeuilles d’affaires nouvelles en plus des portefeuilles de contrats en stock à date d’arrêté</p></li>
+<li><p>de vieillir l’état de la société dans l’objectif que celui ci soit réutilisable dans d’autres projections servant à déterminer les différents indicateurs</p></li>
+</ul>
+<p>Ci dessous les avantages et inconvénients associés :</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Avantages</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Permet une meilleure compréhension des indicateurs prospectifs du fait que le même modèle et les mêmes mécanismes sont utilisés à date d’arrêté et en prospectif.</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check sd-text-success" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg> Permet une rationalisation des technologies utilisées. En effet, si les indicateurs prospectifs ne sont pas calculés via le modèle, ils devront l’être via un autre software, impliquant des développements complémentaires à backtester par rapport aux résultats du modèle ALM</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Inconvénients</strong></p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Complexifie la recette du modèle.</p>
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Nécessite un paramétrage efficace du modèle pour ne pas rendre ces processus complexes à gérer pour les utilisateurs.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Dans le cas du modèle ALM développé par Accenture, est retenu le choix de permettre le calcul d’indicateurs prospectifs via les modèles.</p>
+</div>
+</section>
+<section id="gestion-des-scenarios-economiques-univers-de-projection">
+<h2>Gestion des scenarios économiques &amp; univers de projection<a class="headerlink" href="#gestion-des-scenarios-economiques-univers-de-projection" title="Lien vers cette rubrique"></a></h2>
+<p>En fonction des cas d’usage cibles, peut être attendu que le modèle :</p>
+<ul class="simple">
+<li><p>fonctionne en déterministe et en stochastique</p></li>
+<li><p>fonctionne en risque neutre et en monde réel</p></li>
+<li><p>puisse regénérer autoamtiquement le scenario CRN à partir de la courbe des taux sans risque de référence</p></li>
+<li><p>que la risque neutralisation soit traitée par le modèle à l’initialisation de celui ci</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Le modèle ALM développé par Accenture gèrera l’ensemble de ces fonctionnalités en cible.</p>
+<p>NB : A date, le modèle ne fonctionne pas en Monde Réel</p>
+</div>
+</section>
+<section id="gestion-de-l-infra-annuel">
+<h2>Gestion de l’infra-annuel<a class="headerlink" href="#gestion-de-l-infra-annuel" title="Lien vers cette rubrique"></a></h2>
+<p>Peut être souhaité que le modèle ALM soit en capacité de prendre en input un état de la société extrait en cours d’année.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Le modèle ALM développé par Accenture permettra de gérer les dates de début de projection infra-annuelles.</p>
+<p>NB : Non fonctionnel à date</p>
+</div>
+</section>
+<section id="integration-de-calages-automatises">
+<h2>Intégration de calages automatisés<a class="headerlink" href="#integration-de-calages-automatises" title="Lien vers cette rubrique"></a></h2>
+<p>Les modèles utilisent plutôt des taux pour diffuser les différents agrégats et ces taux doivent parfois être recalculés de sorte que les montants obtenus la première année de projection correspondent à des montants issus du contrôle de gestion.</p>
+<p>Cela peut par exemple être le cas pour les primes, les prestations ou encore les frais généraux dont les cibles sont définies dans le cadre du Plan Moyen Terme.</p>
+<p>Il est tout à fait possible d’utiliser le modèle pour regénérer l’hypothèse permettant de caler à ces montants.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Le modèle ALM développé par Accenture gèrera ces calages en cible.</p>
+<p>NB : Aucun de ces calages n’est à date fonctionnel.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="modeles.html" class="btn btn-neutral float-left" title="Choix de modélisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="auditabilite-dq.html" class="btn btn-neutral float-right" title="Auditabilité &amp; Qualité des données" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metadata.dd.DdS2 &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">metadata.dd.DdS2</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de metadata.dd.DdS2</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">auto</span>
+
+
+
+<span class="kn">from</span> <span class="nn">metadata.dd.DdGse</span> <span class="kn">import</span> <span class="n">VarGse</span>
+
+<span class="kn">from</span> <span class="nn">utils.VarCatalog</span> <span class="kn">import</span> <span class="n">VarCatalog</span><span class="p">,</span> <span class="n">DataTypeDesc</span>
+<span class="kn">from</span> <span class="nn">utils.StrEnumExt</span> <span class="kn">import</span> <span class="n">StrEnumCaps</span><span class="p">,</span> <span class="n">StrEnumLower</span>
+
+<div class="viewcode-block" id="CdChocS2">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdS2.CdChocS2">[docs]</a>
+<span class="k">class</span> <span class="nc">CdChocS2</span><span class="p">(</span><span class="n">StrEnumCaps</span><span class="p">):</span>
+
+    <span class="n">central</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">lapseDown</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">lapseUp</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">lapseMass</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">mortality</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">longevity</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mortalityCat</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">expense</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ratesUp</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ratesDown</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="nb">property</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">equity</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">spread</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="VarS2">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdS2.VarS2">[docs]</a>
+<span class="k">class</span> <span class="nc">VarS2</span><span class="p">(</span><span class="n">StrEnumLower</span><span class="p">):</span>
+    <span class="n">cdChocS2</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdChocS2Gse</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdChocS2PassifPrst</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdChocS2PassifIcFgx</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">cdTypeTaux</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdTypeFlux</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdTypeProvMvBeNav</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">txChocMort</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocExpense</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocExpenseInflation</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocMortCat</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocLapse</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocLapseMass</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">txChocEquityT1</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocEquityT2</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocProperty</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocLongevity</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocRevision</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocInval</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocEquityStrat</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocSpreadStress</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocSpreadA</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txChocSpreadB</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbDurationMin</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbDurationMax</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">facteurChocSpreadMtVm</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtBeBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtBeNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtBeReass</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtBeReassAjst</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtDurationMod</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="DdS2">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdS2.DdS2">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DdS2</span><span class="p">(</span><span class="n">VarCatalog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2Gse</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 applicable aux variables économiques&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2PassifPrst</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 applicable aux hypothèses de prestations&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2PassifIcFgx</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 applicable à la table PassifHypsIcFgx&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdTypeFlux</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Type de flux&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdTypeProvMvBeNav</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Type de provision&quot;</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocMort</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 associé à la mortalité&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocExpense</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 associé aux frais généraux&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocExpenseInflation</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 associé à l&#39;inflation des frais généraux&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocMortCat</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 mortalité catastrophe&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocLapse</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 rachat&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocLapseMass</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 rachat masse&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">cdTypeTaux</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Type de taux dans la table hypS2Chocs&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocEquityT1</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 action de type 1&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocEquityT2</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 action de type 2&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocProperty</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 immobilier&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocLongevity</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 longévité&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocRevision</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 révision&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocInval</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 invalidité&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocEquityStrat</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 action stratégique&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocSpreadStress</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 spread stress&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocSpreadA</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 spread A&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">txChocSpreadB</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Choc Solvabilité 2 spread B&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">nbDurationMin</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Borne minimum de duration pour l&#39;application du choc spread&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">nbDurationMax</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Borne maximum de duration pour l&#39;application du choc spread&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">facteurChocSpreadMtVm</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Facteur de choc spread sur le montant de valeur de marché&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">mtBeBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Best Estimate bruts de réassurance&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">mtBeNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Best Estimate net de réassurance&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">mtBeReass</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Best Estimate cédé&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">mtBeReassAjst</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Ajustement pour défaut&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarS2</span><span class="o">.</span><span class="n">mtDurationMod</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Duration modifiée&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+        <span class="p">})</span></div>
+
+
+<span class="n">ddS2</span> <span class="o">=</span> <span class="n">DdS2</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

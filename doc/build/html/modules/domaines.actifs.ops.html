@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>domaines.actifs.ops &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="domaines.commun" href="domaines.commun.html" />
+    <link rel="prev" title="domaines.actifs.expr" href="domaines.actifs.expr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation du code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dao.html">dao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docgen.html">docgen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="domaines.html">domaines</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="domaines.actifs.html">domaines.actifs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="domaines.actifs.events.html">domaines.actifs.events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="domaines.actifs.expr.html">domaines.actifs.expr</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">domaines.actifs.ops</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifCashProj">domaines.actifs.ops.MpActifCashProj</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifCashProj.projActifCashBuild"><code class="docutils literal notranslate"><span class="pre">projActifCashBuild()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifCashProj.projActifCashPerf"><code class="docutils literal notranslate"><span class="pre">projActifCashPerf()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifCashProj.almCrProjActifCash"><code class="docutils literal notranslate"><span class="pre">almCrProjActifCash()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifCashProjCopy">domaines.actifs.ops.MpActifCashProjCopy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifIndicesInitGblBuild">domaines.actifs.ops.MpActifIndicesInitGblBuild</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifIndicesInitGblBuild.mpActifIndicesInitGblBuild"><code class="docutils literal notranslate"><span class="pre">mpActifIndicesInitGblBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifIndicesInitProj">domaines.actifs.ops.MpActifIndicesInitProj</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifIndicesInitProj.mpActifIndicesInitProjBuild"><code class="docutils literal notranslate"><span class="pre">mpActifIndicesInitProjBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifIndicesInitS2">domaines.actifs.ops.MpActifIndicesInitS2</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifIndicesInitS2.mpActifIndicesInitS2Build"><code class="docutils literal notranslate"><span class="pre">mpActifIndicesInitS2Build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifIndicesPerf">domaines.actifs.ops.MpActifIndicesPerf</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifIndicesPerf.mpActifIndicesPerf"><code class="docutils literal notranslate"><span class="pre">mpActifIndicesPerf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#domaines-actifs-ops-mpactifindicesproj">domaines.actifs.ops.MpActifIndicesProj</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#domaines-actifs-ops-mpactifobligproj">domaines.actifs.ops.MpActifObligProj</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifProjCopy">domaines.actifs.ops.MpActifProjCopy</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifProjCopy.mpActifProjCopy"><code class="docutils literal notranslate"><span class="pre">mpActifProjCopy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.MpActifProjStratInv">domaines.actifs.ops.MpActifProjStratInv</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifProjStratInv.projActifObligStratInvApplyAchatOblig"><code class="docutils literal notranslate"><span class="pre">projActifObligStratInvApplyAchatOblig()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifProjStratInv.projProvOtherStratInv"><code class="docutils literal notranslate"><span class="pre">projProvOtherStratInv()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifProjStratInv.projProvPpeStratInv"><code class="docutils literal notranslate"><span class="pre">projProvPpeStratInv()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifProjStratInv.projActifObligCfStraInvApplyAchatVente"><code class="docutils literal notranslate"><span class="pre">projActifObligCfStraInvApplyAchatVente()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.MpActifProjStratInv.mpActifProjStratInvApplyFacteurAchatVente"><code class="docutils literal notranslate"><span class="pre">mpActifProjStratInvApplyFacteurAchatVente()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.ops.PrdAdActifs">domaines.actifs.ops.PrdAdActifs</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.ops.PrdAdActifs.prdAdActifBuild"><code class="docutils literal notranslate"><span class="pre">prdAdActifBuild()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.commun.html">domaines.commun</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.gse.html">domaines.gse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.passif.html">domaines.passif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.provisions.html">domaines.provisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestrateur.html">orchestrateur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Documentation du code</a></li>
+          <li class="breadcrumb-item"><a href="domaines.html">domaines</a></li>
+          <li class="breadcrumb-item"><a href="domaines.actifs.html">domaines.actifs</a></li>
+      <li class="breadcrumb-item active">domaines.actifs.ops</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/domaines.actifs.ops.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-domaines.actifs.ops">
+<span id="domaines-actifs-ops"></span><h1>domaines.actifs.ops<a class="headerlink" href="#module-domaines.actifs.ops" title="Lien vers cette rubrique"></a></h1>
+<section id="module-domaines.actifs.ops.MpActifCashProj">
+<span id="domaines-actifs-ops-mpactifcashproj"></span><h2>domaines.actifs.ops.MpActifCashProj<a class="headerlink" href="#module-domaines.actifs.ops.MpActifCashProj" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifCashProj.projActifCashBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifCashProj.</span></span><span class="sig-name descname"><span class="pre">projActifCashBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scEcoList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpActifCash</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifCashProj.html#projActifCashBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifCashProj.projActifCashBuild" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode construisant le DataFrame projActifCash à partir de actifCash, du choc S2 à jouer et du scenario économique
+:param chocS2: Choc Solvabilité 2
+:type chocS2: str
+:param actifCash: Caractériques du cash en input du modèle par canton
+:type actifCash: DataFrame
+:returns: DataFrame projActifCash au format attendu
+:rtype: DataFrame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifCashProj.projActifCashPerf">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifCashProj.</span></span><span class="sig-name descname"><span class="pre">projActifCashPerf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActifCash</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActifCashPerfInputCf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseOutputCashPerfT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseCtRefCashPerfT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifCashProj.html#projActifCashPerf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifCashProj.projActifCashPerf" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode appliquant l’évènement « performance » sur un DataFrame projActifCash
+:param period: Itération
+:param projActifCash: DataFrame projActifCash en entrée
+:param projActifCashPerfInputCf: Cashflows en provenance de l’actif et du passif à intégrer au cash
+:param gseOutputCashPerfT: Taux de performance du cash à appliquer pour le scenario et l’itération
+:param gseCtRefCashPerfT: Taux de performane du cash attendu sur la base du scenario CRN
+:returns: DataFrame projActifCash mis à jour</p>
+<dl class="simple">
+<dt>L’application de la performance sur le cash est réalisée via les actions suivantes :</dt><dd><ul class="simple">
+<li><p>de faire une copie du dataframe d’entrée</p></li>
+<li><p>renseigner dans cette copie le scenario, l’itération et l’évènement (Perf)</p></li>
+<li><p>d’intégrer les cashflows en provenance de l’actif et du passif</p></li>
+<li><p>d’appliquer le taux de performance du cash sur la base du DataFrame gseOutputCashPerfT</p></li>
+<li><p>de calculer la fuite économique comme la différence entre l’augmentation de VM sur la base du taux de performance du cash appliqué et du taux de performance du cash attendu dans le cadre du scenario CRN</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifCashProj.almCrProjActifCash">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifCashProj.</span></span><span class="sig-name descname"><span class="pre">almCrProjActifCash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prdAdCr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpProvOther</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifCashProj.html#almCrProjActifCash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifCashProj.almCrProjActifCash" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode appliquant l’évènement « AlmCr » sur un DataFrame projActifCash
+:param period: Itération
+:type period: int
+:param projActif: DataFrame projActifCash à partir duquel on travaille
+:type projActif: DataFrame
+:param prdAdCr: Compte de résultat à partir dans lequel on trouve les éléments qui impactent le cash
+:type prdAdCr: DataFrame
+:param mpProvOther: On trouve notamment dans ce DataFrame le type du canton
+:type mpProvOther: DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame[projActifCash] mis à jour</p>
+</dd>
+</dl>
+<p>L’application de l’évènement « AlmCr » sur le cash implique :</p>
+<ul class="simple">
+<li><p>de faire une copie du dataframe d’entrée</p></li>
+<li><p>renseigner dans cette copie le scenario, l’itération et l’évènement (AlmCr)</p></li>
+<li><p>retrancher du cash le résultat brut du canton</p></li>
+<li><p>retrancher du cash les frais de placement</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-domaines.actifs.ops.MpActifCashProjCopy">
+<span id="domaines-actifs-ops-mpactifcashprojcopy"></span><h2>domaines.actifs.ops.MpActifCashProjCopy<a class="headerlink" href="#module-domaines.actifs.ops.MpActifCashProjCopy" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="module-domaines.actifs.ops.MpActifIndicesInitGblBuild">
+<span id="domaines-actifs-ops-mpactifindicesinitgblbuild"></span><h2>domaines.actifs.ops.MpActifIndicesInitGblBuild<a class="headerlink" href="#module-domaines.actifs.ops.MpActifIndicesInitGblBuild" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifIndicesInitGblBuild.mpActifIndicesInitGblBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifIndicesInitGblBuild.</span></span><span class="sig-name descname"><span class="pre">mpActifIndicesInitGblBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpActifIndicesInput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifIndicesInitGblBuild.html#mpActifIndicesInitGblBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifIndicesInitGblBuild.mpActifIndicesInitGblBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.actifs.ops.MpActifIndicesInitProj">
+<span id="domaines-actifs-ops-mpactifindicesinitproj"></span><h2>domaines.actifs.ops.MpActifIndicesInitProj<a class="headerlink" href="#module-domaines.actifs.ops.MpActifIndicesInitProj" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifIndicesInitProj.mpActifIndicesInitProjBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifIndicesInitProj.</span></span><span class="sig-name descname"><span class="pre">mpActifIndicesInitProjBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpActifIndicesInitS2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scEcoList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifIndicesInitProj.html#mpActifIndicesInitProjBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifIndicesInitProj.mpActifIndicesInitProjBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.actifs.ops.MpActifIndicesInitS2">
+<span id="domaines-actifs-ops-mpactifindicesinits2"></span><h2>domaines.actifs.ops.MpActifIndicesInitS2<a class="headerlink" href="#module-domaines.actifs.ops.MpActifIndicesInitS2" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifIndicesInitS2.mpActifIndicesInitS2Build">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifIndicesInitS2.</span></span><span class="sig-name descname"><span class="pre">mpActifIndicesInitS2Build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfCdChocS2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpActifIndicesInitGbl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypS2Chocs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifIndicesInitS2.html#mpActifIndicesInitS2Build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifIndicesInitS2.mpActifIndicesInitS2Build" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.actifs.ops.MpActifIndicesPerf">
+<span id="domaines-actifs-ops-mpactifindicesperf"></span><h2>domaines.actifs.ops.MpActifIndicesPerf<a class="headerlink" href="#module-domaines.actifs.ops.MpActifIndicesPerf" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifIndicesPerf.mpActifIndicesPerf">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifIndicesPerf.</span></span><span class="sig-name descname"><span class="pre">mpActifIndicesPerf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpActifIndicesProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseCtRefCashPerfT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseOutputIndicesPerfT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifIndicesPerf.html#mpActifIndicesPerf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifIndicesPerf.mpActifIndicesPerf" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="domaines-actifs-ops-mpactifindicesproj">
+<h2>domaines.actifs.ops.MpActifIndicesProj<a class="headerlink" href="#domaines-actifs-ops-mpactifindicesproj" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="domaines-actifs-ops-mpactifobligproj">
+<h2>domaines.actifs.ops.MpActifObligProj<a class="headerlink" href="#domaines-actifs-ops-mpactifobligproj" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="module-domaines.actifs.ops.MpActifProjCopy">
+<span id="domaines-actifs-ops-mpactifprojcopy"></span><h2>domaines.actifs.ops.MpActifProjCopy<a class="headerlink" href="#module-domaines.actifs.ops.MpActifProjCopy" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifProjCopy.mpActifProjCopy">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifProjCopy.</span></span><span class="sig-name descname"><span class="pre">mpActifProjCopy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evenement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="metadata.dd.html#metadata.dd.DdProjection.ModeleAlmEvenement" title="metadata.dd.DdProjection.ModeleAlmEvenement"><span class="pre">ModeleAlmEvenement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpActifProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifProjCopy.html#mpActifProjCopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifProjCopy.mpActifProjCopy" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.actifs.ops.MpActifProjStratInv">
+<span id="domaines-actifs-ops-mpactifprojstratinv"></span><h2>domaines.actifs.ops.MpActifProjStratInv<a class="headerlink" href="#module-domaines.actifs.ops.MpActifProjStratInv" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifProjStratInv.projActifObligStratInvApplyAchatOblig">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifProjStratInv.</span></span><span class="sig-name descname"><span class="pre">projActifObligStratInvApplyAchatOblig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projAnnee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActifObligMp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActifObligCf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActifOblig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invStratInputOutputAchatOblig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypStratInvObligAchat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseOutputObligPzcT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseObligMaturiteMax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorZero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorZeroRelatif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initActifObligTraIterMax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initActifErrorStrategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="config.html#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">onErrorStrategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="config.html#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifProjStratInv.html#projActifObligStratInvApplyAchatOblig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifProjStratInv.projActifObligStratInvApplyAchatOblig" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode en charge de l’achat de titres obligataires lors de la stratégie d’investissement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chocS2</strong></p></li>
+<li><p><strong>period</strong></p></li>
+<li><p><strong>projAnnee</strong></p></li>
+<li><p><strong>mpActifOblig</strong></p></li>
+<li><p><strong>projActifObligCf</strong></p></li>
+<li><p><strong>projActifOblig</strong></p></li>
+<li><p><strong>invStratInputOutputAchatOblig</strong></p></li>
+<li><p><strong>hypStratInvObligAchat</strong></p></li>
+<li><p><strong>gseOutputObligPzcT</strong></p></li>
+<li><p><strong>gseObligMaturiteMax</strong></p></li>
+<li><p><strong>errorZero</strong></p></li>
+<li><p><strong>errorZeroRelatif</strong></p></li>
+<li><p><strong>initActifObligTraIterMax</strong></p></li>
+<li><p><strong>initActifErrorStrategy</strong></p></li>
+<li><p><strong>onErrorStrategy</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifProjStratInv.projProvOtherStratInv">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifProjStratInv.</span></span><span class="sig-name descname"><span class="pre">projProvOtherStratInv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projProvOther</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projActifOblig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifProjStratInv.html#projProvOtherStratInv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifProjStratInv.projProvOtherStratInv" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode en charge d’appliquer la stratégie d’investissement sur les provisions comptables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>int</em>) – Iteration</p></li>
+<li><p><strong>projProvOther</strong> (<em>DataFrame</em>) – DataFrame projProvOther en input</p></li>
+<li><p><strong>projActifOblig</strong> (<em>DataFrame</em>) – Titres obligataires</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame projProvOther mis à jour</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifProjStratInv.projProvPpeStratInv">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifProjStratInv.</span></span><span class="sig-name descname"><span class="pre">projProvPpeStratInv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projProvPpe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifProjStratInv.html#projProvPpeStratInv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifProjStratInv.projProvPpeStratInv" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode en charge d’appliquer la stratégie d’investissement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>int</em>) – Itération</p></li>
+<li><p><strong>projProvPpe</strong> (<em>DataFrame</em>) – Générations de PPB</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame ProjProvPpe mis à jour</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifProjStratInv.projActifObligCfStraInvApplyAchatVente">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifProjStratInv.</span></span><span class="sig-name descname"><span class="pre">projActifObligCfStraInvApplyAchatVente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projActifObligCf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stratInvInputOutput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifProjStratInv.html#projActifObligCfStraInvApplyAchatVente"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifProjStratInv.projActifObligCfStraInvApplyAchatVente" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode en charge d’impacter les cashflows futurs des titres obligataires du facteur d’achat vente
+:param projActifObligCf:
+:type projActifObligCf: DataFrame
+:param projActifOblig:
+:type projActifOblig: DataFrame
+:return:
+:rtype: DataFrame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.MpActifProjStratInv.mpActifProjStratInvApplyFacteurAchatVente">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.MpActifProjStratInv.</span></span><span class="sig-name descname"><span class="pre">mpActifProjStratInvApplyFacteurAchatVente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpActifProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stratInvInputOutput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/MpActifProjStratInv.html#mpActifProjStratInvApplyFacteurAchatVente"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.MpActifProjStratInv.mpActifProjStratInvApplyFacteurAchatVente" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode en charge d’appliquer les achats ventes (hors achats d’obligations) sur les actifs unitaires
+:param projActif: Portefeuille d’actifs sur lequel appliquer les achats ventes
+:type projActif: DataFrame
+:param stratInvInputOutput: DataFrame contenant les intermédiaires de calcul et les outputs de la stratégie d’investissement
+:type stratInvInputOutput: DataFrame
+:return: DataFrame projActif mis à jour
+:rtype: DataFrame</p>
+</dd></dl>
+
+</section>
+<section id="module-domaines.actifs.ops.PrdAdActifs">
+<span id="domaines-actifs-ops-prdadactifs"></span><h2>domaines.actifs.ops.PrdAdActifs<a class="headerlink" href="#module-domaines.actifs.ops.PrdAdActifs" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.ops.PrdAdActifs.prdAdActifBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.ops.PrdAdActifs.</span></span><span class="sig-name descname"><span class="pre">prdAdActifBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpActifProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/ops/PrdAdActifs.html#prdAdActifBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.ops.PrdAdActifs.prdAdActifBuild" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode permettant de construire le dataframe PrdAd à partir d’un dataframe projActif
+Ceci est réalisé en agrégeant les éléments projetés des actifs unitaires à la maille PrdAd.
+:param projActif: Etat courant des éléments projetés pour les actifs unitaires
+:type projActif: DataFrame
+:return: dataframe au format PrdAd</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="domaines.actifs.expr.html" class="btn btn-neutral float-left" title="domaines.actifs.expr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="domaines.commun.html" class="btn btn-neutral float-right" title="domaines.commun" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

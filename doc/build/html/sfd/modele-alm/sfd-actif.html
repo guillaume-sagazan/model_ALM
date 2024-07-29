@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modélisation des actifs &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script>window.MathJax = {"chtml": {"scale": ".8", "minScale": ".3", "matchFontHeight": "true", "mtextInheritFont": "false", "merrorInheritFont": "true", "mathmlSpacing": "false", "skipAttributes": "{}", "exFactor": ".5", "displayAlign": "left", "displayIndent": "0"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Stratégie ALM" href="sfd-stratalm.html" />
+    <link rel="prev" title="Modélisation des passifs" href="sfd-passif.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sfd-conception-generale.html">Conception générale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-config.html">Configuration d’un traitement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-var-ecos.html">Variables économiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-passif.html">Modélisation des passifs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Modélisation des actifs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initialisation">Initialisation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#titres-obligataires-risque-neutralisation">Titres Obligataires - Risque Neutralisation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#titres-obligataires-initialisation-du-tra">Titres Obligataires - Initialisation du TRA</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#actifs-indiciels">Actifs Indiciels</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#titres-obligataires">Titres obligataires</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cash">Cash</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#strategie-d-investissement">Stratégie d’investissement</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#preparation-des-donnees">Préparation des données</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#algorithme">Algorithme</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#impacts-sur-les-portefeuilles-d-actifs-unitaires">Impacts sur les portefeuilles d’actifs unitaires</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#impacts-sur-la-reserve-de-capitalisation">Impacts sur la réserve de capitalisation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#strategie-alm">Stratégie ALM</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#impacts-sur-les-actifs-unitaires">Impacts sur les actifs unitaires</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-stratalm.html">Stratégie ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-tests-modele-alm.html">Modèle ALM - Tests de cohérence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Modélisation des actifs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-actif.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modelisation-des-actifs">
+<h1>Modélisation des actifs<a class="headerlink" href="#modelisation-des-actifs" title="Lien vers cette rubrique"></a></h1>
+<section id="initialisation">
+<h2>Initialisation<a class="headerlink" href="#initialisation" title="Lien vers cette rubrique"></a></h2>
+<p>L’évolution des valeurs de marché des actifs indiciels prendra en input un taux de performance brut issu des jeux de scenarios économiques.</p>
+<p>Un taux de dividendes, permettant potentiellement de simuler des cashflows et produits financiers pour les actifs indiciels, existe dans le modèle mais est défini à zéro à date.</p>
+<section id="titres-obligataires-risque-neutralisation">
+<h3>Titres Obligataires - Risque Neutralisation<a class="headerlink" href="#titres-obligataires-risque-neutralisation" title="Lien vers cette rubrique"></a></h3>
+<p>Les titres obligataires sont risque neutralisés à l’initialisation du modèle sur la base de la courbe des taux de référence de l’arrêté.</p>
+<p>Cette risque neutralisation est réalisée en ajustant le nominal des obligations et donc les cashflows futurs des obligations.</p>
+</section>
+<section id="titres-obligataires-initialisation-du-tra">
+<h3>Titres Obligataires - Initialisation du TRA<a class="headerlink" href="#titres-obligataires-initialisation-du-tra" title="Lien vers cette rubrique"></a></h3>
+<p>A l’initialisation du modèle, le taux de rendement actuariel des obligations est recalculé de sorte que :</p>
+<div class="math notranslate nohighlight">
+\[MtVc(t=0) =
+\sum_{t=1}^{maturiteOblig}{\frac{MtNominal*TxCoupon}{(1+TRA)^{t}}}
++ \frac{MtNominal * TxRemboursement}{(1+TRA)^{maturiteOblig}}\]</div>
+<p>Ce recalcul du TRA permet de lisser les produits financiers sur la durée de vie de l’obligation.</p>
+<p>Les produits financiers générés par les obligations sont dès lors calculés comme :</p>
+<div class="math notranslate nohighlight">
+\[MtPfi(t) = TRA * MtVc(t-1)\]</div>
+</section>
+</section>
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Lien vers cette rubrique"></a></h2>
+<section id="actifs-indiciels">
+<h3>Actifs Indiciels<a class="headerlink" href="#actifs-indiciels" title="Lien vers cette rubrique"></a></h3>
+<p>Pour les actifs indiciels, les formules suivantes s’appliquent.</p>
+<p><strong>Calcul de la valeur de marché</strong></p>
+<div class="math notranslate nohighlight">
+\[MtVm^{ApPerf}(t) = MtVm^{AvPerf}(t) * facteurPerfTotIndice(typeIndice, chocS2Gse, scenario, t)\]</div>
+<p><strong>Calcul de la valeur comptable</strong></p>
+<div class="math notranslate nohighlight">
+\[MtVc^{ApPerf}(t) = MtVc^{AvPerf}(t)\]</div>
+<p><strong>Calcul des produits financiers</strong></p>
+<div class="math notranslate nohighlight">
+\[MtPfi^{Perf}(t) = 0.0\]</div>
+<p><strong>Calcul des cashflows</strong></p>
+<div class="math notranslate nohighlight">
+\[MtCf^{Perf}(t) = 0.0\]</div>
+</section>
+<section id="titres-obligataires">
+<h3>Titres obligataires<a class="headerlink" href="#titres-obligataires" title="Lien vers cette rubrique"></a></h3>
+<p><strong>Calcul de la valeur de marché</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}MtVm^{ApPerf}(t) =
+\left\{\begin{array}{l}
+\sum_{mat=1}^{maturiteOblig}{MtNominal * TxCoupon * pzc(CT(chocS2Gse, scenario, t), mat)}
+\\ + MtNominal * TxRemboursement * pzc(CT(chocS2Gse, scenario, t), maturiteOblig)
+\end{array}\right.\end{split}\]</div>
+<p><strong>Calcul des produits financiers</strong></p>
+<div class="math notranslate nohighlight">
+\[MtPfi^{Perf}(t) = MtVc^{AvPerf}(t) * TRA\]</div>
+<p><strong>Calcul du cashflow</strong></p>
+<p>Si t &lt; date de maturité de l’obligation :</p>
+<div class="math notranslate nohighlight">
+\[MtCf^{Perf}(t) = MtNominal * TxCoupon\]</div>
+<p>Si t = date de maturité de l’obligation :</p>
+<div class="math notranslate nohighlight">
+\[MtCf^{Perf}(t) = MtCf^{Perf}(t) + MtNominal * TxRemboursement\]</div>
+<p><strong>Calcul de la valeur comptable</strong></p>
+<div class="math notranslate nohighlight">
+\[MtVc^{ApPerf}(t) = MtVc^{AvPerf}(t) + MtPfi^{Perf}(t) - MtCf^{Perf}(t)\]</div>
+</section>
+<section id="cash">
+<h3>Cash<a class="headerlink" href="#cash" title="Lien vers cette rubrique"></a></h3>
+<p>Le cash est le réceptacle des cash flows issus des contrats supports euro d’une part et des cashflows issus des actifs sous gestion d’autre part.</p>
+<p>L’ensemble des cashflows sont préparés en amont dans un dataframe <span class="math notranslate nohighlight">\(pfarisCashPerfInputCf\)</span> (au format <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#ProjActifCashInputCf">ProjActifCashInputCf</a>)</p>
+<p>A noter que le cash est revalorisé sur la base de <span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, scenario, t, intraperiod)\)</span> explicité précédemment.</p>
+<p><strong>Calcul des produits financiers</strong></p>
+<p>Soit la jointure entre pfarisCashPerfInputCf et igseCashPerf.</p>
+<p>Cette jointure permet de calculer les produits financiers issus des différents cashflows ainsi :</p>
+<div class="math notranslate nohighlight">
+\[MtPfi^{Perf}(t) = pfarisCashPerfInputCf.MtCf * facteurPerfCash\]</div>
+<p>A ceci s’ajoute les produits financiers issus du stock de cash présent au début de la période.</p>
+<div class="math notranslate nohighlight">
+\[MtPfi^{Perf}(t) = MtPfi^{Perf}(t) + MtVm^{AvPerf}(t) * facteurPerfCash(chocS2Gse, scenario, t, BEG)\]</div>
+<p><strong>Calcul des cashflows intégrés au cash</strong></p>
+<p>Le montant de cashflow intégré au cash correspond à la somme des cashflows présents dans <span class="math notranslate nohighlight">\(pfarisCashPerfInputCf\)</span></p>
+<p>Ainsi :</p>
+<div class="math notranslate nohighlight">
+\[MtCf^{Perf}(t) = \sum{pfarisCashPerfInputCf.MtCf}\]</div>
+<p><strong>Calcul de la valeur de marché et de la valeur comptable</strong></p>
+<p>Ayant calculé <span class="math notranslate nohighlight">\(MtCf\)</span> et <span class="math notranslate nohighlight">\(MtPfi\)</span>, on peut calculer la valeur de marché après performance comme :</p>
+<div class="math notranslate nohighlight">
+\[MtVm^{ApPerf}(t) = MtVm^{AvPerf}(t) + MtPfi^{Perf}(t) + MtCf^{Perf}(t)\]</div>
+<div class="math notranslate nohighlight">
+\[MtVc^{ApPerf}(t) = MtVm^{ApPerf}(t)\]</div>
+</section>
+</section>
+<section id="strategie-d-investissement">
+<h2>Stratégie d’investissement<a class="headerlink" href="#strategie-d-investissement" title="Lien vers cette rubrique"></a></h2>
+<section id="preparation-des-donnees">
+<h3>Préparation des données<a class="headerlink" href="#preparation-des-donnees" title="Lien vers cette rubrique"></a></h3>
+<p>Dans l’objectif d’appliquer la stratégie d’investissement, est nécessaire de calculer :</p>
+<ul class="simple">
+<li><p>les valeurs de marché par canton</p></li>
+<li><p>les valeurs de marché par classe d’actif</p></li>
+<li><p>les assiettes de calcul utilisées pour le calcul des achats ventes à réaliser</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[MtVmAvCanton_{Canton}(t) = \sum_{Canton}{MtVm^{AvPerf}_{ActifsUnitaires}(t)}\]</div>
+<div class="math notranslate nohighlight">
+\[MtVmAvCdClasseActif_{CdClasseActif}(t) = \sum_{CdClasseActif}{MtVm^{AvPerf}_{ActifsUnitaires}(t)}\]</div>
+<div class="math notranslate nohighlight">
+\[MtVmAvAssAchatVente_{CdClasseActif IndGestion}(t) = \sum_{CdClasseActif IndGestion}{MtVm^{AvPerf}_{ActifsUnitaires IndGestion}(t)}\]</div>
+<p>Ce dernier montant doit être corrigé de sorte que les actifs indiciels pour lesquels IndGestion = 0 ne soient pas intégrés dans les assiettes de calculs.</p>
+<div class="math notranslate nohighlight">
+\[MtVmAvAssAchatVente_{CdClasseActif, IndGestion=0}(t) = 0.0\]</div>
+<p>Est finalement nécessaire de calculer les montants de valeur de marché cible à atteindre.</p>
+<div class="math notranslate nohighlight">
+\[MtVmCibleCdClasseActif_{CdClasseActif}(t) = MtVmAvCanton_{Canton}(t) * HypTxAllocCible_{CdClasseActif}\]</div>
+</section>
+<section id="algorithme">
+<h3>Algorithme<a class="headerlink" href="#algorithme" title="Lien vers cette rubrique"></a></h3>
+<p>L’objectif est in fine de calculer, pour chaque CdClasseActif et chaque IndGestion les montant suivants :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MtVmCible\)</span> : Le montant de valeur de marché cible à la maille CdClasseActif IndGestion, initialisé à 0. A noter que ce montant diffère de MtVmCibleCdClasseActif qui est par classe d’actif !</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtAchatOblig\)</span> : le montant d’achat d’obligations à réaliser (ne concerne que les classes d’actifs relatives aux titre obligataires), initialisé à 0.0</p></li>
+<li><p><span class="math notranslate nohighlight">\(FacteurAchatVente\)</span> : le facteur d’achat vente, initialisé à 1.0</p></li>
+</ul>
+<p>Est à noter qu’il convient de distinguer les cas suivants :</p>
+<ul class="simple">
+<li><p>La valeur de marché du canton est supérieure à zéro. Dans ce cas, on applique un algorithme assez classique.</p></li>
+<li><p>La valeur de marché du canton est inférieure à zéro. Dans ce cas, tous les actifs sont vendus et la projection est finalisée avec uniquement du cash.</p></li>
+</ul>
+<p><strong>Cas où la valeur de marché du canton est négative</strong></p>
+<p>Dans ce cas :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MtAchatOblig\)</span> est conservé à 0 pour ne pas acheter d’obligations</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtVmCible\)</span> est conservé à 0</p></li>
+<li><p><span class="math notranslate nohighlight">\(FacteurAchatVente\)</span> est défini à 0 dans tous les cas, sauf pour le cash.</p></li>
+</ul>
+<p>Ceci permet de vendre tous les actifs unitaires et de continuer avec uniquement du cash.</p>
+<p><strong>Cas où la valeur de marché du canton est positive</strong></p>
+<p>Dans ce cas, on va traiter les couples CdClasseActif IndGestion de ma manière suivante.</p>
+<div class="math notranslate nohighlight">
+\[FacteurAchatVente_{CdClasseActif \neq OBLIGATION} = \frac{MtVmCibleCdClasseActif_{CdClasseActif}}{mtVmAvCdClasseActif_{CdClasseActif}}\]</div>
+<p><strong>Output de la stratégie d’investissement</strong></p>
+<p>On dispose en output de l’algorithme d’une table <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#StratInvInputOutput">StratInvInputOutput</a> contenant <span class="math notranslate nohighlight">\(FacteurAchatVente\)</span> et <span class="math notranslate nohighlight">\(MtAchatOblig\)</span> par classe d’actif / indice de gestion.</p>
+</section>
+<section id="impacts-sur-les-portefeuilles-d-actifs-unitaires">
+<h3>Impacts sur les portefeuilles d’actifs unitaires<a class="headerlink" href="#impacts-sur-les-portefeuilles-d-actifs-unitaires" title="Lien vers cette rubrique"></a></h3>
+<p><strong>Impacts de FacteurAchatVente sur les actifs unitaires</strong></p>
+<p>Les formules suivantes sont appliquées si <span class="math notranslate nohighlight">\(FacteurAchatVente_{CdClasseActif} \leq 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[MtVm_{ActifUnitaire}^{ApStratInv}(t) = MtVm_{ActifUnitaire}^{AvStratInv}(t) * FacteurAchatVente_{CdClasseActif}\]</div>
+<div class="math notranslate nohighlight">
+\[MtVc_{ActifUnitaire}^{ApStratInv}(t) = MtVc_{ActifUnitaire}^{AvStratInv}(t) * FacteurAchatVente_{CdClasseActif}\]</div>
+<div class="math notranslate nohighlight">
+\[MtPfi_{ActifUnitaire}^{StratInv}(t) = (MtVm_{ActifUnitaire}^{AvStratInv}(t) - MtVc_{ActifUnitaire}^{AvStratInv}(t)) * (1.0 - FacteurAchatVente_{CdClasseActif})\]</div>
+<div class="math notranslate nohighlight">
+\[MtCf_{ActifUnitaire}^{StratInv}(t) = MtVm_{ActifUnitaire}^{AvStratInv}(t) - MtVm_{ActifUnitaire}^{ApStratInv}(t)\]</div>
+<p>Les formules suivantes sont appliquées si <span class="math notranslate nohighlight">\(FacteurAchatVente_{CdClasseActif} &gt; 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[MtVm_{ActifUnitaire}^{ApStratInv}(t) = MtVm_{ActifUnitaire}^{AvStratInv}(t) * FacteurAchatVente_{CdClasseActif}\]</div>
+<div class="math notranslate nohighlight">
+\[MtVc_{ActifUnitaire}^{ApStratInv}(t) = MtVc_{ActifUnitaire}^{AvStratInv}(t) + MtVm_{ActifUnitaire}^{ApStratInv}(t) - MtVm_{ActifUnitaire}^{AvStratInv}(t)\]</div>
+<div class="math notranslate nohighlight">
+\[MtPfi_{ActifUnitaire}^{StratInv}(t) = 0.0\]</div>
+<div class="math notranslate nohighlight">
+\[MtCf_{ActifUnitaire}^{StratInv}(t) = MtVm_{ActifUnitaire}^{AvStratInv}(t) - MtVm_{ActifUnitaire}^{ApStratInv}(t)\]</div>
+<p><strong>Achats de titres obligataires</strong></p>
+<p>L’achat d’obligations se fait conformément aux caractéristiques présente dans la table <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#HypStratInvInput">HypStratInvInput</a></p>
+<p>A noter qu’à l’achat :
+* la valeur de marché et la valeur comptable sont initialisées à <span class="math notranslate nohighlight">\(MtAchatOblig\)</span>
+* le nominal est d’abord initialisé à 1 euro avant de la risque neutraliser afin de recalculer le nominal idoine</p>
+</section>
+<section id="impacts-sur-la-reserve-de-capitalisation">
+<h3>Impacts sur la réserve de capitalisation<a class="headerlink" href="#impacts-sur-la-reserve-de-capitalisation" title="Lien vers cette rubrique"></a></h3>
+<p>La réalisation de PMVL sur les titres obligataires impacte un delta de réserve de capitalisation.</p>
+<p>Ainsi :</p>
+<div class="math notranslate nohighlight">
+\[MtReserveCapi_{Canton}^{ApStratInv}(t) = MtReserveCapi_{Canton}^{AvStratInv}(t) + \sum_{Canton}{MtPfi^{StratInv}_{Obligations}(t)}\]</div>
+</section>
+</section>
+<section id="strategie-alm">
+<h2>Stratégie ALM<a class="headerlink" href="#strategie-alm" title="Lien vers cette rubrique"></a></h2>
+<p>On dispose en output de la stratégie ALM de la table de données <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#StratAlmOutput">StratAlmOutput</a>, contenant notamment MtPmvr, le montant de plus ou moins values à réaliser.</p>
+<section id="impacts-sur-les-actifs-unitaires">
+<h3>Impacts sur les actifs unitaires<a class="headerlink" href="#impacts-sur-les-actifs-unitaires" title="Lien vers cette rubrique"></a></h3>
+<p>Seules les PMVL des actifs indiciels sont utilisées dans le cadre de la stratégie ALM.</p>
+<p>Pour ces actifs :</p>
+<div class="math notranslate nohighlight">
+\[MtVm^{ApAlm}(t) = MtVm^{AvAlm}(t)\]</div>
+<div class="math notranslate nohighlight">
+\[MtCf^{Alm}(t) = 0.0\]</div>
+<div class="math notranslate nohighlight">
+\[MtVc^{ApAlm}(t) = MtVc^{AvAlm}(t) + \frac{MtPmvr_{ActifsIndiciels}}{MtPmvl_{ActifsIndiciels}} * (MtVm^{AvAlm} - MtVc^{AvAlm})\]</div>
+<div class="math notranslate nohighlight">
+\[MtPfi^{Alm}(t) = MtVc^{ApAlm}(t) - MtVc^{AvAlm}(t)\]</div>
+<p>Les cibles à atteindre par classe d’actif sont définies dans une table d’hypothèses nommée ACAP.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="sfd-passif.html" class="btn btn-neutral float-left" title="Modélisation des passifs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="sfd-stratalm.html" class="btn btn-neutral float-right" title="Stratégie ALM" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

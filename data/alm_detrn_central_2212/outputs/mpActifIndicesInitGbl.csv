@@ -1,0 +1,3 @@
+cd_table,cd_trajectoire,dt_trajectoire,cd_societe,cd_canton,cd_isin,cd_classe_actif,cd_classe_actif_detail,mt_vc,mt_vm,tx_action_t1,tx_action_t2,tx_action_strat,mt_pdd,mt_pmvl
+mp_actifs_indices_reel_2212,reel,2022-12-31,ACCENTURE,C00001,380,ACTION,ACTION,6208125.0,6208125.0,1.0,0.0,0.0,0.0,0.0
+mp_actifs_indices_reel_2212,reel,2022-12-31,ACCENTURE,C00001,387,IMMOBILIER,IMMOBILIER,2445625.0,2445625.0,0.0,0.0,0.0,0.0,0.0

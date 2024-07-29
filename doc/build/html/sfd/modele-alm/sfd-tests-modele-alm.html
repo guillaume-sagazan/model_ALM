@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modèle ALM - Tests de cohérence &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script>window.MathJax = {"chtml": {"scale": ".8", "minScale": ".3", "matchFontHeight": "true", "mtextInheritFont": "false", "merrorInheritFont": "true", "mathmlSpacing": "false", "skipAttributes": "{}", "exFactor": ".5", "displayAlign": "left", "displayIndent": "0"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Description des données" href="../../metadata/metadata.html" />
+    <link rel="prev" title="Calcul des indicateurs" href="sfd-indicateurs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sfd-conception-generale.html">Conception générale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-config.html">Configuration d’un traitement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-var-ecos.html">Variables économiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-passif.html">Modélisation des passifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-actif.html">Modélisation des actifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-stratalm.html">Stratégie ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Modèle ALM - Tests de cohérence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evenement-performance">Evènement Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evenement-strategie-d-investissement">Evènement Stratégie d’investissement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evenement-strategie-alm-compte-de-resultat">Evènement Stratégie ALM &amp; Compte de résultat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Modèle ALM - Tests de cohérence</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-tests-modele-alm.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modele-alm-tests-de-coherence">
+<h1>Modèle ALM - Tests de cohérence<a class="headerlink" href="#modele-alm-tests-de-coherence" title="Lien vers cette rubrique"></a></h1>
+<p>Dans le cadre du modèle ALM, est attendu qu’un certains nombres de tests soient respectés.</p>
+<p>Ceux peuvent être structurés par évènement, concerner l’actif ou le passif et être relatifs au choix à l’évolution de la valeur comptable ou à l’évolution de la valeur de marché.</p>
+<section id="evenement-performance">
+<h2>Evènement Performance<a class="headerlink" href="#evenement-performance" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Passif - Evolution de la VC</strong></p>
+<p>Pour les contrats d’épargne, est attendu qu’il soit possible d’expliquer la PM après performance à partir de la PM avant performance et des différents élements impactant celle ci.</p>
+<p><span class="math notranslate nohighlight">\(MtPm_{ContratSupport}^{Ap Perf}(t) = MtPm_{ContratSupport}^{Av Perf}(t) - MtPrstTotBrt_{ContratSupport}^{Perf}(t) + MtIc_{ContratSupport}^{Perf}(t)\)</span></p>
+<p><span class="math notranslate nohighlight">\(MtPm_{ContratSupport}^{Ap Perf}(t) = MtPm_{ContratSupport}^{Av Perf}(t) - MtPrstTotBrt_{ContratSupport}^{Perf}(t) + MtIc_{ContratSupport}^{Perf}(t)\)</span></p>
+<p><strong>Actif - Evolution de la VC</strong></p>
+<p>Pour les actifs unitaires, il doit être possible, actif par actif d’expliquer l’évolution de la VC à partir des cash flows générés et des produits financiers générés.</p>
+<p><span class="math notranslate nohighlight">\(MtVc_{ActifUnitaire}^{Ap Perf}(t) = MtVc_{ActifUnitaire}^{Av Perf}(t) + MtPfi_{ActifUnitaire}^{Perf}(t) - MtCf_{ActifUnitaire}^{Perf}(t)\)</span></p>
+<p><strong>Actif - Evolution de la VM</strong></p>
+<p>Pour les actifs unitaires, la valeur de marché évolue en fonction scenarios économiques.</p>
+<p>Les calculs de Best Estimate étant réalisés en univers Risque Neutre, il est cependant possible de mesurer un test de fuite économique.</p>
+<p>Ce test consiste à vérifier si la performance des actifs est bien cohérente avec la courbe des taux sans risque initiale.</p>
+<p>Soit le prix zéro coupon associé à la courbe des taux initiale :  <span class="math notranslate nohighlight">\(pzc_{TxSsRisque}(mat)=\frac{1}{(1+TxSsRisque(mat))^{mat}}\)</span></p>
+<p>On peut donc définir le taux de performance des actifs attendu comme le taux forward 1 an pour chaque période.</p>
+<p><span class="math notranslate nohighlight">\(FactPerfActif_{TxSsRisque}(t)=\frac{Pzc_{TxSsRisque}(t-1)}{Pzc_{TxSsRisque}(t)}\)</span></p>
+<p>Est donc attendu qu’en moyenne, la valeur de marché des actifs unitaires augmente de ce facteur.
+Dans le cas spécifique d’un traitement déterministe, est attendu que l’augmentation de valeur de marché de l’ensemble des actifs suive exactement ce facteur.</p>
+<p>On définit ainsi, pour chaque actif unitaire :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}MtFuiteEco_{ActifUnitaire}^{Perf}(t) =
+\left\{\begin{array}{l}
+MtVm_{ActifUnitaire}^{Ap Perf}(t) + MtCf_{ActifUnitaire}^{Perf}(t)
+\\ - MtVm_{ActifUnitaire}^{Ap Perf}(t) * FactPerfActif_{TxSsRisque}(t)
+\end{array}\right.\end{split}\]</div>
+</section>
+<section id="evenement-strategie-d-investissement">
+<h2>Evènement Stratégie d’investissement<a class="headerlink" href="#evenement-strategie-d-investissement" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Actif - Evolution de la VC</strong></p>
+<p>La stratégie d’investissement impliquant des achats ventes, la valeur comptable du canton est impactée.</p>
+<p>Cette évolution de la valeur comptable doit cependant être expliquée par les produits financiers générés par les ventes d’actifs.</p>
+<p>Ainsi, doit donc pouvoir être vérifié que :
+<span class="math notranslate nohighlight">\(MtVc_{Canton}^{Ap StratInv}(t) = MtVc_{Canton}^{Ap StratInv}(t) + MtPfi_{Canton}^{StratInv}(t)\)</span></p>
+<p><strong>Actif - Evolution de la VM</strong></p>
+<p>Est attendu que la stratégie d’investissement se fasse à valeur de marché constante au niveau de chaque canton.</p>
+<p>Doit donc pouvoir être vérifié que :
+<span class="math notranslate nohighlight">\(MtVm_{Canton}^{Ap Perf}(t) = MtVm_{Canton}^{Av Perf}(t)\)</span></p>
+<p><strong>Actif - Cohérence de la VM avec l’allocation cible</strong></p>
+<p>La stratégie d’investissement vise à équilibrer les différentes classes d’actif les unes par rapport aux autres selon une variable <span class="math notranslate nohighlight">\(TxAllocCible_{Canton/CdClasseActif}\)</span></p>
+<p>Doit donc pouvoir être vérifié pour chaque canton et chaque classe d’actif que :</p>
+<p><span class="math notranslate nohighlight">\(MtVm_{Canton/CdClasseActif}^{Ap StratInv}(t) = MtVm_{Canton}^{Ap StratInv}(t) * TxAllocCible_{Canton/CdClasseActif}\)</span></p>
+</section>
+<section id="evenement-strategie-alm-compte-de-resultat">
+<h2>Evènement Stratégie ALM &amp; Compte de résultat<a class="headerlink" href="#evenement-strategie-alm-compte-de-resultat" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Cohérence du compte de résultat</strong></p>
+<p>Les variables suivantes sont attendues en output de la stratégie ALM :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MtIc\)</span> : Les intérêts crédités de l’année (input de la stratégie ALM)</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPbBrt\)</span> : La PB complémentaire versée aux contrats</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPfiAsse\)</span> : Les produits financiers de l’année (yc réalisation des PMVL ordonnées dans le cadre de la stratégie ALM)</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtFgxPlct\)</span> : Frais généraux associés aux placement, à prendre en compte dans le cadre de l’algorithme ALM</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPmvr\)</span> : Le complément de produits financiers à réaliser dans le cadre de la stratégie ALM</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPpbReprise\)</span> : La reprise de PPE</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPpbDotation\)</span> : La reprise de PPE</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtTech\)</span> : Le résultat technique</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAssr\)</span> : Correspond aux produits financiers issu des capitaux propres (nuls dans le cadre du modèle ALM implémenté)</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAsse\)</span> : Le résultat financier, décomposé comme suit :</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAsseTfgse\)</span> : La part du résultat financier issu des TFGSE</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAsseVarVcMoy\)</span> : La part du résultat financier basée sur la valeur comptable moyenne de l’année</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAsseVarPfi\)</span> : La part du résultat financier basée sur les produits financiers de l’année</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAsseBeg\)</span> : Le montant de résultat financier complémentaire spécifique dans le cas d’un calcul de BEG</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtFiAsseReliquat\)</span> : Le reliquat de marge (Montant négatif ou nul)</p></li>
+</ul>
+<p>En output de la stratégie ALM, les égalités suivantes seront respectées :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}MtResBrtFiAsse = \left\{\begin{array}{l}
+MtResBrtFiAsseTfgse
+\\ + MtResBrtFiAsseVarVcMoy
+\\ + MtResBrtFiAsseVarPfi
+\\ + MtResBrtFiAsseBeg
+\\ + MtResBrtFiAsseReliquat
+\end{array}\right.\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{\begin{array}{l} MtPfiAsse
+                        \\ - MtFgxPlct
+                        \\ - MtResReportPertes
+                        \\ - MtPpbDotation
+                        \\ + MtPpbReprise
+\end{array}\right.
+= \left\{\begin{array}{l} MtIcSort
+                        \\ + MtIcRest
+                        \\ + MtPbBrt
+                        \\ + MtResBrtFiAssr
+                        \\ + MtResBrtFiAsse
+\end{array}\right.\end{split}\]</div>
+<p><strong>Equilibre Bilan</strong></p>
+<p>L’équilibre bilan doit être respecté post Stratégie ALM &amp; Compte de résultat.</p>
+<p>Ainsi, doit pouvoir être vérifié l’égalité suivante :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{\begin{array}{l}
+MtPm
+\\ + MtPpb
+\\ + MtPre
+\\ + MtPdd
+\\ + MtReserveCapi
+\\ + MtCapPropres
+\end{array}\right. = \left\{\begin{array}{l} MtVc_{Actif}
+\\ + MtResReportPertes
+\end{array}\right.\end{split}\]</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="sfd-indicateurs.html" class="btn btn-neutral float-left" title="Calcul des indicateurs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="../../metadata/metadata.html" class="btn btn-neutral float-right" title="Description des données" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

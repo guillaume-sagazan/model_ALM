@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>domaines.actifs.ops.MpActifProjStratInv &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">domaines.actifs.ops.MpActifProjStratInv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de domaines.actifs.ops.MpActifProjStratInv</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">polars</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+
+
+
+<span class="kn">from</span> <span class="nn">config.ErrConfig</span> <span class="kn">import</span> <span class="n">OnErrorStrategy</span>
+<span class="c1"># from domaines.actif.pipelines.MpActifsOblig import mpActifObligInitCalcTra, mpActifObligInitVmRn</span>
+<span class="c1"># from domaines.actif.pipelines.ProjActifOblig import projActifObligBuild, projActifObligCfBuild</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.expr.ActifsExpr</span> <span class="kn">import</span> <span class="n">calcPmvl</span>
+<span class="c1"># from domaines.provisions.pipelines.ProjProvOther import projProvOtherCopy</span>
+<span class="c1"># from domaines.provisions.pipelines.ProjProvPpe import projProvPpeCopy</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.ops.MpActifProjCopy</span> <span class="kn">import</span> <span class="n">mpActifProjCopy</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdAlm</span> <span class="kn">import</span> <span class="n">VarAlm</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdS2</span> <span class="kn">import</span> <span class="n">VarS2</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdStratInv</span> <span class="kn">import</span> <span class="n">VarStratInv</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdActif</span> <span class="kn">import</span> <span class="n">VarActif</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdCommun</span> <span class="kn">import</span> <span class="n">VarCommun</span><span class="p">,</span> <span class="n">VarCommun</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdActif</span> <span class="kn">import</span> <span class="n">CdClasseActif</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdProjection</span> <span class="kn">import</span> <span class="n">ModeleAlmEvenement</span><span class="p">,</span> <span class="n">VarProj</span>
+<span class="kn">from</span> <span class="nn">metadata.dfmd.DfMdActif</span> <span class="kn">import</span> <span class="n">dfMdActif</span>
+<span class="c1"># from metadata.dfmd.DfMdAlmCr import DfMdAlm</span>
+<span class="kn">from</span> <span class="nn">metadata.dfmd.DfMdCommun</span> <span class="kn">import</span> <span class="n">dfMdCommun</span>
+<span class="kn">from</span> <span class="nn">metadata.dfmd.DfMdProj</span> <span class="kn">import</span> <span class="n">dfMdProj</span>
+
+
+<div class="viewcode-block" id="projActifObligStratInvApplyAchatOblig">
+<a class="viewcode-back" href="../../../../modules/domaines.actifs.ops.html#domaines.actifs.ops.MpActifProjStratInv.projActifObligStratInvApplyAchatOblig">[docs]</a>
+<span class="k">def</span> <span class="nf">projActifObligStratInvApplyAchatOblig</span><span class="p">(</span><span class="n">period</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">projAnnee</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                                       <span class="n">projActifObligMp</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">projActifObligCf</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">projActifOblig</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+                                       <span class="n">invStratInputOutputAchatOblig</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">hypStratInvObligAchat</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span>
+                                       <span class="n">gseOutputObligPzcT</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">gseObligMaturiteMax</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span>
+                                       <span class="n">errorZero</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">errorZeroRelatif</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span>
+                                       <span class="n">initActifObligTraIterMax</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span>
+                                       <span class="n">initActifErrorStrategy</span><span class="p">:</span><span class="n">OnErrorStrategy</span><span class="p">,</span>
+                                       <span class="n">onErrorStrategy</span><span class="p">:</span><span class="n">OnErrorStrategy</span>
+                                       <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthode en charge de l&#39;achat de titres obligataires lors de la stratégie d&#39;investissement</span>
+
+<span class="sd">    :param chocS2:</span>
+<span class="sd">    :type chocS2:</span>
+<span class="sd">    :param period:</span>
+<span class="sd">    :type period:</span>
+<span class="sd">    :param projAnnee:</span>
+<span class="sd">    :type projAnnee:</span>
+<span class="sd">    :param mpActifOblig:</span>
+<span class="sd">    :type mpActifOblig:</span>
+<span class="sd">    :param projActifObligCf:</span>
+<span class="sd">    :type projActifObligCf:</span>
+<span class="sd">    :param projActifOblig:</span>
+<span class="sd">    :type projActifOblig:</span>
+<span class="sd">    :param invStratInputOutputAchatOblig:</span>
+<span class="sd">    :type invStratInputOutputAchatOblig:</span>
+<span class="sd">    :param hypStratInvObligAchat:</span>
+<span class="sd">    :type hypStratInvObligAchat:</span>
+<span class="sd">    :param gseOutputObligPzcT:</span>
+<span class="sd">    :type gseOutputObligPzcT:</span>
+<span class="sd">    :param gseObligMaturiteMax:</span>
+<span class="sd">    :type gseObligMaturiteMax:</span>
+<span class="sd">    :param errorZero:</span>
+<span class="sd">    :type errorZero:</span>
+<span class="sd">    :param errorZeroRelatif:</span>
+<span class="sd">    :type errorZeroRelatif:</span>
+<span class="sd">    :param initActifObligTraIterMax:</span>
+<span class="sd">    :type initActifObligTraIterMax:</span>
+<span class="sd">    :param initActifErrorStrategy:</span>
+<span class="sd">    :type initActifErrorStrategy:</span>
+<span class="sd">    :param onErrorStrategy:</span>
+<span class="sd">    :type onErrorStrategy:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">projActifObligMpAchat</span> <span class="o">=</span> <span class="n">invStratInputOutputAchatOblig</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtAchatOblig</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">((</span><span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">))</span> <span class="o">==</span> <span class="n">CdClasseActif</span><span class="o">.</span><span class="n">OBLIGATION</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">hypStratInvObligAchat</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdHypStratInvObligAchat</span><span class="o">.</span><span class="n">pks</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">txObligAchatCpn</span><span class="p">:</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">txCpn</span><span class="p">})</span> \
+    <span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s1">&#39;projection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarProj</span><span class="o">.</span><span class="n">cdTrajectoire</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="n">projAnnee</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarProj</span><span class="o">.</span><span class="n">dtTrajectoire</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s1">&#39;OBLIG&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">period</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">cdIsin</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="n">projAnnee</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarCommun</span><span class="o">.</span><span class="n">dtDateTerme</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">projAnnee</span><span class="p">)</span> <span class="o">+</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">nbObligAchatMaturite</span><span class="p">))</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarCommun</span><span class="o">.</span><span class="n">dtDateTermeAnnee</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="o">+</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">nbObligAchatMaturite</span><span class="p">))</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">nbPeriodTerme</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtNominal</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">txRemboursement</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtAchatOblig</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtAchatOblig</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtAchatOblig</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcTra</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">nbDuration</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">cdCqs</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">txCpn</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">txTra</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="n">projActifObligAchatCf</span> <span class="o">=</span> <span class="n">projActifObligCfBuild</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">mpActifOblig</span><span class="o">=</span><span class="n">projActifObligMpAchat</span><span class="p">)</span>
+
+    <span class="n">projActifObligMpAchat</span><span class="p">,</span> <span class="n">projActifObligAchatCf</span><span class="p">,</span> <span class="n">mpActifObligErreursAchat</span> <span class="o">=</span> <span class="n">mpActifObligInitVmRn</span><span class="p">(</span>
+        <span class="n">mpActifOblig</span><span class="o">=</span><span class="n">projActifObligMpAchat</span><span class="p">,</span>
+        <span class="n">projActifObligCf</span><span class="o">=</span><span class="n">projActifObligAchatCf</span><span class="p">,</span>
+        <span class="n">gseCtRefObligPzc</span><span class="o">=</span><span class="n">gseOutputObligPzcT</span><span class="p">,</span>
+        <span class="n">errorZeroRelatif</span><span class="o">=</span><span class="n">errorZeroRelatif</span>
+    <span class="p">)</span>
+    <span class="n">projActifObligMpAchat</span><span class="p">,</span> <span class="n">projActifObligAchatCf</span><span class="p">,</span> <span class="n">mpActifObligErreursAchat</span> <span class="o">=</span> <span class="n">mpActifObligInitCalcTra</span><span class="p">(</span>
+        <span class="n">mpActifOblig</span><span class="o">=</span><span class="n">projActifObligMpAchat</span><span class="p">,</span>
+        <span class="n">projActifObligCf</span><span class="o">=</span><span class="n">projActifObligAchatCf</span><span class="p">,</span>
+        <span class="n">errorZeroRelatif</span><span class="o">=</span><span class="n">errorZeroRelatif</span><span class="p">,</span>
+        <span class="n">initActifObligTraIterMax</span><span class="o">=</span><span class="n">initActifObligTraIterMax</span>
+    <span class="p">)</span>
+    
+    <span class="n">projActifObligMpAchat</span> <span class="o">=</span> <span class="n">projActifObligMpAchat</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdProjActifObligMp</span><span class="o">.</span><span class="n">allColumns</span><span class="p">)</span>
+
+    <span class="n">projActifObligAchat</span> <span class="o">=</span> <span class="n">projActifObligBuild</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">evenement</span><span class="o">=</span><span class="n">ModeleAlmEvenement</span><span class="o">.</span><span class="n">StratInv</span><span class="p">,</span> <span class="n">mpActifOblig</span><span class="o">=</span><span class="n">projActifObligMpAchat</span><span class="p">,</span> <span class="n">projActifObligCf</span><span class="o">=</span><span class="n">projActifObligAchatCf</span><span class="p">,</span> <span class="n">gseOutputObligPzcT</span><span class="o">=</span><span class="n">gseOutputObligPzcT</span><span class="p">)</span>
+    
+    <span class="n">projActifObligAchat</span> <span class="o">=</span> <span class="n">projActifObligAchat</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+            <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdProjActif</span><span class="o">.</span><span class="n">allColumns</span><span class="p">)</span>
+
+    <span class="n">projActifObligMp</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">projActifObligMp</span><span class="p">,</span> <span class="n">projActifObligMpAchat</span><span class="p">])</span>
+    <span class="n">projActifObligCf</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">projActifObligCf</span><span class="p">,</span> <span class="n">projActifObligAchatCf</span><span class="p">])</span>
+    <span class="n">projActifOblig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">projActifOblig</span><span class="p">,</span> <span class="n">projActifObligAchat</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">projActifObligMp</span><span class="p">,</span> <span class="n">projActifObligCf</span><span class="p">,</span> <span class="n">projActifOblig</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+
+
+<div class="viewcode-block" id="projProvOtherStratInv">
+<a class="viewcode-back" href="../../../../modules/domaines.actifs.ops.html#domaines.actifs.ops.MpActifProjStratInv.projProvOtherStratInv">[docs]</a>
+<span class="k">def</span> <span class="nf">projProvOtherStratInv</span><span class="p">(</span><span class="n">period</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">projProvOther</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">projActifOblig</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span> <span class="c1"># TODO : A deplacer</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthode en charge d&#39;appliquer la stratégie d&#39;investissement sur les provisions comptables</span>
+
+<span class="sd">    :param period: Iteration</span>
+<span class="sd">    :type period: int</span>
+<span class="sd">    :param projProvOther: DataFrame projProvOther en input</span>
+<span class="sd">    :type projProvOther: DataFrame</span>
+<span class="sd">    :param projActifOblig: Titres obligataires</span>
+<span class="sd">    :type projActifOblig: DataFrame</span>
+
+<span class="sd">    :return: DataFrame projProvOther mis à jour</span>
+<span class="sd">    :rtype: DataFrame</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">projProvOther</span> <span class="o">=</span> <span class="n">projProvOtherCopy</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">projProvOther</span><span class="o">=</span><span class="n">projProvOther</span><span class="p">,</span>
+                          <span class="n">evenement</span><span class="o">=</span><span class="n">ModeleAlmEvenement</span><span class="o">.</span><span class="n">StratInv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">projProvOther</span></div>
+
+
+<div class="viewcode-block" id="projProvPpeStratInv">
+<a class="viewcode-back" href="../../../../modules/domaines.actifs.ops.html#domaines.actifs.ops.MpActifProjStratInv.projProvPpeStratInv">[docs]</a>
+<span class="k">def</span> <span class="nf">projProvPpeStratInv</span><span class="p">(</span><span class="n">period</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">projProvPpe</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span> <span class="c1"># TODO : A deplacer</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthode en charge d&#39;appliquer la stratégie d&#39;investissement</span>
+
+<span class="sd">    :param period: Itération</span>
+<span class="sd">    :type period: int</span>
+<span class="sd">    :param projProvPpe: Générations de PPB</span>
+<span class="sd">    :type projProvPpe: DataFrame</span>
+<span class="sd">    :return: DataFrame ProjProvPpe mis à jour</span>
+<span class="sd">    :rtype: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">projProvPpe</span> <span class="o">=</span> <span class="n">projProvPpeCopy</span><span class="p">(</span><span class="n">projProvPpe</span><span class="o">=</span><span class="n">projProvPpe</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span>
+                        <span class="n">evenement</span><span class="o">=</span><span class="n">ModeleAlmEvenement</span><span class="o">.</span><span class="n">StratInv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">projProvPpe</span></div>
+
+
+
+<div class="viewcode-block" id="projActifObligCfStraInvApplyAchatVente">
+<a class="viewcode-back" href="../../../../modules/domaines.actifs.ops.html#domaines.actifs.ops.MpActifProjStratInv.projActifObligCfStraInvApplyAchatVente">[docs]</a>
+<span class="k">def</span> <span class="nf">projActifObligCfStraInvApplyAchatVente</span><span class="p">(</span><span class="n">projActifObligCf</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">stratInvInputOutput</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthode en charge d&#39;impacter les cashflows futurs des titres obligataires du facteur d&#39;achat vente</span>
+<span class="sd">    :param projActifObligCf:</span>
+<span class="sd">    :type projActifObligCf: DataFrame</span>
+<span class="sd">    :param projActifOblig:</span>
+<span class="sd">    :type projActifOblig: DataFrame</span>
+<span class="sd">    :return:</span>
+<span class="sd">    :rtype: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">projActifObligCf</span> <span class="o">=</span> <span class="n">projActifObligCf</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">stratInvInputOutput</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="o">*</span><span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdStratInvInputOutput</span><span class="o">.</span><span class="n">pks</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">]),</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdStratInvInputOutput</span><span class="o">.</span><span class="n">pks</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">projActifObligCf</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdProjActifObligCf</span><span class="o">.</span><span class="n">allColumns</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="mpActifProjStratInvApplyFacteurAchatVente">
+<a class="viewcode-back" href="../../../../modules/domaines.actifs.ops.html#domaines.actifs.ops.MpActifProjStratInv.mpActifProjStratInvApplyFacteurAchatVente">[docs]</a>
+<span class="k">def</span> <span class="nf">mpActifProjStratInvApplyFacteurAchatVente</span><span class="p">(</span><span class="n">period</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span><span class="n">mpActifProj</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">stratInvInputOutput</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthode en charge d&#39;appliquer les achats ventes (hors achats d&#39;obligations) sur les actifs unitaires</span>
+<span class="sd">    :param projActif: Portefeuille d&#39;actifs sur lequel appliquer les achats ventes</span>
+<span class="sd">    :type projActif: DataFrame</span>
+<span class="sd">    :param stratInvInputOutput: DataFrame contenant les intermédiaires de calcul et les outputs de la stratégie d&#39;investissement</span>
+<span class="sd">    :type stratInvInputOutput: DataFrame</span>
+<span class="sd">    :return: DataFrame projActif mis à jour</span>
+<span class="sd">    :rtype: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">mdStratInvInputOutput</span> <span class="o">=</span> <span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdStratInvInputOutput</span>
+
+    <span class="n">rsVente</span> <span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.</span>
+    <span class="n">rsAchat</span> <span class="o">=</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">)</span> <span class="o">!=</span> <span class="n">CdClasseActif</span><span class="o">.</span><span class="n">OBLIGATION</span><span class="p">)</span>
+    <span class="n">rsCash</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">)</span> <span class="o">==</span> <span class="n">CdClasseActif</span><span class="o">.</span><span class="n">MONETAIRE</span>
+
+    <span class="n">mpActifProj</span> <span class="o">=</span><span class="n">mpActifProjCopy</span><span class="p">(</span><span class="n">mpActifProj</span> <span class="o">=</span> <span class="n">mpActifProj</span><span class="p">,</span><span class="n">evenement</span><span class="o">=</span><span class="n">ModeleAlmEvenement</span><span class="o">.</span><span class="n">StratInv</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+       <span class="n">stratInvInputOutput</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="o">*</span><span class="n">mdStratInvInputOutput</span><span class="o">.</span><span class="n">pks</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">]),</span>
+       <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+       <span class="n">on</span><span class="o">=</span><span class="n">mdStratInvInputOutput</span><span class="o">.</span><span class="n">pks</span>     
+    <span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsVente</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsVente</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcAv</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsVente</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcAv</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">)))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">),</span>
+    <span class="p">])</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsVente</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">)</span>
+
+    <span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsAchat</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">),</span>
+
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsAchat</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcAv</span><span class="p">)</span> <span class="o">+</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">)</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">),</span>
+    
+    <span class="p">])</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsAchat</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">)</span>
+
+    <span class="p">])</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsCash</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsCash</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVc</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteEco</span><span class="p">),</span>
+        <span class="n">calcPmvl</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPmvl</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">mpActifProj</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

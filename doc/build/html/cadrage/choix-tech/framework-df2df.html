@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performances &amp; Choix du framework &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Prisme d’implémentation &amp; Maintenabilité" href="prisme-modelisation.html" />
+    <link rel="prev" title="Choix techniques" href="choix-tech.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeles/modeles.html">Choix de modélisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exigences-autres/exigences-autres.html">Exigences complémentaires</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="choix-tech.html">Choix techniques</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Performances &amp; Choix du framework</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#criteres-de-choix">Critères de choix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation-ressources">Documentation &amp; Ressources</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#comparaison-des-framework-coiled">Comparaison des framework (Coiled)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#comparaison-des-framework-kestra">Comparaison des framework (Kestra)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#polars">Polars</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#choix-retenu">Choix retenu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="prisme-modelisation.html">Prisme d’implémentation &amp; Maintenabilité</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gestion-pipelines.html">Gestion de Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="framework-dq.html">Gestion de la qualité des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solution-doc-projet.html">Solution de gestion de la documentation projet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="choix-tech.html">Choix techniques</a></li>
+      <li class="breadcrumb-item active">Performances &amp; Choix du framework</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/choix-tech/framework-df2df.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="performances-choix-du-framework">
+<h1>Performances &amp; Choix du framework<a class="headerlink" href="#performances-choix-du-framework" title="Lien vers cette rubrique"></a></h1>
+<section id="criteres-de-choix">
+<h2>Critères de choix<a class="headerlink" href="#criteres-de-choix" title="Lien vers cette rubrique"></a></h2>
+<p>Le choix du framework de gestion des dataframes est un choix clé qui doit être l’output d’une phase de cadrage technique.</p>
+<p>Cette phase prendra a minima en compte les éléments suivants:</p>
+<ul class="simple">
+<li><p>la performance pure apportée par ce framework</p></li>
+<li><p>la capacité de scalabilité de ce framework sur différentes infrastructures</p></li>
+<li><p>le caractère populaire du framework en question</p></li>
+<li><p>la stratégie de la DSI</p></li>
+</ul>
+</section>
+<section id="documentation-ressources">
+<h2>Documentation &amp; Ressources<a class="headerlink" href="#documentation-ressources" title="Lien vers cette rubrique"></a></h2>
+<section id="comparaison-des-framework-coiled">
+<h3>Comparaison des framework (Coiled)<a class="headerlink" href="#comparaison-des-framework-coiled" title="Lien vers cette rubrique"></a></h3>
+<img alt="Comparaison des Frameworks Python" class="align-center" src="../../_images/FrameworkPythonDf.png" />
+<p>Source : <a class="reference external" href="https://docs.coiled.io/blog/tpch.html">Coiled - Comparaison des frameworks</a></p>
+<p>Source : <a class="reference external" href="https://www.youtube.com/watch?v=yViaySnySy8&amp;t=2852s">Youtube - Dask DataFrame is fast now - Florian Jetter (Coiled) &#64; PyData</a></p>
+</section>
+<section id="comparaison-des-framework-kestra">
+<h3>Comparaison des framework (Kestra)<a class="headerlink" href="#comparaison-des-framework-kestra" title="Lien vers cette rubrique"></a></h3>
+<img alt="Comparaison des Frameworks Python" class="align-center" src="../../_images/FrameworkPythonDf2.png" />
+<p>Source : <a class="reference external" href="https://kestra.io/blogs/2023-08-11-dataframes">Kestra Blog - Comparaison des frameworks</a></p>
+</section>
+<section id="polars">
+<h3>Polars<a class="headerlink" href="#polars" title="Lien vers cette rubrique"></a></h3>
+<p>Polars est un framework de gestion de dataframes en Rust, qui propose une API en Python. Il est de plus en plus populaire et est utilisé par de nombreuses entreprises.</p>
+<img alt="Polars Star History" class="align-center" src="../../_images/Polars-Star-History.png" />
+<p>Source : <a class="reference external" href="https://star-history.com/#pola-rs/polars&amp;pandas-dev/pandas&amp;vaexio/vaex&amp;apache/spark&amp;modin-project/modin&amp;h2oai/datatable&amp;dask/dask&amp;rapidsai/cudf&amp;fugue-project/fugue&amp;duckdb/duckdb&amp;Date">https://star-history.com/</a></p>
+<p>Polars est un framework très performant, comme le montre les benchmarks suivants :</p>
+<img alt="Benchmarks Polars" class="align-center" src="../../_images/Polars-BenchMark.png" />
+<p>Source : <a class="reference external" href="https://pola.rs/posts/benchmarks/">https://pola.rs/posts/benchmarks</a></p>
+<p><a class="reference external" href="../../../rss/pdf/pycon2023-polars.pdf">Pycon 2023 : Lightning fast dataframes with Polars</a></p>
+</section>
+</section>
+<section id="choix-retenu">
+<h2>Choix retenu<a class="headerlink" href="#choix-retenu" title="Lien vers cette rubrique"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Le modèle ALM d’Accenture est réalisé via polars, pour les raisons suivantes :</p>
+<ul class="simple">
+<li><p>performance apportée par Polars en local</p></li>
+<li><p>capacité de parallélisation de Polars (CPU aujourd’hui, GPU bientôt)</p></li>
+<li><p>lisibilité / expressivité du langage</p></li>
+<li><p>prise en main rapide</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="choix-tech.html" class="btn btn-neutral float-left" title="Choix techniques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="prisme-modelisation.html" class="btn btn-neutral float-right" title="Prisme d’implémentation &amp; Maintenabilité" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

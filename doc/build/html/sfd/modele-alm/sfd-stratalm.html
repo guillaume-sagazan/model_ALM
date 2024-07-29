@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stratégie ALM &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script>window.MathJax = {"chtml": {"scale": ".8", "minScale": ".3", "matchFontHeight": "true", "mtextInheritFont": "false", "merrorInheritFont": "true", "mathmlSpacing": "false", "skipAttributes": "{}", "exFactor": ".5", "displayAlign": "left", "displayIndent": "0"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Calcul des indicateurs" href="sfd-indicateurs.html" />
+    <link rel="prev" title="Modélisation des actifs" href="sfd-actif.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sfd-conception-generale.html">Conception générale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-config.html">Configuration d’un traitement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-var-ecos.html">Variables économiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-passif.html">Modélisation des passifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-actif.html">Modélisation des actifs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Stratégie ALM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#objectif-de-la-strategie-alm">Objectif de la stratégie ALM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inputs-de-la-strategie-alm">Inputs de la stratégie ALM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs-de-la-strategie-alm-et-du-compte-de-resultat">Outputs de la stratégie ALM et du compte de résultat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coherence-des-outputs-de-la-strategie-alm">Cohérence des outputs de la stratégie ALM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation-des-inputs-de-la-strategie-alm">Préparation des inputs de la stratégie ALM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fonctions-utilisees-dans-le-calcul-des-outputs-de-la-strategie-alm">Fonctions utilisées dans le calcul des outputs de la stratégie ALM</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#calcul-des-outputs-de-la-strategie-alm-a-partir-de-taux-servis-bruts">Calcul des outputs de la stratégie ALM à partir de taux servis bruts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id1">Calcul des outputs de la stratégie ALM à partir de taux servis bruts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-tests-modele-alm.html">Modèle ALM - Tests de cohérence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Stratégie ALM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-stratalm.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="strategie-alm">
+<h1>Stratégie ALM<a class="headerlink" href="#strategie-alm" title="Lien vers cette rubrique"></a></h1>
+<section id="objectif-de-la-strategie-alm">
+<h2>Objectif de la stratégie ALM<a class="headerlink" href="#objectif-de-la-strategie-alm" title="Lien vers cette rubrique"></a></h2>
+<p>Pour rappel, la stratégie ALM :</p>
+<ul class="simple">
+<li><p>constate les augmentations de valeur comptable au passif et à l’actif avant la stratégie ALM</p></li>
+<li><p>agit sur les leviers de pilotage PPE et PMVL pour équilibrer le bilan in fine</p></li>
+</ul>
+<p>Ceci est réalisé en prenant en compte que le résultat financier issu du compte de PB et les frais de placement sont extraits de la valeur comptable à l’actif post stratégie ALM</p>
+</section>
+<section id="inputs-de-la-strategie-alm">
+<h2>Inputs de la stratégie ALM<a class="headerlink" href="#inputs-de-la-strategie-alm" title="Lien vers cette rubrique"></a></h2>
+<p>Afin de réaliser les calculs sous-jacents à la stratégie ALM, les inputs suivants sont nécessaires :</p>
+<ul class="simple">
+<li><p>les assiettes nécessaires au calcul de la PB pour les contrats en portefeuille, nommés <span class="math notranslate nohighlight">\(MtPbAss\)</span>, sachant que <span class="math notranslate nohighlight">\(MtPb = max(MtPbAss * TxServiNet - MtIcRest, 0)\)</span></p></li>
+<li><p>les taux servis cible à tester (issus de la table HypAlmStrat)</p></li>
+<li><p>les différentes générations de PPE</p></li>
+<li><p>les produits financiers de l’année à l’actif nettés de la variation de réserve de capitalisation</p></li>
+<li><p>les PMVL disponibles (hors PMVL des titres obligataires)</p></li>
+</ul>
+</section>
+<section id="outputs-de-la-strategie-alm-et-du-compte-de-resultat">
+<h2>Outputs de la stratégie ALM et du compte de résultat<a class="headerlink" href="#outputs-de-la-strategie-alm-et-du-compte-de-resultat" title="Lien vers cette rubrique"></a></h2>
+<p>La stratégie ALM vise à établir les outputs suivants :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MtPfi\)</span> : Le montant de produits financiers de l’année. Ce montant est net de l’augmentation de Réserve de Capitalisation en entrée de l’algorithme ALM et contient en sortie les PMVR réalisés par l’ALM.</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPfiAssr = MtPfi * (1 - TxPfiAsseRepartPc)\)</span> : La part assureur des produits financiers</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPfiAsse = MtPfi * TxPfiAsseRepartPc\)</span> : La part assuré des produits financiers</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPfiAssePb = MtPfiAsse - MtFgxPlct - MtFgseEu\)</span> : La part assuré des produits financiers alimentant le compte de PB</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrtAsse = MtPfiAssePb - MtPbBrt\)</span> : Le solde du compte de PB</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResBrt = MtPfiAssr + MtResBrtAsse\)</span> : Le résultat brut de l’année</p></li>
+<li><p><span class="math notranslate nohighlight">\(TxServiBrt\)</span> : Le taux servi brut aux clients</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPbBrt\)</span> : Le montant de PB brute de CSG, en complément des intérêts crédités déjà versés</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPpeReprise\)</span> : La reprise de PPE déterminée par l’algorithme ALM. La dernière génération de PPE est forcément reprise.</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPpeDotation\)</span> : La dotation de PPE</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtPmvr\)</span> : Le montant de plus ou moins values latentes réalisées lors de la stratégie ALM</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResIs\)</span> : Le montant d’impôts sur les sociétés</p></li>
+<li><p><span class="math notranslate nohighlight">\(MtResNet\)</span> : Le montant de résultat après impôts</p></li>
+</ul>
+</section>
+<section id="coherence-des-outputs-de-la-strategie-alm">
+<h2>Cohérence des outputs de la stratégie ALM<a class="headerlink" href="#coherence-des-outputs-de-la-strategie-alm" title="Lien vers cette rubrique"></a></h2>
+<p>Comme évoqué préalablement, l’objectif de l’algorithme ALM est d’aligner les augmentations de valeur comptable à l’actif et au passif en fin d’année.</p>
+<p>Ainsi :</p>
+<div class="math notranslate nohighlight">
+\[MtVc_{Passif}^{Fin} - MtVc_{Passif}^{Debut} = MtVc_{Actif}^{Fin} - MtVc_{Actif}^{Debut}\]</div>
+<p>De cette équation initiale, on peut arriver à (cf détails des calculs plus bas) :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}MtResBrtAsse
+=
+\left\{\begin{array}{l}
+MtPfiAssePb - MtIcRest - MtPbBrt
+\\ - MtPpeDotation + MtPpeReprise
+\end{array}\right.\end{split}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Cohérence des outputs de la stratégie ALM - Détails</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">On cherche à vérifier</p>
+<div class="math notranslate nohighlight">
+\[MtVc_{Passif}^{Fin} - MtVc_{Passif}^{Debut} = MtVc_{Actif}^{Fin} - MtVc_{Actif}^{Debut}\]</div>
+<p class="sd-card-text">A l’actif, on peut prendre en compte les éléments suivants :</p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(MtVc_{Actif}^{Fin} = MtVc_{Actif}^{Av ResBrt} - MtFgxPlct - MtPfiAssr - MtResBrtAsse\)</span>
+<span class="math notranslate nohighlight">\(MtVc_{Actif}^{Av ResBrt} = MtVc_{Actif}^{Debut} + MtPfi - MtPrstTotBrt - MtFgseEu\)</span>
+<span class="math notranslate nohighlight">\(MtPfi = MtPfiAsse + MtPfiAssr\)</span>
+<span class="math notranslate nohighlight">\(MtPfiAssePb = MtPfiAsse - MtFgseEu - MtFgxPlct\)</span></p>
+<p class="sd-card-text">On trouve alors :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}MtVc_{Passif}^{Fin} - MtVc_{Passif}^{Debut}
+=
+\left\{\begin{array}{l}
+MtPfiAssePb
+\\ - MtPrstTotBrt
+\\ - MtResBrtAsse
+\end{array}\right.\end{split}\]</div>
+<p class="sd-card-text">Au passif, prenant en compte :</p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(MtVc_{Passif}^{Fin} - MtVc_{Passif}^{Debut} = MtPm^{Fin} - MtPm^{Debut} + MtPpe^{Fin} - MtPpe^{Debut}\)</span>
+<span class="math notranslate nohighlight">\(MtPm^{Fin} = MtPm^{Debut} - MtPrstTotBrt + MtIcRest + MtPbBrt\)</span>
+<span class="math notranslate nohighlight">\(MtPpe^{Fin} - MtPpe^{Debut} = MtPpeDotation - MtPpeReprise\)</span></p>
+<p class="sd-card-text">On trouve :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{\begin{array}{l}
+MtIcRest + MtPbBrt
+\\ - MtPrstTotBrt
+\\ + MtPpeDotation - MtPpeReprise
+\end{array}\right.
+=
+\left\{\begin{array}{l}
+MtPfiAssePb
+\\ - MtPrstTotBrt
+\\ - MtResBrtAsse
+\end{array}\right.\end{split}\]</div>
+<p class="sd-card-text">Simplifiant l’équation :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}MtResBrtAsse
+=
+\left\{\begin{array}{l}
+MtPfiAssePb - MtIcRest - MtPbBrt
+\\ - MtPpeDotation + MtPpeReprise
+\end{array}\right.\end{split}\]</div>
+</div>
+</details></section>
+<section id="preparation-des-inputs-de-la-strategie-alm">
+<h2>Préparation des inputs de la stratégie ALM<a class="headerlink" href="#preparation-des-inputs-de-la-strategie-alm" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="fonctions-utilisees-dans-le-calcul-des-outputs-de-la-strategie-alm">
+<h2>Fonctions utilisées dans le calcul des outputs de la stratégie ALM<a class="headerlink" href="#fonctions-utilisees-dans-le-calcul-des-outputs-de-la-strategie-alm" title="Lien vers cette rubrique"></a></h2>
+<section id="calcul-des-outputs-de-la-strategie-alm-a-partir-de-taux-servis-bruts">
+<h3>Calcul des outputs de la stratégie ALM à partir de taux servis bruts<a class="headerlink" href="#calcul-des-outputs-de-la-strategie-alm-a-partir-de-taux-servis-bruts" title="Lien vers cette rubrique"></a></h3>
+</section>
+<section id="id1">
+<h3>Calcul des outputs de la stratégie ALM à partir de taux servis bruts<a class="headerlink" href="#id1" title="Lien vers cette rubrique"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="sfd-actif.html" class="btn btn-neutral float-left" title="Modélisation des actifs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="sfd-indicateurs.html" class="btn btn-neutral float-right" title="Calcul des indicateurs" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

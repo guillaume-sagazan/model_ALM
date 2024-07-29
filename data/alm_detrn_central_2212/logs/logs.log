@@ -1,0 +1,317 @@
+2024-07-24 14:09:03 INFO ************************************************************************
+2024-07-24 14:09:03 INFO *** Lancement du traitement : alm_detrn_central_2212
+2024-07-24 14:09:03 INFO ************************************************************************
+2024-07-24 14:09:03 INFO Suppression des précédents outputs
+2024-07-24 14:09:03 INFO Mode de projection : ALM
+2024-07-24 14:09:03 INFO Horizon de projection : 40
+2024-07-24 14:09:03 INFO Liste des chocs s2 à jouer : CENTRAL
+2024-07-24 14:09:03 INFO Liste des scenarios à jouer : 1
+2024-07-24 14:09:03 INFO Import des données - Gse
+2024-07-24 14:09:03 INFO Import des données - Actif
+2024-07-24 14:09:03 INFO Import des données - Passif
+2024-07-24 14:09:04 INFO Import des données - S2
+2024-07-24 14:09:04 INFO Initialisation : Global : Gse
+2024-07-24 14:09:04 INFO Initialisation : Global : GSE : Construction des variables économiques
+2024-07-24 14:09:04 INFO Initialisation : Global : Gse : Construction des variables économiques issues de IGSE
+2024-07-24 14:09:04 INFO Initialisation : Global : Gse : Fin
+2024-07-24 14:09:04 INFO Initialisation : ChocS2 : Gse : Definition de gseCtRefObligPzcRN et gseCtRefCashPerfFuiteEco, application des chocs sur l'inflation
+2024-07-24 14:09:04 INFO Initialisation : Global : Passif
+2024-07-24 14:09:04 INFO Initialisation : Global : Actif
+2024-07-24 14:09:04 INFO **********************************************************************************
+2024-07-24 14:09:04 INFO Initialisation Choc S2 : Ajout de l'axe cdChocS2 + Application des chocs en t=0
+2024-07-24 14:09:04 INFO **********************************************************************************
+2024-07-24 14:09:04 INFO Initialisation Choc S2 : Passif
+2024-07-24 14:09:04 INFO Initialisation Choc S2 : Actifs
+2024-07-24 14:09:04 INFO ****************************
+2024-07-24 14:09:04 INFO Initialisation Projection
+2024-07-24 14:09:04 INFO ****************************
+2024-07-24 14:09:04 INFO Initialisation Projection : Actifs
+2024-07-24 14:09:04 INFO Initialisation Projection : Passifs 
+2024-07-24 14:09:04 INFO ****************************
+2024-07-24 14:09:04 INFO Début de la projection
+2024-07-24 14:09:04 INFO ****************************
+2024-07-24 14:09:04 INFO Perf (1)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (1)
+2024-07-24 14:09:04 INFO StratInv (1) : Algo
+2024-07-24 14:09:04 INFO StratInv (1) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (1) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (2)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (2)
+2024-07-24 14:09:04 INFO StratInv (2) : Algo
+2024-07-24 14:09:04 INFO StratInv (2) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (2) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (3)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (3)
+2024-07-24 14:09:04 INFO StratInv (3) : Algo
+2024-07-24 14:09:04 INFO StratInv (3) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (3) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (4)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (4)
+2024-07-24 14:09:04 INFO StratInv (4) : Algo
+2024-07-24 14:09:04 INFO StratInv (4) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (4) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (5)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (5)
+2024-07-24 14:09:04 INFO StratInv (5) : Algo
+2024-07-24 14:09:04 INFO StratInv (5) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (5) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (6)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (6)
+2024-07-24 14:09:04 INFO StratInv (6) : Algo
+2024-07-24 14:09:04 INFO StratInv (6) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (6) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (7)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (7)
+2024-07-24 14:09:04 INFO StratInv (7) : Algo
+2024-07-24 14:09:04 INFO StratInv (7) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (7) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (8)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:04 INFO StratInv (8)
+2024-07-24 14:09:04 INFO StratInv (8) : Algo
+2024-07-24 14:09:04 INFO StratInv (8) : Algo
+2024-07-24 14:09:04 INFO Alm & Cr (8) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:04 INFO Perf (9)
+2024-07-24 14:09:04 INFO Perf Passif
+2024-07-24 14:09:04 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (9)
+2024-07-24 14:09:05 INFO StratInv (9) : Algo
+2024-07-24 14:09:05 INFO StratInv (9) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (9) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (10)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (10)
+2024-07-24 14:09:05 INFO StratInv (10) : Algo
+2024-07-24 14:09:05 INFO StratInv (10) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (10) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (11)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (11)
+2024-07-24 14:09:05 INFO StratInv (11) : Algo
+2024-07-24 14:09:05 INFO StratInv (11) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (11) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (12)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (12)
+2024-07-24 14:09:05 INFO StratInv (12) : Algo
+2024-07-24 14:09:05 INFO StratInv (12) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (12) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (13)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (13)
+2024-07-24 14:09:05 INFO StratInv (13) : Algo
+2024-07-24 14:09:05 INFO StratInv (13) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (13) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (14)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (14)
+2024-07-24 14:09:05 INFO StratInv (14) : Algo
+2024-07-24 14:09:05 INFO StratInv (14) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (14) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (15)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (15)
+2024-07-24 14:09:05 INFO StratInv (15) : Algo
+2024-07-24 14:09:05 INFO StratInv (15) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (15) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (16)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (16)
+2024-07-24 14:09:05 INFO StratInv (16) : Algo
+2024-07-24 14:09:05 INFO StratInv (16) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (16) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (17)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (17)
+2024-07-24 14:09:05 INFO StratInv (17) : Algo
+2024-07-24 14:09:05 INFO StratInv (17) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (17) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (18)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (18)
+2024-07-24 14:09:05 INFO StratInv (18) : Algo
+2024-07-24 14:09:05 INFO StratInv (18) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (18) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (19)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (19)
+2024-07-24 14:09:05 INFO StratInv (19) : Algo
+2024-07-24 14:09:05 INFO StratInv (19) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (19) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (20)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (20)
+2024-07-24 14:09:05 INFO StratInv (20) : Algo
+2024-07-24 14:09:05 INFO StratInv (20) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (20) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (21)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (21)
+2024-07-24 14:09:05 INFO StratInv (21) : Algo
+2024-07-24 14:09:05 INFO StratInv (21) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (21) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (22)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (22)
+2024-07-24 14:09:05 INFO StratInv (22) : Algo
+2024-07-24 14:09:05 INFO StratInv (22) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (22) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (23)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:05 INFO Perf Actif
+2024-07-24 14:09:05 INFO StratInv (23)
+2024-07-24 14:09:05 INFO StratInv (23) : Algo
+2024-07-24 14:09:05 INFO StratInv (23) : Algo
+2024-07-24 14:09:05 INFO Alm & Cr (23) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:05 INFO Perf (24)
+2024-07-24 14:09:05 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (24)
+2024-07-24 14:09:06 INFO StratInv (24) : Algo
+2024-07-24 14:09:06 INFO StratInv (24) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (24) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (25)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (25)
+2024-07-24 14:09:06 INFO StratInv (25) : Algo
+2024-07-24 14:09:06 INFO StratInv (25) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (25) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (26)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (26)
+2024-07-24 14:09:06 INFO StratInv (26) : Algo
+2024-07-24 14:09:06 INFO StratInv (26) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (26) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (27)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (27)
+2024-07-24 14:09:06 INFO StratInv (27) : Algo
+2024-07-24 14:09:06 INFO StratInv (27) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (27) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (28)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (28)
+2024-07-24 14:09:06 INFO StratInv (28) : Algo
+2024-07-24 14:09:06 INFO StratInv (28) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (28) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (29)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (29)
+2024-07-24 14:09:06 INFO StratInv (29) : Algo
+2024-07-24 14:09:06 INFO StratInv (29) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (29) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (30)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (30)
+2024-07-24 14:09:06 INFO StratInv (30) : Algo
+2024-07-24 14:09:06 INFO StratInv (30) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (30) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (31)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (31)
+2024-07-24 14:09:06 INFO StratInv (31) : Algo
+2024-07-24 14:09:06 INFO StratInv (31) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (31) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (32)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (32)
+2024-07-24 14:09:06 INFO StratInv (32) : Algo
+2024-07-24 14:09:06 INFO StratInv (32) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (32) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (33)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (33)
+2024-07-24 14:09:06 INFO StratInv (33) : Algo
+2024-07-24 14:09:06 INFO StratInv (33) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (33) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (34)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (34)
+2024-07-24 14:09:06 INFO StratInv (34) : Algo
+2024-07-24 14:09:06 INFO StratInv (34) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (34) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (35)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (35)
+2024-07-24 14:09:06 INFO StratInv (35) : Algo
+2024-07-24 14:09:06 INFO StratInv (35) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (35) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (36)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (36)
+2024-07-24 14:09:06 INFO StratInv (36) : Algo
+2024-07-24 14:09:06 INFO StratInv (36) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (36) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (37)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (37)
+2024-07-24 14:09:06 INFO StratInv (37) : Algo
+2024-07-24 14:09:06 INFO StratInv (37) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (37) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (38)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (38)
+2024-07-24 14:09:06 INFO StratInv (38) : Algo
+2024-07-24 14:09:06 INFO StratInv (38) : Algo
+2024-07-24 14:09:06 INFO Alm & Cr (38) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:06 INFO Perf (39)
+2024-07-24 14:09:06 INFO Perf Passif
+2024-07-24 14:09:06 INFO Perf Actif
+2024-07-24 14:09:06 INFO StratInv (39)
+2024-07-24 14:09:06 INFO StratInv (39) : Algo
+2024-07-24 14:09:06 INFO StratInv (39) : Algo
+2024-07-24 14:09:07 INFO Alm & Cr (39) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:07 INFO Perf (40)
+2024-07-24 14:09:07 INFO Perf Passif
+2024-07-24 14:09:07 INFO Perf Actif
+2024-07-24 14:09:07 INFO StratInv (40)
+2024-07-24 14:09:07 INFO StratInv (40) : Algo
+2024-07-24 14:09:07 INFO StratInv (40) : Algo
+2024-07-24 14:09:07 INFO Alm & Cr (40) : Algorithme de détermination du txServiBrt
+2024-07-24 14:09:07 INFO Construction des outputs Qrt
+2024-07-24 14:09:07 INFO Ecriture des résultats
+2024-07-24 14:09:07 INFO Logs des performances associées à l'initialistion !
+2024-07-24 14:09:07 INFO Logs des performances associées à la projection !
+2024-07-24 14:09:07 INFO Fin de la projection !

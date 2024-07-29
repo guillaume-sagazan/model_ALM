@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sphinx &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Polars" href="polars.html" />
+    <link rel="prev" title="Setup de VS Code" href="setup-vscode.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutos.html">Tutoriels</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup-vscode.html">Setup de VS Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#liens-externes">Liens externes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-des-packages">Installation des packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilisation-de-sphinx-au-sein-d-un-projet-python">Utilisation de sphinx au sein d’un projet Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mise-a-jour-du-fichier-conf-py">Mise à jour du fichier conf.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creation-d-une-run-config-vs-code">Création d’une « run config vs code »</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generation-automatique-de-la-documentation-via-gitlab">Génération automatique de la documentation via GitLab</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="polars.html">Polars</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tutos.html">Tutoriels</a></li>
+      <li class="breadcrumb-item active">Sphinx</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutos/sphinx.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sphinx">
+<h1>Sphinx<a class="headerlink" href="#sphinx" title="Lien vers cette rubrique"></a></h1>
+<section id="liens-externes">
+<h2>Liens externes<a class="headerlink" href="#liens-externes" title="Lien vers cette rubrique"></a></h2>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/">Documentation Sphinx</a></p>
+<p><a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/">Documentation Sphinx RTD theme</a></p>
+<p><a class="reference external" href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/index.html">Guide Sublime and Sphinx</a></p>
+<p><a class="reference external" href="https://sphinx-design.readthedocs.io">Sphinx Design</a></p>
+<p><a class="reference external" href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">Symboles Latex</a></p>
+<p><a class="reference external" href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">Sphinx Multi-versions</a></p>
+</section>
+<section id="installation-des-packages">
+<h2>Installation des packages<a class="headerlink" href="#installation-des-packages" title="Lien vers cette rubrique"></a></h2>
+<p>Est recommandé l’installation des packages python suivants :</p>
+<ul class="simple">
+<li><p><strong>sphinx :</strong> Package de base</p></li>
+<li><p><strong>sphinx_rtd_theme :</strong> Sphinx gère différents thèmes, celui-ci est le plus populaire</p></li>
+<li><p><strong>sphinx-design :</strong> Ce package permet l’utilisation des directives dropdown, octicon…</p></li>
+<li><p><strong>sphinx-multiversion :</strong> Ce package permet de gérer l’accès à différentes versions de la documentation</p></li>
+</ul>
+</section>
+<section id="utilisation-de-sphinx-au-sein-d-un-projet-python">
+<h2>Utilisation de sphinx au sein d’un projet Python<a class="headerlink" href="#utilisation-de-sphinx-au-sein-d-un-projet-python" title="Lien vers cette rubrique"></a></h2>
+<p>Soit un projet python ayant été précédemment structuré avec :abbr:</p>
+<ul class="simple">
+<li><p>un répertoire « src » contenant les sources</p></li>
+<li><p>un répertoire « doc » ayant vocation à contenir la documentation</p></li>
+<li><p>un répertoire « tools » contenant les différents scripts</p></li>
+</ul>
+<p>Suivre les étapes suivantes :</p>
+<ul class="simple">
+<li><p>Ouvrir un terminal Python dans VS code</p></li>
+<li><p>se placer dans le répertoire « doc » du projet : « cd doc »</p></li>
+<li><p>Initialiser le projet sphinx avec la commande : « sphinx-quickstart »</p></li>
+<li><p>Répondre aux questions posées par le terminal. Est conseillé de séparer les sources et le site web</p></li>
+<li><p>Tester la génération de la documentation avec la commande : « make html »</p></li>
+</ul>
+<p>Une fois cette commande effectuée, est possible de visualiser la documentation en ouvrant le fichier « doc/build/html/index.html » dans un navigateur.</p>
+<p>Est possible de nettoyer les fichiers générés avec la commande « make clean html » avant de regénérer la documentation avec « make html ».</p>
+</section>
+<section id="mise-a-jour-du-fichier-conf-py">
+<h2>Mise à jour du fichier conf.py<a class="headerlink" href="#mise-a-jour-du-fichier-conf-py" title="Lien vers cette rubrique"></a></h2>
+<p>Le theme par défaut, alabaster, n’est pas très esthétique. Pour changer de thème, il est nécessaire de modifier le fichier « doc/source/conf.py ».</p>
+<p>Ce fichier dans ce projet est entièrement commenté de sorte à pouvoir être facilement réutilisé.</p>
+</section>
+<section id="creation-d-une-run-config-vs-code">
+<h2>Création d’une « run config vs code »<a class="headerlink" href="#creation-d-une-run-config-vs-code" title="Lien vers cette rubrique"></a></h2>
+<p>A des fins de productivité, il est possible de créer une « run config vs code » pour automatiser le processus de création de la documentation.</p>
+<p>Pour cela, est possible de reprendre le script « tools/genererDocumentation.py » présent dans ce projet.</p>
+<p>Celui est commenté. A noter qu’il intègre différentes étapes spécifiques qu’il peut ne pas être nécessaire de reprendre dans le cas d’un projet plus classique.</p>
+<p>Ceci étant fait, reste simplement à créer la configuration nécessaire dans VS code.</p>
+</section>
+<section id="generation-automatique-de-la-documentation-via-gitlab">
+<h2>Génération automatique de la documentation via GitLab<a class="headerlink" href="#generation-automatique-de-la-documentation-via-gitlab" title="Lien vers cette rubrique"></a></h2>
+<p>Tuto à écrire</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="setup-vscode.html" class="btn btn-neutral float-left" title="Setup de VS Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="polars.html" class="btn btn-neutral float-right" title="Polars" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

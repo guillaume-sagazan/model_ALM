@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metadata.dfmd.DfMdActif &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">metadata.dfmd.DfMdActif</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de metadata.dfmd.DfMdActif</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">metadata.dd.DdActif</span> <span class="kn">import</span> <span class="n">VarActif</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdAlm</span> <span class="kn">import</span> <span class="n">VarAlm</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdCommun</span> <span class="kn">import</span> <span class="n">VarCommun</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdProjection</span> <span class="kn">import</span> <span class="n">VarProj</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdS2</span> <span class="kn">import</span> <span class="n">VarS2</span>
+
+<span class="kn">from</span> <span class="nn">metadata.dd.DdStratInv</span> <span class="kn">import</span> <span class="n">VarStratInv</span>
+<span class="kn">from</span> <span class="nn">metadata.dfmd.DfMdS2</span> <span class="kn">import</span> <span class="n">dfMdS2</span>
+<span class="kn">from</span> <span class="nn">metadata.dfmd.DfMdCommun</span> <span class="kn">import</span> <span class="n">dfMdCommun</span>
+<span class="kn">from</span> <span class="nn">metadata.dfmd.DfMdProj</span> <span class="kn">import</span> <span class="n">dfMdProj</span>
+<span class="kn">from</span> <span class="nn">utils.DfMd</span> <span class="kn">import</span> <span class="n">DfMd</span>
+
+
+<div class="viewcode-block" id="DfMdActif">
+<a class="viewcode-back" href="../../../modules/metadata.dfmd.html#metadata.dfmd.DfMdActif.DfMdActif">[docs]</a>
+<span class="k">class</span> <span class="nc">DfMdActif</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksCdClasseActifDetail</span>  <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActifDetail</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksActifUnitaire</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksCdClasseActifDetail</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdIsin</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksActifUnitaireFwdCf</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksActifUnitaire</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">maturite</span><span class="p">,</span> <span class="n">VarProj</span><span class="o">.</span><span class="n">intraperiod</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksCdChocS2ActifUnitaire</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">dfMdS2</span><span class="o">.</span><span class="n">mdPksChocS2Actif</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksActifUnitaire</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksMpActif</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">dfMdProj</span><span class="o">.</span><span class="n">mdPksTrajectoire</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksActifUnitaire</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksMpActifErreurs</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksErreurs</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksMpActif</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPksProjActifCalcVm</span> <span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">dfMdS2</span><span class="o">.</span><span class="n">mdPksChocS2Actif</span><span class="p">,</span> <span class="o">*</span><span class="n">dfMdProj</span><span class="o">.</span><span class="n">mdPksScPer</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksActifUnitaire</span><span class="p">]</span>
+
+        <span class="c1"># self.mdMpActifOblig : DfMd = DfMd(</span>
+        <span class="c1">#     pks=[*self.mdPksMpActif], </span>
+        <span class="c1">#     columns=[</span>
+        <span class="c1">#         VarCommun.dtDateTerme,</span>
+        <span class="c1">#         VarActif.mtNominal,</span>
+        <span class="c1">#         VarActif.mtVm,</span>
+        <span class="c1">#         VarActif.nbDuration,</span>
+        <span class="c1">#         VarActif.txCpn,</span>
+        <span class="c1">#         VarActif.txRemboursement,</span>
+        <span class="c1">#         VarActif.mtVc,</span>
+        <span class="c1">#         VarActif.cdCqs</span>
+        <span class="c1">#     ]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdMpActifObligInitGbl : DfMd = DfMd(</span>
+        <span class="c1">#     pks=self.mdMpActifOblig.pks, </span>
+        <span class="c1">#     columns=[*self.mdMpActifOblig.columns, VarCommun.dtDateTermeAnnee, VarActif.nbPeriodTerme]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdMpActifObligInitS2 : DfMd = DfMd(</span>
+        <span class="c1">#     pks=[*dfMdS2.mdPksChocS2Actif, *self.mdMpActifObligInitGbl.pks], </span>
+        <span class="c1">#     columns=[*self.mdMpActifObligInitGbl.columns, VarActif.txVmRn, VarActif.mtVmRn, VarActif.txTra, VarActif.mtVcTra, VarActif.mtVcTraError]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdProjActifObligMp : DfMd = DfMd(</span>
+        <span class="c1">#     pks=[*dfMdS2.mdPksChocS2Actif, *dfMdProj.mdPksScPer, *self.mdPksActifUnitaire], </span>
+        <span class="c1">#     columns=self.mdMpActifObligInitS2.columns</span>
+        <span class="c1"># )</span>
+                
+        <span class="c1"># self.mdMpActifObligErreurs : DfMd = DfMd(</span>
+        <span class="c1">#     pks=self.mdPksMpActifErreurs, </span>
+        <span class="c1">#     columns=[</span>
+        <span class="c1">#         *self.mdMpActifOblig.columns,</span>
+        <span class="c1">#         VarActif.txTraMin, VarActif.mtVcTraMin, VarActif.txTraMax, VarActif.mtVcTraMax</span>
+        <span class="c1">#     ]</span>
+        <span class="c1"># )</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndices</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdPksMpActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">txActionT1</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">txActionT2</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">txActionStrat</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPdd</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndicesInitGbl</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndices</span><span class="o">.</span><span class="n">pks</span><span class="p">,</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndices</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPmvl</span> <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndicesInitS2</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdS2</span><span class="o">.</span><span class="n">mdPksChocS2Actif</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndicesInitGbl</span><span class="o">.</span><span class="n">pks</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndices</span><span class="o">.</span><span class="n">columns</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndicesProj</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdProj</span><span class="o">.</span><span class="n">mdPksScPerEv</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndicesInitS2</span><span class="o">.</span><span class="n">pks</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifIndicesInitS2</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcAv</span><span class="p">,</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">,</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteEco</span><span class="p">,</span> <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVc</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># self.mdMpActifIndicesErreurs : DfMd = DfMd(</span>
+        <span class="c1">#     pks=self.mdPksMpActifErreurs, </span>
+        <span class="c1">#     columns=self.mdMpActifIndices.columns</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdMpActifCashInitS2 : DfMd = DfMd(</span>
+        <span class="c1">#     pks=[*dfMdS2.mdPksChocS2Actif, *self.mdPksActifUnitaire], </span>
+        <span class="c1">#     columns=[VarActif.mtVm, VarActif.mtVc]</span>
+        <span class="c1"># )</span>
+        
+        <span class="c1"># self.mdMpActifCashErreurs : DfMd = DfMd(</span>
+        <span class="c1">#     pks=self.mdPksMpActifErreurs, </span>
+        <span class="c1">#     columns=[VarActif.mtVm, VarActif.mtVc]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdMpActifObligCfInitS2: DfMd = DfMd(</span>
+        <span class="c1">#     pks=[*dfMdS2.mdPksChocS2Actif, *self.mdPksActifUnitaireFwdCf], </span>
+        <span class="c1">#     columns=[VarActif.mtCf]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdProjActifObligCf: DfMd = DfMd(</span>
+        <span class="c1">#     pks=[*dfMdS2.mdPksChocS2Actif, *dfMdProj.mdPksScPer, *self.mdPksActifUnitaireFwdCf], </span>
+        <span class="c1">#     columns=[VarActif.mtCf]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1"># self.mdProjActif : DfMd = DfMd(</span>
+        <span class="c1">#     pks=[</span>
+        <span class="c1">#         *dfMdS2.mdPksChocS2Actif, *dfMdProj.mdPksScPerEv, *self.mdPksActifUnitaire,</span>
+        <span class="c1">#         VarActif.nbPeriodTerme</span>
+        <span class="c1">#     ], </span>
+        <span class="c1">#     columns=[</span>
+        <span class="c1">#         VarActif.mtVmAv,</span>
+        <span class="c1">#         VarActif.mtVm,</span>
+        <span class="c1">#         VarActif.mtVcAv,</span>
+        <span class="c1">#         VarActif.mtVc,</span>
+        <span class="c1">#         VarActif.mtPmvl,</span>
+        <span class="c1">#         VarActif.mtPfi,</span>
+        <span class="c1">#         VarActif.mtCf,</span>
+        <span class="c1">#         VarAlm.mtFuiteEco,</span>
+        <span class="c1">#         VarAlm.mtFuiteVc,</span>
+        <span class="c1">#         VarActif.mtPdd</span>
+        <span class="c1">#     ]</span>
+        <span class="c1"># )</span>
+
+        <span class="c1">######################################</span>
+        <span class="c1">### DataFrames associés aux Actifs : Stratégie d&#39;investissement</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdStratInvInputOutput</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdS2</span><span class="o">.</span><span class="n">mdPksChocS2Actif</span><span class="p">,</span> <span class="o">*</span><span class="n">dfMdProj</span><span class="o">.</span><span class="n">mdPksScPer</span><span class="p">,</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>    
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtVmAvCanton</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txAllocCible</span><span class="p">,</span> 
+                <span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtVmAvCdClasseActif</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtVmCibleCdClasseActif</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">mtAchatOblig</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">facteurAchatVente</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1">######################################</span>
+        <span class="c1">### DataFrames associés aux Actifs : Stratégie d&#39;investissement</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdHypStratInvInput</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txAllocCible</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txObligAchatCpn</span><span class="p">,</span> 
+                <span class="n">VarStratInv</span><span class="o">.</span><span class="n">nbObligAchatMaturite</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txFraisPlct</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdHypStratInvTxAllocCible</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txAllocCible</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdHypStratInvObligAchat</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txObligAchatCpn</span><span class="p">,</span> <span class="n">VarStratInv</span><span class="o">.</span><span class="n">nbObligAchatMaturite</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdHypStratInvTxFraisPlct</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarStratInv</span><span class="o">.</span><span class="n">txFraisPlct</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1">######################################</span>
+        <span class="c1">### DataFrames associés aux Actifs : Performance  </span>
+        <span class="c1"># pkName=&#39;ChocS2|Scenario|Iteration|Canton|FamPdt|TypeFlux|Intraperiod&#39;,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdMpActifCashInputCf</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span>
+                <span class="o">*</span><span class="n">dfMdS2</span><span class="o">.</span><span class="n">mdPksChocS2Actif</span><span class="p">,</span> <span class="o">*</span><span class="n">dfMdProj</span><span class="o">.</span><span class="n">mdPksScPerIntra</span><span class="p">,</span>
+                <span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarS2</span><span class="o">.</span><span class="n">cdTypeFlux</span>
+            <span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mdPrdAdActif</span> <span class="p">:</span> <span class="n">DfMd</span> <span class="o">=</span> <span class="n">DfMd</span><span class="p">(</span>
+            <span class="n">pks</span><span class="o">=</span><span class="p">[</span><span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2</span><span class="p">,</span> <span class="o">*</span><span class="n">dfMdProj</span><span class="o">.</span><span class="n">mdPksScPerEv</span><span class="p">,</span> <span class="o">*</span><span class="n">dfMdCommun</span><span class="o">.</span><span class="n">mdPksCanton</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">],</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">,</span> 
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVcAv</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVc</span><span class="p">,</span> 
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPmvl</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">,</span> 
+                <span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtPdd</span><span class="p">,</span> 
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteEco</span><span class="p">,</span> <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVc</span>
+            <span class="p">]</span>
+        <span class="p">)</span></div>
+
+
+<span class="n">dfMdActif</span> <span class="o">=</span> <span class="n">DfMdActif</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

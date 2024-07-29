@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>config &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="dao" href="dao.html" />
+    <link rel="prev" title="Documentation du code" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation du code</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-config.ErrConfig">config.ErrConfig</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy"><code class="docutils literal notranslate"><span class="pre">OnErrorStrategy</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy.CONTINUER"><code class="docutils literal notranslate"><span class="pre">OnErrorStrategy.CONTINUER</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy.LANCER_EXCEPTION"><code class="docutils literal notranslate"><span class="pre">OnErrorStrategy.LANCER_EXCEPTION</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#config.ErrConfig.ErrConfig"><code class="docutils literal notranslate"><span class="pre">ErrConfig</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.errorZero"><code class="docutils literal notranslate"><span class="pre">ErrConfig.errorZero</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.errorZeroRelatif"><code class="docutils literal notranslate"><span class="pre">ErrConfig.errorZeroRelatif</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.initPassifErrorStrategy"><code class="docutils literal notranslate"><span class="pre">ErrConfig.initPassifErrorStrategy</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.initActifObligTraIterMax"><code class="docutils literal notranslate"><span class="pre">ErrConfig.initActifObligTraIterMax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.initActifErrorStrategy"><code class="docutils literal notranslate"><span class="pre">ErrConfig.initActifErrorStrategy</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.equilibreBilanErrorStrategy"><code class="docutils literal notranslate"><span class="pre">ErrConfig.equilibreBilanErrorStrategy</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.equilibreBilanErrorMax"><code class="docutils literal notranslate"><span class="pre">ErrConfig.equilibreBilanErrorMax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.from_dict"><code class="docutils literal notranslate"><span class="pre">ErrConfig.from_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.from_json"><code class="docutils literal notranslate"><span class="pre">ErrConfig.from_json()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.schema"><code class="docutils literal notranslate"><span class="pre">ErrConfig.schema()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.to_dict"><code class="docutils literal notranslate"><span class="pre">ErrConfig.to_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ErrConfig.ErrConfig.to_json"><code class="docutils literal notranslate"><span class="pre">ErrConfig.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-config.OutputConfig">config.OutputConfig</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.OutputConfig.ResultsWriterScConfig"><code class="docutils literal notranslate"><span class="pre">ResultsWriterScConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.OutputConfig.OutputConfig"><code class="docutils literal notranslate"><span class="pre">OutputConfig</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputDebug"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputDebug</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctLoad"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctLoad</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctInitGse"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctInitGse</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctInitActif"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctInitActif</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctInitPassif"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctInitPassif</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctProjActif"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctProjActif</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctProjPassif"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctProjPassif</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctProjStratInv"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctProjStratInv</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctProjProv"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctProjProv</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputRctProjAlmCr"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputRctProjAlmCr</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputPrdAd"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputPrdAd</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.genererOutputPrdQrt"><code class="docutils literal notranslate"><span class="pre">OutputConfig.genererOutputPrdQrt</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.from_dict"><code class="docutils literal notranslate"><span class="pre">OutputConfig.from_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.from_json"><code class="docutils literal notranslate"><span class="pre">OutputConfig.from_json()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.schema"><code class="docutils literal notranslate"><span class="pre">OutputConfig.schema()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.to_dict"><code class="docutils literal notranslate"><span class="pre">OutputConfig.to_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.OutputConfig.OutputConfig.to_json"><code class="docutils literal notranslate"><span class="pre">OutputConfig.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-config.ProjConfig">config.ProjConfig</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.ProjConfig.ProjConfig"><code class="docutils literal notranslate"><span class="pre">ProjConfig</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.cdChocS2List"><code class="docutils literal notranslate"><span class="pre">ProjConfig.cdChocS2List</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.dfCdChocS2"><code class="docutils literal notranslate"><span class="pre">ProjConfig.dfCdChocS2</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.dfCdChocS2Sc"><code class="docutils literal notranslate"><span class="pre">ProjConfig.dfCdChocS2Sc</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.projModeProjection"><code class="docutils literal notranslate"><span class="pre">ProjConfig.projModeProjection</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.projHorizon"><code class="docutils literal notranslate"><span class="pre">ProjConfig.projHorizon</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.projHorizonList"><code class="docutils literal notranslate"><span class="pre">ProjConfig.projHorizonList</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.projDateDebut"><code class="docutils literal notranslate"><span class="pre">ProjConfig.projDateDebut</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.projDateDebutAnnee"><code class="docutils literal notranslate"><span class="pre">ProjConfig.projDateDebutAnnee</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.methodeInitEquilibreBilan"><code class="docutils literal notranslate"><span class="pre">ProjConfig.methodeInitEquilibreBilan</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.gseScCrnAutoBuild"><code class="docutils literal notranslate"><span class="pre">ProjConfig.gseScCrnAutoBuild</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.gseScUnivers"><code class="docutils literal notranslate"><span class="pre">ProjConfig.gseScUnivers</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.gseScEcoListStr"><code class="docutils literal notranslate"><span class="pre">ProjConfig.gseScEcoListStr</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.gseScEcoList"><code class="docutils literal notranslate"><span class="pre">ProjConfig.gseScEcoList</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.gseObligMaturiteMaxAutoDetect"><code class="docutils literal notranslate"><span class="pre">ProjConfig.gseObligMaturiteMaxAutoDetect</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.gseObligMaturiteMax"><code class="docutils literal notranslate"><span class="pre">ProjConfig.gseObligMaturiteMax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.societe"><code class="docutils literal notranslate"><span class="pre">ProjConfig.societe</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.from_dict"><code class="docutils literal notranslate"><span class="pre">ProjConfig.from_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.from_json"><code class="docutils literal notranslate"><span class="pre">ProjConfig.from_json()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.schema"><code class="docutils literal notranslate"><span class="pre">ProjConfig.schema()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.to_dict"><code class="docutils literal notranslate"><span class="pre">ProjConfig.to_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.ProjConfig.ProjConfig.to_json"><code class="docutils literal notranslate"><span class="pre">ProjConfig.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-config.TrtConfig">config.TrtConfig</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.TrtConfig.TrtConfig"><code class="docutils literal notranslate"><span class="pre">TrtConfig</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.trtName"><code class="docutils literal notranslate"><span class="pre">TrtConfig.trtName</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.errCfg"><code class="docutils literal notranslate"><span class="pre">TrtConfig.errCfg</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.projCfg"><code class="docutils literal notranslate"><span class="pre">TrtConfig.projCfg</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.outputCfg"><code class="docutils literal notranslate"><span class="pre">TrtConfig.outputCfg</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.fdInputsPath"><code class="docutils literal notranslate"><span class="pre">TrtConfig.fdInputsPath</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.fdOutputPath"><code class="docutils literal notranslate"><span class="pre">TrtConfig.fdOutputPath</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.from_dict"><code class="docutils literal notranslate"><span class="pre">TrtConfig.from_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.from_json"><code class="docutils literal notranslate"><span class="pre">TrtConfig.from_json()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.schema"><code class="docutils literal notranslate"><span class="pre">TrtConfig.schema()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.to_dict"><code class="docutils literal notranslate"><span class="pre">TrtConfig.to_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#config.TrtConfig.TrtConfig.to_json"><code class="docutils literal notranslate"><span class="pre">TrtConfig.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dao.html">dao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docgen.html">docgen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domaines.html">domaines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestrateur.html">orchestrateur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Documentation du code</a></li>
+      <li class="breadcrumb-item active">config</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/config.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-config">
+<span id="config"></span><h1>config<a class="headerlink" href="#module-config" title="Lien vers cette rubrique"></a></h1>
+<section id="module-config.ErrConfig">
+<span id="config-errconfig"></span><h2>config.ErrConfig<a class="headerlink" href="#module-config.ErrConfig" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.ErrConfig.OnErrorStrategy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.ErrConfig.</span></span><span class="sig-name descname"><span class="pre">OnErrorStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/ErrConfig.html#OnErrorStrategy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.ErrConfig.OnErrorStrategy" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<p>Enumération permettant de définir la stratégie à suivre dans le cas où des erreurs sont détectées
+:param CONTINUER: Dans ce cas, le programme a vocation à continuer malgré les erreurs constatées
+:param LANCER_EXCEPTION: Dans ce cas, le programme lancera une exception au moment de la détection de l’erreur</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.OnErrorStrategy.CONTINUER">
+<span class="sig-name descname"><span class="pre">CONTINUER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#config.ErrConfig.OnErrorStrategy.CONTINUER" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.OnErrorStrategy.LANCER_EXCEPTION">
+<span class="sig-name descname"><span class="pre">LANCER_EXCEPTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#config.ErrConfig.OnErrorStrategy.LANCER_EXCEPTION" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.ErrConfig.</span></span><span class="sig-name descname"><span class="pre">ErrConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errorZero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorZeroRelatif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initPassifErrorStrategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">OnErrorStrategy.CONTINUER</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initActifObligTraIterMax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initActifErrorStrategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">OnErrorStrategy.CONTINUER</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equilibreBilanErrorStrategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">OnErrorStrategy.CONTINUER</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equilibreBilanErrorMax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/ErrConfig.html#ErrConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.ErrConfig.ErrConfig" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe stockant la ProjConfig associée à la gestion des erreurs d’une projection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>errorZero</strong> (<em>float</em>) – Définition du zéro absolu dans le cadre du traitement. Valeur par défaut = 0.000000000001</p></li>
+<li><p><strong>errorZeroRelatif</strong> (<em>float</em>) – Définition du zéro relatif dans le cadre du traitement. Valeur par défaut = 0.0000000001</p></li>
+<li><p><strong>initPassifErrorStrategy</strong> (<a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><em>OnErrorStrategy</em></a>) – Stratégie adoptée en cas d’erreur constatée à l’initialisation du Passif. Valeur par défaut = OnErrorStrategy.CONTINUER</p></li>
+<li><p><strong>initActifObligTraIterMax</strong> (<em>int</em>) – Maximum d’itérations maximums associée à l’initialisation du TRA. Valeur par défaut = 10000</p></li>
+<li><p><strong>initActifErrorStrategy</strong> (<a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><em>OnErrorStrategy</em></a>) – Stratégie adoptée en cas d’erreur constatée à l’initialisation de l’Actif. Valeur par défaut =  OnErrorStrategy.CONTINUER</p></li>
+<li><p><strong>equilibreBilanErrorStrategy</strong> (<a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><em>OnErrorStrategy</em></a>) – Stratégie adoptée en cas d’erreur bilan constatée. Valeur par défaut = OnErrorStrategy.CONTINUER</p></li>
+<li><p><strong>equilibreBilanErrorMax</strong> (<em>float</em>) – Maximum tolérer pour l’écart d’erreur bilan. Valeur par défaut = 20.0</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.errorZero">
+<span class="sig-name descname"><span class="pre">errorZero</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1e-12</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.errorZero" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.errorZeroRelatif">
+<span class="sig-name descname"><span class="pre">errorZeroRelatif</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1e-10</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.errorZeroRelatif" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.initPassifErrorStrategy">
+<span class="sig-name descname"><span class="pre">initPassifErrorStrategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.initPassifErrorStrategy" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.initActifObligTraIterMax">
+<span class="sig-name descname"><span class="pre">initActifObligTraIterMax</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10000</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.initActifObligTraIterMax" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.initActifErrorStrategy">
+<span class="sig-name descname"><span class="pre">initActifErrorStrategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.initActifErrorStrategy" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.equilibreBilanErrorStrategy">
+<span class="sig-name descname"><span class="pre">equilibreBilanErrorStrategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.ErrConfig.OnErrorStrategy" title="config.ErrConfig.OnErrorStrategy"><span class="pre">OnErrorStrategy</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.equilibreBilanErrorStrategy" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.equilibreBilanErrorMax">
+<span class="sig-name descname"><span class="pre">equilibreBilanErrorMax</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20.0</span></em><a class="headerlink" href="#config.ErrConfig.ErrConfig.equilibreBilanErrorMax" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kvs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.ErrConfig.ErrConfig.from_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.from_json">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytearray</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_float</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_int</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.ErrConfig.ErrConfig.from_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.schema">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">many</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SchemaF</span><span class="p"><span class="pre">[</span></span><span class="pre">A</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.ErrConfig.ErrConfig.schema" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encode_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.ErrConfig.ErrConfig.to_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ErrConfig.ErrConfig.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#config.ErrConfig.ErrConfig.to_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-config.OutputConfig">
+<span id="config-outputconfig"></span><h2>config.OutputConfig<a class="headerlink" href="#module-config.OutputConfig" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.OutputConfig.ResultsWriterScConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.OutputConfig.</span></span><span class="sig-name descname"><span class="pre">ResultsWriterScConfig</span></span><a class="reference internal" href="../_modules/config/OutputConfig.html#ResultsWriterScConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.OutputConfig.ResultsWriterScConfig" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.OutputConfig.</span></span><span class="sig-name descname"><span class="pre">OutputConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genererOutputDebug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctLoad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctInitGse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctInitActif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctInitPassif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctProjActif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctProjPassif</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctProjStratInv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctProjProv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputRctProjAlmCr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputPrdAd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genererOutputPrdQrt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/OutputConfig.html#OutputConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.OutputConfig.OutputConfig" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe stockant la ProjConfig associée à la gestion des erreurs d’une projection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>genererOutputDebug</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de debug. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputDebugScListStr</strong> (<em>str</em>) – Liste des scenarios pour lesquels les outputs de debug seront écrits au format chaine de caractères. Valeur par défaut = “1”</p></li>
+<li><p><strong>genererOutputDebugScList</strong> – Liste des scenarios pour lesquels les outputs de debug seront écrits au format liste d’entier. Initialisé dans la méthode __post_init__ à partir de writeOutputDebugScListStr</p></li>
+<li><p><strong>genererOutputRctLoad</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés au chargement des données et hypothèses du Passif. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctInitGse</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés au GSE post initialisation. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctInitActif</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés à l’Actif post initialisation. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctInitPassif</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés au Passif post initialisation. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctProjActif</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés à l’Actif durant la projection. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctProjPassif</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés au Passif durant la projection. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctProjStratInv</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés à la stratégie d’investissement durant la projection. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctProjProv</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés aux Provisions durant la projection. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctProjAlmCr</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de recette associés à la stratégie ALM durant la projection. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputRctScListStr</strong> (<em>str</em>) – Liste des scenarios pour lesquels les outputs de recette seront écrits au format chaine de caractères. Valeur par défaut = “1”</p></li>
+<li><p><strong>genererOutputRctScList</strong> – Liste des scenarios pour lesquels les outputs de recette seront écrits au format liste d’entiers. Initialisé dans la méthode __post_init__ à partir de writeOutputRctScListStr</p></li>
+<li><p><strong>genererOutputPrdAd</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs de production nécessaire à l’alimentation du template Analyse Déterministe. Valeur par défaut = True</p></li>
+<li><p><strong>genererOutputPrdAdScListStr</strong> (<em>str</em>) – Liste des scenarios pour lesquels les outputs de production Analyse Déterministe seront écrits au format chaine de caractères. Valeur par défaut = “1”</p></li>
+<li><p><strong>genererOutputPrdAdScList</strong> – Liste des scenarios pour lesquels les outputs de production Analyse Déterministe seront écrits au format liste d’entiers. Initialisé dans la méthode __post_init__ à partir de writeOutputPrdAdScListStr</p></li>
+<li><p><strong>genererOutputPrdQrt</strong> (<em>bool</em>) – Booléen activant l’écriture des outputs permettant d’alimenter les Qrt. Valeur par défaut = True</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputDebug">
+<span class="sig-name descname"><span class="pre">genererOutputDebug</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputDebug" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctLoad">
+<span class="sig-name descname"><span class="pre">genererOutputRctLoad</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctLoad" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctInitGse">
+<span class="sig-name descname"><span class="pre">genererOutputRctInitGse</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctInitGse" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctInitActif">
+<span class="sig-name descname"><span class="pre">genererOutputRctInitActif</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctInitActif" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctInitPassif">
+<span class="sig-name descname"><span class="pre">genererOutputRctInitPassif</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctInitPassif" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctProjActif">
+<span class="sig-name descname"><span class="pre">genererOutputRctProjActif</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctProjActif" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctProjPassif">
+<span class="sig-name descname"><span class="pre">genererOutputRctProjPassif</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctProjPassif" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctProjStratInv">
+<span class="sig-name descname"><span class="pre">genererOutputRctProjStratInv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctProjStratInv" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctProjProv">
+<span class="sig-name descname"><span class="pre">genererOutputRctProjProv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctProjProv" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputRctProjAlmCr">
+<span class="sig-name descname"><span class="pre">genererOutputRctProjAlmCr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputRctProjAlmCr" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputPrdAd">
+<span class="sig-name descname"><span class="pre">genererOutputPrdAd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputPrdAd" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.genererOutputPrdQrt">
+<span class="sig-name descname"><span class="pre">genererOutputPrdQrt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.OutputConfig.OutputConfig.genererOutputPrdQrt" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kvs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.OutputConfig.OutputConfig.from_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.from_json">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytearray</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_float</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_int</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.OutputConfig.OutputConfig.from_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.schema">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">many</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SchemaF</span><span class="p"><span class="pre">[</span></span><span class="pre">A</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.OutputConfig.OutputConfig.schema" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encode_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.OutputConfig.OutputConfig.to_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.OutputConfig.OutputConfig.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#config.OutputConfig.OutputConfig.to_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-config.ProjConfig">
+<span id="config-projconfig"></span><h2>config.ProjConfig<a class="headerlink" href="#module-config.ProjConfig" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.ProjConfig.</span></span><span class="sig-name descname"><span class="pre">ProjConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdChocS2List:</span> <span class="pre">list[~metadata.dd.DdS2.CdChocS2]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projModeProjection:</span> <span class="pre">~metadata.dd.DdProjection.ModeProjection</span> <span class="pre">=</span> <span class="pre">ModeProjection.ACTIF_SEUL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projHorizon:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projDateDebut:</span> <span class="pre">~datetime.date</span> <span class="pre">=</span> <span class="pre">datetime.date(2022</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">31)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methodeInitEquilibreBilan:</span> <span class="pre">~metadata.dd.DdAlm.CdMethodeInitEquilibreBilan</span> <span class="pre">=</span> <span class="pre">CdMethodeInitEquilibreBilan.FONDS_PROPRES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseScCrnAutoBuild:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseScUnivers:</span> <span class="pre">~metadata.dd.DdGse.ScUnivers</span> <span class="pre">=</span> <span class="pre">ScUnivers.RN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseScEcoListStr:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseObligMaturiteMaxAutoDetect:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseObligMaturiteMax:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">societe:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'ACCENTURE'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/ProjConfig.html#ProjConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.ProjConfig.ProjConfig" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe stockant la configuration d’une projection.
+:param cdChocS2List: Liste des chocs S2 à jouer. Valeur par défaut = [TypeChocS2.central])
+:type cdChocS2List: list[TypeChocS2]
+:param dfCdChocS2: DataFrame contenant les chocs S2. Initialisé dans la fonction __post_init__ à partir de chocS2List
+:type dfCdChocS2: DataFrame[]
+:param projModeProjection: Mode de projection pour la projection considérée. Valeur par défaut = ModeProjection.ACTIF_SEUL
+:type projModeProjection: ModeProjection
+:param projHorizon: Horizon de projection. Valeur par défaut = 10
+:type projHorizon: int
+:param projDateDebut: Date de début de la projection. Valeur par défaut = 2022-12-31
+:type projDateDebut: datetime
+:param projDateDebutAnnee: Année de début de projection. Initialisé dans la fonction __post_init__ à partir de projDateDebut
+:type projDateDebutAnnee: int
+:param projDtImage: Date Image. Initialisé dans la fonction __post_init__ à partir de projDateDebut
+:type projDtImage: str
+:param methodeInitEquilibreBilan: Méthode utilisée pour équilibrer le bilan à l’initialisation de la projection
+:type methodeInitEquilibreBilan: CdMethodeInitEquilibreBilan
+:param gseScCrnAutoBuild: Booléen décrivant si les variables économiques du scenario CRN sont calculées en mémoire par le programme ou si elles sont issues du fichier IGSE. Valeur par défaut = False
+:type gseScCrnAutoBuild: bool
+:param gseScUnivers: Univers de projection utilisé. Valeur par défaut = ScUnivers.RN
+:type gseScUnivers: ScUnivers
+:param gseScEcoListStr: Liste des scenarios économiques à projeter au format chaine de caractères. Valeur par défaut = “1”
+:type gseScEcoListStr: str
+:param gseScEcoList: Liste des scenarios économiques à projeter au format liste d’entiers. Initialisé dans la fonction __post_init__ à partir de gseScEcoListStr
+:type gseScEcoList: list[int]
+:param gseObligMaturiteMaxAutoDetect: Booléen activant ou désactivant la détection automatique de la maturité max des obligations. Valeur par défaut = True
+:type gseObligMaturiteMaxAutoDetect: bool
+:param gseObligMaturiteMax: Maturité max des obligations. Valeur par défaut = 50
+:type gseObligMaturiteMax: int
+:param societe: Société. Valeur par défaut = “ACCENTURE”
+:type societe: str</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.cdChocS2List">
+<span class="sig-name descname"><span class="pre">cdChocS2List</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="metadata.dd.html#metadata.dd.DdS2.CdChocS2" title="metadata.dd.DdS2.CdChocS2"><span class="pre">CdChocS2</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.cdChocS2List" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.dfCdChocS2">
+<span class="sig-name descname"><span class="pre">dfCdChocS2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.dfCdChocS2" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.dfCdChocS2Sc">
+<span class="sig-name descname"><span class="pre">dfCdChocS2Sc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.dfCdChocS2Sc" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.projModeProjection">
+<span class="sig-name descname"><span class="pre">projModeProjection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="metadata.dd.html#metadata.dd.DdProjection.ModeProjection" title="metadata.dd.DdProjection.ModeProjection"><span class="pre">ModeProjection</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ACTIF_SEUL'</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.projModeProjection" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.projHorizon">
+<span class="sig-name descname"><span class="pre">projHorizon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.projHorizon" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.projHorizonList">
+<span class="sig-name descname"><span class="pre">projHorizonList</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.projHorizonList" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.projDateDebut">
+<span class="sig-name descname"><span class="pre">projDateDebut</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">date</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">datetime.date(2022,</span> <span class="pre">12,</span> <span class="pre">31)</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.projDateDebut" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.projDateDebutAnnee">
+<span class="sig-name descname"><span class="pre">projDateDebutAnnee</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.projDateDebutAnnee" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.methodeInitEquilibreBilan">
+<span class="sig-name descname"><span class="pre">methodeInitEquilibreBilan</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="metadata.dd.html#metadata.dd.DdAlm.CdMethodeInitEquilibreBilan" title="metadata.dd.DdAlm.CdMethodeInitEquilibreBilan"><span class="pre">CdMethodeInitEquilibreBilan</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FONDS_PROPRES'</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.methodeInitEquilibreBilan" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.gseScCrnAutoBuild">
+<span class="sig-name descname"><span class="pre">gseScCrnAutoBuild</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.gseScCrnAutoBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.gseScUnivers">
+<span class="sig-name descname"><span class="pre">gseScUnivers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="metadata.dd.html#metadata.dd.DdGse.ScUnivers" title="metadata.dd.DdGse.ScUnivers"><span class="pre">ScUnivers</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RN'</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.gseScUnivers" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.gseScEcoListStr">
+<span class="sig-name descname"><span class="pre">gseScEcoListStr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'1'</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.gseScEcoListStr" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.gseScEcoList">
+<span class="sig-name descname"><span class="pre">gseScEcoList</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.gseScEcoList" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.gseObligMaturiteMaxAutoDetect">
+<span class="sig-name descname"><span class="pre">gseObligMaturiteMaxAutoDetect</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.gseObligMaturiteMaxAutoDetect" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.gseObligMaturiteMax">
+<span class="sig-name descname"><span class="pre">gseObligMaturiteMax</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">50</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.gseObligMaturiteMax" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.societe">
+<span class="sig-name descname"><span class="pre">societe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ACCENTURE'</span></em><a class="headerlink" href="#config.ProjConfig.ProjConfig.societe" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kvs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.ProjConfig.ProjConfig.from_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.from_json">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytearray</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_float</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_int</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.ProjConfig.ProjConfig.from_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.schema">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">many</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SchemaF</span><span class="p"><span class="pre">[</span></span><span class="pre">A</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.ProjConfig.ProjConfig.schema" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encode_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.ProjConfig.ProjConfig.to_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.ProjConfig.ProjConfig.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#config.ProjConfig.ProjConfig.to_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-config.TrtConfig">
+<span id="config-trtconfig"></span><h2>config.TrtConfig<a class="headerlink" href="#module-config.TrtConfig" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.TrtConfig.</span></span><span class="sig-name descname"><span class="pre">TrtConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trtName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errCfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#config.ErrConfig.ErrConfig" title="config.ErrConfig.ErrConfig"><span class="pre">ErrConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">projCfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#config.ProjConfig.ProjConfig" title="config.ProjConfig.ProjConfig"><span class="pre">ProjConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputCfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#config.OutputConfig.OutputConfig" title="config.OutputConfig.OutputConfig"><span class="pre">OutputConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/config/TrtConfig.html#TrtConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.TrtConfig.TrtConfig" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe stockant la configuration d’un traitement du modèle ALM</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trtCode</strong> (<em>int</em>) – Code associé au traitement</p></li>
+<li><p><strong>trtName</strong> (<em>str</em>) – Nom du traitement</p></li>
+<li><p><strong>errCfg</strong> (<a class="reference internal" href="#config.ErrConfig.ErrConfig" title="config.ErrConfig.ErrConfig"><em>ErrConfig</em></a>) – ProjConfig associée à la gestion des erreurs</p></li>
+<li><p><strong>projCfg</strong> (<a class="reference internal" href="#config.ProjConfig.ProjConfig" title="config.ProjConfig.ProjConfig"><em>ProjConfig</em></a>) – ProjConfig associée à la projection</p></li>
+<li><p><strong>outputCfg</strong> (<a class="reference internal" href="#config.OutputConfig.OutputConfig" title="config.OutputConfig.OutputConfig"><em>OutputConfig</em></a>) – ProjConfig associée aux outputs du traitement</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.trtName">
+<span class="sig-name descname"><span class="pre">trtName</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.TrtConfig.TrtConfig.trtName" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.errCfg">
+<span class="sig-name descname"><span class="pre">errCfg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.ErrConfig.ErrConfig" title="config.ErrConfig.ErrConfig"><span class="pre">ErrConfig</span></a></em><a class="headerlink" href="#config.TrtConfig.TrtConfig.errCfg" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.projCfg">
+<span class="sig-name descname"><span class="pre">projCfg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.ProjConfig.ProjConfig" title="config.ProjConfig.ProjConfig"><span class="pre">ProjConfig</span></a></em><a class="headerlink" href="#config.TrtConfig.TrtConfig.projCfg" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.outputCfg">
+<span class="sig-name descname"><span class="pre">outputCfg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.OutputConfig.OutputConfig" title="config.OutputConfig.OutputConfig"><span class="pre">OutputConfig</span></a></em><a class="headerlink" href="#config.TrtConfig.TrtConfig.outputCfg" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.fdInputsPath">
+<span class="sig-name descname"><span class="pre">fdInputsPath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.TrtConfig.TrtConfig.fdInputsPath" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.fdOutputPath">
+<span class="sig-name descname"><span class="pre">fdOutputPath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.TrtConfig.TrtConfig.fdOutputPath" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kvs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.TrtConfig.TrtConfig.from_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.from_json">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytearray</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_float</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_int</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">A</span></span></span><a class="headerlink" href="#config.TrtConfig.TrtConfig.from_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.schema">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">many</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SchemaF</span><span class="p"><span class="pre">[</span></span><span class="pre">A</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.TrtConfig.TrtConfig.schema" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encode_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#config.TrtConfig.TrtConfig.to_dict" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.TrtConfig.TrtConfig.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#config.TrtConfig.TrtConfig.to_json" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Documentation du code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="dao.html" class="btn btn-neutral float-right" title="dao" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

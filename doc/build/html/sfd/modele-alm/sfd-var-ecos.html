@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variables économiques &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script>window.MathJax = {"chtml": {"scale": ".8", "minScale": ".3", "matchFontHeight": "true", "mtextInheritFont": "false", "merrorInheritFont": "true", "mathmlSpacing": "false", "skipAttributes": "{}", "exFactor": ".5", "displayAlign": "left", "displayIndent": "0"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Modélisation des passifs" href="sfd-passif.html" />
+    <link rel="prev" title="Configuration d’un traitement" href="sfd-config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sfd-conception-generale.html">Conception générale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-config.html">Configuration d’un traitement</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Variables économiques</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parametres-dont-les-variables-economiques-dependent">Paramètres dont les variables économiques dépendent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notations-relatives-aux-courbes-des-taux">Notations relatives aux courbes des taux</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#courbes-des-taux-taux-zero-coupons-prix-zero-coupons">Courbes des taux, taux zéro coupons, prix zéro coupons</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#types-de-courbes-des-taux-manipulees">Types de courbes des taux manipulées</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calcul-des-prix-zero-coupons-forward">Calcul des prix zéro coupons forward</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#donnees-en-entree-du-modele">Données en entrée du modèle</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#cas-ou-gsesccrnautobuild-true">Cas où gseScCrnAutoBuild = “True”</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cas-ou-gsesccrnautobuild-false">Cas où gseScCrnAutoBuild = « False »</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#donnees-necessaires-au-fonctionnement-du-modele">Données nécessaires au fonctionnement du modèle</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#gsectrefobligpzc">GseCtRefObligPzc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gsectrefcashperf">GseCtRefCashPerf</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gseoutputobligpzc">GseOutputObligPzc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gseoutputdeflateur">GseOutputDeflateur</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gseoutputcashperf">GseOutputCashPerf</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gseoutputindicesperf">GseOutputIndicesPerf</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gseoutputinflation">GseOutputInflation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-passif.html">Modélisation des passifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-actif.html">Modélisation des actifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-stratalm.html">Stratégie ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-tests-modele-alm.html">Modèle ALM - Tests de cohérence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Variables économiques</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-var-ecos.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="variables-economiques">
+<h1>Variables économiques<a class="headerlink" href="#variables-economiques" title="Lien vers cette rubrique"></a></h1>
+<p>Cette partie de la documentation vise à préciser les méthodes de calcul des différentes variables économiques utilisées au cours de la projection, depuis les inputs disponibles en entrée du modèle.</p>
+<section id="parametres-dont-les-variables-economiques-dependent">
+<h2>Paramètres dont les variables économiques dépendent<a class="headerlink" href="#parametres-dont-les-variables-economiques-dependent" title="Lien vers cette rubrique"></a></h2>
+<p>Les variables économiques sont susceptibles de varier en fonction de</p>
+<ul class="simple">
+<li><p><strong>chocS2Gse [“CENTRAL”,”RATES_UP”,”RATES_DOWN”] :</strong> Le choc S2 susceptible d’impacter les variables économiques associé au choc S2 en cours</p></li>
+<li><p><strong>chocS2PassifHypIcFgx [“CENTRAL”,”RATES_UP”,”RATES_DOWN”, “EXPENSE”] :</strong> Le choc S2 susceptible d’impacter l’inflation</p></li>
+<li><p><strong>CdClasseActif [“OBLIGATION”, “ACTION”,”IMMOBILIER”] :</strong> Le type d’actif indiciel</p></li>
+<li><p><strong>scenario :</strong> l’identifiant du scenario</p></li>
+<li><p><strong>period :</strong> le pas de temps de projection</p></li>
+<li><p><strong>mat :</strong> la maturité (pour les courbes des taux)</p></li>
+<li><p><strong>intraperiod [“Beg”,”Mid”,”End”] :</strong> le moment dans la période (début, milieu, fin) où le prix est calculé. Certaines variables économiques sont susceptibles de dépendre du moment dans la période.</p></li>
+</ul>
+</section>
+<section id="notations-relatives-aux-courbes-des-taux">
+<h2>Notations relatives aux courbes des taux<a class="headerlink" href="#notations-relatives-aux-courbes-des-taux" title="Lien vers cette rubrique"></a></h2>
+<section id="courbes-des-taux-taux-zero-coupons-prix-zero-coupons">
+<h3>Courbes des taux, taux zéro coupons, prix zéro coupons<a class="headerlink" href="#courbes-des-taux-taux-zero-coupons-prix-zero-coupons" title="Lien vers cette rubrique"></a></h3>
+<p>Soit une courbe des taux CT quelconque définie par une liste de taux zéro coupon ou une liste de prix zéro coupons en fonction des maturités.</p>
+<p>On notera :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(CT = \{pzc(mat)\}\)</span> : cette courbe des taux</p></li>
+<li><p><span class="math notranslate nohighlight">\(tzc(CT, mat)\)</span> : Le taux zéro coupon de la courbe CT à la maturité mat</p></li>
+<li><p><span class="math notranslate nohighlight">\(pzc(CT, mat)\)</span> : Le prix zéro coupon de la courbe CT à la maturité mat</p></li>
+</ul>
+<p>On a la relation suivante entre tzc et pzc :</p>
+<p><span class="math notranslate nohighlight">\(pzc(CT, mat) = \frac{1}{(1+tzc(CT, mat))^{mat}}\)</span></p>
+<p>A noter qu’on peut faire dépendre <span class="math notranslate nohighlight">\(pzc\)</span> du paramètre “intraperiod” comme suit :</p>
+<p><span class="math notranslate nohighlight">\(pzc(CT,mat,'End') = pzc(CT, mat)\)</span></p>
+<p><span class="math notranslate nohighlight">\(pzc(CT,mat,'Beg') = pzc(CT, mat-1)\)</span></p>
+<p><span class="math notranslate nohighlight">\(pzc(CT,mat,'Mid') = pzc(CT, mat-1) * \sqrt{\frac{pzc(CT, mat)}{pzc(CT, mat-1)}}\)</span></p>
+</section>
+<section id="types-de-courbes-des-taux-manipulees">
+<h3>Types de courbes des taux manipulées<a class="headerlink" href="#types-de-courbes-des-taux-manipulees" title="Lien vers cette rubrique"></a></h3>
+<p>De manière générale, le modèle fonctionne à partir d’une courbe des taux initiale sans risque et éventuellement d’un jeu de scenarios contenant des courbes des taux par scenario et par pas de temps.</p>
+<p>On notera :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(CT(chocS2Gse, référence, 0)\)</span> : la courbe des taux de référence</p></li>
+<li><p><span class="math notranslate nohighlight">\(CT(chocS2Gse, scenario, t)\)</span> : les courbes des taux utilisées pour la valorisation des obligations</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La courbe des taux de référence et les variables directement inférées d’elle sont utilisées pour :</p>
+<ul class="simple">
+<li><p>la risque neutralisation des obligations</p></li>
+<li><p>la mesure de la fuite économique</p></li>
+<li><p>éventuellement la génération des variables économiques en déterministe risque neutre dans le cas où projCfg.gseCrnAutoBuild = True</p></li>
+</ul>
+</div>
+</section>
+<section id="calcul-des-prix-zero-coupons-forward">
+<h3>Calcul des prix zéro coupons forward<a class="headerlink" href="#calcul-des-prix-zero-coupons-forward" title="Lien vers cette rubrique"></a></h3>
+<p>On rappelle que  :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Offset\)</span> : représente le délai avant que le contrat forward ne commence, un Offset = 0 signifie que le contrat commence immédiatement, Offset = 1 signifie que le contrat commence dans un an.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Mat\)</span> : représente la maturité du contrat forward. Si Mat = 1 et Offset = 0, alors le contrat a une maturité d’un an. Si Mat = 1 et Offset = 1, le contrat commence dans un an et a une maturité d’un an à partir de ce moment là soit deux ans à partir d’aujourd’hui</p></li>
+</ul>
+<p>Finalement, pour les variables Offset &gt;= 0 et Mat &gt;= 0, on définit un prix forward comme :</p>
+<div class="math notranslate nohighlight">
+\[pzcFwd(CT, Offset, Mat) = \frac{pzc(CT, Offset + Mat)}{pzc(CT, Offset)}\]</div>
+</section>
+</section>
+<section id="donnees-en-entree-du-modele">
+<h2>Données en entrée du modèle<a class="headerlink" href="#donnees-en-entree-du-modele" title="Lien vers cette rubrique"></a></h2>
+<section id="cas-ou-gsesccrnautobuild-true">
+<h3>Cas où gseScCrnAutoBuild = “True”<a class="headerlink" href="#cas-ou-gsesccrnautobuild-true" title="Lien vers cette rubrique"></a></h3>
+<p>Dans ce cas, l’objectif est que les variables économiques soient toutes inférées de la courbe des taux initiale (à l’exception de l’inflation)</p>
+<p>Les inputs suivants sont donc nécessaires :</p>
+<ul class="simple">
+<li><p>Le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseCtRef">GseCtRef</a> qui donne la courbe des taux de référence</p></li>
+<li><p>Le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputInflation">GseOutputInflation</a> qui donne l’inflation</p></li>
+</ul>
+</section>
+<section id="cas-ou-gsesccrnautobuild-false">
+<h3>Cas où gseScCrnAutoBuild = « False »<a class="headerlink" href="#cas-ou-gsesccrnautobuild-false" title="Lien vers cette rubrique"></a></h3>
+<p>Dans ce cas, les variables économiques sont fournies en input.</p>
+<p>Les inputs suivants sont donc nécessaires :</p>
+<ul class="simple">
+<li><p>Le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseCtRef">GseCtRef</a> qui donne la courbe des taux de référence</p></li>
+<li><p>Le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputInflation">GseOutputInflation</a> qui donne l’inflation</p></li>
+<li><p>Le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputIndices">GseOutputIndices</a> qui donne les taux de performance des actifs indiciels et les courbes des taux par scenario et itération</p></li>
+<li><p>Le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputObligTzc">GseOutputObligTzc</a> qui donne les taux de performance des actifs indiciels et les courbes des taux par scenario et itération</p></li>
+</ul>
+</section>
+</section>
+<section id="donnees-necessaires-au-fonctionnement-du-modele">
+<h2>Données nécessaires au fonctionnement du modèle<a class="headerlink" href="#donnees-necessaires-au-fonctionnement-du-modele" title="Lien vers cette rubrique"></a></h2>
+<p>Que ce soit en déterministe ou en stochastique, est attendu que les données suivantes soient calculées à l’initialisation du modèle.</p>
+<section id="gsectrefobligpzc">
+<h3>GseCtRefObligPzc<a class="headerlink" href="#gsectrefobligpzc" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseCtRefObligPzc">GseCtRefObligPzc</a> contient les prix zéro coupons <span class="math notranslate nohighlight">\(pzc(CT(chocS2Gse, référence, 0), mat, intraperiod)\)</span></p>
+<ul class="simple">
+<li><p><strong>chocS2Gse [“CENTRAL”,”RATES_UP”,”RATES_DOWN”] :</strong> Le choc S2 susceptible d’impacter les variables économiques associé au choc S2 en cours</p></li>
+<li><p><strong>mat :</strong> la maturité des obligations zéro coupon</p></li>
+<li><p><strong>intraperiod [“Beg”,”Mid”,”End”] :</strong> le moment dans la période (début, milieu, fin) où le prix est calculé.</p></li>
+</ul>
+</section>
+<section id="gsectrefcashperf">
+<h3>GseCtRefCashPerf<a class="headerlink" href="#gsectrefcashperf" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseCtRefCashPerf">GseCtRefCashPerf</a> contient le facteur de performance à appliquer au cash sur la base de la courbe des taux de référence.</p>
+<p>Cette variable dépend de l’intraperiod car il est anticipé que des cash flows pourraient tomber en début, milieu ou fin de période.</p>
+<p>Cette table contient une colonne <span class="math notranslate nohighlight">\(facteurPerfTot\)</span> nommée dans les spécifications <span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse, t, intraperiod)\)</span>, qui se calcule ainsi :</p>
+<ul class="simple">
+<li><p><strong>pour le début de période :</strong> <span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse,t,'Beg') = \frac{1}{pzcFwd(CT(chocS2Gse, référence, 0),t-1,1))}\)</span></p></li>
+<li><p><strong>pour le milieu de période :</strong> <span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse,t,'Mid') = \sqrt{facteurPerfCashSsRisque(chocS2Gse,t,'Beg')}\)</span></p></li>
+<li><p><strong>pour la fin de période :</strong>  <span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse,t,'End') = 1\)</span></p></li>
+</ul>
+</section>
+<section id="gseoutputobligpzc">
+<h3>GseOutputObligPzc<a class="headerlink" href="#gseoutputobligpzc" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputObligPzc">GseOutputObligPzc</a> contient les prix zéro coupons <span class="math notranslate nohighlight">\(pzc(CT(chocS2Gse, scenario, t), mat, intraperiod)\)</span></p>
+<p>Dans le cas où Cas gseScCrnAutoBuild = “False”, les prix sont construits à partir des <strong>taux zéro coupons</strong> présents dans le fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputObligTzc">GseOutputObligTzc</a></p>
+<p>Dans le cas où Cas gseScCrnAutoBuild = “True”, les prix sont construits à partir des <strong>prix forward</strong> issus de la courbe des taux de référence.</p>
+</section>
+<section id="gseoutputdeflateur">
+<h3>GseOutputDeflateur<a class="headerlink" href="#gseoutputdeflateur" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputDeflateur">GseOutputDeflateur</a> contient les déflateurs utilisés pour l’actualisation des flux.</p>
+<p><span class="math notranslate nohighlight">\(deflateur(chocS2Gse, scenario, t, intraperiod) = pzc(CT(chocS2Gse, scenario, t), 1, intraperiod)\)</span></p>
+<ul class="simple">
+<li><p><strong>chocS2Gse [“CENTRAL”,”RATES_UP”,”RATES_DOWN”] :</strong> Le choc S2 susceptible d’impacter les variables économiques associé au choc S2 en cours</p></li>
+<li><p><strong>scenario :</strong> l’identifiant du scenario</p></li>
+<li><p><strong>t :</strong> le temps ou la période où le déflateur est calculé</p></li>
+<li><p><strong>intraperiod [“Beg”,”Mid”,”End”] :</strong> le moment dans la période (début, milieu, fin) où le prix est calculé.</p></li>
+</ul>
+</section>
+<section id="gseoutputcashperf">
+<h3>GseOutputCashPerf<a class="headerlink" href="#gseoutputcashperf" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputCashPerf">GseOutputCashPerf</a> contient <span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, scenario, t, intraperiod)\)</span> : Le facteur de performance à appliquer au cash.</p>
+<p>De même que pour facteurPerfCashSsRisque :</p>
+<ul class="simple">
+<li><p><strong>pour le début de période :</strong> <span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, scenario, t, Beg) = \frac{1}{pzcFwd(CT(chocS2Gse, scenario, t-1), 0, 1))}\)</span></p></li>
+<li><p><strong>pour le milieu de période :</strong><span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, scenario, t, Mid) = \sqrt{facteurPerfCashSsRisque(chocS2Gse, scenario, t, Beg)}\)</span></p></li>
+<li><p><strong>pour la fin de période :</strong> <span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, scenario, t, End) = 1\)</span></p></li>
+</ul>
+</section>
+<section id="gseoutputindicesperf">
+<h3>GseOutputIndicesPerf<a class="headerlink" href="#gseoutputindicesperf" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputIndicesPerf">GseOutputIndicesPerf</a> contient <span class="math notranslate nohighlight">\(facteurPerfTot\)</span>, le facteur à appliquer aux valeurs de marché des actifs indiciels, nommé dans la suite des spécifications <span class="math notranslate nohighlight">\(facteurPerfTotIndice(typeIndice, chocS2Gse, t)\)</span></p>
+<p>Dans le cas où Cas gseScCrnAutoBuild = “False”, ces facteurs sont repris du fichier <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputIndicesPerf">GseOutputIndicesPerf</a></p>
+<p><span class="math notranslate nohighlight">\(facteurPerfTotIndice(typeIndice, chocS2Gse, scenario, t) = 1 + TxPerfTotIndice(typeIndice, ChocS2Gse, scenario, t)\)</span></p>
+<p>Dans le cas où Cas gseScCrnAutoBuild = “True”, les prix sont construits à partir des prix forward issus de la courbe des taux de référence.</p>
+</section>
+<section id="gseoutputinflation">
+<h3>GseOutputInflation<a class="headerlink" href="#gseoutputinflation" title="Lien vers cette rubrique"></a></h3>
+<p><a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputInflation">GseOutputInflation</a> contenant <span class="math notranslate nohighlight">\(facteurInflationCum(chocS2PassifHypsIcFgx, scenario, t)\)</span> le facteur d’inflation cumulé</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}facteurInflationCum(chocS2PassifHypsIcFgx, scenario, t)
+\\ =
+\left\{\begin{array}{l}
+facteurInflationCum(chocS2PassifHypsIcFgx, scenario, t-1)
+\\ * ( 1. + txInflation(chocS2PassifHypsIcFgx, scenario, t) )
+\end{array}\right.\end{split}\]</div>
+<p>Où txInflation peut être trouvé dans <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#GseOutputInflation">GseOutputInflation</a></p>
+<p>On considère les variables suivantes :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(tzc(CT(chocS2Gse, référence, 0), mat)\)</span> : Le taux zéro coupon issu de la courbe des taux de référence</p></li>
+<li><p><span class="math notranslate nohighlight">\(pzc(CT(chocS2Gse, référence, 0), mat)\)</span> : Le prix zéro coupon associé au taux issu de la courbe des taux de référence</p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse, t, intraperiod)\)</span> : Le facteur de performance à appliquer au cash. Prenant en compte que certains cashflows pourraient tomber en début milieu ou fin de période, est nécessaire que ce facteur soit défini en fonction du paramètre intraperiod.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse, t, intraperiod)\)</span> se calcule ainsi :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse, t, 'End') = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse, t, 'Beg') = \frac{1}{pzcFwd(CT(chocS2Gse, référence, 0), t-1, 1))}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCashSsRisque(chocS2Gse, t, 'Mid') = \sqrt{facteurPerfCashSsRisque(chocS2Gse, t, &quot;Beg&quot;)}\)</span></p></li>
+</ul>
+<p><strong>Variables associées aux actifs indiciels</strong></p>
+<p>L’évolution des valeurs de marché des actifs indiciels et la détermination éventuelle</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(txPerfTotIndice(typeIndice, chocS2Gse, t)\)</span> : Le taux de performance pour l’indice « typeIndice », le choc S2 « chocS2Gse » et l’itération « t »</p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfTotIndice(typeIndice, chocS2Gse, t) = 1 + TxPerfTotIndice(typeIndice, ChocS2Gse, t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(txDividendeIndice(typeIndice, chocS2Gse, t)\)</span> : Le taux de dividende pour l’indice considéré</p></li>
+<li><p><span class="math notranslate nohighlight">\(txPerfNetIndice(typeIndice, chocS2Gse, t)\)</span> : Le taux de performance pour l’indice considéré, net de dividendes</p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfNetIndice(typeIndice, chocS2Gse, t) = 1 + TxPerfNetIndice(typeIndice, chocS2Gse, t)\)</span> : Le facteur de performance net de dividendes</p></li>
+</ul>
+<p><strong>Variables associées au cash</strong></p>
+<p><span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, t, intraperiod)\)</span> : Le facteur de performance à appliquer au cash.</p>
+<p>De même que pour facteurPerfCashSsRisque :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, t, 'End') = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, t, 'Beg') = \frac{1}{pzcFwd(CT_{Valorisation}^{chocS2Gse, t-1}, 0, 1))}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(facteurPerfCash(chocS2Gse, t, 'Mid') = \sqrt{facteurPerfCashSsRisque(chocS2Gse, t, 'Beg')}\)</span></p></li>
+</ul>
+<p>Cas gseScCrnAutoBuild = « True »</p>
+<p>Dans ce cas, l’objectif est de créer les</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="sfd-config.html" class="btn btn-neutral float-left" title="Configuration d’un traitement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="sfd-passif.html" class="btn btn-neutral float-right" title="Modélisation des passifs" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

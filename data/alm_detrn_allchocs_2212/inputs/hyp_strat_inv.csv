@@ -1,0 +1,3 @@
+cd_table,cd_societe,cd_canton,cd_classe_actif,tx_alloc_cible,tx_oblig_achat_cpn,nb_oblig_achat_maturite,tx_frais_plct
+hyp_strat_inv_2212,ACCENTURE,C00001,ACTION,0.60,,,0.0031
+hyp_strat_inv_2212,ACCENTURE,C00001,IMMOBILIER,0.40,,,0.0031

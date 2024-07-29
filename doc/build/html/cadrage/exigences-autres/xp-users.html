@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expérience Utilisateurs &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Orchestration des calculs &amp; data quality" href="orchestration-dq.html" />
+    <link rel="prev" title="Exigences complémentaires" href="exigences-autres.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeles/modeles.html">Choix de modélisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="exigences-autres.html">Exigences complémentaires</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Expérience Utilisateurs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-des-donnees">Gestion des données</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#ingestion-de-donnees">Ingestion de données</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#organisation-des-donnees-acces-aux-donnees">Organisation des données &amp; Accès aux données</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gestion-des-deltas-manuels-des-donnees">Gestion des deltas manuels des données</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-des-traitements-processus-calculatoires">Configuration des traitements / processus calculatoires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-de-workspaces-gestion-des-droits">Gestion de workspaces &amp; Gestion des droits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#securisation-des-processus-de-production-d-indicateurs">Sécurisation des processus de production d’indicateurs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#suivi-de-l-avancement-des-processus-calculatoires">Suivi de l’avancement des processus calculatoires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tracabilite-des-traitements">Traçabilité des traitements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-des-versions-de-la-chaine-de-production">Gestion des versions de la chaîne de production</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="orchestration-dq.html">Orchestration des calculs &amp; data quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="base-connaissances.html">Base de connaissances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process-delivery.html">Processus de delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../choix-tech/choix-tech.html">Choix techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="exigences-autres.html">Exigences complémentaires</a></li>
+      <li class="breadcrumb-item active">Expérience Utilisateurs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/exigences-autres/xp-users.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="experience-utilisateurs">
+<h1>Expérience Utilisateurs<a class="headerlink" href="#experience-utilisateurs" title="Lien vers cette rubrique"></a></h1>
+<p>L’UX et la base technologique mises en oeuvre permettront de répondre aux problématiques suivantes :</p>
+<ul class="simple">
+<li><p>Rationalisation des interfaces utilisateurs</p></li>
+</ul>
+<p>Les modèles actuariels sont en effet une brique dans une chaîne de production d’indicateurs plus globale. Est donc attendu, autant que faire se peut, une rationalisation des interfaces utilisateurs permettant de gérer la chaîne de production de bout en bout.</p>
+<ul class="simple">
+<li><p>Le stockage de l’ensemble des données</p></li>
+<li><p>La gestion des inputs et outputs des modèles</p></li>
+<li><p>La configuration des processus calculatoires</p></li>
+</ul>
+<p>Les processus de calculs d’indicateurs sont tout sauf</p>
+<ul class="simple">
+<li><p>Le lancement des processus calculatoires et le suivi de l’avancement des traitements</p></li>
+<li><p>La traçabilité des traitements de bout en bout</p></li>
+<li><p>La gestion des droits d’accès</p></li>
+<li><p>L’accès à la documentation</p></li>
+<li><p>L’accès aux rapports d’analyse des résultats</p></li>
+</ul>
+<p>Ci dessous le détail des fonctionnalités attendues pour chaque point.</p>
+<section id="gestion-des-donnees">
+<h2>Gestion des données<a class="headerlink" href="#gestion-des-donnees" title="Lien vers cette rubrique"></a></h2>
+<section id="ingestion-de-donnees">
+<h3>Ingestion de données<a class="headerlink" href="#ingestion-de-donnees" title="Lien vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p>Sera possible d’ingérer de données de manière manuelle ou de manière automatisée.</p></li>
+<li><p>Les données ingérées feront l’objet de différentes validations de la bonne qualité des données</p></li>
+</ul>
+</section>
+<section id="organisation-des-donnees-acces-aux-donnees">
+<h3>Organisation des données &amp; Accès aux données<a class="headerlink" href="#organisation-des-donnees-acces-aux-donnees" title="Lien vers cette rubrique"></a></h3>
+<p>Compte tenu du nombre de tables différentes que la plateforme gèrera, l’interface utilisateur permettra de parcourir les données selon une arborescence.</p>
+<p>Cette arborescence permettra d’accéder stockera non seulement les inputs des processus calculatoires mais aussi</p>
+<p>Les premiers</p>
+</section>
+<section id="gestion-des-deltas-manuels-des-donnees">
+<h3>Gestion des deltas manuels des données<a class="headerlink" href="#gestion-des-deltas-manuels-des-donnees" title="Lien vers cette rubrique"></a></h3>
+</section>
+</section>
+<section id="configuration-des-traitements-processus-calculatoires">
+<h2>Configuration des traitements / processus calculatoires<a class="headerlink" href="#configuration-des-traitements-processus-calculatoires" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="gestion-de-workspaces-gestion-des-droits">
+<h2>Gestion de workspaces &amp; Gestion des droits<a class="headerlink" href="#gestion-de-workspaces-gestion-des-droits" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="securisation-des-processus-de-production-d-indicateurs">
+<h2>Sécurisation des processus de production d’indicateurs<a class="headerlink" href="#securisation-des-processus-de-production-d-indicateurs" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="suivi-de-l-avancement-des-processus-calculatoires">
+<h2>Suivi de l’avancement des processus calculatoires<a class="headerlink" href="#suivi-de-l-avancement-des-processus-calculatoires" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="tracabilite-des-traitements">
+<h2>Traçabilité des traitements<a class="headerlink" href="#tracabilite-des-traitements" title="Lien vers cette rubrique"></a></h2>
+</section>
+<section id="gestion-des-versions-de-la-chaine-de-production">
+<h2>Gestion des versions de la chaîne de production<a class="headerlink" href="#gestion-des-versions-de-la-chaine-de-production" title="Lien vers cette rubrique"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="exigences-autres.html" class="btn btn-neutral float-left" title="Exigences complémentaires" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="orchestration-dq.html" class="btn btn-neutral float-right" title="Orchestration des calculs &amp; data quality" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

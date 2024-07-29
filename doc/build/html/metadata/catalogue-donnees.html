@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue des données &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Format des dataframes" href="dataframes.html" />
+    <link rel="prev" title="Description des données" href="metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="metadata.html">Description des données</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Catalogue des données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#projection">Projection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#donnees-communes">Données communes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-economiques-gse">Variables économiques (GSE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actif">Actif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passif">Passif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frais-generaux">Frais généraux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alm">ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategie-d-investissement">Stratégie d’investissement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solvabilite-2">Solvabilité 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataframes.html">Format des dataframes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="metadata.html">Description des données</a></li>
+      <li class="breadcrumb-item active">Catalogue des données</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/metadata/catalogue-donnees.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="catalogue-des-donnees">
+<h1>Catalogue des données<a class="headerlink" href="#catalogue-des-donnees" title="Lien vers cette rubrique"></a></h1>
+<section id="projection">
+<h2>Projection<a class="headerlink" href="#projection" title="Lien vers cette rubrique"></a></h2>
+<a id="cd_trajectoire"></a>
+
+<a id="dt_trajectoire"></a>
+
+<a id="dt_trajectoire_annee"></a>
+
+<a id="scenario"></a>
+
+<a id="period"></a>
+
+<a id="proj_annee"></a>
+
+<a id="evenement"></a>
+
+<a id="intraperiod"></a>
+
+<a id="proj_date_debut"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cd_trajectoire</p></td>
+<td><p>String</p></td>
+<td><p>Trajectoire</p></td>
+</tr>
+<tr class="row-odd"><td><p>dt_trajectoire</p></td>
+<td><p>Date</p></td>
+<td><p>Trajectoire</p></td>
+</tr>
+<tr class="row-even"><td><p>dt_trajectoire_annee</p></td>
+<td><p>Int32</p></td>
+<td><p>Trajectoire Année</p></td>
+</tr>
+<tr class="row-odd"><td><p>scenario</p></td>
+<td><p>Int32</p></td>
+<td><p>Identifiant du scenario</p></td>
+</tr>
+<tr class="row-even"><td><p>period</p></td>
+<td><p>Int32</p></td>
+<td><p>Identifiant du pas de temps</p></td>
+</tr>
+<tr class="row-odd"><td><p>proj_annee</p></td>
+<td><p>Int32</p></td>
+<td><p>Année de projection</p></td>
+</tr>
+<tr class="row-even"><td><p>evenement</p></td>
+<td><p>Categorical</p></td>
+<td><p>Année de projection</p></td>
+</tr>
+<tr class="row-odd"><td><p>intraperiod</p></td>
+<td><p>String</p></td>
+<td><p>Pour un cash flow donné, tombe t il en début, milieu</p></td>
+</tr>
+<tr class="row-even"><td><p>proj_date_debut</p></td>
+<td><p>Date</p></td>
+<td><p>Date de début de la projection</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="donnees-communes">
+<h2>Données communes<a class="headerlink" href="#donnees-communes" title="Lien vers cette rubrique"></a></h2>
+<a id="cd_table"></a>
+
+<a id="cd_societe"></a>
+
+<a id="cd_canton"></a>
+
+<a id="facteur"></a>
+
+<a id="dt_date_terme"></a>
+
+<a id="dt_date_terme_annee"></a>
+
+<a id="erreur"></a>
+
+<a id="type_erreur"></a>
+
+<a id="type_erreur_action"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cd_table</p></td>
+<td><p>String</p></td>
+<td><p>Nom de la table d’hypothèse</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_societe</p></td>
+<td><p>String</p></td>
+<td><p>Code société</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_canton</p></td>
+<td><p>String</p></td>
+<td><p>Code Canton</p></td>
+</tr>
+<tr class="row-odd"><td><p>facteur</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur</p></td>
+</tr>
+<tr class="row-even"><td><p>dt_date_terme</p></td>
+<td><p>Date</p></td>
+<td><p>Date de terme</p></td>
+</tr>
+<tr class="row-odd"><td><p>dt_date_terme_annee</p></td>
+<td><p>Int64</p></td>
+<td><p>Année associée à la date de terme</p></td>
+</tr>
+<tr class="row-even"><td><p>erreur</p></td>
+<td><p>String</p></td>
+<td><p>Description de l’erreur</p></td>
+</tr>
+<tr class="row-odd"><td><p>type_erreur</p></td>
+<td><p>String</p></td>
+<td><p>Type d’erreur</p></td>
+</tr>
+<tr class="row-even"><td><p>type_erreur_action</p></td>
+<td><p>String</p></td>
+<td><p>Type d’action réalisée compte tenu de l’erreur</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variables-economiques-gse">
+<h2>Variables économiques (GSE)<a class="headerlink" href="#variables-economiques-gse" title="Lien vers cette rubrique"></a></h2>
+<a id="cd_ct_ref"></a>
+
+<a id="facteur_perf_tot"></a>
+
+<a id="facteur_perf_net"></a>
+
+<a id="deflateur"></a>
+
+<a id="tx_dividendes"></a>
+
+<a id="pzc"></a>
+
+<a id="tzc"></a>
+
+<a id="tx_inflation"></a>
+
+<a id="facteur_inflation_cum"></a>
+
+<a id="tx_perf_tot"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cd_ct_ref</p></td>
+<td><p>String</p></td>
+<td><p>Facteur de performance total</p></td>
+</tr>
+<tr class="row-odd"><td><p>facteur_perf_tot</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur d’inflation cummulé</p></td>
+</tr>
+<tr class="row-even"><td><p>facteur_perf_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur de performance net</p></td>
+</tr>
+<tr class="row-odd"><td><p>deflateur</p></td>
+<td><p>Float64</p></td>
+<td><p>Deflateur</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_dividendes</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de dividendes</p></td>
+</tr>
+<tr class="row-odd"><td><p>pzc</p></td>
+<td><p>Float64</p></td>
+<td><p>Prix zéro coupon</p></td>
+</tr>
+<tr class="row-even"><td><p>tzc</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux dans le cadre du scenario CENTRAL</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_inflation</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’inflation</p></td>
+</tr>
+<tr class="row-even"><td><p>facteur_inflation_cum</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur d’inflation cummulée</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_perf_tot</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de performance total</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="actif">
+<h2>Actif<a class="headerlink" href="#actif" title="Lien vers cette rubrique"></a></h2>
+<a id="maturite"></a>
+
+<a id="cd_classe_actif"></a>
+
+<a id="cd_classe_actif_detail"></a>
+
+<a id="cd_cqs"></a>
+
+<a id="cd_isin"></a>
+
+<a id="nb_period_terme"></a>
+
+<a id="mt_nominal"></a>
+
+<a id="tx_cpn"></a>
+
+<a id="tx_remboursement"></a>
+
+<a id="nb_duration"></a>
+
+<a id="mt_vm_av"></a>
+
+<a id="mt_vm"></a>
+
+<a id="mt_vc_av"></a>
+
+<a id="mt_vc"></a>
+
+<a id="mt_pmvl"></a>
+
+<a id="mt_pmvr"></a>
+
+<a id="mt_pfi"></a>
+
+<a id="mt_cf"></a>
+
+<a id="tx_action_t1"></a>
+
+<a id="tx_action_t2"></a>
+
+<a id="tx_action_strat"></a>
+
+<a id="tx_immobilier"></a>
+
+<a id="mt_pdd_av"></a>
+
+<a id="mt_pdd"></a>
+
+<a id="mt_pre_av"></a>
+
+<a id="mt_pre"></a>
+
+<a id="mt_vm_rn"></a>
+
+<a id="tx_vm_rn"></a>
+
+<a id="tx_tra"></a>
+
+<a id="tx_tra_min"></a>
+
+<a id="tx_tra_max"></a>
+
+<a id="mt_vc_tra"></a>
+
+<a id="mt_vc_tra_min"></a>
+
+<a id="mt_vc_tra_max"></a>
+
+<a id="mt_vc_tra_error"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>maturite</p></td>
+<td><p>Int32</p></td>
+<td><p>Maturité en années d’un cashflow futur</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_classe_actif</p></td>
+<td><p>String</p></td>
+<td><p>Classe d’actif</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_classe_actif_detail</p></td>
+<td><p>String</p></td>
+<td><p>Classe d’actif détaillée</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_cqs</p></td>
+<td><p>Int32</p></td>
+<td><p>Credit Default Step de l’actif</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_isin</p></td>
+<td><p>String</p></td>
+<td><p>Identifiant du MP actif agrégé</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_period_terme</p></td>
+<td><p>Int32</p></td>
+<td><p>Montant de cashflow</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_nominal</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant du nominal d’une obligation</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_cpn</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de coupon d’une obligation</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_remboursement</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de remboursement d’une obligation</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_duration</p></td>
+<td><p>Float64</p></td>
+<td><p>Duration de l’actif</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vm_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur de marché (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_vm</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur de marché</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vc_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur comptable (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_vc</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur comptable</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pmvl</p></td>
+<td><p>Float64</p></td>
+<td><p>Plus ou moins values latentes disponibles</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pmvr</p></td>
+<td><p>Float64</p></td>
+<td><p>Plus ou moins values latentes générés lors de l’évènement</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pfi</p></td>
+<td><p>Float64</p></td>
+<td><p>Produits financier généré par l’évènement</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_cf</p></td>
+<td><p>Float64</p></td>
+<td><p>Cashflow</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_action_t1</p></td>
+<td><p>Float64</p></td>
+<td><p>Part de l’actif unitaire à choquer sous S2 avec le choc Action de Type 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_action_t2</p></td>
+<td><p>Float64</p></td>
+<td><p>Part de l’actif unitaire à choquer sous S2 avec le choc Action de Type 2</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_action_strat</p></td>
+<td><p>Float64</p></td>
+<td><p>Part de l’actif unitaire à choquer sous S2 avec le choc Action Stratégique</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_immobilier</p></td>
+<td><p>Float64</p></td>
+<td><p>Part de l’actif unitaire à choquer sous S2 avec le choc immobilier</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pdd_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Provision pour dépréciation durable (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pdd</p></td>
+<td><p>Float64</p></td>
+<td><p>Provision pour dépréciation durable</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pre_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Provision pour risque d’éligibilité (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pre</p></td>
+<td><p>Float64</p></td>
+<td><p>Provision pour risque d’éligibilité</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vm_rn</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur de marché post risque neutralisation</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_vm_rn</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur à appliquer pour risque neutraliser une obligation</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_tra</p></td>
+<td><p>Float64</p></td>
+<td><p>Dernier TRA  considéré pour équilibrer la valeur comptable</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_tra_min</p></td>
+<td><p>Float64</p></td>
+<td><p>TRA min considéré pour équilibrer la valeur comptable</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_tra_max</p></td>
+<td><p>Float64</p></td>
+<td><p>TRA max considéré pour équilibrer la valeur comptable</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_vc_tra</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur comptable calculée avec le dernier TRA considéré</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vc_tra_min</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur comptable calculée avec le TRA min</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_vc_tra_max</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur comptable calculée avec le TRA max</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vc_tra_error</p></td>
+<td><p>Float64</p></td>
+<td><p>Erreur constatée sur le calcul de la valeur comptable avec le dernier TRA considéré</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="passif">
+<h2>Passif<a class="headerlink" href="#passif" title="Lien vers cette rubrique"></a></h2>
+<a id="cd_fampdt"></a>
+
+<a id="cd_cnt"></a>
+
+<a id="dt_cnt_effet"></a>
+
+<a id="dt_cnt_terme"></a>
+
+<a id="nb_cnt_av"></a>
+
+<a id="nb_cnt"></a>
+
+<a id="cd_prst_rt_cat"></a>
+
+<a id="cd_capitalisation"></a>
+
+<a id="cd_cnt_support_type"></a>
+
+<a id="cd_hyp_mort_exp"></a>
+
+<a id="cd_hyp_mort_prov"></a>
+
+<a id="sexe"></a>
+
+<a id="age"></a>
+
+<a id="cd_asse_sexe"></a>
+
+<a id="dt_asse_naiss"></a>
+
+<a id="nb_asse_age_annee"></a>
+
+<a id="nb_asse_age_mois"></a>
+
+<a id="tx_prst_rt"></a>
+
+<a id="tx_prst_chgt"></a>
+
+<a id="tx_prst_dc_asse_exp"></a>
+
+<a id="taf"></a>
+
+<a id="tfgse"></a>
+
+<a id="tfgse_uc"></a>
+
+<a id="tmg"></a>
+
+<a id="tmg_type"></a>
+
+<a id="tmg_brt"></a>
+
+<a id="tx_ic_eu"></a>
+
+<a id="tx_ic_uc"></a>
+
+<a id="tx_ic_eu_brt"></a>
+
+<a id="tx_ic_eu_demi_periode"></a>
+
+<a id="tx_ic_uc_demi_periode"></a>
+
+<a id="tx_ic_eu_brt_demi_periode"></a>
+
+<a id="facteur_actu_tx_tech"></a>
+
+<a id="cd_hrg_eu"></a>
+
+<a id="mt_pm_eu_av"></a>
+
+<a id="mt_pm_eu"></a>
+
+<a id="mt_prst_tot_eu_brt"></a>
+
+<a id="mt_prst_tot_eu_net"></a>
+
+<a id="mt_prst_tot_eu_chgt"></a>
+
+<a id="mt_prst_dc_eu_brt"></a>
+
+<a id="mt_prst_dc_eu_net"></a>
+
+<a id="mt_prst_dc_eu_chgt"></a>
+
+<a id="mt_prst_rt_eu_brt"></a>
+
+<a id="mt_prst_rt_eu_net"></a>
+
+<a id="mt_prst_rt_eu_chgt"></a>
+
+<a id="cd_hrg_uc"></a>
+
+<a id="mt_pm_uc_av"></a>
+
+<a id="mt_pm_uc"></a>
+
+<a id="mt_prst_tot_uc_brt"></a>
+
+<a id="mt_prst_tot_uc_net"></a>
+
+<a id="mt_prst_tot_uc_chgt"></a>
+
+<a id="mt_prst_dc_uc_brt"></a>
+
+<a id="mt_prst_dc_uc_net"></a>
+
+<a id="mt_prst_dc_uc_chgt"></a>
+
+<a id="mt_prst_rt_uc_brt"></a>
+
+<a id="mt_prst_rt_uc_net"></a>
+
+<a id="mt_prst_rt_uc_chgt"></a>
+
+<a id="mt_ic_eu_rest"></a>
+
+<a id="mt_ic_uc_rest"></a>
+
+<a id="mt_ic_eu_sort"></a>
+
+<a id="mt_ic_uc_sort"></a>
+
+<a id="mt_fgse_uc"></a>
+
+<a id="mt_fgse_eu"></a>
+
+<a id="mt_pb_ass"></a>
+
+<a id="mt_pb_brt"></a>
+
+<a id="mt_pb_brt_cg"></a>
+
+<a id="mt_pb_net"></a>
+
+<a id="mt_csg"></a>
+
+<a id="nb_cnt_anciennete_annee"></a>
+
+<a id="nb_cnt_anciennete_mois"></a>
+
+<a id="generation"></a>
+
+<a id="qx"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cd_fampdt</p></td>
+<td><p>Categorical</p></td>
+<td><p>Code Famille de produit</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_cnt</p></td>
+<td><p>Int32</p></td>
+<td><p>Identifiant d’un contrat</p></td>
+</tr>
+<tr class="row-even"><td><p>dt_cnt_effet</p></td>
+<td><p>Date</p></td>
+<td><p>Date d’effet du contrat</p></td>
+</tr>
+<tr class="row-odd"><td><p>dt_cnt_terme</p></td>
+<td><p>Date</p></td>
+<td><p>Date de terme du contrat</p></td>
+</tr>
+<tr class="row-even"><td><p>nb_cnt_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Nombre de contrats (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_cnt</p></td>
+<td><p>Float64</p></td>
+<td><p>Nombre de contrats</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_prst_rt_cat</p></td>
+<td><p>Int16</p></td>
+<td><p>Catégorie de prestation rachat</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_capitalisation</p></td>
+<td><p>Enum(categories=[“capi”, “ncapi”])</p></td>
+<td><p>Contrat de capitalisation</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_cnt_support_type</p></td>
+<td><p>Enum(categories=[“EU”, “UC”])</p></td>
+<td><p>Type de support du contrat</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_hyp_mort_exp</p></td>
+<td><p>String</p></td>
+<td><p>Table de mortalite d’expérience à appliquer</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_hyp_mort_prov</p></td>
+<td><p>String</p></td>
+<td><p>Table de mortalite utilisée pour le provisionnement</p></td>
+</tr>
+<tr class="row-odd"><td><p>sexe</p></td>
+<td><p>String</p></td>
+<td><p>Sexe</p></td>
+</tr>
+<tr class="row-even"><td><p>age</p></td>
+<td><p>Int32</p></td>
+<td><p>Age en années</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_asse_sexe</p></td>
+<td><p>String</p></td>
+<td><p>Sexe de l’assuré</p></td>
+</tr>
+<tr class="row-even"><td><p>dt_asse_naiss</p></td>
+<td><p>Date</p></td>
+<td><p>Date de naissance de l’assuré</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_asse_age_annee</p></td>
+<td><p>Int32</p></td>
+<td><p>Age de l’assuré en années</p></td>
+</tr>
+<tr class="row-even"><td><p>nb_asse_age_mois</p></td>
+<td><p>Int32</p></td>
+<td><p>Age de l’assuré en années</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_prst_rt</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de prestation de rachat total</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_prst_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de chargement sur les prestations</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_prst_dc_asse_exp</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de prestation décès appliqué dans la diffusion du nombre d’assuré</p></td>
+</tr>
+<tr class="row-even"><td><p>taf</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’affectation des produits financiers</p></td>
+</tr>
+<tr class="row-odd"><td><p>tfgse</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais de gestion sur encours euro</p></td>
+</tr>
+<tr class="row-even"><td><p>tfgse_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais de gestion sur encours UC</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmg</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux minimum garanti</p></td>
+</tr>
+<tr class="row-even"><td><p>tmg_type</p></td>
+<td><p>Enum(categories=[“net”, “brut”])</p></td>
+<td><p>Taux minimum garanti</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmg_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux minimum garanti, brut de taf et tfgse</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_ic_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’intérêts crédités Euro</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_ic_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’intérêts crédités UC</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_ic_eu_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’intérêts crédités Euro brut de taf et tfgse</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_ic_eu_demi_periode</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’intérêts crédités Euro</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_ic_uc_demi_periode</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’intérêts crédités UC</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_ic_eu_brt_demi_periode</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’intérêts crédités Euro brut de taf et tfgse</p></td>
+</tr>
+<tr class="row-even"><td><p>facteur_actu_tx_tech</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur d’actualisation au taux technique</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_hrg_eu</p></td>
+<td><p>Int32</p></td>
+<td><p>HRG associé au support euro</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pm_eu_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la PM (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pm_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la PM</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_tot_eu_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations totales, brutes de chargements</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_tot_eu_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations totales, nettes de chargements</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_tot_eu_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de chargements sur l’ensemble des prestations</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_dc_eu_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations décès, brutes de chargements</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_dc_eu_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations décès, nettes de chargements</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_dc_eu_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de chargements sur les prestations décès</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_rt_eu_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations rachat, brutes de chargements</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_rt_eu_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations rachat, nettes de chargements</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_rt_eu_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de chargements sur les prestations rachats</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_hrg_uc</p></td>
+<td><p>Int32</p></td>
+<td><p>HRG associé au support uc</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pm_uc_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la PM (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pm_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la PM</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_tot_uc_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations totales, brutes de chargements</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_tot_uc_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations totales, nettes de chargements</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_tot_uc_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de chargements sur l’ensemble des prestations</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_dc_uc_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations décès, brutes de chargements</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_dc_uc_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations décès, nettes de chargements</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_dc_uc_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de chargements sur les prestations décès</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_rt_uc_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations rachat, brutes de chargements</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_prst_rt_uc_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de prestations rachat, nettes de chargements</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prst_rt_uc_chgt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de chargements sur les prestations rachats</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ic_eu_rest</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’intérêts crédités des contrats Euro encore en cours à la fin de l’année</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ic_uc_rest</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’intérêts crédités des contrats UC encore en cours à la fin de l’année</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ic_eu_sort</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’intérêts crédités des contrats Euro sortis en cours d’année</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ic_uc_sort</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’intérêts crédités des contrats UC sortis en cours d’année</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fgse_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais de gestion sur encours</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fgse_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la marge financière assuré issue des TFGSE</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pb_ass</p></td>
+<td><p>Float64</p></td>
+<td><p>Assiette utilisée pour le calcul de la PB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pb_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PB brut de CSG</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pb_brt_cg</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PB brut post application des TAF et TFGSE</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pb_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PB net de CSG</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_csg</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de CSG</p></td>
+</tr>
+<tr class="row-even"><td><p>nb_cnt_anciennete_annee</p></td>
+<td><p>Int32</p></td>
+<td><p>Ancienneté du contrat en année</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_cnt_anciennete_mois</p></td>
+<td><p>Int32</p></td>
+<td><p>Ancienneté du contrat en mois</p></td>
+</tr>
+<tr class="row-even"><td><p>generation</p></td>
+<td><p>Int32</p></td>
+<td><p>Année de naissance d’une génération donnée</p></td>
+</tr>
+<tr class="row-odd"><td><p>qx</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de mortalité</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="frais-generaux">
+<h2>Frais généraux<a class="headerlink" href="#frais-generaux" title="Lien vers cette rubrique"></a></h2>
+<a id="tx_fgx_prst_eu"></a>
+
+<a id="tx_fgx_plct_eu"></a>
+
+<a id="tx_fgx_pm_eu"></a>
+
+<a id="mt_fgx_tot_eu"></a>
+
+<a id="mt_fgx_prst_eu"></a>
+
+<a id="mt_fgx_pm_eu"></a>
+
+<a id="mt_fgx_plct_eu"></a>
+
+<a id="tx_fgx_prst_uc"></a>
+
+<a id="tx_fgx_plct_uc"></a>
+
+<a id="tx_fgx_pm_uc"></a>
+
+<a id="mt_fgx_tot_uc"></a>
+
+<a id="mt_fgx_prst_uc"></a>
+
+<a id="mt_fgx_pm_uc"></a>
+
+<a id="mt_fgx_plct_uc"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tx_fgx_prst_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais généraux sur les prestations</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_fgx_plct_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais généraux sur les placements</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_fgx_pm_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais généraux sur les PM</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fgx_tot_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux totaux</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fgx_prst_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux sur prestations</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fgx_pm_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux sur PM</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fgx_plct_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux de placement</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_fgx_prst_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais généraux sur les prestations</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_fgx_plct_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais généraux sur les placements</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_fgx_pm_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais généraux sur les PM</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fgx_tot_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux totaux</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fgx_prst_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux sur prestations</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fgx_pm_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux sur PM</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fgx_plct_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de frais généraux de placement</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="alm">
+<h2>ALM<a class="headerlink" href="#alm" title="Lien vers cette rubrique"></a></h2>
+<a id="nb_ppe_generation"></a>
+
+<a id="nb_ppe_generation_max"></a>
+
+<a id="strat_alm_cas"></a>
+
+<a id="strat_alm_cas_priorite"></a>
+
+<a id="strat_alm_cas_priorite_min"></a>
+
+<a id="tx_pb_min_regl_solde_fin"></a>
+
+<a id="tx_pb_min_regl_solde_tech"></a>
+
+<a id="cd_methode_tx_cible"></a>
+
+<a id="tx_cible_fixe"></a>
+
+<a id="tx_is"></a>
+
+<a id="tx_servi_brt"></a>
+
+<a id="tx_servi_net"></a>
+
+<a id="tx_tmg"></a>
+
+<a id="pente_pb_brt"></a>
+
+<a id="pente_pfi"></a>
+
+<a id="mt_pb_brt_min_regl"></a>
+
+<a id="mt_ic_rest_cum_sum"></a>
+
+<a id="mt_ic_rest_canton"></a>
+
+<a id="mt_ppe_av"></a>
+
+<a id="mt_ppe"></a>
+
+<a id="mt_pb_ass_canton"></a>
+
+<a id="mt_reserve_capi_av"></a>
+
+<a id="mt_reserve_capi"></a>
+
+<a id="mt_capitaux_propres_av"></a>
+
+<a id="mt_capitaux_propres"></a>
+
+<a id="cd_methode_pfi_cle_repart"></a>
+
+<a id="cd_type_canton"></a>
+
+<a id="mt_cash_init"></a>
+
+<a id="mt_pfi_init"></a>
+
+<a id="mt_pfi_besoin_tx_cible"></a>
+
+<a id="mt_pb_brt_besoin_tx_cible"></a>
+
+<a id="mt_ppe_delta"></a>
+
+<a id="mt_ppe_restante"></a>
+
+<a id="mt_ppe_reprise"></a>
+
+<a id="mt_ppe_dispo"></a>
+
+<a id="mt_ppe_dotation"></a>
+
+<a id="mt_ppe_cum_sum"></a>
+
+<a id="tx_pfi_asse_repart_pc"></a>
+
+<a id="mt_pfi_asse"></a>
+
+<a id="mt_pfi_asse_pb"></a>
+
+<a id="mt_pfi_assr"></a>
+
+<a id="mt_res_brt"></a>
+
+<a id="mt_res_brt_asse"></a>
+
+<a id="mt_res_is"></a>
+
+<a id="mt_res_net"></a>
+
+<a id="mt_fuite_eco"></a>
+
+<a id="mt_fuite_vc"></a>
+
+<a id="mt_fuite_vc_tmp"></a>
+
+<a id="mt_fuite_vc_eu"></a>
+
+<a id="mt_fuite_vc_uc"></a>
+
+<a id="mt_prov"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nb_ppe_generation</p></td>
+<td><p>Int64</p></td>
+<td><p>Génération de PPE</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_ppe_generation_max</p></td>
+<td><p>Int64</p></td>
+<td><p>Génération de PPE maximum</p></td>
+</tr>
+<tr class="row-even"><td><p>strat_alm_cas</p></td>
+<td><p>String</p></td>
+<td><p>Cas possibles pour la stratégie ALM (chaine de caractères)</p></td>
+</tr>
+<tr class="row-odd"><td><p>strat_alm_cas_priorite</p></td>
+<td><p>Int64</p></td>
+<td><p>Priorité donnée aux cas possibles pour la stratégie ALM (entier)</p></td>
+</tr>
+<tr class="row-even"><td><p>strat_alm_cas_priorite_min</p></td>
+<td><p>Int64</p></td>
+<td><p>Priorité minimum associé aux cas possibles pour la stratégie ALM (entier)</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_pb_min_regl_solde_fin</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux minimum règlementaire associé au partage du résultat financier</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_pb_min_regl_solde_tech</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux minimum règlementaire associé au partage du résultat technique</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_methode_tx_cible</p></td>
+<td><p>String</p></td>
+<td><p>Méthode associé au calcul du taux cible</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_cible_fixe</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux servi cible</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_is</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’impôts sur les société</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_servi_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux servi brut</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_servi_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux servi net</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_tmg</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux minimum garanti</p></td>
+</tr>
+<tr class="row-odd"><td><p>pente_pb_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Pente de la courbe MtPbBrt=f(txServiBrt)</p></td>
+</tr>
+<tr class="row-even"><td><p>pente_pfi</p></td>
+<td><p>Float64</p></td>
+<td><p>Pente de la courbe MtPfi=f(txServiBrt)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pb_brt_min_regl</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PB minimum règlementaire</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ic_rest_cum_sum</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’intérêts crédités total</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ic_rest_canton</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’intérêts crédités restants au niveau canton</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ppe_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PPB (avant évènement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ppe</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PPB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pb_ass_canton</p></td>
+<td><p>Float64</p></td>
+<td><p>Assiette servant au calcul de la PB (au niveau canton)</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_reserve_capi_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de réserve de capitalisation (avant évènement)</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_reserve_capi</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de réserve de capitalisation</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_capitaux_propres_av</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de capitaux propres (avant évènement)</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_capitaux_propres</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de capitaux propres</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_methode_pfi_cle_repart</p></td>
+<td><p>String</p></td>
+<td><p>Indice de Gestion</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_type_canton</p></td>
+<td><p>String</p></td>
+<td><p>Indice de Gestion</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_cash_init</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de cash initial</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pfi_init</p></td>
+<td><p>Float64</p></td>
+<td><p>Produits financiers initiaux disponibles en input de l’algorithme ALM</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pfi_besoin_tx_cible</p></td>
+<td><p>Float64</p></td>
+<td><p>Besoin en pfi pour servir le taux cible</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pb_brt_besoin_tx_cible</p></td>
+<td><p>Float64</p></td>
+<td><p>Besoin en pb pour servir le taux cible</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ppe_delta</p></td>
+<td><p>Float64</p></td>
+<td><p>Delta de PPB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ppe_restante</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de PPB restante</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ppe_reprise</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la reprise de PPB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ppe_dispo</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la reprise de PPB complémentaire</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_ppe_dotation</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la dotation à la PPB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_ppe_cum_sum</p></td>
+<td><p>Float64</p></td>
+<td><p>Somme des générations de PPB pour un canton donné</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_pfi_asse_repart_pc</p></td>
+<td><p>Float64</p></td>
+<td><p>Part des produits financiers du canton qui a vocation à être réparti en marge financière et PB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pfi_asse</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant des produits financiers assurés</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_pfi_asse_pb</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant des produits financiers assurés en input du compte de PB</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_pfi_assr</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la marge financière assureur</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_res_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de résultat brut</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_res_brt_asse</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de résultat brut issu du compte de PB</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_res_is</p></td>
+<td><p>Float64</p></td>
+<td><p>Impots sur les sociétés</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_res_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de résultat net</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fuite_eco</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de la fuite économique</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fuite_vc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de fuite de valeur comptable</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fuite_vc_tmp</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de fuite de valeur comptable (variable temporaire)</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_fuite_vc_eu</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de fuite de valeur comptable en Euro</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_fuite_vc_uc</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de fuite de valeur comptable en Uc</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_prov</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant de provision</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="strategie-d-investissement">
+<h2>Stratégie d’investissement<a class="headerlink" href="#strategie-d-investissement" title="Lien vers cette rubrique"></a></h2>
+<a id="tx_alloc_cible"></a>
+
+<a id="tx_oblig_achat_cpn"></a>
+
+<a id="nb_oblig_achat_maturite"></a>
+
+<a id="tx_frais_plct"></a>
+
+<a id="mt_vm_av_canton"></a>
+
+<a id="mt_vm_av_cd_classe_actif"></a>
+
+<a id="mt_vm_av_ass_achat_vente"></a>
+
+<a id="mt_vm_cible_cd_classe_actif"></a>
+
+<a id="mt_achat_oblig"></a>
+
+<a id="facteur_achat_vente"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tx_alloc_cible</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux d’allocation cible</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_oblig_achat_cpn</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de coupon des obligations à acheter</p></td>
+</tr>
+<tr class="row-even"><td><p>nb_oblig_achat_maturite</p></td>
+<td><p>Float64</p></td>
+<td><p>Maturité des obligations à acheter</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_frais_plct</p></td>
+<td><p>Float64</p></td>
+<td><p>Taux de frais de placement</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vm_av_canton</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur de marché avant stratégie d’investissement pour le canton considéré</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_vm_av_cd_classe_actif</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur de marché avant stratégie d’investissement pour la classe d’actif considérée</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_vm_av_ass_achat_vente</p></td>
+<td><p>Float64</p></td>
+<td><p>Assiette utilisée pour les achats ventes à réaliser</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_vm_cible_cd_classe_actif</p></td>
+<td><p>Float64</p></td>
+<td><p>Valeur de marché cible</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_achat_oblig</p></td>
+<td><p>Float64</p></td>
+<td><p>Montant d’obligations à acheter (output de la stratégie d’investissement)</p></td>
+</tr>
+<tr class="row-odd"><td><p>facteur_achat_vente</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur d’achat vente (output de la stratégie d’investissement)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="solvabilite-2">
+<h2>Solvabilité 2<a class="headerlink" href="#solvabilite-2" title="Lien vers cette rubrique"></a></h2>
+<a id="cd_choc_s2"></a>
+
+<a id="cd_choc_s2_gse"></a>
+
+<a id="cd_choc_s2_passif_prst"></a>
+
+<a id="cd_choc_s2_passif_ic_fgx"></a>
+
+<a id="cd_type_flux"></a>
+
+<a id="cd_type_prov_mv_be_nav"></a>
+
+<a id="tx_choc_mort"></a>
+
+<a id="tx_choc_expense"></a>
+
+<a id="tx_choc_expense_inflation"></a>
+
+<a id="tx_choc_mort_cat"></a>
+
+<a id="tx_choc_lapse"></a>
+
+<a id="tx_choc_lapse_mass"></a>
+
+<a id="cd_type_taux"></a>
+
+<a id="tx_choc_equity_t1"></a>
+
+<a id="tx_choc_equity_t2"></a>
+
+<a id="tx_choc_property"></a>
+
+<a id="tx_choc_longevity"></a>
+
+<a id="tx_choc_revision"></a>
+
+<a id="tx_choc_inval"></a>
+
+<a id="tx_choc_equity_strat"></a>
+
+<a id="tx_choc_spread_stress"></a>
+
+<a id="tx_choc_spread_a"></a>
+
+<a id="tx_choc_spread_b"></a>
+
+<a id="nb_duration_min"></a>
+
+<a id="nb_duration_max"></a>
+
+<a id="facteur_choc_spread_mt_vm"></a>
+
+<a id="mt_be_brt"></a>
+
+<a id="mt_be_net"></a>
+
+<a id="mt_be_reass"></a>
+
+<a id="mt_be_reass_ajst"></a>
+
+<a id="mt_duration_mod"></a><table class="table-custom docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cd_choc_s2</p></td>
+<td><p>Categorical</p></td>
+<td><p>Choc Solvabilité 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_choc_s2_gse</p></td>
+<td><p>Categorical</p></td>
+<td><p>Choc Solvabilité 2 applicable aux variables économiques</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_choc_s2_passif_prst</p></td>
+<td><p>Categorical</p></td>
+<td><p>Choc Solvabilité 2 applicable aux hypothèses de prestations</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_choc_s2_passif_ic_fgx</p></td>
+<td><p>Categorical</p></td>
+<td><p>Choc Solvabilité 2 applicable à la table PassifHypsIcFgx</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_type_flux</p></td>
+<td><p>Categorical</p></td>
+<td><p>Type de flux</p></td>
+</tr>
+<tr class="row-odd"><td><p>cd_type_prov_mv_be_nav</p></td>
+<td><p>Categorical</p></td>
+<td><p>Type de provision</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_mort</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 associé à la mortalité</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_expense</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 associé aux frais généraux</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_expense_inflation</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 associé à l’inflation des frais généraux</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_mort_cat</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 mortalité catastrophe</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_lapse</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 rachat</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_lapse_mass</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 rachat masse</p></td>
+</tr>
+<tr class="row-even"><td><p>cd_type_taux</p></td>
+<td><p>String</p></td>
+<td><p>Type de taux dans la table hypS2Chocs</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_equity_t1</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 action de type 1</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_equity_t2</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 action de type 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_property</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 immobilier</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_longevity</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 longévité</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_revision</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 révision</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_inval</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 invalidité</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_equity_strat</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 action stratégique</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_spread_stress</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 spread stress</p></td>
+</tr>
+<tr class="row-odd"><td><p>tx_choc_spread_a</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 spread A</p></td>
+</tr>
+<tr class="row-even"><td><p>tx_choc_spread_b</p></td>
+<td><p>Float64</p></td>
+<td><p>Choc Solvabilité 2 spread B</p></td>
+</tr>
+<tr class="row-odd"><td><p>nb_duration_min</p></td>
+<td><p>Int32</p></td>
+<td><p>Borne minimum de duration pour l’application du choc spread</p></td>
+</tr>
+<tr class="row-even"><td><p>nb_duration_max</p></td>
+<td><p>Int32</p></td>
+<td><p>Borne maximum de duration pour l’application du choc spread</p></td>
+</tr>
+<tr class="row-odd"><td><p>facteur_choc_spread_mt_vm</p></td>
+<td><p>Float64</p></td>
+<td><p>Facteur de choc spread sur le montant de valeur de marché</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_be_brt</p></td>
+<td><p>Float64</p></td>
+<td><p>Best Estimate bruts de réassurance</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_be_net</p></td>
+<td><p>Float64</p></td>
+<td><p>Best Estimate net de réassurance</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_be_reass</p></td>
+<td><p>Float64</p></td>
+<td><p>Best Estimate cédé</p></td>
+</tr>
+<tr class="row-odd"><td><p>mt_be_reass_ajst</p></td>
+<td><p>Float64</p></td>
+<td><p>Ajustement pour défaut</p></td>
+</tr>
+<tr class="row-even"><td><p>mt_duration_mod</p></td>
+<td><p>Float64</p></td>
+<td><p>Duration modifiée</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="metadata.html" class="btn btn-neutral float-left" title="Description des données" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="dataframes.html" class="btn btn-neutral float-right" title="Format des dataframes" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

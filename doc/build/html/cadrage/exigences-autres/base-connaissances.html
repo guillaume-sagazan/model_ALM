@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base de connaissances &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Processus de delivery" href="process-delivery.html" />
+    <link rel="prev" title="Orchestration des calculs &amp; data quality" href="orchestration-dq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeles/modeles.html">Choix de modélisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="exigences-autres.html">Exigences complémentaires</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xp-users.html">Expérience Utilisateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="orchestration-dq.html">Orchestration des calculs &amp; data quality</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Base de connaissances</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#perimetre-de-la-base-de-connaissances">Périmètre de la base de connaissances</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#cadrage-du-projet">Cadrage du projet</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gouvernance-projet">Gouvernance projet</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#textes-reglementaires-et-normes">Textes règlementaires et normes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#specifications-fonctionnelles">Spécifications fonctionnelles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#description-des-donnees">Description des données</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utilisation-de-la-solution">Utilisation de la solution</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#documentation-du-code">Documentation du code</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#liens-externes">Liens externes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#exigences-reglementaires-associees-a-la-gestion-de-la-documentation">Exigences règlementaires associées à la gestion de la documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exigences-techniques">Exigences techniques</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#versioning-de-la-base-documentaire">Versioning de la base documentaire</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#point-d-entree-unique">Point d’entrée unique</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#suivi-des-deltas">Suivi des deltas</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gestion-de-la-documentation-via-branches">Gestion de la documentation via branches</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#formats-attendus">Formats attendus</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gestion-de-versions-internes-externes">Gestion de versions internes / externes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#release-notes">Release notes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#capacite-de-gerer-de-multiples-contributeurs">Capacité de gérer de multiples contributeurs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#acces-aux-referentiels">Accès aux référentiels</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#acces-aux-metadata">Accès aux metadata</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#integration-de-formules-mathematiques">Intégration de formules mathématiques</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#acces-au-code">Accès au code</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gestion-des-identites-et-acces">Gestion des identités et accès</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="process-delivery.html">Processus de delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../choix-tech/choix-tech.html">Choix techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="exigences-autres.html">Exigences complémentaires</a></li>
+      <li class="breadcrumb-item active">Base de connaissances</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/exigences-autres/base-connaissances.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="base-de-connaissances">
+<h1>Base de connaissances<a class="headerlink" href="#base-de-connaissances" title="Lien vers cette rubrique"></a></h1>
+<section id="perimetre-de-la-base-de-connaissances">
+<h2>Périmètre de la base de connaissances<a class="headerlink" href="#perimetre-de-la-base-de-connaissances" title="Lien vers cette rubrique"></a></h2>
+<p>La base de connaissance comprendra tous les éléments suivants.</p>
+<section id="cadrage-du-projet">
+<h3>Cadrage du projet<a class="headerlink" href="#cadrage-du-projet" title="Lien vers cette rubrique"></a></h3>
+<p>La documentation associée au cadrage du projet inclut :</p>
+<ul class="simple">
+<li><p>la formalisation des besoins des différentes parties prenantes</p></li>
+<li><p>les instructions de choix réalisées dans le cadre de la mise en place de la solution.</p></li>
+</ul>
+</section>
+<section id="gouvernance-projet">
+<h3>Gouvernance projet<a class="headerlink" href="#gouvernance-projet" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie de la documentation comprend :</p>
+<ul class="simple">
+<li><p>Un référentiel des acteurs impliqués</p></li>
+<li><p>La comitologie associée au projet ou connexe à celui-ci</p></li>
+<li><p>L’organisation interne du projet</p></li>
+<li><p>Les supports &amp; CR des comités afférents au SI Risques et Inventaire</p></li>
+</ul>
+</section>
+<section id="textes-reglementaires-et-normes">
+<h3>Textes règlementaires et normes<a class="headerlink" href="#textes-reglementaires-et-normes" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie de la documentation comprend les textes règlementaires en vigeur ainsi que les normes calculatoires spécifiques à au groupe d’assurances.</p>
+</section>
+<section id="specifications-fonctionnelles">
+<h3>Spécifications fonctionnelles<a class="headerlink" href="#specifications-fonctionnelles" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie de la documentation comprend les spécifications fonctionnelles des différents modules calculatoires.</p>
+</section>
+<section id="description-des-donnees">
+<h3>Description des données<a class="headerlink" href="#description-des-donnees" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie de la documentation comprend :</p>
+<ul class="simple">
+<li><p>la documentation du dictionnaire de données utilisé pour chaque version</p></li>
+<li><p>la documentation des formats des différents dataframes utilsés du bout en bout</p></li>
+<li><p>la documentation de la structure des différents éléments de configuration</p></li>
+</ul>
+</section>
+<section id="utilisation-de-la-solution">
+<h3>Utilisation de la solution<a class="headerlink" href="#utilisation-de-la-solution" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie de la documentation est destinée à expliquer aux utilisateurs comment utiliser la solution.</p>
+</section>
+<section id="documentation-du-code">
+<h3>Documentation du code<a class="headerlink" href="#documentation-du-code" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie de la documentation vise à permettre un accès au code aux différents utilisateurs afin de faciliter la compréhension des calculs réalisés par les utilisateurs finaux.</p>
+</section>
+<section id="liens-externes">
+<h3>Liens externes<a class="headerlink" href="#liens-externes" title="Lien vers cette rubrique"></a></h3>
+<p>Cette partie est une simple liste de liens externes jugés intéressants par la communauté.</p>
+</section>
+</section>
+<section id="exigences-reglementaires-associees-a-la-gestion-de-la-documentation">
+<h2>Exigences règlementaires associées à la gestion de la documentation<a class="headerlink" href="#exigences-reglementaires-associees-a-la-gestion-de-la-documentation" title="Lien vers cette rubrique"></a></h2>
+<p>Liens vers les exigences Solvabilté 2</p>
+<p>Desciption des exigences S2 / standards DSI…</p>
+</section>
+<section id="exigences-techniques">
+<h2>Exigences techniques<a class="headerlink" href="#exigences-techniques" title="Lien vers cette rubrique"></a></h2>
+<p>Ci dessous la liste des exigences technico-fonctionnelles attendues vis à vis de la base documentaire.</p>
+<section id="versioning-de-la-base-documentaire">
+<h3>Versioning de la base documentaire<a class="headerlink" href="#versioning-de-la-base-documentaire" title="Lien vers cette rubrique"></a></h3>
+<p>De part la nature des indicateurs calculés par le SI Risques et Inventaire, celui-ci sera régulièrement audité par des entités internes ou externes.</p>
+<p>Ces audits pourront ne pas concerner la toute dernière version de la chaîne de production et il convient donc de disposer de versions de la base documentaire pour chaque version de la chaîne de production utilisée à des fins de calculs règlementaires.</p>
+<p>Il est aussi possible de vouloir décliner cette exigence aux calculs non réalisés dans le cadre de calculs règlementaires uniquement.</p>
+</section>
+<section id="point-d-entree-unique">
+<h3>Point d’entrée unique<a class="headerlink" href="#point-d-entree-unique" title="Lien vers cette rubrique"></a></h3>
+<p>Le spectre de la documentation associée au SI Risques et Inventaire peut être assez large en fonction des choix réalisés quant à son périmètre.</p>
+<p>Afin de faciliter l’accès de la documentation à l’ensemble des parties, un point d’accès unique est attendu.</p>
+<p>Cela comprend la nécessité d’accéder aux différentes versions de la base documentaire comme vu plus haut.</p>
+</section>
+<section id="suivi-des-deltas">
+<h3>Suivi des deltas<a class="headerlink" href="#suivi-des-deltas" title="Lien vers cette rubrique"></a></h3>
+<p>Devra être possible de suivre qui a fait quels deltas dans la documentation.</p>
+</section>
+<section id="gestion-de-la-documentation-via-branches">
+<h3>Gestion de la documentation via branches<a class="headerlink" href="#gestion-de-la-documentation-via-branches" title="Lien vers cette rubrique"></a></h3>
+<p>Les développements étant réalisés via l’utilisation de branches, peut être considéré nécessaire que la documentation suive cette même logique.</p>
+<p>Cette fonctionnalité est plus particulièrement prégnante pour la documentation des applicatifs de la chaîne de production.</p>
+</section>
+<section id="formats-attendus">
+<h3>Formats attendus<a class="headerlink" href="#formats-attendus" title="Lien vers cette rubrique"></a></h3>
+<p>Autant que faire se peut, est attendu que la documentation soit d’abord disponible / accessible en format web de sorte à faciliter le parcours de celle-ci.</p>
+<p>Outre ce premier format, il devra être possible de disposer de sous parties de la documentation au format pdf et au format word, à destination d’acteurs internes ou externes.</p>
+</section>
+<section id="gestion-de-versions-internes-externes">
+<h3>Gestion de versions internes / externes<a class="headerlink" href="#gestion-de-versions-internes-externes" title="Lien vers cette rubrique"></a></h3>
+<p>Autant que faire se peut, le système de gestion de la base documentaire permettra de disposer de versions à destination d’acteurs internes et de versions à destination d’acteurs externes (auditeurs par exemple)</p>
+</section>
+<section id="release-notes">
+<h3>Release notes<a class="headerlink" href="#release-notes" title="Lien vers cette rubrique"></a></h3>
+<p>Le spectre de la documentation associée au SI Risques et Inventaire peut être assez large en fonction des choix réalisés quant à son périmètre.</p>
+<p>Est donc attendu que des synthèses des deltas apportées entre deux versions de la base de connaissance soit mis à disposition, de manière automatique si cela est possible</p>
+</section>
+<section id="capacite-de-gerer-de-multiples-contributeurs">
+<h3>Capacité de gérer de multiples contributeurs<a class="headerlink" href="#capacite-de-gerer-de-multiples-contributeurs" title="Lien vers cette rubrique"></a></h3>
+<p>Est attendu que les contributeurs à la base de connaissance soient multiples, avec des appétences diverses quant aux outils informatiques.</p>
+</section>
+<section id="acces-aux-referentiels">
+<h3>Accès aux référentiels<a class="headerlink" href="#acces-aux-referentiels" title="Lien vers cette rubrique"></a></h3>
+<p>Les processus calculatoires associés au SI Risques et Inventaire sont complexes et assis sur différents référentiels d’entreprise.</p>
+<p>Autant que faire se peut, est attendu que les utilisateurs puissent parcourir ces référentiels.</p>
+<p>A noter qu’au même titre que la base documentaire est versionnée, il doit être possible aux utilisateurs de visualiser</p>
+</section>
+<section id="acces-aux-metadata">
+<h3>Accès aux metadata<a class="headerlink" href="#acces-aux-metadata" title="Lien vers cette rubrique"></a></h3>
+<p>La chaîne de production des indicateurs comprend un certain nombre d’applicatifs nécessitant divers inputs et générant divers outputs.</p>
+<p>Pour une version donnée de la base de connaissance et de la chaîne de production associée, les utilisateurs ont besoin d’accéder :</p>
+<ul class="simple">
+<li><p>Aux différents dictionnaires de données utiliséS</p></li>
+<li><p>Aux formats des données en input et en outputs</p></li>
+<li><p>Eventuellement aux formats de certains intermédiaires de calculs</p></li>
+</ul>
+</section>
+<section id="integration-de-formules-mathematiques">
+<h3>Intégration de formules mathématiques<a class="headerlink" href="#integration-de-formules-mathematiques" title="Lien vers cette rubrique"></a></h3>
+<p>De part les thématiques traitées au sein du SI Risques et Inventaire, le système de gestion de la base documentaire devra permettre d’intégrer</p>
+</section>
+<section id="acces-au-code">
+<h3>Accès au code<a class="headerlink" href="#acces-au-code" title="Lien vers cette rubrique"></a></h3>
+<p>Pour certains applicatifs de la chaîne de production (par exemple les modèles actuariels), peut être souhaité par les utilisateurs un accès en lecture seule au code en plus de l’accès aux spécifications.</p>
+</section>
+<section id="gestion-des-identites-et-acces">
+<h3>Gestion des identités et accès<a class="headerlink" href="#gestion-des-identites-et-acces" title="Lien vers cette rubrique"></a></h3>
+<p>L’ensemble de la base de connaissance n’a pas vocation à être accessible à l’ensemble des utilisateurs.</p>
+<p>Est donc nécessaire de pouvoir gérer les accès des utlisateurs aux différents contenus de la base de connaissance.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="orchestration-dq.html" class="btn btn-neutral float-left" title="Orchestration des calculs &amp; data quality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="process-delivery.html" class="btn btn-neutral float-right" title="Processus de delivery" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

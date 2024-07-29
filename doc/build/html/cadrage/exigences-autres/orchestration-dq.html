@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orchestration des calculs &amp; data quality &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Base de connaissances" href="base-connaissances.html" />
+    <link rel="prev" title="Expérience Utilisateurs" href="xp-users.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeles/modeles.html">Choix de modélisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="exigences-autres.html">Exigences complémentaires</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="xp-users.html">Expérience Utilisateurs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Orchestration des calculs &amp; data quality</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#orchestration-des-calculs">Orchestration des calculs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-de-la-qualite-des-donnees">Gestion de la qualité des données</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="base-connaissances.html">Base de connaissances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process-delivery.html">Processus de delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../choix-tech/choix-tech.html">Choix techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="exigences-autres.html">Exigences complémentaires</a></li>
+      <li class="breadcrumb-item active">Orchestration des calculs &amp; data quality</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/exigences-autres/orchestration-dq.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="orchestration-des-calculs-data-quality">
+<h1>Orchestration des calculs &amp; data quality<a class="headerlink" href="#orchestration-des-calculs-data-quality" title="Lien vers cette rubrique"></a></h1>
+<section id="orchestration-des-calculs">
+<h2>Orchestration des calculs<a class="headerlink" href="#orchestration-des-calculs" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Orchestration des pipelines :</strong></p>
+<p>La solution permettra de définir et d’orchestrer des pipelines de données complexes, comprenant des dépendances explicites entre les différentes étapes (ou nœuds) du pipeline.</p>
+<p><strong>Conception des pipeline :</strong></p>
+<p>La solution retenue permettra une grande réutilisation des différents pipelines et permettra de définir les assets de données produits et consommés par les pipelines, facilitant la traçabilité et la gestion des dépendances des données.</p>
+<p><strong>Gestion des configurations :</strong></p>
+<p>La solution permettra de gérer les paramètres et les options des pipelines, facilitant ainsi le passage d’un environnement à un autre (développement, test, production).</p>
+<p><strong>Observabilité et monitoring :</strong></p>
+<p>La solution retenue mettra à disposition des outils d’observabilité pour surveiller l’exécution des pipelines, y compris des journaux détaillés, des métriques, et des visualisations des pipelines.</p>
+<p><strong>Intégration avec d’autres outils :</strong></p>
+<p>La solution permettra de s’intègrer avec :</p>
+<ul class="simple">
+<li><p>une variété de langages Pandas, Spark, SQL</p></li>
+<li><p>d’autres orchestrateurs comme Apache Airflow</p></li>
+<li><p>des systèmes de gestion de qualité de données</p></li>
+</ul>
+<p><strong>Gestion des erreurs et reprise :</strong></p>
+<p>Les pipelines doivent pouvoir être configurés pour gérer les erreurs de manière granulaire, permettant la reprise partielle des pipelines en cas d’échec.</p>
+<p><strong>Exécution locale et distante :</strong></p>
+<p>La solution retenue permettra l’exécution des pipelines en local pour le développement et les tests, ainsi qu’en environnement distribué pour la production.</p>
+<p><strong>Planification &amp; Gestion des évènements :</strong></p>
+<p>Les pipelines peuvent être planifiés pour s’exécuter à des horaires spécifiques ou déclenchés par des événements, facilitant l’automatisation des workflows de données.</p>
+<p><strong>Composition de pipelines :</strong></p>
+<p>La solution supportera la composition de pipelines, permettant de combiner plusieurs pipelines en workflows plus complexes.</p>
+<p><strong>Backfills :</strong></p>
+<p>La solution permettra de ré-exécuter des portions de données historiques (backfills) facilement, facilitant la correction et la ré-analyse des données passées.</p>
+<p><strong>Types personnalisés et validation des données :</strong></p>
+<p>Vous pouvez définir des types de données personnalisés et des validations pour garantir l’intégrité des données à chaque étape du pipeline.</p>
+<p><strong>Interface utilisateur et tableau de bord :</strong></p>
+<p>La solution offrira une interface utilisateur riche pour la gestion et le monitoring des pipelines, permettant aux utilisateurs de visualiser les exécutions, de planifier les tâches et de consulter les logs.
+Celle ci sera personnalisable.</p>
+<p><strong>Support des ressources externes :</strong></p>
+<p>Les pipelines peuvent être configurés pour utiliser des ressources externes telles que des bases de données, des services web, et des systèmes de fichiers, avec des hooks pour gérer leur cycle de vie.</p>
+</section>
+<section id="gestion-de-la-qualite-des-donnees">
+<h2>Gestion de la qualité des données<a class="headerlink" href="#gestion-de-la-qualite-des-donnees" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Définition des attentes :</strong></p>
+<p>Vous pouvez définir des attentes spécifiques concernant vos données. Les attentes peuvent être des règles simples, comme « la colonne A ne doit pas avoir de valeurs nulles », ou plus complexes, comme « la somme des valeurs de la colonne B doit être égale à un certain total ».</p>
+<p><strong>Validation des données :</strong></p>
+<p>Great Expectations permet de valider les données en fonction des attentes définies. Cela peut se faire sur des données historiques ou en temps réel, intégrées dans vos pipelines de données.</p>
+<p><strong>Documentation automatique des attentes :</strong></p>
+<p>Les attentes définies sont automatiquement documentées sous forme de pages HTML, ce qui facilite la compréhension et la communication des règles de validation des données aux autres membres de l’équipe.</p>
+<p><strong>Intégration avec différents outils et plateformes :</strong></p>
+<p>Great Expectations s’intègre avec de nombreuses sources de données et outils de traitement des données comme Pandas, SQLAlchemy, Spark, etc. Cela permet de valider des données provenant de diverses sources de manière homogène.</p>
+<p><strong>Profilage des données :</strong></p>
+<p>L’outil permet de générer des profils de données, fournissant un aperçu des distributions de colonnes, des types de données et des valeurs inhabituelles, facilitant ainsi la compréhension des caractéristiques de vos données.</p>
+<p><strong>Checkpoints :</strong></p>
+<p>Les checkpoints permettent de regrouper plusieurs validations de données et de les exécuter ensemble. Cela permet de structurer et de planifier les validations de manière cohérente.</p>
+<p><strong>Alertes et notifications :</strong></p>
+<p>En cas d’échec de validation, Great Expectations peut envoyer des alertes et des notifications, permettant de réagir rapidement aux problèmes de qualité des données.</p>
+<p><strong>Flexibilité et extensibilité :</strong></p>
+<p>Vous pouvez personnaliser et étendre les attentes et les validations en fonction de vos besoins spécifiques, grâce à la possibilité d’écrire des attentes personnalisées.</p>
+<p><strong>Intégration CI/CD :</strong></p>
+<p>Great Expectations peut être intégré dans les pipelines de CI/CD, permettant de vérifier la qualité des données à chaque étape de développement et de déploiement.</p>
+<p><strong>Visualisation des résultats de validation :</strong></p>
+<p>Les résultats des validations sont présentés de manière visuelle et détaillée, permettant d’identifier facilement les problèmes et de prendre des mesures correctives.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="xp-users.html" class="btn btn-neutral float-left" title="Expérience Utilisateurs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="base-connaissances.html" class="btn btn-neutral float-right" title="Base de connaissances" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

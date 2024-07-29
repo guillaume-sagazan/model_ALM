@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion de la qualité des données &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Solution de gestion de la documentation projet" href="solution-doc-projet.html" />
+    <link rel="prev" title="Gestion de Workflow" href="gestion-pipelines.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeles/modeles.html">Choix de modélisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exigences-autres/exigences-autres.html">Exigences complémentaires</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="choix-tech.html">Choix techniques</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="framework-df2df.html">Performances &amp; Choix du framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prisme-modelisation.html">Prisme d’implémentation &amp; Maintenabilité</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gestion-pipelines.html">Gestion de Workflow</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gestion de la qualité des données</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#solutions-envisagees">Solutions envisagées</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#criteres-de-choix">Critères de choix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparaison-des-solutions-envisagees">Comparaison des solutions envisagées</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="solution-doc-projet.html">Solution de gestion de la documentation projet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="choix-tech.html">Choix techniques</a></li>
+      <li class="breadcrumb-item active">Gestion de la qualité des données</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/choix-tech/framework-dq.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gestion-de-la-qualite-des-donnees">
+<h1>Gestion de la qualité des données<a class="headerlink" href="#gestion-de-la-qualite-des-donnees" title="Lien vers cette rubrique"></a></h1>
+<p>Cette instruction de choix a été réalisée en juin 2024.</p>
+<section id="solutions-envisagees">
+<h2>Solutions envisagées<a class="headerlink" href="#solutions-envisagees" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Great expectations</strong></p>
+<p>Great Expectations est une bibliothèque open source de validation de données en Python qui permet de définir, exécuter et documenter des attentes sur la qualité des données. Elle offre des outils pour créer des tests automatisés et générer des rapports de validation de données.</p>
+<p><strong>Deequ</strong></p>
+<p>Développé par Amazon, Deequ est une bibliothèque Scala pour vérifier la qualité des données. Elle permet de définir des contraintes de qualité des données, de profiler les données, et de produire des métriques de qualité.</p>
+<p><strong>DBT (Data Build Tool)</strong></p>
+<p>DBT est un outil qui permet de transformer des données dans des entrepôts de données en utilisant du SQL. Il permet également de tester la qualité des données avec des tests unitaires.</p>
+<p><strong>Apache Griffin</strong></p>
+<p>Apache Griffin est un framework open source pour mesurer la qualité des données. Il permet la définition de règles de qualité des données et la génération de métriques de qualité des données.</p>
+<p><strong>Pandera</strong></p>
+<p>Pandera est une bibliothèque Python qui utilise les dataframes Pandas pour la validation des données. Elle permet de définir des schémas de validation pour les dataframes et d’automatiser la validation des données.</p>
+<p><strong>Cerberus</strong></p>
+<p>Cerberus est une bibliothèque légère de validation de schémas de données pour Python. Elle est flexible et facile à utiliser pour valider des structures de données JSON et des dictionnaires.</p>
+<p><strong>Tidy Data Validator (TDV)</strong></p>
+<p>TDV est un outil pour la validation des données dans les pipelines de données. Il permet de définir des règles de validation et de produire des rapports de validation.</p>
+<p><strong>Data-QA</strong></p>
+<p>Data-QA est une solution intégrée pour surveiller et gérer la qualité des données. Elle permet de définir des règles de validation et de suivre les métriques de qualité des données.</p>
+<p><strong>Datafold</strong></p>
+<p>Datafold propose des outils pour la gestion de la qualité des données et la détection des anomalies. Il offre des fonctionnalités pour la validation des pipelines de données et le monitoring des modifications de données.</p>
+<p><strong>Cerberus</strong></p>
+<blockquote>
+<div><p>Une bibliothèque légère pour la validation de schémas sur des dictionnaires.
+Flexible avec des règles de validation personnalisées.
+Bien adapté pour des structures de données simples.</p>
+</div></blockquote>
+<p><strong>Voluptuous</strong></p>
+<p>Une autre option légère pour la validation de schémas sur des dictionnaires.
+Offre une bonne flexibilité avec des validateurs personnalisés.
+Idéal pour des besoins de validation simples et rapides.</p>
+<p><strong>Soda</strong></p>
+<p>Conçu pour la surveillance et la gestion de la qualité des données.
+Offre des fonctionnalités de profiling de données et de monitoring des pipelines.
+Supporte les DataFrames pandas et les bases de données SQL.
+Utilise YAML/JSON pour la définition des schémas et des règles de validation.</p>
+</section>
+<section id="criteres-de-choix">
+<h2>Critères de choix<a class="headerlink" href="#criteres-de-choix" title="Lien vers cette rubrique"></a></h2>
+<p>Les critères de choix suivants sont retenus :</p>
+<ul class="simple">
+<li><p><strong>Type de données</strong> : Les solutions doivent être capables de valider des données structurées et non structurées.</p></li>
+</ul>
+</section>
+<section id="comparaison-des-solutions-envisagees">
+<h2>Comparaison des solutions envisagées<a class="headerlink" href="#comparaison-des-solutions-envisagees" title="Lien vers cette rubrique"></a></h2>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Comparaison des solutions de validation des données</span><a class="headerlink" href="#id1" title="Lien vers ce tableau"></a></caption>
+<colgroup>
+<col style="width: 14.8%" />
+<col style="width: 11.1%" />
+<col style="width: 11.1%" />
+<col style="width: 7.4%" />
+<col style="width: 7.4%" />
+<col style="width: 11.1%" />
+<col style="width: 11.1%" />
+<col style="width: 11.1%" />
+<col style="width: 14.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Solution</p></th>
+<th class="head"><p>Langage</p></th>
+<th class="head"><p>Type de Données</p></th>
+<th class="head"><p>Tests Automatisés</p></th>
+<th class="head"><p>Rapports de Validation</p></th>
+<th class="head"><p>Surveillance en Temps Réel</p></th>
+<th class="head"><p>Intégration Pipeline</p></th>
+<th class="head"><p>Flexibilité des Règles</p></th>
+<th class="head"><p>Licence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Great Expectations</p></td>
+<td><p>Python</p></td>
+<td><p>Structurées/Non-structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Open Source (MIT)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Soda</p></td>
+<td><p>Python</p></td>
+<td><p>Structurées/Non-structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Open Source (Apache 2.0)</p></td>
+</tr>
+<tr class="row-even"><td><p>Voluptuous</p></td>
+<td><p>Python</p></td>
+<td><p>Structurées</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Open Source (BSD)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Datafold</p></td>
+<td><p>Python</p></td>
+<td><p>Structurées/Non-structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Propriétaire</p></td>
+</tr>
+<tr class="row-even"><td><p>Data-QA</p></td>
+<td><p>N/A</p></td>
+<td><p>Structurées/Non-structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Propriétaire</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidy Data Validator (TDV)</p></td>
+<td><p>N/A</p></td>
+<td><p>Structurées/Non-structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Propriétaire</p></td>
+</tr>
+<tr class="row-even"><td><p>Cerberus</p></td>
+<td><p>Python</p></td>
+<td><p>JSON/Dictionnaires</p></td>
+<td><p>Oui</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Open Source (ISC)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pandera</p></td>
+<td><p>Python</p></td>
+<td><p>Structurées (Pandas)</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Non</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Open Source (MIT)</p></td>
+</tr>
+<tr class="row-even"><td><p>Apache Griffin</p></td>
+<td><p>Java/Scala</p></td>
+<td><p>Structurées/Non-structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Open Source (Apache 2.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>DBT (Data Build Tool)</p></td>
+<td><p>SQL</p></td>
+<td><p>Structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Non</p></td>
+<td><p>Oui</p></td>
+<td><p>Moyenne</p></td>
+<td><p>Open Source (Apache 2.0)</p></td>
+</tr>
+<tr class="row-even"><td><p>Deequ</p></td>
+<td><p>Scala</p></td>
+<td><p>Structurées</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
+<td><p>Élevée</p></td>
+<td><p>Open Source (Apache 2.0)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="gestion-pipelines.html" class="btn btn-neutral float-left" title="Gestion de Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="solution-doc-projet.html" class="btn btn-neutral float-right" title="Solution de gestion de la documentation projet" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

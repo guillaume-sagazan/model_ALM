@@ -1,0 +1,16 @@
+cd_table,cd_choc_s2,tx_choc_mort,tx_choc_expense,tx_choc_expense_inflation,tx_choc_mort_cat,tx_choc_lapse,tx_choc_lapse_mass,tx_choc_equity_t1,tx_choc_equity_t2,tx_choc_equity_strat,tx_choc_property,tx_choc_longevity,tx_choc_revision,tx_choc_inval
+chocs_s2_2016,CENTRAL,0,0,0,0,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,EQUITY,0,0,0,0,0,0,-0.3384,-0.4384,-0.22,0,0,0,0
+chocs_s2_2016,EXPENSE,0,0.1,0.01,0,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,PROPERTY,0,0,0,0,0,0,0,0,0,-0.25,0,0,0
+chocs_s2_2016,INVAL,0,0,0,0,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,LONGEVITY,0,0,0,0,0,0,0,0,0,0,-0.2,0,0
+chocs_s2_2016,MORTALITY,0.15,0,0,0,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,MORTALITY_CAT,0,0,0,0.0015,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,LAPSE_DOWN,0,0,0,0,-0.5,0,0,0,0,0,0,0,0
+chocs_s2_2016,LAPSE_UP,0,0,0,0,0.5,0,0,0,0,0,0,0,0
+chocs_s2_2016,LAPSE_MASS,0,0,0,0,0,0.4,0,0,0,0,0,0,0
+chocs_s2_2016,REVISION,0,0,0,0,0,0,0,0,0,0,0,0.03,0
+chocs_s2_2016,SPREAD,0,0,0,0,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,RATES_DOWN,0,0,0,0,0,0,0,0,0,0,0,0,0
+chocs_s2_2016,RATES_UP,0,0,0,0,0,0,0,0,0,0,0,0,0

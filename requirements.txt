@@ -1,0 +1,11 @@
+polars==0.20.31
+jupyter
+ipykernel
+sphinx
+sphinx_rtd_theme
+sphinx-design
+sphinx-multiversion
+sphinx-fontawesome
+sphinx-tippy
+sphinxcontrib-mermaid
+dataclasses-json

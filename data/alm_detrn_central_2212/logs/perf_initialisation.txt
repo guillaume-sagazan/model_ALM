@@ -1,0 +1,489 @@
+         27591 function calls (26769 primitive calls) in 0.792 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       13    0.265    0.020    0.265    0.020 {built-in method read_csv}
+      248    0.202    0.001    0.202    0.001 {method 'collect' of 'builtins.PyLazyFrame' objects}
+     53/7    0.059    0.001    0.018    0.003 {method 'acquire' of '_thread.lock' objects}
+       13    0.029    0.002    0.029    0.002 {method 'write_csv' of 'builtins.PyDataFrame' objects}
+       21    0.018    0.001    0.018    0.001 {built-in method nt.remove}
+       58    0.013    0.000    0.013    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+       41    0.011    0.000    0.011    0.000 {built-in method nt._path_exists}
+    80/28    0.008    0.000    0.391    0.014 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\deprecation.py:130(wrapper)
+        1    0.008    0.008    0.127    0.127 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\gse\ops\GseOutputBuildCrn.py:20(gseOutputBuildCrn)
+    14/13    0.008    0.001    0.408    0.031 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\DaoFs.py:38(readData)
+       13    0.007    0.001    0.294    0.023 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\csv\functions.py:35(read_csv)
+       13    0.007    0.001    0.067    0.005 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:323(wait)
+      248    0.006    0.000    0.212    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:1829(collect)
+        2    0.006    0.003    0.006    0.003 {method 'melt' of 'builtins.PyDataFrame' objects}
+      174    0.005    0.000    0.097    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:8488(with_columns)
+      264    0.004    0.000    0.004    0.000 {method 'lazy' of 'builtins.PyDataFrame' objects}
+      174    0.004    0.000    0.017    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:4199(with_columns)
+       26    0.004    0.000    0.004    0.000 {built-in method nt._path_isdir}
+      3/1    0.003    0.001    0.004    0.004 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:512(_parse)
+5032/4360    0.003    0.000    0.008    0.000 {built-in method builtins.isinstance}
+      246    0.003    0.000    0.016    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:50(_parse_positional_inputs)
+      502    0.003    0.000    0.010    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\functions\col.py:145(__new__)
+       14    0.003    0.000    0.006    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:2852(filter)
+      502    0.003    0.000    0.007    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\functions\col.py:20(_create_col)
+      584    0.003    0.000    0.010    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:85(parse_as_expression)
+       58    0.002    0.000    0.002    0.000 {method 'flush' of '_io.TextIOWrapper' objects}
+      261    0.002    0.000    0.004    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\wrap.py:12(wrap_df)
+    85/78    0.002    0.000    0.008    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\functions\lit.py:28(lit)
+       13    0.002    0.000    0.002    0.000 {method 'match' of 're.Pattern' objects}
+        1    0.002    0.002    0.073    0.073 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\gse\ops\GseCtRefObligPzcBuild.py:13(gseCtRefObligPzcBuild)
+      607    0.002    0.000    0.003    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\wrap.py:24(wrap_expr)
+      193    0.002    0.000    0.003    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\os.py:709(__getitem__)
+      193    0.001    0.000    0.005    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\_collections_abc.py:804(get)
+      138    0.001    0.000    0.004    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:1919(cast)
+      336    0.001    0.000    0.005    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\typing.py:1212(__instancecheck__)
+      502    0.001    0.000    0.001    0.000 {col}
+      264    0.001    0.000    0.007    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:8322(lazy)
+     14/8    0.001    0.000    0.003    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\series\series.py:269(__init__)
+       13    0.001    0.000    0.271    0.021 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\csv\functions.py:459(_read_csv_impl)
+       14    0.001    0.000    0.050    0.004 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:4168(filter)
+      353    0.001    0.000    0.002    0.000 {built-in method builtins.issubclass}
+     12/6    0.001    0.000    0.062    0.010 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\queue.py:154(get)
+       70    0.001    0.000    0.002    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:905(getfile)
+        1    0.001    0.001    0.211    0.211 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\gse\events\InitGblGse.py:17(initGblGse)
+      265    0.001    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:463(_from_pydf)
+     1721    0.001    0.000    0.001    0.000 {built-in method __new__ of type object at 0x00007FF8CC9E48F0}
+       58    0.001    0.000    0.020    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1148(emit)
+       29    0.001    0.000    0.003    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:298(__init__)
+      916    0.001    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:134(_from_pyexpr)
+      174    0.001    0.000    0.001    0.000 {method 'with_columns' of 'builtins.PyLazyFrame' objects}
+       58    0.001    0.000    0.004    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:690(format)
+      266    0.001    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\wrap.py:16(wrap_ldf)
+      219    0.001    0.000    0.001    0.000 {method 'columns' of 'builtins.PyDataFrame' objects}
+      263    0.001    0.000    0.007    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:59(_parse_inputs_as_iterable)
+      149    0.001    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:179(splitroot)
+       14    0.001    0.000    0.005    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:391(find_stacklevel)
+      248    0.001    0.000    0.001    0.000 {method 'optimization_toggle' of 'builtins.PyLazyFrame' objects}
+       78    0.001    0.000    0.001    0.000 {lit}
+      336    0.001    0.000    0.004    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\typing.py:1483(__subclasscheck__)
+      138    0.001    0.000    0.001    0.000 {method 'cast' of 'builtins.PyExpr' objects}
+      138    0.001    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\convert.py:388(py_type_to_dtype)
+      240    0.001    0.000    0.016    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:20(parse_as_list_of_expressions)
+       53    0.001    0.000    0.002    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:107(join)
+       58    0.001    0.000    0.024    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1011(handle)
+        7    0.001    0.000    0.001    0.000 {method 'drop' of 'builtins.PyLazyFrame' objects}
+      119    0.001    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dependencies.py:204(_check_for_numpy)
+     14/8    0.001    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\series.py:78(sequence_to_pyseries)
+       16    0.001    0.000    0.001    0.000 {method 'join' of 'builtins.PyLazyFrame' objects}
+       58    0.001    0.000    0.001    0.000 {built-in method time.localtime}
+      193    0.001    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\os.py:783(encodekey)
+       16    0.001    0.000    0.009    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:3982(join)
+        1    0.001    0.001    0.010    0.010 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\ops\MpPassifEpInitGblBuild.py:13(mpPassifEpInitGblBuild)
+       58    0.001    0.000    0.003    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1137(flush)
+       29    0.001    0.000    0.002    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1611(findCaller)
+       19    0.001    0.000    0.001    0.000 {method 'select' of 'builtins.PyLazyFrame' objects}
+       58    0.001    0.000    0.001    0.000 {built-in method time.strftime}
+       29    0.001    0.000    0.031    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1660(_log)
+       29    0.001    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:257(splitext)
+        6    0.001    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:4073(rename)
+        2    0.001    0.000    0.002    0.001 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\s2\expr\S2Expr.py:98(calcMtVmIndicesInitS2)
+       13    0.001    0.000    0.017    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:106(prepare_file_arg)
+      336    0.001    0.000    0.001    0.000 {built-in method _abc._abc_subclasscheck}
+      512    0.001    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:317(_from_pyldf)
+    30/29    0.001    0.000    0.032    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:2208(info)
+        1    0.001    0.001    0.001    0.001 {built-in method _io.open}
+       16    0.001    0.000    0.052    0.003 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:6541(join)
+        1    0.001    0.001    0.020    0.020 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\DaoFs.py:20(__post_init__)
+        2    0.001    0.000    0.001    0.000 {method 'shift' of 'builtins.PyExpr' objects}
+        4    0.001    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\functions\whenthen.py:16(when)
+       19    0.001    0.000    0.010    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:8361(select)
+       29    0.001    0.000    0.032    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1529(info)
+       29    0.001    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:236(split)
+       13    0.001    0.000    0.032    0.002 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:2479(write_csv)
+       39    0.001    0.000    0.015    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:187(normalize_filepath)
+       19    0.000    0.000    0.007    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:3038(select)
+        2    0.000    0.000    0.009    0.004 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\group_by.py:141(agg)
+        1    0.000    0.000    0.007    0.007 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\ops\PrdAdPassif.py:8(prdAdPassifBuild)
+      116    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:200(_is_internal_frame)
+       29    0.000    0.000    0.004    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1645(makeRecord)
+        2    0.000    0.000    0.000    0.000 {method 'agg' of 'builtins.PyLazyGroupBy' objects}
+        1    0.000    0.000    0.011    0.011 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\events\InitGblPassif.py:9(initGblPassif)
+       29    0.000    0.000    0.024    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1746(callHandlers)
+        2    0.000    0.000    0.001    0.001 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\expr\ActifsExpr.py:57(rsMpActifIndicesTxActionSommeNEq1)
+       29    0.000    0.000    0.008    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1266(emit)
+        5    0.000    0.000    0.000    0.000 {method 'lt_eq' of 'builtins.PyExpr' objects}
+       58    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:455(_format)
+      336    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\abc.py:121(__subclasscheck__)
+      2/1    0.000    0.000    0.004    0.004 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:452(_parse_sub)
+        2    0.000    0.000    0.000    0.000 {built-in method nt.listdir}
+      7/6    0.000    0.000    0.001    0.000 {built-in method new_from_any_values}
+      262    0.000    0.000    0.006    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:72(_is_iterable)
+       29    0.000    0.000    0.025    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1686(handle)
+       14    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:387(_parse_path)
+       61    0.000    0.000    0.000    0.000 {method 'alias' of 'builtins.PyExpr' objects}
+      219    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:667(columns)
+       18    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:228(__mul__)
+      5/1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:37(_compile)
+        1    0.000    0.000    0.010    0.010 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\ops\MpPassifEpProjHypsIcFgxBuild.py:10(mpPassifEpProjHypsIcFgxBuild)
+       17    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\selectors.py:160(_expand_selectors)
+      142    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\convert.py:146(is_polars_dtype)
+        5    0.000    0.000    0.000    0.000 {method 'dt_year' of 'builtins.PyExpr' objects}
+  543/538    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.008    0.008 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\ops\MpActifIndicesInitGblBuild.py:9(mpActifIndicesInitGblBuild)
+       61    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:653(alias)
+       58    0.000    0.000    0.005    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:988(format)
+      116    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:51(normcase)
+       16    0.000    0.000    0.001    0.000 {built-in method builtins.any}
+    18/11    0.000    0.000    0.003    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\deprecation.py:93(wrapper)
+        3    0.000    0.000    0.032    0.011 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:4546(sort)
+        1    0.000    0.000    0.021    0.021 <string>:2(__init__)
+        2    0.000    0.000    0.000    0.000 {method 'otherwise' of 'builtins.PyChainedThen' objects}
+      116    0.000    0.000    0.000    0.000 {built-in method _winapi.LCMapStringEx}
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:189(__floordiv__)
+       13    0.000    0.000    0.036    0.003 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\DaoFs.py:83(writeData)
+        1    0.000    0.000    0.009    0.009 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\gse\events\InitS2Gse.py:12(initS2Gse)
+      336    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+      193    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\os.py:777(check_str)
+       58    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:674(formatMessage)
+       14    0.000    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:184(__eq__)
+       58    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:462(format)
+        1    0.000    0.000    0.025    0.025 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\events\InitProjPassifEp.py:12(initProjPassifEp)
+       28    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+       28    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:1157(__init__)
+        5    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:210(__le__)
+       40    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        3    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:1177(sort)
+        3    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1681(process_internal_commands)
+       14    0.000    0.000    0.000    0.000 {method 'filter' of 'builtins.PyLazyFrame' objects}
+        1    0.000    0.000    0.012    0.012 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\ops\MpPassifEpProjHypsPrstBuild.py:9(mpPassifEpProjHypsPrstBuild)
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:146(parse_predicates_constraints_as_expression)
+      279    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        1    0.000    0.000    0.007    0.007 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\gse\ops\GseCashPerfBuild.py:16(gseOutputCashPerfBuild)
+       14    0.000    0.000    0.002    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:731(parent)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+       65    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\csv\_utils.py:9(_check_arg_is_1byte)
+        2    0.000    0.000    0.001    0.001 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\expr\PassifExpr.py:2(calcAgeMois)
+        6    0.000    0.000    0.007    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:7502(explode)
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:493(iscode)
+       14    0.000    0.000    0.000    0.000 {built-in method _warnings.warn}
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1517(debug)
+        4    0.000    0.000    0.000    0.000 {when}
+        1    0.000    0.000    0.028    0.028 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsActif.py:16(loadFsHypStratInv)
+        5    0.000    0.000    0.005    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:637(wait)
+       58    0.000    0.000    0.002    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:622(formatTime)
+      126    0.000    0.000    0.000    0.000 {built-in method sys.intern}
+      116    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:968(acquire)
+        1    0.000    0.000    0.005    0.005 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\ops\MpPassifEpInitS2Build.py:11(mpPassifEpInitS2Build)
+        1    0.000    0.000    0.002    0.002 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\ops\MpActifIndicesInitProj.py:12(mpActifIndicesInitProjBuild)
+       58    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:668(usesTime)
+       14    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:551(drive)
+       58    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:383(getMessage)
+      444    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+       14    0.000    0.000    0.005    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\deprecation.py:33(issue_deprecation_warning)
+        1    0.000    0.000    0.001    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:573(_code)
+       87    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:831(filter)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\contextlib.py:272(contextmanager)
+        1    0.000    0.000    0.006    0.006 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\gse\ops\GseOutputDeflateurBuild.py:16(gseOutputDeflateurBuild)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:2218(debug)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\functools.py:35(update_wrapper)
+      193    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+       13    0.000    0.000    0.006    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\__init__.py:280(_compile)
+        7    0.000    0.000    0.002    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:6981(drop)
+      117    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+      123    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.RLock' objects}
+       14    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+       14    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:407(_load_parts)
+       29    0.000    0.000    0.001    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:268(basename)
+      129    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+        7    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:4450(drop)
+       28    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:358(__init__)
+       31    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1790(isEnabledFor)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\utils\LoggerSetup.py:5(setup_logger)
+       29    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\genericpath.py:133(_splitext)
+       39    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:350(expanduser)
+       22    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:168(__add__)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\contextlib.py:299(helper)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:311(_acquire_restore)
+        2    0.000    0.000    0.006    0.003 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:7782(melt)
+        1    0.000    0.000    0.003    0.003 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\ops\MpPassifEpInitProj.py:12(mpPassifEpInitProjBuild)
+      116    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:975(release)
+       13    0.000    0.000    0.008    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\__init__.py:164(match)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:420(_from_parsed_parts)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\contextlib.py:141(__exit__)
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:4518(rename)
+      6/2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:178(getwidth)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:202(__get__)
+      161    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:207(__invert__)
+      125    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+       22    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dependencies.py:199(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:511(_compile_info)
+       29    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py:18(encode)
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:77(is_bool_sequence)
+        6    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:1533(enumerate)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:380(with_segments)
+        1    0.000    0.000    0.007    0.007 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:9385(unique)
+       24    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\queue.py:209(_qsize)
+        3    0.000    0.000    0.000    0.000 {method 'sort_by_exprs' of 'builtins.PyLazyFrame' objects}
+        4    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:30(then)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:197(__ge__)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\getitem.py:117(get_df_item_by_key)
+        2    0.000    0.000    0.009    0.004 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\group_by.py:748(sum)
+       12    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:261(get)
+       28    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:1164(__new__)
+       14    0.000    0.000    0.000    0.000 {method 'eq' of 'builtins.PyExpr' objects}
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:271(__truediv__)
+       14    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:64(_is_generator)
+        6    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:5539(explode)
+       58    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+       13    0.000    0.000    0.008    0.001 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:266(looks_like_url)
+       58    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:447(usesTime)
+        1    0.000    0.000    0.001    0.001 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\DaoFs.py:100(getLoggingHandler)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\contextlib.py:104(__init__)
+        7    0.000    0.000    0.000    0.000 {built-in method new_opt_i64}
+        6    0.000    0.000    0.000    0.000 {method 'rename' of 'builtins.PyLazyFrame' objects}
+        1    0.000    0.000    0.001    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1206(__init__)
+        6    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:192(parse_when_inputs)
+       29    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:488(extend_bool)
+       28    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:2987(<genexpr>)
+       87    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:263(__sub__)
+       27    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:168(__getitem__)
+        5    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:255(__pow__)
+        7    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:172(__radd__)
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:99(is_sequence)
+       32    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:1483(current_thread)
+        1    0.000    0.000    0.005    0.005 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:740(compile)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\s2\expr\S2Expr.py:79(calcMtVmChocEquity)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:236(__ne__)
+        1    0.000    0.000    0.005    0.005 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\ops\PrdAdActifs.py:6(prdAdActifBuild)
+       65    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        1    0.000    0.000    0.002    0.002 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\events\InitProjActif.py:11(initProjActif)
+       31    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+       52    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:281(<genexpr>)
+      119    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\typing.py:2173(cast)
+       22    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:302(__exit__)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\contextlib.py:132(__enter__)
+       29    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:170(<lambda>)
+        5    0.000    0.000    0.000    0.000 {method 'pow' of 'builtins.PyExpr' objects}
+        2    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\group_by.py:26(agg)
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:292(ismodule)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:98(closegroup)
+        2    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:3177(group_by)
+        1    0.000    0.000    0.000    0.000 {method 'unique' of 'builtins.PyLazyFrame' objects}
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\utils.py:68(get_first_non_none)
+      123    0.000    0.000    0.000    0.000 {method 'release' of '_thread.RLock' objects}
+       13    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:280(is_glob_pattern)
+        5    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\_collections_abc.py:104(_check_methods)
+        4    0.000    0.000    0.000    0.000 {method 'then' of 'builtins.PyWhen' objects}
+       19    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        1    0.000    0.000    0.127    0.127 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadPassifEp.py:14(loadFsHypPassifEp)
+        1    0.000    0.000    0.004    0.004 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:969(parse)
+       43    0.000    0.000    0.000    0.000 {built-in method sys._getframe}
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:838(__repr__)
+        1    0.000    0.000    0.070    0.070 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsGse.py:9(loadFsGseCtRef)
+        1    0.000    0.000    0.005    0.005 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\passif\events\InitS2Passif.py:11(initS2PassifEp)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:5477(group_by)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_utils.py:133(get_non_pydevd_threads)
+       14    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\functools.py:65(wraps)
+       15    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:240(__next)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:86(opengroup)
+       29    0.000    0.000    0.000    0.000 {built-in method nt.getpid}
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\utils.py:63(is_pydantic_model)
+        2    0.000    0.000    0.000    0.000 {method 'neq' of 'builtins.PyExpr' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:3092(fill_null)
+       22    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:299(__enter__)
+       80    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\deprecation.py:143(_rename_keyword_argument)
+        1    0.000    0.000    0.002    0.002 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\ops\MpActifIndicesInitS2.py:7(mpActifIndicesInitS2Build)
+       29    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:129(getLevelName)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1381(has_user_threads_alive)
+        1    0.000    0.000    0.002    0.002 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\events\InitS2Actif.py:7(initS2Actif)
+        5    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\_collections_abc.py:288(__subclasshook__)
+       14    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:63(when)
+        2    0.000    0.000    0.000    0.000 {method 'group_by' of 'builtins.PyLazyFrame' objects}
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:1765(currentframe)
+       29    0.000    0.000    0.000    0.000 {built-in method time.time}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:250(can_exit)
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:296(isclass)
+      2/1    0.000    0.000    0.037    0.037 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsGse.py:16(loadFsGseOutputOblig)
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:300(ismethod)
+       61    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       78    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+       29    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:1180(name)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:429(_format_parsed_parts)
+       29    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:176(__and__)
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:469(istraceback)
+        1    0.000    0.000    0.008    0.008 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\events\InitGblActif.py:7(initGblActif)
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:372(isfunction)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\dataclasses.py:1301(is_dataclass)
+        2    0.000    0.000    0.001    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:3014(shift)
+        9    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:12243(dt)
+       23    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\selectors.py:64(is_selector)
+        6    0.000    0.000    0.000    0.000 {method 'explode' of 'builtins.PyLazyFrame' objects}
+       70    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\inspect.py:479(isframe)
+        5    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\datetime.py:770(year)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\getitem.py:276(_select_rows)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\frame.py:1093(__getitem__)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dependencies.py:193(_might_be)
+        4    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\datetime.py:910(month)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:928(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:1562(__and__)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:112(then)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1626(notify_thread_created)
+       26    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:141(managed_file)
+        2    0.000    0.000    0.000    0.000 {method 'select' of 'builtins.PyDataFrame' objects}
+       27    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\Dao.py:30(getDao)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1510(setLevel)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:167(otherwise)
+        4    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\utils\ProjResults.py:12(append)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:3796(over)
+       15    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:314(_is_owned)
+       34    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'when' of 'builtins.PyThen' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\actifs\expr\ActifsExpr.py:41(calcPmvl)
+        7    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:256(match)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\s2\expr\S2Expr.py:23(rsCdChocS2Equity)
+       14    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:416(empty)
+       22    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+       29    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:35(_get_bothseps)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:308(_release_save)
+       14    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+       12    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:176(append)
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:5585(unique)
+       35    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        3    0.000    0.000    0.000    0.000 {method 'and_' of 'builtins.PyExpr' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:726(__call__)
+       15    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {method 'otherwise' of 'builtins.PyThen' objects}
+       23    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:135(warn_null_comparison)
+       22    0.000    0.000    0.000    0.000 {built-in method time.monotonic}
+       13    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\various.py:55(_process_null_values)
+        1    0.000    0.000    0.024    0.024 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsActif.py:10(loadFsMpActifIndices)
+       13    0.000    0.000    0.000    0.000 {method 'keys' of 'collections.OrderedDict' objects}
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\getitem.py:171(_select_columns)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\utils.py:53(is_namedtuple)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:85(otherwise)
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\frame.py:3010(<genexpr>)
+       26    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:15(parse_columns_arg)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:3494(sum)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:398(_simple)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\s2\expr\S2Expr.py:92(calcMtVmChocProperty)
+       12    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+        3    0.000    0.000    0.000    0.000 {method 'over' of 'builtins.PyExpr' objects}
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\abc.py:117(__instancecheck__)
+        7    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:234(_acquireLock)
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1499(get_internal_queue)
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:1076(not_)
+        7    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\series.py:323(_construct_series_with_fallbacks)
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\constructor.py:160(py_type_to_constructor)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:892(_addHandlerRef)
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\convert.py:79(date_to_int)
+       13    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:1292(value)
+        2    0.000    0.000    0.000    0.000 {method 'gt_eq' of 'builtins.PyExpr' objects}
+       19    0.000    0.000    0.000    0.000 {method 'values' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\cProfile.py:119(__exit__)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\functions\aggregation\vertical.py:12(all)
+        9    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:164(__len__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:436(_get_literal_prefix)
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:1613(cum_prod)
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1533(check_output_redirect)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:592(__init__)
+        2    0.000    0.000    0.000    0.000 {method 'then' of 'builtins.PyChainedWhen' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1126(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\queue.py:97(empty)
+        1    0.000    0.000    0.022    0.022 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsGse.py:19(loadFsGseOutputInflation)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:958(createLock)
+        1    0.000    0.000    0.026    0.026 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsGse.py:13(loadFsGseOutputIndices)
+        1    0.000    0.000    0.023    0.023 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsS2.py:12(loadFsHypS2ChocsSpread)
+        1    0.000    0.000    0.029    0.029 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadFsS2.py:9(loadFsHypS2Chocs)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\ntpath.py:588(abspath)
+       14    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+       13    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+        5    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:113(__init__)
+        1    0.000    0.000    0.026    0.026 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\fs\LoadPassifEp.py:11(loadFsMpPassifEp)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:467(_get_charset_prefix)
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.all}
+        3    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:627(clear)
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\utils.py:75(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1465(_clear_cache)
+        3    0.000    0.000    0.000    0.000 {method 'fill_null' of 'builtins.PyExpr' objects}
+        9    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\parse_expr_input.py:181(_combine_predicates)
+        1    0.000    0.000    0.000    0.000 {method 'cum_prod' of 'builtins.PyExpr' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_daemon_thread.py:32(py_db)
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:241(__neg__)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\constructor.py:50(polars_type_to_constructor)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\domaines\s2\expr\S2Expr.py:26(rsCdChocS2Property)
+        6    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:1544(_get_value)
+        9    0.000    0.000    0.000    0.000 {built-in method _sre.unicode_iscased}
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1702(addHandler)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\getitem.py:253(_select_columns_by_name)
+        4    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:293(tell)
+       14    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dependencies.py:222(_check_for_pydantic)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\classes.py:617(__eq__)
+       13    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\io\_utils.py:58(parse_row_index_args)
+        4    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:83(groups)
+        3    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
+        7    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:243(_releaseLock)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.getcwd}
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:231(__init__)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:437(__str__)
+        1    0.000    0.000    0.000    0.000 {method 'search' of 're.Pattern' objects}
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\dataframe\group_by.py:35(__init__)
+        2    0.000    0.000    0.000    0.000 {method 'sum' of 'builtins.PyExpr' objects}
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:560(root)
+        4    0.000    0.000    0.000    0.000 {method 'dt_month' of 'builtins.PyExpr' objects}
+        6    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.RLock' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:1234(daemon)
+        6    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_is_thread_alive.py:9(is_thread_alive)
+       14    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:569(_tail)
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
+        4    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:52(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\threading.py:124(RLock)
+        1    0.000    0.000    0.000    0.000 {built-in method nt._getfullpathname}
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:953(fix_flags)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:982(setLevel)
+        1    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\expr.py:232(__rmul__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:450(validate)
+        6    0.000    0.000    0.000    0.000 {built-in method _sre.unicode_tolower}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:626(get_thread_id)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:428(_get_iscased)
+        5    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:208(_checkLevel)
+        1    0.000    0.000    0.000    0.000 {method 'not_' of 'builtins.PyExpr' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:606(get_current_thread_id)
+        4    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:27(__init__)
+        1    0.000    0.000    0.001    0.001 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1257(_open)
+        9    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\datetime.py:40(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1776(getEffectiveLevel)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\_utils\construction\utils.py:56(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1724(hasHandlers)
+        1    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:1129(__new__)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\lazyframe\group_by.py:23(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:31(_combine_flags)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1369(disable)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:109(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:811(__init__)
+        1    0.000    0.000    0.000    0.000 {built-in method nt._path_normpath}
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:570(isstring)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\classes.py:214(is_nested)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\codecs.py:186(__init__)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:660(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:443(__init__)
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\expr\whenthen.py:134(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\enum.py:1287(name)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:172(__setitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\dao\Dao.py:26(setDao)
+        3    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\.vscode\extensions\ms-python.debugpy-2024.8.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:663(__exit__)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:77(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:2149(getLogger)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:1033(setFormatter)
+        1    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\src\utils\ProjResults.py:9(__post_init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\maria.rakotoniaina\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py:254(_register_at_fork_reinit_lock)
+        1    0.000    0.000    0.000    0.000 {built-in method _io.text_encoding}
+        1    0.000    0.000    0.000    0.000 {method 'clear' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 c:\Users\maria.rakotoniaina\repositories\modele-alm-polars-v2\.venv\Lib\site-packages\polars\datatypes\classes.py:109(base_type)
+
+

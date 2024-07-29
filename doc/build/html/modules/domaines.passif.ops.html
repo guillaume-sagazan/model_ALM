@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>domaines.passif.ops &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="domaines.provisions" href="domaines.provisions.html" />
+    <link rel="prev" title="domaines.passif.expr" href="domaines.passif.expr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation du code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dao.html">dao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docgen.html">docgen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="domaines.html">domaines</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="domaines.actifs.html">domaines.actifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.commun.html">domaines.commun</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.gse.html">domaines.gse</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="domaines.passif.html">domaines.passif</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="domaines.passif.events.html">domaines.passif.events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="domaines.passif.expr.html">domaines.passif.expr</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">domaines.passif.ops</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpActifCashInputCfPerfPassifBuild">domaines.passif.ops.MpActifCashInputCfPerfPassifBuild</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpActifCashInputCfPerfPassifBuild.mpActifCashInputCfPerfPassifBuild"><code class="docutils literal notranslate"><span class="pre">mpActifCashInputCfPerfPassifBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpInitGblBuild">domaines.passif.ops.MpPassifEpInitGblBuild</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpInitGblBuild.mpPassifEpInitGblBuild"><code class="docutils literal notranslate"><span class="pre">mpPassifEpInitGblBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpInitProj">domaines.passif.ops.MpPassifEpInitProj</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpInitProj.mpPassifEpInitProjBuild"><code class="docutils literal notranslate"><span class="pre">mpPassifEpInitProjBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpInitS2Build">domaines.passif.ops.MpPassifEpInitS2Build</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpInitS2Build.mpPassifEpInitS2Build"><code class="docutils literal notranslate"><span class="pre">mpPassifEpInitS2Build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpProjCopy">domaines.passif.ops.MpPassifEpProjCopy</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpProjCopy.mpPassifEpProjCopy"><code class="docutils literal notranslate"><span class="pre">mpPassifEpProjCopy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild">domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild.mpPassifEpProjHypsIcFgxBuild"><code class="docutils literal notranslate"><span class="pre">mpPassifEpProjHypsIcFgxBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpProjHypsPrstBuild">domaines.passif.ops.MpPassifEpProjHypsPrstBuild</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpProjHypsPrstBuild.mpPassifEpProjHypsPrstBuild"><code class="docutils literal notranslate"><span class="pre">mpPassifEpProjHypsPrstBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.MpPassifEpProjPerfBuild">domaines.passif.ops.MpPassifEpProjPerfBuild</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.MpPassifEpProjPerfBuild.mpPassifEpProjPerfBuild"><code class="docutils literal notranslate"><span class="pre">mpPassifEpProjPerfBuild()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.passif.ops.PrdAdPassif">domaines.passif.ops.PrdAdPassif</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.passif.ops.PrdAdPassif.prdAdPassifBuild"><code class="docutils literal notranslate"><span class="pre">prdAdPassifBuild()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.provisions.html">domaines.provisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestrateur.html">orchestrateur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Documentation du code</a></li>
+          <li class="breadcrumb-item"><a href="domaines.html">domaines</a></li>
+          <li class="breadcrumb-item"><a href="domaines.passif.html">domaines.passif</a></li>
+      <li class="breadcrumb-item active">domaines.passif.ops</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/domaines.passif.ops.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-domaines.passif.ops">
+<span id="domaines-passif-ops"></span><h1>domaines.passif.ops<a class="headerlink" href="#module-domaines.passif.ops" title="Lien vers cette rubrique"></a></h1>
+<section id="module-domaines.passif.ops.MpActifCashInputCfPerfPassifBuild">
+<span id="domaines-passif-ops-mpactifcashinputcfperfpassifbuild"></span><h2>domaines.passif.ops.MpActifCashInputCfPerfPassifBuild<a class="headerlink" href="#module-domaines.passif.ops.MpActifCashInputCfPerfPassifBuild" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpActifCashInputCfPerfPassifBuild.mpActifCashInputCfPerfPassifBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpActifCashInputCfPerfPassifBuild.</span></span><span class="sig-name descname"><span class="pre">mpActifCashInputCfPerfPassifBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpPassifEpProjPerf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpActifCashInputCfPerfPassifBuild.html#mpActifCashInputCfPerfPassifBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpActifCashInputCfPerfPassifBuild.mpActifCashInputCfPerfPassifBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpInitGblBuild">
+<span id="domaines-passif-ops-mppassifepinitgblbuild"></span><h2>domaines.passif.ops.MpPassifEpInitGblBuild<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpInitGblBuild" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpInitGblBuild.mpPassifEpInitGblBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpInitGblBuild.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpInitGblBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpPassifEp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projDateDebut</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpInitGblBuild.html#mpPassifEpInitGblBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpInitGblBuild.mpPassifEpInitGblBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpInitProj">
+<span id="domaines-passif-ops-mppassifepinitproj"></span><h2>domaines.passif.ops.MpPassifEpInitProj<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpInitProj" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpInitProj.mpPassifEpInitProjBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpInitProj.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpInitProjBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpPassifEpInit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scEcoList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpInitProj.html#mpPassifEpInitProjBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpInitProj.mpPassifEpInitProjBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpInitS2Build">
+<span id="domaines-passif-ops-mppassifepinits2build"></span><h2>domaines.passif.ops.MpPassifEpInitS2Build<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpInitS2Build" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpInitS2Build.mpPassifEpInitS2Build">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpInitS2Build.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpInitS2Build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpPassifEpInitGbl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfCdChocS2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypS2Chocs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpInitS2Build.html#mpPassifEpInitS2Build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpInitS2Build.mpPassifEpInitS2Build" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpProjCopy">
+<span id="domaines-passif-ops-mppassifepprojcopy"></span><h2>domaines.passif.ops.MpPassifEpProjCopy<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpProjCopy" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpProjCopy.mpPassifEpProjCopy">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpProjCopy.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpProjCopy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evenement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="metadata.dd.html#metadata.dd.DdProjection.ModeleAlmEvenement" title="metadata.dd.DdProjection.ModeleAlmEvenement"><span class="pre">ModeleAlmEvenement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpPassifEpProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpProjCopy.html#mpPassifEpProjCopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpProjCopy.mpPassifEpProjCopy" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild">
+<span id="domaines-passif-ops-mppassifepprojhypsicfgxbuild"></span><h2>domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild.mpPassifEpProjHypsIcFgxBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpProjHypsIcFgxBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projHorizonList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpPassifEpProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypPassifEpFgx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseOutputIndicesPerfT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gseOutputInflationInitS2T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpProjHypsIcFgxBuild.html#mpPassifEpProjHypsIcFgxBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpProjHypsIcFgxBuild.mpPassifEpProjHypsIcFgxBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpProjHypsPrstBuild">
+<span id="domaines-passif-ops-mppassifepprojhypsprstbuild"></span><h2>domaines.passif.ops.MpPassifEpProjHypsPrstBuild<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpProjHypsPrstBuild" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpProjHypsPrstBuild.mpPassifEpProjHypsPrstBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpProjHypsPrstBuild.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpProjHypsPrstBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projHorizonList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpPassifEpProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypPassifEpPrstRt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypMortGen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hypMort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpProjHypsPrstBuild.html#mpPassifEpProjHypsPrstBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpProjHypsPrstBuild.mpPassifEpProjHypsPrstBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.MpPassifEpProjPerfBuild">
+<span id="domaines-passif-ops-mppassifepprojperfbuild"></span><h2>domaines.passif.ops.MpPassifEpProjPerfBuild<a class="headerlink" href="#module-domaines.passif.ops.MpPassifEpProjPerfBuild" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.MpPassifEpProjPerfBuild.mpPassifEpProjPerfBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.MpPassifEpProjPerfBuild.</span></span><span class="sig-name descname"><span class="pre">mpPassifEpProjPerfBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpPassifEpProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpPassifEpProjHypsPrstT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpPassifEpProjHypsIcFgxT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/MpPassifEpProjPerfBuild.html#mpPassifEpProjPerfBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.MpPassifEpProjPerfBuild.mpPassifEpProjPerfBuild" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-domaines.passif.ops.PrdAdPassif">
+<span id="domaines-passif-ops-prdadpassif"></span><h2>domaines.passif.ops.PrdAdPassif<a class="headerlink" href="#module-domaines.passif.ops.PrdAdPassif" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.passif.ops.PrdAdPassif.prdAdPassifBuild">
+<span class="sig-prename descclassname"><span class="pre">domaines.passif.ops.PrdAdPassif.</span></span><span class="sig-name descname"><span class="pre">prdAdPassifBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpPassifEpProj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/domaines/passif/ops/PrdAdPassif.html#prdAdPassifBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.passif.ops.PrdAdPassif.prdAdPassifBuild" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode en charge de la construction d’un dataframe au format « PrdAdPassif » à partir d’un dataframe au format « projPassifEpMp ».
+:param projPassifEpMp: Dataframe au format « projPassifEpMp »
+:type projPassifEpMp: DataFrame
+:return: Dataframe au format « PrdAdPassif »</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="domaines.passif.expr.html" class="btn btn-neutral float-left" title="domaines.passif.expr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="domaines.provisions.html" class="btn btn-neutral float-right" title="domaines.provisions" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

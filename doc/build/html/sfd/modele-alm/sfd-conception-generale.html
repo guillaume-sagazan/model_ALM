@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conception générale &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Configuration d’un traitement" href="sfd-config.html" />
+    <link rel="prev" title="Modele ALM" href="modele-alm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Conception générale</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#initialisation-du-traitement">Initialisation du traitement</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#projection">Projection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#fin-du-traitement">Fin du traitement</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#details-des-operations-realisees">Détails des opérations réalisées</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#chargement-des-donnees">Chargement des données</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#qualite-des-donnees-et-champs-calcules">Qualité des données et champs calculés</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#application-des-chocs-solvabilite-2">Application des chocs Solvabilité 2</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#initialisation-projection">Initialisation Projection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#projection-performance">Projection : Performance</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#projection-strategie-d-investissement">Projection : Stratégie d’investissement</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#projection-strategie-alm-compte-de-resultat">Projection : Stratégie ALM &amp; Compte de résultat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#fin-de-traitement">Fin de traitement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-config.html">Configuration d’un traitement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-var-ecos.html">Variables économiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-passif.html">Modélisation des passifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-actif.html">Modélisation des actifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-stratalm.html">Stratégie ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-tests-modele-alm.html">Modèle ALM - Tests de cohérence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Conception générale</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-conception-generale.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conception-generale">
+<h1>Conception générale<a class="headerlink" href="#conception-generale" title="Lien vers cette rubrique"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Lien vers cette rubrique"></a></h2>
+<p>Cette partie de la documentation décrit la conception générale du modèle ALM.</p>
+<p>L’objectif est de suivre le schéma ci dessous, qui décrit de manière synthétique le fonctionnement du modèle ALM.</p>
+<img alt="Séquencement des évènements au sein du modèle ALM" src="../../_images/ModeleAlmSequencementEvenements.png" />
+<p>Les fonctions décrites ci-dessous sont appelées dans cet ordre par l”<a class="reference internal" href="../../modules/orchestrateur.html#module-orchestrateur"><span class="std std-ref">orchestrateur</span></a> des calculs</p>
+<section id="initialisation-du-traitement">
+<h3>Initialisation du traitement<a class="headerlink" href="#initialisation-du-traitement" title="Lien vers cette rubrique"></a></h3>
+<p>L’initialisation du traitement est effectué en différentes sous étapes.</p>
+<p><strong>Chargement des données</strong></p>
+<p>Chargement pur et simple des inputs du modèle</p>
+<p><strong>Validation de la qualité des données</strong></p>
+<p>Les actions suivantes sont réalisées à cette étape :</p>
+<ul class="simple">
+<li><p>Ajout de champs calculés simples</p></li>
+<li><p>Tests de cohérence entre les différentes tables et tests unitaires par table</p></li>
+<li><p>Ecriture en sortie de rapports d’erreurs</p></li>
+</ul>
+<p><strong>Initialisation des chocs Solvabilité 2</strong></p>
+<p>Les actions suivantes sont réalisées à cette étape :</p>
+<ul class="simple">
+<li><p>Intégration de la notion de choc Solvabilité 2 (axe nommé <strong>cdChocS2</strong>) pour les tables pertinentes.</p></li>
+<li><p>Risque neutralisation des actifs obligataires</p></li>
+<li><p>Calcul des TRA des actifs obligataires</p></li>
+<li><p>Application des chocs S2 s’appliquent en t=0 et sur les différentes tables d’hypothèses</p></li>
+</ul>
+<p><strong>Initialisation de la projection</strong></p>
+<p>L’objectif de cette étape est de préparer les dataframes relatifs à l’état de la société post initialisation pour réutilisation dans la boucle relative au passage du temps.
+Sont donc ajoutés à ce stade les notions de scenario, de période et d’évènement.</p>
+</section>
+<section id="projection">
+<h3>Projection<a class="headerlink" href="#projection" title="Lien vers cette rubrique"></a></h3>
+<p>S’en suit une unique boucle sur l’horizon de projection défini en paramètre et dans laquelle sont appliqués successivement :</p>
+<ul class="simple">
+<li><p>la performance : passage du temps sans aucune « management action »</p></li>
+<li><p>la stratégie d’investissement : modélisation des actions du management en termes de gestion des actifs au sein de chaque canton</p></li>
+<li><p>la stratégie ALM et l’établissement du compte de résultat</p></li>
+</ul>
+</section>
+<section id="fin-du-traitement">
+<h3>Fin du traitement<a class="headerlink" href="#fin-du-traitement" title="Lien vers cette rubrique"></a></h3>
+<p>La projection terminée, peuvent être calculés les différents indicateurs S2 Ifrs17.
+Les outputs du modèle souhaités sont par ailleurs écrits à cette étape.</p>
+</section>
+</section>
+<section id="details-des-operations-realisees">
+<h2>Détails des opérations réalisées<a class="headerlink" href="#details-des-operations-realisees" title="Lien vers cette rubrique"></a></h2>
+<section id="chargement-des-donnees">
+<h3>Chargement des données<a class="headerlink" href="#chargement-des-donnees" title="Lien vers cette rubrique"></a></h3>
+<p>Les tables chargées durant cette étape peuvent être splitées en plusieurs mais aucunes données ne sont ni calculées ni retraitées à ce stade.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>loadFsGse :</strong> Fonction permettant de charger la courbe des taux de référence ainsi que les différents outputs du GSE(Générateur de Scénarios Economiques)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefinput"><span class="std std-ref">gseCtRefInput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputindicesinput"><span class="std std-ref">gseOutputIndicesInput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputobliginput"><span class="std std-ref">gseOutputObligInput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputinflationinput"><span class="std std-ref">gseOutputInflationInput</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>loadFsActif :</strong> Fonction permettant de charger les inputs associés à l’actif</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindices"><span class="std std-ref">mpActifIndices</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypstratinvtxalloccible"><span class="std std-ref">hypStratInvTxAllocCible</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypstratinvobligachat"><span class="std std-ref">hypStratInvObligAchat</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypstratinvtxfraisplct"><span class="std std-ref">hypStratInvFraisPlct</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>loadPassif :</strong> Fonction permettant de charger les inputs associés aux passifs d’assurance</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifep"><span class="std std-ref">mpPassifEp</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyppassifepfgx"><span class="std std-ref">hypPassifEpFgx</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyppassifepprstrt"><span class="std std-ref">hypPassifEpPrstRt</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypmortgen"><span class="std std-ref">hypMortGen</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypmort"><span class="std std-ref">hypMort</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>loadHypS2 :</strong> Fonction permettant de charger les inputs associés à Solvabilité2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyps2chocs"><span class="std std-ref">hypS2Chocs</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyps2chocsspread"><span class="std std-ref">hypS2ChocsSpread</span></a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="qualite-des-donnees-et-champs-calcules">
+<h3>Qualité des données et champs calculés<a class="headerlink" href="#qualite-des-donnees-et-champs-calcules" title="Lien vers cette rubrique"></a></h3>
+<p>Cette étape calculatoire permet de réaliser des vérifications sur les données chargées table par table. Ces tests sont de deux types :</p>
+<ul class="simple">
+<li><p>la vérification de contraintes sur chaque table unitaires</p></li>
+<li><p>des tests de cohérence entre les différentes tables</p></li>
+</ul>
+<p>Des champs additionnels inférés des différents inputs sont par ailleurs ajoutés aux différentes tables.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initGblGse :</strong> Fonction en change de calculer l’ensemble des variables économiques pertinentes pour la projection à partir des inputs duisponibles en input du modèle</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">NB : Cette fonction prend en compte le paramètre gseCrnAutoBuild si activé</p>
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#dfcdchocs2"><span class="std std-ref">dfCdChocS2</span></a></p></li>
+<li><p class="sd-card-text">gseObligMaturiteMax : int</p></li>
+<li><p class="sd-card-text">gseScEcoList : list[int]</p></li>
+<li><p class="sd-card-text">gseScUnivers : ScUnivers</p></li>
+<li><p class="sd-card-text">gseScCrnAutoBuild : bool</p></li>
+<li><p class="sd-card-text">projHorizon : int</p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefinput"><span class="std std-ref">gseCtRefInput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputindicesinput"><span class="std std-ref">gseOutputIndicesInput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputinflationinput"><span class="std std-ref">gseOutputInflationInput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputobliginput"><span class="std std-ref">gseOutputObligInput</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefobligpzc"><span class="std std-ref">gseCtRefObligPzc</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefcashperf"><span class="std std-ref">gseCtRefCashPerf</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputobligpzc"><span class="std std-ref">gseOutputObligPzc</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputindicesperf"><span class="std std-ref">gseOutputIndicesPerf</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputcashperf"><span class="std std-ref">gseOutputCashPerf</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputdeflateur"><span class="std std-ref">gseOutputDeflateur</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initS2Gse :</strong> Definition de différents input et application des chocs sur l’inflation</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#dfcdchocs2"><span class="std std-ref">dfCdChocS2</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyps2chocs"><span class="std std-ref">hypS2Chocs</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefobligpzc"><span class="std std-ref">gseCtRefObligPzc</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputinflationinput"><span class="std std-ref">gseOutputInflationInput</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefobligpzc"><span class="std std-ref">gseCtRefObligPzcCentral</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputinflationinits2"><span class="std std-ref">gseOutputInflationInitS2</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initGblPassif :</strong> Fonction en charge de calculer des champs additionnels pour mpPassifEp de valider la qualité des données pour les données de passif</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifep"><span class="std std-ref">mpPassifEp</span></a></p></li>
+<li><p class="sd-card-text">projDateDebut : date</p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepinitgbl"><span class="std std-ref">mpPassifEpInitGbl</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initGblActif :</strong> Fonction en charge d’ajouter certains champs calculés pour les actifs unitaires et de valider la qualité des données d’actifs en entrée</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindices"><span class="std std-ref">mpActifIndices</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesinitgbl"><span class="std std-ref">mpActifIndicesInitGbl</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesinitgbl"><span class="std std-ref">mpActifIndicesErreurs</span></a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="application-des-chocs-solvabilite-2">
+<h3>Application des chocs Solvabilité 2<a class="headerlink" href="#application-des-chocs-solvabilite-2" title="Lien vers cette rubrique"></a></h3>
+<p>Cette étape calculatoire ajoute l’axe analytique cdChocS2 aux inputs chargés pertinents et applique les chocs S2 s’appliquant en t=0</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initS2PassifEp :</strong> Ajout de l’axe cdChocS2 + application des chocs S2 en t=0 sur les PM UC</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#dfcdchocs2"><span class="std std-ref">dfCdChocS2</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepinitgbl"><span class="std std-ref">mpPassifEpInitGbl</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyps2chocs"><span class="std std-ref">hypS2Chocs</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepinits2"><span class="std std-ref">mpPassifEpInitS2</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initS2Actif :</strong> Ajout de l’axe cdChocS2 + Chroniques de cashflows futurs des obligations + Risque neutralisation + Calcul des TRA + Application des chocs spread</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyps2chocs"><span class="std std-ref">hypS2Chocs</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#dfcdchocs2"><span class="std std-ref">dfCdChocS2</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesinitgbl"><span class="std std-ref">mpActifIndicesInitGbl</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesinits2"><span class="std std-ref">mpActifIndicesInitS2</span></a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="initialisation-projection">
+<h3>Initialisation Projection<a class="headerlink" href="#initialisation-projection" title="Lien vers cette rubrique"></a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initProjActif :</strong> Initialisation de l’état de la société Actif yc axes scenario &amp; period</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text">scEcoList : list[int]</p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesinits2"><span class="std std-ref">mpActifIndicesInitS2</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesproj"><span class="std std-ref">mpActifIndicesProj</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>initProjPassifEp :</strong> Fonction en charge de calculer les taux de mortalité, rachat, IC, Frais Généraux à appliquer pour chaque cdChocS2 paramétré, contrat, period.</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text">scEcoList : list[int]</p></li>
+<li><p class="sd-card-text">projHorizonList : list[int]</p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepinits2"><span class="std std-ref">mpPassifEpInitS2</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyppassifepfgx"><span class="std std-ref">hypPassifEpFgx</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputinflationinits2"><span class="std std-ref">gseOutputInflationInitS2</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hyppassifepprstrt"><span class="std std-ref">hypPassifEpPrstRt</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypmortgen"><span class="std std-ref">hypMortGen</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypmort"><span class="std std-ref">hypMort</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputindicesperf"><span class="std std-ref">gseOutputIndicesPerfT</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepproj"><span class="std std-ref">mpPassifEpProj</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepprojhypsprst"><span class="std std-ref">mpPassifEpProjHypsPrst</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepprojhypsicfgx"><span class="std std-ref">mpPassifEpProjHypsIcFgx</span></a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="projection-performance">
+<h3>Projection : Performance<a class="headerlink" href="#projection-performance" title="Lien vers cette rubrique"></a></h3>
+<p>L’évènement performance consiste à simuler le passage du temps sans aucune « management action ».</p>
+<p>En résulte au passif :</p>
+<ul class="simple">
+<li><p>Le calcul des prestations versées aux assurés</p></li>
+<li><p>Le calcul des chargements associés</p></li>
+<li><p>Le calcul des frais généraux dépendant d’assiettes de PM et de prestations</p></li>
+</ul>
+<p>Une fois ces éléments calculés, il est possible de calculer le résultat technique.</p>
+<p>En résulte à l’actif :</p>
+<ul class="simple">
+<li><p>la mise à jour des valeurs de marché des actifs (sur la base de la nouvelle courbe des taux pour les actifs obligataires ou en prenant en compte les taux de performance pour les actifs indiciels)</p></li>
+<li><p>la mise à jour des valeurs comptables des différents actifs</p></li>
+<li><p>la mesure de la fuite économique</p></li>
+</ul>
+<p>Plus spécifiquement pour le cash de chaque canton, la mise à jour de la valeur de marché prend en compte :</p>
+<ul class="simple">
+<li><p>le taux de performance du cash</p></li>
+<li><p>le fait que des prestations ont été versées au passif, ce qui impacte le cash</p></li>
+<li><p>le fait que les actifs unitaires ont eux-mêmes généré des cashflows alimentant le cash</p></li>
+</ul>
+<p>La valeur comptable du cash mise à jour correspond par ailleurs à sa valeur de marché.</p>
+<p>Pour tous les actifs, il convient par ailleurs de calculer les produits financiers générés par la performance afin d’alimenter in fine la stratégie ALM avec cet input.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>perfPassif :</strong> Fonction en charge d’appliquer la performance sur les MPs</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text">period : int</p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepproj"><span class="std std-ref">mpPassifEpProj</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepprojhypsprst"><span class="std std-ref">mpPassifEpProjHypsPrstT</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepprojhypsicfgx"><span class="std std-ref">mpPassifEpProjHypsIcFgxT</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mppassifepprojperf"><span class="std std-ref">mpPassifEpProjPerf</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifcashinputcf"><span class="std std-ref">mpActifCashInputCfPerfPassif</span></a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>perfActif :</strong> Fonction en charge d’appliquer la performance sur les actifs unitaires</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text">period : int</p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesproj"><span class="std std-ref">mpActifIndicesProj</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gsectrefcashperf"><span class="std std-ref">gseCtRefCashPerfT</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#gseoutputindicesperf"><span class="std std-ref">gseOutputIndicesPerfT</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesproj"><span class="std std-ref">mpActifIndicesProj</span></a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="projection-strategie-d-investissement">
+<h3>Projection : Stratégie d’investissement<a class="headerlink" href="#projection-strategie-d-investissement" title="Lien vers cette rubrique"></a></h3>
+<p>La stratégie d’investissement vise à modéliser les actions du management en termes de gestion des actifs au sein de chaque canton.</p>
+<p>En résulte que :</p>
+<ul class="simple">
+<li><p>la stratégie d’investissement se fait à valeur de marché constante</p></li>
+<li><p>les achats ventes des actifs unitaires impliquent cependant une évolution de la valeur comptable de chaque canton, correspondant à des produits financiers qui ont eux aussi vocation à alimenter la stratégie ALM de fin d’année.</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>stratInv :</strong> Application de l’algorithme de stratégie d’investissement</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text">period : int</p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#dfcdchocs2sc"><span class="std std-ref">dfCdChocS2Sc</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#hypstratinvtxalloccible"><span class="std std-ref">hypStratInvTxAllocCible</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesproj"><span class="std std-ref">mpActifIndicesProj</span></a></p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#stratinvinputoutput"><span class="std std-ref">stratInvInputOutput</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="../../metadata/dataframes.html#mpactifindicesproj"><span class="std std-ref">mpActifIndicesProj</span></a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="projection-strategie-alm-compte-de-resultat">
+<h3>Projection : Stratégie ALM &amp; Compte de résultat<a class="headerlink" href="#projection-strategie-alm-compte-de-resultat" title="Lien vers cette rubrique"></a></h3>
+<p>De manière générale, la stratégie ALM constate l’augmentation de valeur comptable à l’actif d’une part et au passif d’autre part, constate les marges de manoeuvre, et permet de rééquilibrer le bilan en déterminant :</p>
+<ul class="simple">
+<li><p>La PB versée aux contrats d’assurances (sachant que des IC ont déjà été versés et sont un input)</p></li>
+<li><p>La marge financière associée aux contrats</p></li>
+<li><p>La dotation reprise de PPE</p></li>
+<li><p>La réalisation de PMVL à l’actif (marge de manoeuvre d’augmentation / réduction de la valeur comptable à l’actif)</p></li>
+</ul>
+<p>Pour ce faire, la stratégie ALM dispose en input :</p>
+<ul class="simple">
+<li><p>Du stock de PPE</p></li>
+<li><p>D’un taux cible de participation aux bénéfices (par canton) en input du modèle</p></li>
+<li><p>Des éléments nécessaires pour calculer la PB en fonction du taux de PB (assiettes de calcul de la PB notamment)</p></li>
+<li><p>Des produits financiers générés à l’actif pendant l’année (issus de la performance et de la stratégie d’investissement)</p></li>
+<li><p>Du stock de pmvl disponibles à l’actif (sachant que les pmvl obligataires sont exclues)</p></li>
+<li><p>Du résultat technique de l’année</p></li>
+</ul>
+<p>Les outputs de la stratégie ALM sont les suivants :</p>
+<ul class="simple">
+<li><p>Le taux de PB</p></li>
+<li><p>Le montant de pmvl à réaliser à l’actif</p></li>
+<li><p>La dotation / reprise de PPE</p></li>
+<li><p>Les résultats financiers et techniques de l’année</p></li>
+</ul>
+<p>Ces éléments calculés, il est possible de calculer le résultat brut comme la somme du résultat technique et du résultat financier.</p>
+<p>Une fois le résultat brut calculé, celui-ci est extrait du cash du canton pour équilibrer le bilan.</p>
+<p>Il est éventuellement possible de calculer l’impôt sur les sociétés et le résultat net mais cela n’a pas d’impact sur la projection. Le taux d’IS en entrée du modèle est donc nul.</p>
+</section>
+<section id="fin-de-traitement">
+<h3>Fin de traitement<a class="headerlink" href="#fin-de-traitement" title="Lien vers cette rubrique"></a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-quote" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text"><strong>projFin :</strong> Fonction en charge des traitements de fin de projection + calculs d’indicateurs</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Inputs :</p>
+<ul class="simple">
+<li><p class="sd-card-text">period : int</p></li>
+<li><p class="sd-card-text">projHorizon : int</p></li>
+<li><p class="sd-card-text">prdAdPassifEp : <a class="reference internal" href="../../metadata/dataframes.html#prdadpassifep"><span class="std std-ref">PrdAdPassifEp</span></a></p></li>
+<li><p class="sd-card-text">prdAdBilan : <span class="xref std std-ref">PrdAdBilan</span></p></li>
+<li><p class="sd-card-text">projResultPrdQrt : ProjResultPrdQrt</p></li>
+</ul>
+<p class="sd-card-text">Outputs :</p>
+<p class="sd-card-text">None</p>
+</div>
+</details></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="modele-alm.html" class="btn btn-neutral float-left" title="Modele ALM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="sfd-config.html" class="btn btn-neutral float-right" title="Configuration d’un traitement" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

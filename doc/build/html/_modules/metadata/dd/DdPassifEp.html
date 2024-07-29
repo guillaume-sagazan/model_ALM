@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metadata.dd.DdPassifEp &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">metadata.dd.DdPassifEp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de metadata.dd.DdPassifEp</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">auto</span><span class="p">,</span> <span class="n">StrEnum</span>
+
+<span class="kn">from</span> <span class="nn">metadata.dd.DdActif</span> <span class="kn">import</span> <span class="n">VarActif</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdCommun</span> <span class="kn">import</span> <span class="n">VarCommun</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdFgx</span> <span class="kn">import</span> <span class="n">VarFgx</span>
+<span class="kn">from</span> <span class="nn">utils.VarCatalog</span> <span class="kn">import</span> <span class="n">VarCatalog</span><span class="p">,</span> <span class="n">DataTypeDesc</span>
+<span class="kn">from</span> <span class="nn">utils.StrEnumExt</span> <span class="kn">import</span> <span class="n">StrEnumCaps</span><span class="p">,</span> <span class="n">StrEnumIso</span><span class="p">,</span> <span class="n">StrEnumLower</span>
+
+
+<div class="viewcode-block" id="CdCapitalisation">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdPassifEp.CdCapitalisation">[docs]</a>
+<span class="k">class</span> <span class="nc">CdCapitalisation</span><span class="p">(</span><span class="n">StrEnumIso</span><span class="p">):</span>
+    <span class="n">capi</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ncapi</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TmgType">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdPassifEp.TmgType">[docs]</a>
+<span class="k">class</span> <span class="nc">TmgType</span><span class="p">(</span><span class="n">StrEnumIso</span><span class="p">):</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">brut</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CdCntSupportType">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdPassifEp.CdCntSupportType">[docs]</a>
+<span class="k">class</span> <span class="nc">CdCntSupportType</span><span class="p">(</span><span class="n">StrEnumIso</span><span class="p">):</span>
+    <span class="n">EU</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">UC</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="VarPassif">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdPassifEp.VarPassif">[docs]</a>
+<span class="k">class</span> <span class="nc">VarPassif</span><span class="p">(</span><span class="n">StrEnumLower</span><span class="p">):</span>
+
+    <span class="c1">#Elements associés au contrat</span>
+    <span class="n">cdFampdt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdPrstRtCat</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">cdCnt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdCntSupportType</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">cdHypMortExp</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdHypMortProv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">cdCapitalisation</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">dtCntEffet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">dtCntTerme</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">nbCntAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbCnt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">nbCntAncienneteAnnee</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbCntAncienneteMois</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">generation</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">sexe</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">qx</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">dtAsseNaiss</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbAsseAgeAnnee</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbAsseAgeMois</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">cdAsseSexe</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="c1"># Taux</span>
+    <span class="n">txPrstRt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txPrstChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txPrstDcAsseExp</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">taf</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">tfgse</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">tfgseUc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">tmg</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">tmgType</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">tmgBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txIcEu</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txIcEuBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txIcUc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">txIcEuDemiPeriode</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txIcUcDemiPeriode</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txIcEuBrtDemiPeriode</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">facteurActuTxTech</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="c1">#Montants</span>
+    <span class="n">cdHrgEu</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPmEuAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPmEu</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">cdHrgUc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPmUcAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPmUc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPrstTotEuBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstTotEuNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstTotEuChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstDcEuBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstDcEuNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstDcEuChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstRtEuBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstRtEuNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstRtEuChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPrstTotUcBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstTotUcNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstTotUcChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstDcUcBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstDcUcNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstDcUcChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstRtUcBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstRtUcNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPrstRtUcChgt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtIcEuRest</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtIcEuSort</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtIcUcRest</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtIcUcSort</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtFgseUc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtFgseEu</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPbAss</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPbBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPbBrtCg</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPbNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtCsg</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DdPassifEp">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdPassifEp.DdPassifEp">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DdPassifEp</span><span class="p">(</span><span class="n">VarCatalog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdFampdt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Code Famille de produit&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdCnt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Identifiant d&#39;un contrat&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">dtCntEffet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Date d&#39;effet du contrat&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">dtCntTerme</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Date de terme du contrat&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">nbCntAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Nombre de contrats (avant évènement)&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">nbCnt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Nombre de contrats&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdPrstRtCat</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int16</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Catégorie de prestation rachat&quot;</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdCapitalisation</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Enum</span><span class="p">([</span><span class="n">val</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">CdCapitalisation</span><span class="p">)]),</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Contrat de capitalisation&quot;</span><span class="p">,</span>
+                <span class="n">valeursPossibles</span><span class="o">=</span><span class="p">[</span><span class="n">val</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">CdCapitalisation</span><span class="p">)]</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdCntSupportType</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Enum</span><span class="p">([</span><span class="n">val</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">CdCntSupportType</span><span class="p">)]),</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Type de support du contrat&quot;</span><span class="p">,</span>
+                <span class="n">valeursPossibles</span><span class="o">=</span><span class="p">[</span><span class="n">val</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">CdCntSupportType</span><span class="p">)]</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdHypMortExp</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Table de mortalite d&#39;expérience à appliquer&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdHypMortProv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Table de mortalite utilisée pour le provisionnement&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">sexe</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Sexe&quot;</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">age</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Age en années&quot;</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdAsseSexe</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Sexe de l&#39;assuré&quot;</span>
+            <span class="p">),</span>
+
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">dtAsseNaiss</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Date de naissance de l&#39;assuré&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">nbAsseAgeAnnee</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Age de l&#39;assuré en années&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">nbAsseAgeMois</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Age de l&#39;assuré en années&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="c1"># Taux</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txPrstRt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de prestation de rachat total&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txPrstChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de chargement sur les prestations&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txPrstDcAsseExp</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de prestation décès appliqué dans la diffusion du nombre d&#39;assuré&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">taf</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;affectation des produits financiers&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">tfgse</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de frais de gestion sur encours euro&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">tfgseUc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de frais de gestion sur encours UC&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">tmg</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum garanti&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">tmgType</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Enum</span><span class="p">([</span><span class="n">var</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">TmgType</span><span class="p">)]),</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum garanti&quot;</span><span class="p">,</span>
+                <span class="n">valeursPossibles</span><span class="o">=</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">TmgType</span><span class="p">)]</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">tmgBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum garanti, brut de taf et tfgse&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txIcEu</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;intérêts crédités Euro&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txIcUc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;intérêts crédités UC&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txIcEuBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;intérêts crédités Euro brut de taf et tfgse&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txIcEuDemiPeriode</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;intérêts crédités Euro&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txIcUcDemiPeriode</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;intérêts crédités UC&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">txIcEuBrtDemiPeriode</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;intérêts crédités Euro brut de taf et tfgse&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">facteurActuTxTech</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Facteur d&#39;actualisation au taux technique&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+
+            <span class="c1"># Montants</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdHrgEu</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;HRG associé au support euro&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPmEuAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la PM (avant évènement)&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPmEu</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la PM&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstTotEuBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations totales, brutes de chargements&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstTotEuNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations totales, nettes de chargements&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstTotEuChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de chargements sur l&#39;ensemble des prestations&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+          
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstDcEuBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations décès, brutes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstDcEuNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations décès, nettes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstDcEuChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de chargements sur les prestations décès&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstRtEuBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations rachat, brutes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstRtEuNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations rachat, nettes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstRtEuChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de chargements sur les prestations rachats&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">cdHrgUc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;HRG associé au support uc&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPmUcAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la PM (avant évènement)&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPmUc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la PM&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstTotUcBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations totales, brutes de chargements&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstTotUcNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations totales, nettes de chargements&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstTotUcChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de chargements sur l&#39;ensemble des prestations&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+          
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstDcUcBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations décès, brutes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstDcUcNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations décès, nettes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstDcUcChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de chargements sur les prestations décès&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstRtUcBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations rachat, brutes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstRtUcNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de prestations rachat, nettes de chargements&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPrstRtUcChgt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de chargements sur les prestations rachats&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtIcEuRest</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant d&#39;intérêts crédités des contrats Euro encore en cours à la fin de l&#39;année&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtIcUcRest</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant d&#39;intérêts crédités des contrats UC encore en cours à la fin de l&#39;année&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtIcEuSort</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant d&#39;intérêts crédités des contrats Euro sortis en cours d&#39;année&quot;</span><span class="p">,</span>
+                
+            <span class="p">)</span>
+            <span class="p">,</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtIcUcSort</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant d&#39;intérêts crédités des contrats UC sortis en cours d&#39;année&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtFgseUc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de frais de gestion sur encours&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtFgseEu</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la marge financière assuré issue des TFGSE&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPbAss</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Assiette utilisée pour le calcul de la PB&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPbBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PB brut de CSG&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPbBrtCg</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PB brut post application des TAF et TFGSE&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtPbNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PB net de CSG&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">mtCsg</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de CSG&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">nbCntAncienneteAnnee</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Ancienneté du contrat en année&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">nbCntAncienneteMois</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Ancienneté du contrat en mois&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">generation</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Année de naissance d&#39;une génération donnée&quot;</span><span class="p">,</span>
+                
+            <span class="p">),</span>
+            <span class="n">VarPassif</span><span class="o">.</span><span class="n">qx</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> 
+                <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux de mortalité&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">})</span>
+        <span class="n">varlistwarning</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkVarListNotRegistered</span><span class="p">([</span><span class="n">var</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">VarPassif</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">varlistwarning</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Les varaibles suivantes ne sont pas présentes dans ddPassifEp : </span><span class="si">{</span><span class="n">varlistwarning</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="n">ddPassifEp</span> <span class="o">=</span> <span class="n">DdPassifEp</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

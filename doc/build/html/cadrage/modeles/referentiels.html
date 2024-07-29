@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Référentiels transverses &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Titres subordonés &amp; provisions" href="provisions.html" />
+    <link rel="prev" title="Auditabilité &amp; Qualité des données" href="auditabilite-dq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cadrage.html">Cadrage du projet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../objectifs-strat.html">Objectifs stratégiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modele-alm-introduction.html">Modèle ALM - Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modeles.html">Choix de modélisation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fonctionnalites-haut-niveau.html">Fonctionnalités de haut niveau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="auditabilite-dq.html">Auditabilité &amp; Qualité des données</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Référentiels transverses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="provisions.html">Titres subordonés &amp; provisions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="passif-epargne.html">Passif Epargne Individuelle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actifs.html">Actifs unitaires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="management-actions.html">Management actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frais-generaux.html">Frais généraux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indicateurs-tests.html">Indicateurs &amp; Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../exigences-autres/exigences-autres.html">Exigences complémentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../choix-tech/choix-tech.html">Choix techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../cadrage.html">Cadrage du projet</a></li>
+          <li class="breadcrumb-item"><a href="modeles.html">Choix de modélisation</a></li>
+      <li class="breadcrumb-item active">Référentiels transverses</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/cadrage/modeles/referentiels.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="referentiels-transverses">
+<h1>Référentiels transverses<a class="headerlink" href="#referentiels-transverses" title="Lien vers cette rubrique"></a></h1>
+<p>Du fait du positionnement des modèles actuariels dans les processus comptables et prudentiels, celui ci doit s’intégrer dans un modèle de données compatibles avec les systèmes amonts et avals.</p>
+<p>On parlera de référentiels transverses.</p>
+<p>Ci dessous la liste des notions présentes dans les référentiels transverses.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Notion</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Produits et regroupements de produits</strong></p>
+<ul class="simple">
+<li><p>Produits SI de Gestion</p></li>
+<li><p>Produits comptables</p></li>
+<li><p>Familles de produits</p></li>
+<li><p>Portefeuilles Ifrs17</p></li>
+<li><p>Sous portefeuilles</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Les <em>produits SI de Gestion</em> correspondent aux produits présents dans les systèmes de gestion</p></li>
+<li><p>Les <em>produits comptables</em> correspondent aux produits présents en comptabilité</p></li>
+<li><p>Les <em>familles de produits</em> correspondent à des regroupements de produits</p></li>
+<li><p>Les <em>portefeuilles Ifrs17</em> correspondent à ensemble de produits proposant des garanties similaires et gérés ensemble</p></li>
+<li><p>Les <em>sous portefeuilles</em> correspondent à des regroupements de contrats utilisés pour l’établissement des comptes techniques ou encore l’identification des différents périmètres réassurés</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Réassurance</strong></p>
+<ul class="simple">
+<li><p>Programmes de réassurance</p></li>
+<li><p>Traités de réassurance (cession + acceptation)</p></li>
+<li><p>Traités de coassurance</p></li>
+<li><p>Liens entre les traités de réassurances / coassurance et les périmètres réassurés</p></li>
+</ul>
+</td>
+<td><p>Le référentiel des traités de réassurance / coassurance est utilisé dans le cadre des comptes de réassurance et de coassurance ainsi que dans les modèles pour projeter les flux associés à ces traités.
+A ce titre, est nécessaire de :</p>
+<ul class="simple">
+<li><p>de pouvoir identifier précisément les périmètres réassurés / acceptés</p></li>
+<li><p>de disposer dans ce référentiel des notions présentes dans les QRT solvabilité 2 telles que la notion de programme de réassurance par exemple</p></li>
+<li><p>de disposer du lien entre les différents traités de réassurance et les portefeuilles Ifrs 17 associés</p></li>
+<li><p>de disposer de l’ensemble des caractéristiques techniques</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Contreparties / réseaux / apporteur</strong></p>
+<ul class="simple">
+<li><p>Contreparties</p></li>
+<li><p>Apporteurs d’affaires</p></li>
+<li><p>Réseaux de distribution</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Les <em>contreparties</em> correspondent une entité</p></li>
+<li><p>Les <em>apporteurs d’affaires</em> correspondent aux produits présents en comptabilité</p></li>
+<li><p>Les <em>réseaux de distribution</em> correspondent à des regroupements de produits</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Structure juridique</strong></p>
+<ul class="simple">
+<li><p>Société d’assurance au sein de la holding</p></li>
+<li><p>Cantons</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Les <em>xxx</em> correspondent une entité</p></li>
+<li><p>Les <em>xxx</em> correspondent aux produits présents en comptabilité</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Garanties</strong></p>
+<ul class="simple">
+<li><p>LOB et HRG</p></li>
+<li><p>Catégories ministérielles</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Les <em>xxx</em> correspondent une entité</p></li>
+<li><p>Les <em>xxx</em> correspondent aux produits présents en comptabilité</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Comptabilité</strong></p>
+<ul class="simple">
+<li><p>Plan de compte</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Les <em>xxx</em> correspondent une entité</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Autres référentiels</strong></p>
+<ul class="simple">
+<li><p>Pays</p></li>
+<li><p>Devises</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Les <em>xxx</em> correspondent une entité</p></li>
+<li><p>Les <em>devises</em></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="auditabilite-dq.html" class="btn btn-neutral float-left" title="Auditabilité &amp; Qualité des données" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="provisions.html" class="btn btn-neutral float-right" title="Titres subordonés &amp; provisions" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

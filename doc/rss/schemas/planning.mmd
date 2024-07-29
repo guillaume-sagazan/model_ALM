@@ -1,0 +1,26 @@
+%%{init: {'theme': 'base', 'gantt': {'axisFormat': '%d/%m/%Y', 'topAxis': true}}}%%
+gantt
+    dateFormat  YYYY-MM-DD
+    title       Planning implémentation Modèle ALM Dataiku
+    excludes    weekends
+    %% (`excludes` accepts specific dates in YYYY-MM-DD format, days of the week ("sunday") or "weekends", but not the word "weekdays".)
+    %% tickInterval 1week
+    %% weekday monday
+    
+    section Developpement du modèle
+    Formation des consultants               :active,  des1, 2024-07-01, 2024-09-30 
+    Développement Modèle ALM v0             :active,  des2, 2024-07-01, 2024-07-31
+    Modèle ALM v0                           :milestone, m1, 2024-07-31, 1d
+    Tests & Rapports automatisés            :         des3, 2024-08-18, 2024-09-30
+    Revue du code par un techlead           :         des4, 2024-08-18, 2024-08-30
+
+
+    section Architecture cible
+    Atelier Acn + Snowflake + Dataiku       :         des10, 2024-08-18, 2024-08-30
+    Mise en place architecture cible        :         des11, 2024-08-25, 2024-09-01
+    Implémentation v0 Snowflake Dataiku     :         des12, 2024-09-01, 2024-09-30
+
+    section Optimisation des performances & architecture
+    Optimisation des performances           :         des20, 2024-09-15, 2024-09-30
+    Tests sur différentes architectures     :         des21, 2024-09-15, 2024-09-30
+    Modèle ALM sur Snowflake Dataiku        :milestone, m2, 2024-09-30, 1d

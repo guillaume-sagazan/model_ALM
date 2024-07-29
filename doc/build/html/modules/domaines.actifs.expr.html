@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>domaines.actifs.expr &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="domaines.actifs.ops" href="domaines.actifs.ops.html" />
+    <link rel="prev" title="domaines.actifs.events" href="domaines.actifs.events.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation du code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dao.html">dao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docgen.html">docgen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="domaines.html">domaines</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="domaines.actifs.html">domaines.actifs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="domaines.actifs.events.html">domaines.actifs.events</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">domaines.actifs.expr</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#module-domaines.actifs.expr.ActifsExpr">domaines.actifs.expr.ActifsExpr</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.expr.ActifsExpr.calcFuiteEco"><code class="docutils literal notranslate"><span class="pre">calcFuiteEco()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.expr.ActifsExpr.calcFuiteVcActifPerf"><code class="docutils literal notranslate"><span class="pre">calcFuiteVcActifPerf()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.expr.ActifsExpr.calcPmvl"><code class="docutils literal notranslate"><span class="pre">calcPmvl()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#domaines.actifs.expr.ActifsExpr.rsMpActifIndicesTxActionSommeNEq1"><code class="docutils literal notranslate"><span class="pre">rsMpActifIndicesTxActionSommeNEq1()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="domaines.actifs.ops.html">domaines.actifs.ops</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.commun.html">domaines.commun</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.gse.html">domaines.gse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.passif.html">domaines.passif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="domaines.provisions.html">domaines.provisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestrateur.html">orchestrateur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Documentation du code</a></li>
+          <li class="breadcrumb-item"><a href="domaines.html">domaines</a></li>
+          <li class="breadcrumb-item"><a href="domaines.actifs.html">domaines.actifs</a></li>
+      <li class="breadcrumb-item active">domaines.actifs.expr</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/domaines.actifs.expr.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-domaines.actifs.expr">
+<span id="domaines-actifs-expr"></span><h1>domaines.actifs.expr<a class="headerlink" href="#module-domaines.actifs.expr" title="Lien vers cette rubrique"></a></h1>
+<section id="module-domaines.actifs.expr.ActifsExpr">
+<span id="domaines-actifs-expr-actifsexpr"></span><h2>domaines.actifs.expr.ActifsExpr<a class="headerlink" href="#module-domaines.actifs.expr.ActifsExpr" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.expr.ActifsExpr.calcFuiteEco">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.expr.ActifsExpr.</span></span><span class="sig-name descname"><span class="pre">calcFuiteEco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colMtFuiteEco</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarAlm.mtFuiteEco</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtVmFin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtVm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtCf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtCf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtVmDebut</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtVmAv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colFacteurPerfTot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'facteur_perf_tot_ct_ref'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Expr</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/expr/ActifsExpr.html#calcFuiteEco"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.expr.ActifsExpr.calcFuiteEco" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction permet de calculer la fuite économique pour un dataframe donné
+:param colMtFuiteEco: nom de la colonne qui contiendra la fuite économique
+:param colMtVmFin: nom de la colonne qui contient la valeur de marché de fin de période
+:param colMtCf: nom de la colonne qui contient la valeur du cashflow
+:param colMtVmDebut: nom de la colonne qui contient la valeur du cashflow
+:param colFacteurPerfTot: nom de la colonne qui contient la performance totale attendue</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.expr.ActifsExpr.calcFuiteVcActifPerf">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.expr.ActifsExpr.</span></span><span class="sig-name descname"><span class="pre">calcFuiteVcActifPerf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colMtVcDebut</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtVcAv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtVcFin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtVc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtCf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtCf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtPfi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtPfi</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Expr</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/expr/ActifsExpr.html#calcFuiteVcActifPerf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.expr.ActifsExpr.calcFuiteVcActifPerf" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction permet de calculer la fuite de valeur comptable
+:param colMtFuiteVc: nom de la colonne qui contiendra la fuite économique
+:param colMtVcDebut: nom de la colonne qui contient le montant de valeur comptable de début
+:param colMtVcFin: nom de la colonne qui contient le montant de valeur comptable de fin
+:param colMtCf: nom de la colonne qui contient le montant de cashflow
+:param colMtPfi: nom de la colonne qui contient le montant de produits financiers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.expr.ActifsExpr.calcPmvl">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.expr.ActifsExpr.</span></span><span class="sig-name descname"><span class="pre">calcPmvl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colMtVm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtVm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colMtVc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VarActif.mtVc</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Expr</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/expr/ActifsExpr.html#calcPmvl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.expr.ActifsExpr.calcPmvl" title="Lien vers cette définition"></a></dt>
+<dd><p>Calcule la plus-value ou la moins-value latente d’un actif en soustrayant le montant de vente du montant de valorisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colMtVm</strong> (<em>str</em>) – Le nom de la colonne contenant le montant de valorisation de l’actif (par défaut: VarActif.mtVm)</p></li>
+<li><p><strong>colMtVc</strong> (<em>str</em>) – Le nom de la colonne contenant le montant de vente de l’actif (par défaut: VarActif.mtVc)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>La plus-value ou la moins-value latente de l’actif</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaines.actifs.expr.ActifsExpr.rsMpActifIndicesTxActionSommeNEq1">
+<span class="sig-prename descclassname"><span class="pre">domaines.actifs.expr.ActifsExpr.</span></span><span class="sig-name descname"><span class="pre">rsMpActifIndicesTxActionSommeNEq1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Expr</span></span></span><a class="reference internal" href="../_modules/domaines/actifs/expr/ActifsExpr.html#rsMpActifIndicesTxActionSommeNEq1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#domaines.actifs.expr.ActifsExpr.rsMpActifIndicesTxActionSommeNEq1" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="domaines.actifs.events.html" class="btn btn-neutral float-left" title="domaines.actifs.events" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="domaines.actifs.ops.html" class="btn btn-neutral float-right" title="domaines.actifs.ops" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

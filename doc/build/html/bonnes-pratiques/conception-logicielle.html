@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conception logicielle &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Exemples de code" href="code-examples.html" />
+    <link rel="prev" title="Versioning des sources" href="scm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bonnes-pratiques.html">Bonnes pratiques</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scm.html">Versioning des sources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conception logicielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#structuration-du-code">Structuration du code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#separation-en-domaines-metiers">Séparation en domaines métiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convention-de-nommage">Convention de nommage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemples-de-code">Exemples de code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#formules-unitaires-reutilisables">Formules unitaires réutilisables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipelines-de-donnees-reutilisables">Pipelines de données réutilisables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exemple-d-implementation-d-un-evenement">Exemple d’implémentation d’un évènement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orchestrateur">Orchestrateur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="code-examples.html">Exemples de code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bonnes-pratiques.html">Bonnes pratiques</a></li>
+      <li class="breadcrumb-item active">Conception logicielle</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/bonnes-pratiques/conception-logicielle.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conception-logicielle">
+<h1>Conception logicielle<a class="headerlink" href="#conception-logicielle" title="Lien vers cette rubrique"></a></h1>
+<section id="structuration-du-code">
+<h2>Structuration du code<a class="headerlink" href="#structuration-du-code" title="Lien vers cette rubrique"></a></h2>
+<p>Le code a été structuré en plusieurs couches distinctes:</p>
+<ul class="simple">
+<li><p>une couche de définition des différents dictionnaires de données</p></li>
+<li><p>une couche définissant les structures des différents dataframes manipulés</p></li>
+<li><p>une couche de définition des formules unitaires réutilisables</p></li>
+<li><p>une couche définissant des pipelines réutilisables (transformations de dataframes en dataframes)</p></li>
+<li><p>une couche exposant les transformations de haut niveau appelées depuis l’orchestrateur global</p></li>
+<li><p>un orchestrateur des différents évènements</p></li>
+</ul>
+</section>
+<section id="separation-en-domaines-metiers">
+<h2>Séparation en domaines métiers<a class="headerlink" href="#separation-en-domaines-metiers" title="Lien vers cette rubrique"></a></h2>
+<p>En complément, ces couches sont séparées par domaine métiers :</p>
+<ul class="simple">
+<li><p>Projection</p></li>
+<li><p>Gestion des variables économiques</p></li>
+<li><p>Actif</p></li>
+<li><p>Passif Epargne</p></li>
+<li><p>Provisions &amp; Bilan</p></li>
+<li><p>ALM et compte de résultats</p></li>
+<li><p>Indicateurs S2</p></li>
+</ul>
+</section>
+<section id="convention-de-nommage">
+<h2>Convention de nommage<a class="headerlink" href="#convention-de-nommage" title="Lien vers cette rubrique"></a></h2>
+<p>Dans le cadre du modèle implémenté, les conventions java sont retenues :</p>
+<ul class="simple">
+<li><p>PascalCase pour les classes</p></li>
+<li><p>camelCase pour les variables</p></li>
+<li><p>nom des packages en minuscule</p></li>
+</ul>
+</section>
+<section id="exemples-de-code">
+<h2>Exemples de code<a class="headerlink" href="#exemples-de-code" title="Lien vers cette rubrique"></a></h2>
+<section id="formules-unitaires-reutilisables">
+<h3>Formules unitaires réutilisables<a class="headerlink" href="#formules-unitaires-reutilisables" title="Lien vers cette rubrique"></a></h3>
+<p>Ci-dessous deux exemples de définition d’expressions polars :</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Expression polars permettant de filtrer sur les chocs S2 Equity</span><a class="headerlink" href="#id1" title="Lien vers ce code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rsCdChocS2Equity</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2</span><span class="p">)</span> <span class="o">==</span> <span class="n">CdChocS2</span><span class="o">.</span><span class="n">equity</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Expression calculant de la valeur de marché action choquée S2</span><a class="headerlink" href="#id2" title="Lien vers ce code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calcMtVmEquityChocS2</span><span class="p">(</span><span class="n">colMtVm</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">,</span> <span class="n">alias</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+    <span class="n">expr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">colMtVm</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="mf">1.</span>
+        <span class="o">+</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarS2</span><span class="o">.</span><span class="n">txChocEquityT1</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">txActionT1</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarS2</span><span class="o">.</span><span class="n">txChocEquityT2</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">txActionT2</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarS2</span><span class="o">.</span><span class="n">txChocEquityStrat</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">txActionStrat</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">alias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">expr</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">expr</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Formule de calcul de la valeur de marché des actifs indiciels à l’initialisation du modèle</span><a class="headerlink" href="#id3" title="Lien vers ce code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calcMtVmIndicesInitS2</span><span class="p">(</span><span class="n">colMtVm</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">,</span> <span class="n">alias</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+    <span class="n">expr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsCdChocS2Equity</span><span class="p">())</span> \
+            <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">calcMtVmChocEquity</span><span class="p">(</span><span class="n">colMtVm</span><span class="o">=</span><span class="n">colMtVm</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span> \
+            <span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">rsCdChocS2Property</span><span class="p">())</span> \
+            <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">calcMtVmChocProperty</span><span class="p">(</span><span class="n">colMtVm</span><span class="o">=</span><span class="n">colMtVm</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span> \
+            <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">alias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">expr</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">expr</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="pipelines-de-donnees-reutilisables">
+<h3>Pipelines de données réutilisables<a class="headerlink" href="#pipelines-de-donnees-reutilisables" title="Lien vers cette rubrique"></a></h3>
+<p>Ci-dessous un exemple d’une telle transformation :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">projActifIndicesPerf</span><span class="p">(</span><span class="n">period</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                  <span class="n">projActifIndices</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+                  <span class="n">gseOutputIndicesPerfT</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+                  <span class="n">gseCtRefCashPerfT</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">]:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthode appliquant l&#39;évènement &quot;performance&quot; sur une DataFrame projActifIndices</span>
+
+<span class="sd">    L&#39;application de la performance sur le cash implique :</span>
+<span class="sd">    * de faire une copie du dataframe d&#39;entrée</span>
+<span class="sd">    * renseigner dans cette copie le scenario, l&#39;itération et l&#39;évènement (Perf)</span>
+<span class="sd">    * d&#39;appliquer le taux de performance du cash sur la base du DataFrame gseOutputIndicesPerfT</span>
+<span class="sd">    * de calculer la fuite économique comme la différence entre l&#39;augmentation de VM sur la base du taux de performance du cash appliqué et du taux de performance du cash attendu dans le cadre du scenario CRN</span>
+
+<span class="sd">    :param period: période</span>
+<span class="sd">    :type period: int</span>
+<span class="sd">    :param projActifIndices: DataFrame projActifIndices en entrée</span>
+<span class="sd">    :type projActifIndices: DataFrame</span>
+<span class="sd">    :param gseOutputIndicesPerfT: Taux de performance du cash à appliquer pour le scenario et l&#39;itération</span>
+<span class="sd">    :param gseCtRefCashPerfT: Taux de performance attendu dans le cadre du scenario CRN</span>
+<span class="sd">    :return: DataFrame projActifIndices mis à jour</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mdProjActif</span> <span class="o">=</span> <span class="n">dfMdActif</span><span class="o">.</span><span class="n">mdProjActif</span>
+
+    <span class="n">newProjActifIndices</span> <span class="o">=</span> <span class="n">projActifCopy</span><span class="p">(</span><span class="n">projActifIndices</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">evenement</span><span class="o">=</span><span class="n">ModeleAlmEvenement</span><span class="o">.</span><span class="n">Perf</span><span class="p">)</span>
+
+    <span class="n">newProjActifIndices</span> <span class="o">=</span> <span class="n">newProjActifIndices</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">gseOutputIndicesPerfT</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2Gse</span><span class="p">,</span> <span class="n">VarActif</span><span class="o">.</span><span class="n">cdClasseActif</span><span class="p">,</span> <span class="n">VarProj</span><span class="o">.</span><span class="n">period</span><span class="p">],</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">IntraPeriod</span><span class="o">.</span><span class="n">BEG</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarProj</span><span class="o">.</span><span class="n">intraperiod</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gseCtRefCashPerfT</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="n">VarS2</span><span class="o">.</span><span class="n">cdChocS2Gse</span><span class="p">,</span> <span class="n">VarProj</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="n">VarProj</span><span class="o">.</span><span class="n">intraperiod</span><span class="p">],</span>
+        <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;_ct_ref&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarGse</span><span class="o">.</span><span class="n">facteurPerfNet</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVm</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarGse</span><span class="o">.</span><span class="n">txDividendes</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPfi</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtVmAv</span><span class="p">)</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarGse</span><span class="o">.</span><span class="n">txDividendes</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtCf</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPdd</span><span class="p">)</span>
+    <span class="p">])</span><span class="o">.</span><span class="n">with_columns</span><span class="p">([</span>
+        <span class="n">calcPmvl</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarActif</span><span class="o">.</span><span class="n">mtPmvl</span><span class="p">),</span>
+        <span class="n">calcFuiteEco</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteEco</span><span class="p">),</span>
+        <span class="n">calcFuiteVcActifPerf</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVc</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="n">projActifCashPerfInputCf</span> <span class="o">=</span> <span class="n">projActif2projActifCashPerfInputCf</span><span class="p">(</span><span class="n">newProjActifIndices</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">newProjActifIndices</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">mdProjActif</span><span class="o">.</span><span class="n">allColumns</span><span class="p">),</span> <span class="n">projActifCashPerfInputCf</span>
+</pre></div>
+</div>
+</section>
+<section id="exemple-d-implementation-d-un-evenement">
+<h3>Exemple d’implémentation d’un évènement<a class="headerlink" href="#exemple-d-implementation-d-un-evenement" title="Lien vers cette rubrique"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fnProjPerfActif</span><span class="p">(</span><span class="n">period</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span>
+                <span class="n">mpActifOblig</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">projActifObligCf</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span>
+                <span class="n">projActifOblig</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">projActifIndices</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">projActifCash</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span>
+                <span class="n">gseOutputObligPzcT</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">gseOutputIndicesPerfT</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">gseOutputCashPerfT</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span>
+                <span class="n">gseCtRefCashPerfT</span><span class="p">:</span><span class="n">DataFrame</span><span class="p">,</span>
+                <span class="n">projActifCashPerfInputCfTList</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span>
+                <span class="n">projResultRctProjActif</span><span class="p">:</span> <span class="n">ProjResultRctProjActif</span><span class="p">,</span>
+                <span class="n">projResultPrdAd</span><span class="p">:</span><span class="n">ProjResultPrdAd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">]:</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Perf (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">) : Actif : Obligations / Actions / Immobilier&#39;</span><span class="p">)</span>
+<span class="n">projActifOblig</span><span class="p">,</span> <span class="n">projActifObligCf</span><span class="p">,</span> <span class="n">mpActifOblig</span><span class="p">,</span> <span class="n">projActifObligCashPerfInputCf</span> <span class="o">=</span> \
+    <span class="n">projActifObligPerf</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">projActifOblig</span><span class="p">,</span> <span class="n">projActifObligCf</span><span class="p">,</span> <span class="n">mpActifOblig</span><span class="p">,</span>
+                    <span class="n">gseOutputObligPzcT</span><span class="p">,</span> <span class="n">gseCtRefCashPerfT</span><span class="p">)</span>
+
+<span class="n">projActifCashPerfInputCfTList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">projActifObligCashPerfInputCf</span><span class="p">)</span>
+
+<span class="n">projActifIndices</span><span class="p">,</span> <span class="n">projActifIndicesCashPerfInputCf</span> <span class="o">=</span> \
+    <span class="n">projActifIndicesPerf</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">projActifIndices</span><span class="p">,</span> <span class="n">gseOutputIndicesPerfT</span><span class="p">,</span>
+                      <span class="n">gseCtRefCashPerfT</span><span class="p">)</span>
+
+<span class="n">projActifCashPerfInputCfTList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">projActifIndicesCashPerfInputCf</span><span class="p">)</span>
+
+<span class="n">projActifCashPerfInputCf</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">projActifCashPerfInputCfTList</span><span class="p">)</span>
+<span class="n">projActifCashPerfInputCfTList</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># projActifCashPerfInputCf = pl.concat([projActifObligCashPerfInputCf, projActifIndicesCashPerfInputCf])</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Perf (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">) : Actif : Impact du cash&#39;</span><span class="p">)</span>
+<span class="n">projActifCash</span> <span class="o">=</span> <span class="n">projActifCashPerf</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">projActifCash</span><span class="p">,</span> <span class="n">projActifCashPerfInputCf</span><span class="p">,</span> <span class="n">gseOutputCashPerfT</span><span class="p">,</span>
+                            <span class="n">gseCtRefCashPerfT</span><span class="p">)</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Perf (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">) : Actif : Construction du PrdAdActif&#39;</span><span class="p">)</span>
+<span class="n">projActifPerfT</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">projActifOblig</span><span class="p">,</span> <span class="n">projActifIndices</span><span class="p">,</span> <span class="n">projActifCash</span><span class="p">])</span>
+<span class="n">prdAdActifPerfT</span> <span class="o">=</span> <span class="n">prdAdActifBuild</span><span class="p">(</span><span class="n">projActifPerfT</span><span class="p">)</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Perf (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">) : Actif : Append dans les listes de résultats&#39;</span><span class="p">)</span>
+<span class="n">projResultPrdAd</span><span class="o">.</span><span class="n">appendOutputPrdAdPrdAdActif</span><span class="p">(</span><span class="n">prdAdActifPerfT</span><span class="p">)</span>
+<span class="n">projResultRctProjActif</span><span class="o">.</span><span class="n">appendOutputRctProjProjActif</span><span class="p">(</span><span class="n">projActifPerfT</span><span class="p">)</span>
+<span class="n">projResultRctProjActif</span><span class="o">.</span><span class="n">appendOutputRctProjActifObligCf</span><span class="p">(</span><span class="n">projActifObligCf</span><span class="o">=</span><span class="n">projActifObligCf</span><span class="p">,</span>
+                                             <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">evenement</span><span class="o">=</span><span class="n">ModeleAlmEvenement</span><span class="o">.</span><span class="n">Perf</span><span class="p">)</span>
+<span class="n">projResultRctProjActif</span><span class="o">.</span><span class="n">appendOutputRctProjprojActifCashPerfInputCf</span><span class="p">(</span><span class="n">projActifCashPerfInputCf</span><span class="p">)</span>
+
+<span class="k">return</span> <span class="n">projActifOblig</span><span class="p">,</span> <span class="n">projActifObligCf</span><span class="p">,</span> <span class="n">mpActifOblig</span><span class="p">,</span> <span class="n">projActifObligCashPerfInputCf</span><span class="p">,</span> \
+    <span class="n">projActifIndices</span><span class="p">,</span> <span class="n">projActifIndicesCashPerfInputCf</span><span class="p">,</span> \
+    <span class="n">projActifCash</span><span class="p">,</span> <span class="n">projActifCashPerfInputCf</span><span class="p">,</span> \
+    <span class="n">projActifPerfT</span><span class="p">,</span> <span class="n">prdAdActifPerfT</span>
+</pre></div>
+</div>
+</section>
+<section id="orchestrateur">
+<h3>Orchestrateur<a class="headerlink" href="#orchestrateur" title="Lien vers cette rubrique"></a></h3>
+<p>L’orchestrateur est un composant central de l’implémentation. Il permet de définir l’ordre d’exécution des différents évènements.</p>
+<p>Voir code source.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="scm.html" class="btn btn-neutral float-left" title="Versioning des sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="code-examples.html" class="btn btn-neutral float-right" title="Exemples de code" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

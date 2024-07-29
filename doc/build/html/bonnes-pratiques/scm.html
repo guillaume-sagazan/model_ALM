@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Versioning des sources &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Conception logicielle" href="conception-logicielle.html" />
+    <link rel="prev" title="Bonnes pratiques" href="bonnes-pratiques.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bonnes-pratiques.html">Bonnes pratiques</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Versioning des sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#liste-des-taches-issues">Liste des tâches / issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gestion-des-branches">Gestion des branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#branches-protegees">Branches protégées</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conventional-commits">Conventional Commits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merge-requests-mr">Merge requests (MR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gitlab-ci-cd">GitLab CI/CD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etiquettes-et-milestones">Etiquettes et milestones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="conception-logicielle.html">Conception logicielle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-examples.html">Exemples de code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bonnes-pratiques.html">Bonnes pratiques</a></li>
+      <li class="breadcrumb-item active">Versioning des sources</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/bonnes-pratiques/scm.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="versioning-des-sources">
+<h1>Versioning des sources<a class="headerlink" href="#versioning-des-sources" title="Lien vers cette rubrique"></a></h1>
+<section id="liste-des-taches-issues">
+<h2>Liste des tâches / issues<a class="headerlink" href="#liste-des-taches-issues" title="Lien vers cette rubrique"></a></h2>
+<p>La liste des évolutions / anomalies est gérée via Gitlab en mode Kanban.</p>
+<p>Sont distinguées dans le tableau de suivi les colonnes suivantes :</p>
+<ul class="simple">
+<li><p>Todo : Tâches à réaliser</p></li>
+<li><p>En cours : Tâches en cours de réalisation</p></li>
+<li><p>Done : Tâches réalisées</p></li>
+</ul>
+</section>
+<section id="gestion-des-branches">
+<h2>Gestion des branches<a class="headerlink" href="#gestion-des-branches" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Branches principales</strong></p>
+<ul class="simple">
+<li><p><em>main</em> : Branche principale pour les versions stables et en production.</p></li>
+<li><p><em>develop</em> : Branche de développement intégrant les fonctionnalités avant la stabilisation.</p></li>
+</ul>
+<p><strong>Branches de fonctionnalité</strong></p>
+<p>Utilisez des branches de fonctionnalité (feature branches) pour développer de nouvelles fonctionnalités. Nommez-les <em>feature/nom-de-la-fonctionnalité</em></p>
+<p><strong>Branches bugfix</strong></p>
+<p>Utilisez des branches de correctif (bugfix branches) pour corriger des bugs. Nommez-les <em>bugfix/nom-du-bug</em></p>
+<p><strong>Branches de release</strong></p>
+<p>Utilisez des branches de version (release branches) pour préparer les nouvelles versions. Nommez-les <code class="docutils literal notranslate"><span class="pre">release/x.y.z</span></code>.</p>
+<p><strong>Branches de hotfix</strong></p>
+<p>Utilisez des branches de hotfix pour corriger des bugs en production. Nommez-les <em>hotfix/x.y.z</em>.</p>
+</section>
+<section id="branches-protegees">
+<h2>Branches protégées<a class="headerlink" href="#branches-protegees" title="Lien vers cette rubrique"></a></h2>
+<p>Au sein de gitlab, sont distingués pour chaque repository les rôles suivants</p>
+<ul class="simple">
+<li><p><strong>owner :</strong> Propriétaire du repository</p></li>
+<li><p><strong>maintainer :</strong> Responsable de la maintenance du repository, en charge de la gestion des branches protégées</p></li>
+<li><p><strong>developer :</strong> Développeur du repository, peut créer des branches de fonctionnalité et des MRs</p></li>
+</ul>
+<p>Les branches <em>develop</em>, <em>main</em> et <em>release/*</em> sont protégées, seuls les personnes en charge de la maintenance du repo peuvent merger sur ces branches.</p>
+</section>
+<section id="conventional-commits">
+<h2>Conventional Commits<a class="headerlink" href="#conventional-commits" title="Lien vers cette rubrique"></a></h2>
+<p>Les conventions de commit sont basées sur les [Conventional Commits](<a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/">https://www.conventionalcommits.org/en/v1.0.0/</a>).</p>
+<p>Dans le cas où les commits ne respectent pas les conventions, les MRs ne peuvent pas être fusionnées.</p>
+</section>
+<section id="merge-requests-mr">
+<h2>Merge requests (MR)<a class="headerlink" href="#merge-requests-mr" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Exigences de révision</strong></p>
+<p>Les MRs ne sont configurées à date pour nécessiter une approbation avant fusion.</p>
+<p><strong>Pipeline CI/CD obligatoire</strong></p>
+<p>Les MRs ne sont pas configurées à date pour exiger la réussite d’un pipelines CI/CD avant la fusion.</p>
+</section>
+<section id="gitlab-ci-cd">
+<h2>GitLab CI/CD<a class="headerlink" href="#gitlab-ci-cd" title="Lien vers cette rubrique"></a></h2>
+<p>A faire un jour</p>
+<dl class="simple">
+<dt><em>Fichier ``.gitlab-ci.yml``</em> :</dt><dd><ul class="simple">
+<li><p>Créez et configurez un fichier <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code> pour automatiser les tests, les lintings, et les déploiements.</p></li>
+<li><p>Exemples de stages : <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code>, <code class="docutils literal notranslate"><span class="pre">deploy</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="etiquettes-et-milestones">
+<h2>Etiquettes et milestones<a class="headerlink" href="#etiquettes-et-milestones" title="Lien vers cette rubrique"></a></h2>
+<p><strong>Étiquettes</strong></p>
+<p>Utilisez des étiquettes pour catégoriser les issues et les MRs (par exemple, <code class="docutils literal notranslate"><span class="pre">bug</span></code>, <code class="docutils literal notranslate"><span class="pre">enhancement</span></code>, <code class="docutils literal notranslate"><span class="pre">documentation</span></code>).</p>
+<p><strong>Milestones</strong></p>
+<p>Utilisez des milestones pour planifier et suivre les progrès des versions et des sprints.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="bonnes-pratiques.html" class="btn btn-neutral float-left" title="Bonnes pratiques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="conception-logicielle.html" class="btn btn-neutral float-right" title="Conception logicielle" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

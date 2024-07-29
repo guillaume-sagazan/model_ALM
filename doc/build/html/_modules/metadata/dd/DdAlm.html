@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metadata.dd.DdAlm &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">metadata.dd.DdAlm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de metadata.dd.DdAlm</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">auto</span><span class="p">,</span> <span class="n">StrEnum</span>
+
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">utils.VarCatalog</span> <span class="kn">import</span> <span class="n">VarCatalog</span><span class="p">,</span> <span class="n">DataTypeDesc</span>
+<span class="kn">from</span> <span class="nn">utils.StrEnumExt</span> <span class="kn">import</span> <span class="n">StrEnumCaps</span><span class="p">,</span> <span class="n">StrEnumLower</span>
+
+<div class="viewcode-block" id="CdMethodeTxServi">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.CdMethodeTxServi">[docs]</a>
+<span class="k">class</span> <span class="nc">CdMethodeTxServi</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthodes possibles quant au calcul du Taux Servi</span>
+<span class="sd">    :param NET: Les calculs sont réalisés nets de TAF et TFGSE</span>
+<span class="sd">    :param BRT: Les calculs sont réalisés bruts de TAF et TFGSE</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">NET</span> <span class="o">=</span> <span class="s1">&#39;NET&#39;</span>
+    <span class="n">BRT</span> <span class="o">=</span> <span class="s1">&#39;BRT&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="CdMethodeInitEquilibreBilan">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.CdMethodeInitEquilibreBilan">[docs]</a>
+<span class="k">class</span> <span class="nc">CdMethodeInitEquilibreBilan</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Méthodes possibles quant à l&#39;équilibrage du bilan en t=0</span>
+<span class="sd">    :param CASH: Le cash est utilisé en t=0 pour équilibrer le bilan</span>
+<span class="sd">    :param FONDS_PROPRES: Les fonds propres sont utilisés en t = 0 pour équilibrer le bilan</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CASH</span> <span class="o">=</span> <span class="s1">&#39;CASH&#39;</span>
+    <span class="n">FONDS_PROPRES</span> <span class="o">=</span> <span class="s1">&#39;FONDS_PROPRES&#39;</span></div>
+
+
+<div class="viewcode-block" id="StratAlmCas">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.StratAlmCas">[docs]</a>
+<span class="k">class</span> <span class="nc">StratAlmCas</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cas possibles dans le cadre de la stratégie ALM</span>
+
+<span class="sd">    :param TX_SERVI_CIBLE: Taux servi cible</span>
+<span class="sd">    :param TX_SERVI_CIBLE_DIV2: Taux servi cible divisé par 2</span>
+<span class="sd">    :param TMG: seuls les TMG sont servis</span>
+<span class="sd">    :param BEG: Cas spécifique dans le cas d&#39;un calcul de BEG</span>
+<span class="sd">    :param PASSIF_NUL: Cas passif nul</span>
+<span class="sd">    :param UC: Cas unités de comptes, utilisé post stratégie ALM pour les supports euro pour disposer du compte de résultat pour les unités de compte</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TX_CIBLE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">TX_CIBLE_DIV2</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">TMG</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">UC</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">PASSIF_NUL</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="VarAlm">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.VarAlm">[docs]</a>
+<span class="k">class</span> <span class="nc">VarAlm</span><span class="p">(</span><span class="n">StrEnumLower</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enumération contenant les variables ALM</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">stratAlmCas</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">stratAlmCasPriorite</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">stratAlmCasPrioriteMin</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">nbPpeGeneration</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">nbPpeGenerationMax</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txPbMinReglSoldeFin</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txPbMinReglSoldeTech</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdMethodeTxCible</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txCibleFixe</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txCible</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txIs</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">idScenarioPb</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">txServiBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txServiNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">txTmg</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">pentePbBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">pentePfi</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPbBrtMinRegl</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtIcRestCumSum</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtIcRestCanton</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPmvrMax</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPpeAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPpe</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPbAssCanton</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtReserveCapiAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtReserveCapi</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtCapitauxPropresAv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtCapitauxPropres</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">cdMethodePfiCleRepart</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">cdTypeCanton</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtCashInit</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPfiInit</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPfiBesoinTxCible</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPbBrtBesoinTxCible</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtPpeDelta</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPpeRestante</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPpeReprise</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPpeDispo</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPpeDotation</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPpeCumSum</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">txPfiAsseRepartPc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPfiAsse</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPfiAssePb</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtPfiAssr</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtResBrt</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtResBrtAsse</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtResIs</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtResNet</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    
+    <span class="n">mtFuiteEco</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtFuiteVc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtFuiteVcEu</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtFuiteVcUc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">mtFuiteVcTmp</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="n">mtProv</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CdMethodePfiCleRepart">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.CdMethodePfiCleRepart">[docs]</a>
+<span class="k">class</span> <span class="nc">CdMethodePfiCleRepart</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enumération décrivant les possibilités quant au calcul de la clé de répartition des produits financiers entre</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CleRepart_100PC_ASSURE</span> <span class="o">=</span> <span class="s1">&#39;100PC_ASSURE&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="TypeCanton">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.TypeCanton">[docs]</a>
+<span class="k">class</span> <span class="nc">TypeCanton</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enumération décrivant les types de cantons</span>
+
+<span class="sd">    :param FONDS_PROPRES: Dans ce cas, le canton correspond au fonds propres de la société</span>
+<span class="sd">    :param ASSURE: Dans ce cas, le canton est un canton en représentation de contrats d&#39;assurance</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">FONDS_PROPRES</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">FONDS_GENERAL</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ASSURE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="CdMethodeTxCible">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.CdMethodeTxCible">[docs]</a>
+<span class="k">class</span> <span class="nc">CdMethodeTxCible</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enumération décrivant les options de calcul du taux cible à donner aux clients</span>
+
+<span class="sd">    :param Fixe: Dans ce cas, le taux cible est fixe, issu de la table sppb</span>
+<span class="sd">    :param TZC_X: Dans ce cas, le taux cible correspond à un taux zéro coupon (non utilisé)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Fixe</span> <span class="o">=</span> <span class="s1">&#39;FIXE&#39;</span>
+    <span class="n">TZC_X</span> <span class="o">=</span> <span class="s1">&#39;TZC_X&#39;</span></div>
+
+
+<div class="viewcode-block" id="DdAlm">
+<a class="viewcode-back" href="../../../modules/metadata.dd.html#metadata.dd.DdAlm.DdAlm">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DdAlm</span><span class="p">(</span><span class="n">VarCatalog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddElements</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">nbPpeGeneration</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Génération de PPE&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">nbPpeGenerationMax</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Génération de PPE maximum&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">stratAlmCas</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Cas possibles pour la stratégie ALM (chaine de caractères)&quot;</span>
+                    <span class="c1">#valeursPossibles=[x for x in StratAlmCas]$</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">stratAlmCasPriorite</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Priorité donnée aux cas possibles pour la stratégie ALM (entier)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">stratAlmCasPrioriteMin</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Priorité minimum associé aux cas possibles pour la stratégie ALM (entier)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+            
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txPbMinReglSoldeFin</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum règlementaire associé au partage du résultat financier&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txPbMinReglSoldeTech</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum règlementaire associé au partage du résultat technique&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">cdMethodeTxCible</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Méthode associé au calcul du taux cible&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txCibleFixe</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux servi cible&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txIs</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;impôts sur les société&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txServiBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux servi brut&quot;</span><span class="p">,</span>  
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txServiNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux servi net&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txTmg</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum garanti&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">pentePbBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Pente de la courbe MtPbBrt=f(txServiBrt)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">pentePfi</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Pente de la courbe MtPfi=f(txServiBrt)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txTmg</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Taux minimum garanti&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPbBrtMinRegl</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PB minimum règlementaire&quot;</span>  
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtIcRestCumSum</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant d&#39;intérêts crédités total&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtIcRestCanton</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant d&#39;intérêts crédités restants au niveau canton&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PPB (avant évènement)&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpe</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PPB&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPbAssCanton</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Assiette servant au calcul de la PB (au niveau canton)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtReserveCapiAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de réserve de capitalisation (avant évènement)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtReserveCapi</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de réserve de capitalisation&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtCapitauxPropresAv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de capitaux propres (avant évènement)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtCapitauxPropres</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de capitaux propres&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">cdMethodePfiCleRepart</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Indice de Gestion&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">cdTypeCanton</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span> 
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Indice de Gestion&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtCashInit</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de cash initial&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPfiInit</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Produits financiers initiaux disponibles en input de l&#39;algorithme ALM&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPfiBesoinTxCible</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Besoin en pfi pour servir le taux cible&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPbBrtBesoinTxCible</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Besoin en pb pour servir le taux cible&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeDelta</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Delta de PPB&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeRestante</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de PPB restante&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeReprise</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la reprise de PPB&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeDispo</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la reprise de PPB complémentaire&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeDotation</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la dotation à la PPB&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPpeCumSum</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Somme des générations de PPB pour un canton donné&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+            
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">txPfiAsseRepartPc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Part des produits financiers du canton qui a vocation à être réparti en marge financière et PB&quot;</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPfiAsse</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant des produits financiers assurés&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPfiAssePb</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant des produits financiers assurés en input du compte de PB&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtPfiAssr</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la marge financière assureur&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtResBrt</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de résultat brut&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtResBrtAsse</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de résultat brut issu du compte de PB&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtResIs</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Impots sur les sociétés&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtResNet</span> <span class="p">:</span> <span class="n">DataTypeDesc</span><span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de résultat net&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteEco</span> <span class="p">:</span> <span class="n">DataTypeDesc</span> <span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de la fuite économique&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span> <span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de fuite de valeur comptable&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVcTmp</span> <span class="p">:</span> <span class="n">DataTypeDesc</span> <span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de fuite de valeur comptable (variable temporaire)&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVcEu</span> <span class="p">:</span> <span class="n">DataTypeDesc</span> <span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de fuite de valeur comptable en Euro&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtFuiteVcUc</span> <span class="p">:</span> <span class="n">DataTypeDesc</span> <span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de fuite de valeur comptable en Uc&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">VarAlm</span><span class="o">.</span><span class="n">mtProv</span> <span class="p">:</span> <span class="n">DataTypeDesc</span> <span class="p">(</span>
+                    <span class="n">data_type</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>  
+                    <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Montant de provision&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">)</span></div>
+
+
+<span class="n">ddAlm</span> <span class="o">=</span> <span class="n">DdAlm</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=bf059b8c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Bonnes pratiques" href="../bonnes-pratiques/bonnes-pratiques.html" />
+    <link rel="prev" title="orchestrateur" href="orchestrateur.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation du code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dao.html">dao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docgen.html">docgen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domaines.html">domaines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestrateur.html">orchestrateur</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.DfMd">utils.DfMd</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DfMd.buildDfMd"><code class="docutils literal notranslate"><span class="pre">buildDfMd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DfMd.DfMd"><code class="docutils literal notranslate"><span class="pre">DfMd</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.pks"><code class="docutils literal notranslate"><span class="pre">DfMd.pks</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.columns"><code class="docutils literal notranslate"><span class="pre">DfMd.columns</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.colCdTable"><code class="docutils literal notranslate"><span class="pre">DfMd.colCdTable</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.plSchema"><code class="docutils literal notranslate"><span class="pre">DfMd.plSchema</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.allColumns"><code class="docutils literal notranslate"><span class="pre">DfMd.allColumns</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.pksWithCdTable"><code class="docutils literal notranslate"><span class="pre">DfMd.pksWithCdTable</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.plSchemaWithCdTable"><code class="docutils literal notranslate"><span class="pre">DfMd.plSchemaWithCdTable</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.DfMd.DfMd.allColumnsWithCdTable"><code class="docutils literal notranslate"><span class="pre">DfMd.allColumnsWithCdTable</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.LoggerSetup">utils.LoggerSetup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.LoggerSetup.setup_logger"><code class="docutils literal notranslate"><span class="pre">setup_logger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.ProjResults">utils.ProjResults</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.ProjResults.ProjResults"><code class="docutils literal notranslate"><span class="pre">ProjResults</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#utils.ProjResults.ProjResults.results"><code class="docutils literal notranslate"><span class="pre">ProjResults.results</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.ProjResults.ProjResults.append"><code class="docutils literal notranslate"><span class="pre">ProjResults.append()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.ProjResults.ProjResults.reset"><code class="docutils literal notranslate"><span class="pre">ProjResults.reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.StrEnumExt">utils.StrEnumExt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.StrEnumExt.StrEnumCaps"><code class="docutils literal notranslate"><span class="pre">StrEnumCaps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.StrEnumExt.StrEnumLower"><code class="docutils literal notranslate"><span class="pre">StrEnumLower</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.StrEnumExt.StrEnumIso"><code class="docutils literal notranslate"><span class="pre">StrEnumIso</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.VarCatalog">utils.VarCatalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.VarCatalog.DataTypeDesc"><code class="docutils literal notranslate"><span class="pre">DataTypeDesc</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#utils.VarCatalog.DataTypeDesc.data_type"><code class="docutils literal notranslate"><span class="pre">DataTypeDesc.data_type</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.VarCatalog.DataTypeDesc.description"><code class="docutils literal notranslate"><span class="pre">DataTypeDesc.description</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.VarCatalog.DataTypeDesc.valeursPossibles"><code class="docutils literal notranslate"><span class="pre">DataTypeDesc.valeursPossibles</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.VarCatalog.VarCatalog"><code class="docutils literal notranslate"><span class="pre">VarCatalog</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#utils.VarCatalog.VarCatalog.ddElements"><code class="docutils literal notranslate"><span class="pre">VarCatalog.ddElements</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#utils.VarCatalog.VarCatalog.checkVarListNotRegistered"><code class="docutils literal notranslate"><span class="pre">VarCatalog.checkVarListNotRegistered()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.VarCatalogGbl">utils.VarCatalogGbl</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.VarCatalogGbl.VarCatalogGbl"><code class="docutils literal notranslate"><span class="pre">VarCatalogGbl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.collection">utils.collection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.collection.checkListContained"><code class="docutils literal notranslate"><span class="pre">checkListContained()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.collection.convertStringToIntList"><code class="docutils literal notranslate"><span class="pre">convertStringToIntList()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.collection.listIntersection"><code class="docutils literal notranslate"><span class="pre">listIntersection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.collection.listUnion"><code class="docutils literal notranslate"><span class="pre">listUnion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.collection.isStrInListFullMatch"><code class="docutils literal notranslate"><span class="pre">isStrInListFullMatch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.collection.isStrInListMatch"><code class="docutils literal notranslate"><span class="pre">isStrInListMatch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.singleton_decorators">utils.singleton_decorators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.singleton_decorators.singleton"><code class="docutils literal notranslate"><span class="pre">singleton()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.singleton_decorators.pre_log"><code class="docutils literal notranslate"><span class="pre">pre_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.singleton_decorators.post_log"><code class="docutils literal notranslate"><span class="pre">post_log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Documentation du code</a></li>
+      <li class="breadcrumb-item active">utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/utils.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-utils">
+<span id="utils"></span><h1>utils<a class="headerlink" href="#module-utils" title="Lien vers cette rubrique"></a></h1>
+<section id="module-utils.DfMd">
+<span id="utils-dfmd"></span><h2>utils.DfMd<a class="headerlink" href="#module-utils.DfMd" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.DfMd.buildDfMd">
+<span class="sig-prename descclassname"><span class="pre">utils.DfMd.</span></span><span class="sig-name descname"><span class="pre">buildDfMd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ddColumnList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additionalColumns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataType</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">OrderedDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataType</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/utils/DfMd.html#buildDfMd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.DfMd.buildDfMd" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.DfMd.</span></span><span class="sig-name descname"><span class="pre">DfMd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colCdTable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cd_table'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/DfMd.html#DfMd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.DfMd.DfMd" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.pks">
+<span class="sig-name descname"><span class="pre">pks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.pks" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.columns">
+<span class="sig-name descname"><span class="pre">columns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.columns" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.colCdTable">
+<span class="sig-name descname"><span class="pre">colCdTable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cd_table'</span></em><a class="headerlink" href="#utils.DfMd.DfMd.colCdTable" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.plSchema">
+<span class="sig-name descname"><span class="pre">plSchema</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">OrderedDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.plSchema" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.allColumns">
+<span class="sig-name descname"><span class="pre">allColumns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.allColumns" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.pksWithCdTable">
+<span class="sig-name descname"><span class="pre">pksWithCdTable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.pksWithCdTable" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.plSchemaWithCdTable">
+<span class="sig-name descname"><span class="pre">plSchemaWithCdTable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">OrderedDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.plSchemaWithCdTable" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.DfMd.DfMd.allColumnsWithCdTable">
+<span class="sig-name descname"><span class="pre">allColumnsWithCdTable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.DfMd.DfMd.allColumnsWithCdTable" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utils.LoggerSetup">
+<span id="utils-loggersetup"></span><h2>utils.LoggerSetup<a class="headerlink" href="#module-utils.LoggerSetup" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.LoggerSetup.setup_logger">
+<span class="sig-prename descclassname"><span class="pre">utils.LoggerSetup.</span></span><span class="sig-name descname"><span class="pre">setup_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loggingHandler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/LoggerSetup.html#setup_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.LoggerSetup.setup_logger" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-utils.ProjResults">
+<span id="utils-projresults"></span><h2>utils.ProjResults<a class="headerlink" href="#module-utils.ProjResults" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.ProjResults.ProjResults">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.ProjResults.</span></span><span class="sig-name descname"><span class="pre">ProjResults</span></span><a class="reference internal" href="../_modules/utils/ProjResults.html#ProjResults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.ProjResults.ProjResults" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.ProjResults.ProjResults.results">
+<span class="sig-name descname"><span class="pre">results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.ProjResults.ProjResults.results" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.ProjResults.ProjResults.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/ProjResults.html#ProjResults.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.ProjResults.ProjResults.append" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.ProjResults.ProjResults.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/ProjResults.html#ProjResults.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.ProjResults.ProjResults.reset" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utils.StrEnumExt">
+<span id="utils-strenumext"></span><h2>utils.StrEnumExt<a class="headerlink" href="#module-utils.StrEnumExt" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.StrEnumExt.StrEnumCaps">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.StrEnumExt.</span></span><span class="sig-name descname"><span class="pre">StrEnumCaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/StrEnumExt.html#StrEnumCaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.StrEnumExt.StrEnumCaps" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Classe héritant de StrEnum permettant dans le code de nommer les variables mtVm et d’avoir comme valeur MT_VM</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.StrEnumExt.StrEnumLower">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.StrEnumExt.</span></span><span class="sig-name descname"><span class="pre">StrEnumLower</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/StrEnumExt.html#StrEnumLower"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.StrEnumExt.StrEnumLower" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Classe héritant de StrEnum permettant dans le code de nommer les variables mtVm et d’avoir comme valeur MT_VM</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.StrEnumExt.StrEnumIso">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.StrEnumExt.</span></span><span class="sig-name descname"><span class="pre">StrEnumIso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/StrEnumExt.html#StrEnumIso"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.StrEnumExt.StrEnumIso" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Classe héritant de StrEnum permettant dans le code de nommer les variables mtVm et d’avoir comme valeur MT_VM</p>
+</dd></dl>
+
+</section>
+<section id="module-utils.VarCatalog">
+<span id="utils-varcatalog"></span><h2>utils.VarCatalog<a class="headerlink" href="#module-utils.VarCatalog" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.VarCatalog.DataTypeDesc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.VarCatalog.</span></span><span class="sig-name descname"><span class="pre">DataTypeDesc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type:</span> <span class="pre">polars.datatypes.classes.DataType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valeursPossibles:</span> <span class="pre">list</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/VarCatalog.html#DataTypeDesc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.VarCatalog.DataTypeDesc" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.VarCatalog.DataTypeDesc.data_type">
+<span class="sig-name descname"><span class="pre">data_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataType</span></em><a class="headerlink" href="#utils.VarCatalog.DataTypeDesc.data_type" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.VarCatalog.DataTypeDesc.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#utils.VarCatalog.DataTypeDesc.description" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.VarCatalog.DataTypeDesc.valeursPossibles">
+<span class="sig-name descname"><span class="pre">valeursPossibles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#utils.VarCatalog.DataTypeDesc.valeursPossibles" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.VarCatalog.VarCatalog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.VarCatalog.</span></span><span class="sig-name descname"><span class="pre">VarCatalog</span></span><a class="reference internal" href="../_modules/utils/VarCatalog.html#VarCatalog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.VarCatalog.VarCatalog" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.VarCatalog.VarCatalog.ddElements">
+<span class="sig-name descname"><span class="pre">ddElements</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#utils.VarCatalog.DataTypeDesc" title="utils.VarCatalog.DataTypeDesc"><span class="pre">DataTypeDesc</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#utils.VarCatalog.VarCatalog.ddElements" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.VarCatalog.VarCatalog.checkVarListNotRegistered">
+<span class="sig-name descname"><span class="pre">checkVarListNotRegistered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varlist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/VarCatalog.html#VarCatalog.checkVarListNotRegistered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.VarCatalog.VarCatalog.checkVarListNotRegistered" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utils.VarCatalogGbl">
+<span id="utils-varcataloggbl"></span><h2>utils.VarCatalogGbl<a class="headerlink" href="#module-utils.VarCatalogGbl" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.VarCatalogGbl.VarCatalogGbl">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.VarCatalogGbl.</span></span><span class="sig-name descname"><span class="pre">VarCatalogGbl</span></span><a class="reference internal" href="../_modules/utils/VarCatalogGbl.html#VarCatalogGbl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.VarCatalogGbl.VarCatalogGbl" title="Lien vers cette définition"></a></dt>
+<dd><p>Bases : <a class="reference internal" href="#utils.VarCatalog.VarCatalog" title="utils.VarCatalog.VarCatalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarCatalog</span></code></a></p>
+</dd></dl>
+
+</section>
+<section id="module-utils.collection">
+<span id="utils-collection"></span><h2>utils.collection<a class="headerlink" href="#module-utils.collection" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.collection.checkListContained">
+<span class="sig-prename descclassname"><span class="pre">utils.collection.</span></span><span class="sig-name descname"><span class="pre">checkListContained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/utils/collection.html#checkListContained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.collection.checkListContained" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction permet de vérifier si la liste A est contenue dans la liste B</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – Première liste</p></li>
+<li><p><strong>B</strong> – Seconde liste</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Booléen Vrai / Faux</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.collection.convertStringToIntList">
+<span class="sig-prename descclassname"><span class="pre">utils.collection.</span></span><span class="sig-name descname"><span class="pre">convertStringToIntList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/utils/collection.html#convertStringToIntList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.collection.convertStringToIntList" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction permet de convertir une string au format « 1-10,40,50-100 » en une liste d’entiers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – string à convertir en liste d’entier</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste d’entier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.collection.listIntersection">
+<span class="sig-prename descclassname"><span class="pre">utils.collection.</span></span><span class="sig-name descname"><span class="pre">listIntersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/utils/collection.html#listIntersection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.collection.listIntersection" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction retourne l’intersection de 2 listes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst1</strong> – Première liste d’éléments</p></li>
+<li><p><strong>lst2</strong> – Seconde liste d’éléments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Intersection des listes lst1 et lst2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.collection.listUnion">
+<span class="sig-prename descclassname"><span class="pre">utils.collection.</span></span><span class="sig-name descname"><span class="pre">listUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lstOfLst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/collection.html#listUnion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.collection.listUnion" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction retourne l’union des listes en entrée</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lstOfLst</strong> – liste de liste à prendre en compte</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste correspondant à l’union des listes en entrée</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.collection.isStrInListFullMatch">
+<span class="sig-prename descclassname"><span class="pre">utils.collection.</span></span><span class="sig-name descname"><span class="pre">isStrInListFullMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/utils/collection.html#isStrInListFullMatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.collection.isStrInListFullMatch" title="Lien vers cette définition"></a></dt>
+<dd><p>Cette fonction vérifie si la chaîne de caractère s est présente dans la liste strList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – chaine de caractère</p></li>
+<li><p><strong>strList</strong> – liste de chaine de caractères dans laquelle rechercher</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Booléen vrai / faux</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.collection.isStrInListMatch">
+<span class="sig-prename descclassname"><span class="pre">utils.collection.</span></span><span class="sig-name descname"><span class="pre">isStrInListMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strList</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/utils/collection.html#isStrInListMatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.collection.isStrInListMatch" title="Lien vers cette définition"></a></dt>
+<dd><p>Méthode permettant de vérifier si une chaîne de caractère s est présente dans une liste de string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – chaine de caractères recherchée</p></li>
+<li><p><strong>strList</strong> – liste de chaîne de caractères dans laquelle rechercher</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Booléen vrai / faux</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-utils.singleton_decorators">
+<span id="utils-singleton-decorators"></span><h2>utils.singleton_decorators<a class="headerlink" href="#module-utils.singleton_decorators" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.singleton_decorators.singleton">
+<span class="sig-prename descclassname"><span class="pre">utils.singleton_decorators.</span></span><span class="sig-name descname"><span class="pre">singleton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orig_cls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/singleton_decorators.html#singleton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.singleton_decorators.singleton" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.singleton_decorators.pre_log">
+<span class="sig-prename descclassname"><span class="pre">utils.singleton_decorators.</span></span><span class="sig-name descname"><span class="pre">pre_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/singleton_decorators.html#pre_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.singleton_decorators.pre_log" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.singleton_decorators.post_log">
+<span class="sig-prename descclassname"><span class="pre">utils.singleton_decorators.</span></span><span class="sig-name descname"><span class="pre">post_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/singleton_decorators.html#post_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.singleton_decorators.post_log" title="Lien vers cette définition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="orchestrateur.html" class="btn btn-neutral float-left" title="orchestrateur" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="../bonnes-pratiques/bonnes-pratiques.html" class="btn btn-neutral float-right" title="Bonnes pratiques" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

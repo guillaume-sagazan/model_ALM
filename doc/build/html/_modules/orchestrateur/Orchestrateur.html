@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>orchestrateur.Orchestrateur &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sfd/sfd.html">Spécifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">orchestrateur.Orchestrateur</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de orchestrateur.Orchestrateur</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">cProfile</span>
+<span class="kn">import</span> <span class="nn">pstats</span>
+
+<span class="kn">from</span> <span class="nn">config.TrtConfig</span> <span class="kn">import</span> <span class="n">TrtConfig</span>
+<span class="kn">from</span> <span class="nn">dao.Dao</span> <span class="kn">import</span> <span class="n">dao</span>
+<span class="kn">from</span> <span class="nn">dao.fs.LoadFsActif</span> <span class="kn">import</span> <span class="n">loadFsHypStratInv</span><span class="p">,</span> <span class="n">loadFsMpActifIndices</span>
+<span class="kn">from</span> <span class="nn">dao.fs.LoadFsGse</span> <span class="kn">import</span> <span class="n">loadFsGseCtRef</span><span class="p">,</span> <span class="n">loadFsGseOutputIndices</span><span class="p">,</span> <span class="n">loadFsGseOutputOblig</span><span class="p">,</span> <span class="n">loadFsGseOutputInflation</span>
+<span class="kn">from</span> <span class="nn">dao.fs.LoadFsS2</span> <span class="kn">import</span> <span class="n">loadFsHypS2Chocs</span><span class="p">,</span> <span class="n">loadFsHypS2ChocsSpread</span>
+<span class="kn">from</span> <span class="nn">dao.fs.LoadPassifEp</span> <span class="kn">import</span> <span class="n">loadFsHypPassifEp</span><span class="p">,</span> <span class="n">loadFsMpPassifEp</span>
+<span class="kn">from</span> <span class="nn">dao.Dao</span> <span class="kn">import</span> <span class="n">setDao</span><span class="p">,</span> <span class="n">getDao</span>
+<span class="kn">from</span> <span class="nn">dao.fs.DaoFs</span> <span class="kn">import</span> <span class="n">DaoFs</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.events.InitGblActif</span> <span class="kn">import</span> <span class="n">initGblActif</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.events.InitProjActif</span> <span class="kn">import</span> <span class="n">initProjActif</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.events.InitS2Actif</span> <span class="kn">import</span> <span class="n">initS2Actif</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.events.PerfActif</span> <span class="kn">import</span> <span class="n">perfActif</span>
+<span class="kn">from</span> <span class="nn">domaines.actifs.ops.PrdAdActifs</span> <span class="kn">import</span> <span class="n">prdAdActifBuild</span>
+<span class="kn">from</span> <span class="nn">domaines.gse.events.InitGblGse</span> <span class="kn">import</span> <span class="n">initGblGse</span>
+<span class="kn">from</span> <span class="nn">domaines.gse.events.InitS2Gse</span> <span class="kn">import</span> <span class="n">initS2Gse</span>
+<span class="kn">from</span> <span class="nn">domaines.passif.events.InitGblPassif</span> <span class="kn">import</span> <span class="n">initGblPassif</span>
+<span class="kn">from</span> <span class="nn">domaines.passif.events.InitS2Passif</span> <span class="kn">import</span> <span class="n">initS2PassifEp</span>
+<span class="kn">from</span> <span class="nn">domaines.passif.events.InitProjPassifEp</span> <span class="kn">import</span> <span class="n">initProjPassifEp</span>
+<span class="kn">from</span> <span class="nn">domaines.passif.events.PerfPassifEp</span> <span class="kn">import</span> <span class="n">perfPassifEp</span>
+<span class="kn">from</span> <span class="nn">domaines.passif.ops.PrdAdPassif</span> <span class="kn">import</span> <span class="n">prdAdPassifBuild</span>
+<span class="kn">from</span> <span class="nn">domaines.stratinv.events.StratInv</span> <span class="kn">import</span> <span class="n">stratInv</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdProjection</span> <span class="kn">import</span> <span class="n">ModeProjection</span><span class="p">,</span> <span class="n">VarProj</span>
+<span class="kn">from</span> <span class="nn">metadata.dd.DdPassifEp</span> <span class="kn">import</span> <span class="n">ddPassifEp</span>
+<span class="kn">from</span> <span class="nn">utils.LoggerSetup</span> <span class="kn">import</span> <span class="n">setup_logger</span>
+<span class="kn">from</span> <span class="nn">utils.ProjResults</span> <span class="kn">import</span> <span class="n">ProjResults</span>
+
+<div class="viewcode-block" id="lancerTrtCfg">
+<a class="viewcode-back" href="../../modules/orchestrateur.html#orchestrateur.Orchestrateur.lancerTrtCfg">[docs]</a>
+<span class="k">def</span> <span class="nf">lancerTrtCfg</span><span class="p">(</span><span class="n">trtCfg</span> <span class="p">:</span> <span class="n">TrtConfig</span><span class="p">):</span>
+
+    <span class="k">with</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span> <span class="k">as</span> <span class="n">prInit</span><span class="p">:</span>
+        
+        <span class="n">setDao</span><span class="p">(</span><span class="n">DaoFs</span><span class="p">(</span><span class="n">trtCfg</span><span class="o">=</span><span class="n">trtCfg</span><span class="p">))</span>
+        <span class="n">setup_logger</span><span class="p">(</span><span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">getLoggingHandler</span><span class="p">(),</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="n">projResults</span> <span class="o">=</span> <span class="n">ProjResults</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;************************************************************************&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*** Lancement du traitement : </span><span class="si">{</span><span class="n">trtCfg</span><span class="o">.</span><span class="n">trtName</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;************************************************************************&#39;</span><span class="p">)</span>
+
+        <span class="n">projCfg</span> <span class="o">=</span> <span class="n">trtCfg</span><span class="o">.</span><span class="n">projCfg</span>
+        <span class="n">outputCfg</span> <span class="o">=</span> <span class="n">trtCfg</span><span class="o">.</span><span class="n">outputCfg</span>
+        <span class="n">errCfg</span> <span class="o">=</span> <span class="n">trtCfg</span><span class="o">.</span><span class="n">errCfg</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Suppression des précédents outputs&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode de projection : </span><span class="si">{</span><span class="n">projCfg</span><span class="o">.</span><span class="n">projModeProjection</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Horizon de projection : </span><span class="si">{</span><span class="n">projCfg</span><span class="o">.</span><span class="n">projHorizon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste des chocs s2 à jouer : </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">el</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">projCfg</span><span class="o">.</span><span class="n">cdChocS2List</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste des scenarios à jouer : </span><span class="si">{</span><span class="n">projCfg</span><span class="o">.</span><span class="n">gseScEcoListStr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Import des données - Gse&quot;</span><span class="p">)</span>
+        <span class="n">gseCtRefInput</span><span class="o">=</span><span class="n">loadFsGseCtRef</span><span class="p">()</span>
+        <span class="n">gseOutputIndicesInput</span><span class="o">=</span><span class="n">loadFsGseOutputIndices</span><span class="p">()</span>
+        <span class="n">gseOutputObligInput</span><span class="o">=</span><span class="n">loadFsGseOutputOblig</span><span class="p">()</span>
+        <span class="n">gseOutputInflationInput</span><span class="o">=</span><span class="n">loadFsGseOutputInflation</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Import des données - Actif&quot;</span><span class="p">)</span>
+        <span class="n">mpActifIndices</span> <span class="o">=</span> <span class="n">loadFsMpActifIndices</span><span class="p">()</span>
+        <span class="n">hypStratInvTxAllocCible</span><span class="p">,</span> <span class="n">hypStratInvObligAchat</span><span class="p">,</span> <span class="n">hypStratInvFraisPlct</span> <span class="o">=</span> <span class="n">loadFsHypStratInv</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Import des données - Passif&quot;</span><span class="p">)</span>
+        <span class="n">mpPassifEp</span> <span class="o">=</span> <span class="n">loadFsMpPassifEp</span><span class="p">()</span>
+        <span class="n">hypPassifEpFgx</span><span class="p">,</span> <span class="n">hypPassifEpPrstRt</span><span class="p">,</span><span class="n">hypMortGen</span><span class="p">,</span><span class="n">hypMort</span> <span class="o">=</span> <span class="n">loadFsHypPassifEp</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Import des données - S2&quot;</span><span class="p">)</span>
+        <span class="n">hypS2Chocs</span> <span class="o">=</span> <span class="n">loadFsHypS2Chocs</span><span class="p">()</span>
+        <span class="n">hypS2ChocsSpread</span> <span class="o">=</span> <span class="n">loadFsHypS2ChocsSpread</span><span class="p">()</span>
+       
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation : Global : Gse&quot;</span><span class="p">)</span>
+        <span class="n">gseCtRefObligPzc</span><span class="p">,</span><span class="n">gseCtRefCashPerf</span><span class="p">,</span><span class="n">gseOutputObligPzc</span><span class="p">,</span><span class="n">gseOutputIndicesPerf</span><span class="p">,</span><span class="n">gseOutputCashPerf</span><span class="p">,</span><span class="n">gseOutputDeflateur</span> <span class="o">=</span> <span class="n">initGblGse</span><span class="p">(</span>
+            <span class="n">dfCdChocS2</span> <span class="o">=</span> <span class="n">projCfg</span><span class="o">.</span><span class="n">dfCdChocS2</span><span class="p">,</span>
+            <span class="n">gseObligMaturiteMax</span> <span class="o">=</span> <span class="n">projCfg</span><span class="o">.</span><span class="n">gseObligMaturiteMax</span><span class="p">,</span>
+            <span class="n">gseScEcoList</span> <span class="o">=</span> <span class="n">projCfg</span><span class="o">.</span><span class="n">gseScEcoList</span><span class="p">,</span>
+            <span class="n">gseScUnivers</span> <span class="o">=</span> <span class="n">projCfg</span><span class="o">.</span><span class="n">gseScUnivers</span><span class="p">,</span>
+            <span class="n">gseScCrnAutoBuild</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">gseScCrnAutoBuild</span><span class="p">,</span>
+            <span class="n">projHorizon</span> <span class="o">=</span> <span class="n">projCfg</span><span class="o">.</span><span class="n">projHorizon</span><span class="p">,</span>
+            <span class="n">gseCtRef</span> <span class="o">=</span> <span class="n">gseCtRefInput</span><span class="p">,</span>
+            <span class="n">gseOutputIndicesInput</span> <span class="o">=</span> <span class="n">gseOutputIndicesInput</span><span class="p">,</span>
+            <span class="n">gseOutputInflationInput</span> <span class="o">=</span> <span class="n">gseOutputInflationInput</span><span class="p">,</span>
+            <span class="n">gseOutputObligInput</span> <span class="o">=</span> <span class="n">gseOutputObligInput</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;gseCtRefObligPzc&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">gseCtRefObligPzc</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitGse</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;gseCtRefCashPerf&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">gseCtRefCashPerf</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitGse</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;gseOutputObligPzc&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">gseOutputObligPzc</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitGse</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;gseOutputIndicesPerf&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">gseOutputIndicesPerf</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitGse</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;gseOutputCashPerf&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">gseOutputCashPerf</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitGse</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;gseOutputDeflateur&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">gseOutputDeflateur</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitGse</span><span class="p">)</span>
+
+        <span class="n">gseCtRefObligPzcCentral</span><span class="p">,</span> <span class="n">gseOutputInflationInitS2</span> <span class="o">=</span> <span class="n">initS2Gse</span><span class="p">(</span><span class="n">dfCdChocS2</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">dfCdChocS2</span><span class="p">,</span><span class="n">hypS2Chocs</span> <span class="o">=</span><span class="n">hypS2Chocs</span><span class="p">,</span> <span class="n">gseCtRefObligPzc</span><span class="o">=</span><span class="n">gseCtRefObligPzc</span><span class="p">,</span> <span class="n">gseOutputInflationInput</span> <span class="o">=</span> <span class="n">gseOutputInflationInput</span><span class="p">)</span>
+        
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation : Global : Passif&quot;</span><span class="p">)</span>
+
+        <span class="n">mpPassifEpInitGbl</span> <span class="o">=</span> <span class="n">initGblPassif</span><span class="p">(</span><span class="n">mpPassifEp</span> <span class="o">=</span> <span class="n">mpPassifEp</span><span class="p">,</span> <span class="n">projDateDebut</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">projDateDebut</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">mpPassifEpInitGbl</span><span class="p">,</span> <span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpPassifEpInitGbl&quot;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitPassif</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation : Global : Actif&quot;</span><span class="p">)</span>
+        <span class="n">mpActifIndicesInitGbl</span><span class="p">,</span><span class="n">mpActifIndicesInitGblErreurs</span> <span class="o">=</span> <span class="n">initGblActif</span><span class="p">(</span><span class="n">mpActifIndices</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifIndicesInitGbl&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifIndicesInitGbl</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitActif</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifIndicesInitGblErreurs&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifIndicesInitGblErreurs</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**********************************************************************************&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation Choc S2 : Ajout de l&#39;axe cdChocS2 + Application des chocs en t=0&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**********************************************************************************&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation Choc S2 : Passif&quot;</span><span class="p">)</span>
+
+        <span class="n">mpPassifEpInitS2</span> <span class="o">=</span> <span class="n">initS2PassifEp</span><span class="p">(</span><span class="n">mpPassifEpInitGbl</span><span class="o">=</span><span class="n">mpPassifEpInitGbl</span><span class="p">,</span> <span class="n">hypS2Chocs</span> <span class="o">=</span> <span class="n">hypS2Chocs</span><span class="p">,</span> <span class="n">dfCdChocS2</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">dfCdChocS2</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpPassifEpInitS2&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpPassifEpInitS2</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitPassif</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation Choc S2 : Actifs&quot;</span><span class="p">)</span>
+        <span class="n">mpActifIndicesInitS2</span> <span class="o">=</span> <span class="n">initS2Actif</span><span class="p">(</span><span class="n">mpActifIndicesInitGbl</span><span class="o">=</span><span class="n">mpActifIndicesInitGbl</span><span class="p">,</span>
+                                        <span class="n">dfCdChocS2</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">dfCdChocS2</span><span class="p">,</span>
+                                        <span class="n">hypS2Chocs</span><span class="o">=</span><span class="n">hypS2Chocs</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifIndicesInitS2&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifIndicesInitS2</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitActif</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;****************************&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation Projection&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;****************************&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation Projection : Actifs&quot;</span><span class="p">)</span>
+        <span class="n">mpActifIndicesProj</span> <span class="o">=</span> <span class="n">initProjActif</span><span class="p">(</span><span class="n">mpActifIndicesInitS2</span><span class="o">=</span><span class="n">mpActifIndicesInitS2</span><span class="p">,</span>
+                                        <span class="n">scEcoList</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">gseScEcoList</span><span class="p">)</span>
+        
+        <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifIndicesProj&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifIndicesProj</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitActif</span><span class="p">)</span>
+        <span class="n">prdAdActif</span> <span class="o">=</span> <span class="n">prdAdActifBuild</span><span class="p">(</span><span class="n">mpActifIndicesProj</span><span class="p">)</span>
+        <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;prdAdActif&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">prdAdActif</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputPrdAd</span><span class="p">)</span>
+        
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initialisation Projection : Passifs &quot;</span><span class="p">)</span>
+        <span class="n">mpPassifEpProj</span><span class="p">,</span> <span class="n">mpPassifEpProjHypsPrst</span><span class="p">,</span><span class="n">mpPassifEpProjHypsIcFgx</span> <span class="o">=</span> <span class="n">initProjPassifEp</span><span class="p">(</span><span class="n">mpPassifEpInitS2</span><span class="o">=</span><span class="n">mpPassifEpInitS2</span><span class="p">,</span>
+                                                                                           <span class="n">scEcoList</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">gseScEcoList</span><span class="p">,</span>
+                                                                                            <span class="n">projHorizonList</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">projHorizonList</span><span class="p">,</span> 
+                                                                                            <span class="n">hypPassifEpFgx</span> <span class="o">=</span> <span class="n">hypPassifEpFgx</span> <span class="p">,</span>
+                                                                                            <span class="n">gseOutputInflationInitS2</span> <span class="o">=</span> <span class="n">gseOutputInflationInitS2</span> <span class="p">,</span> 
+                                                                                            <span class="n">hypPassifEpPrstRt</span> <span class="o">=</span> <span class="n">hypPassifEpPrstRt</span><span class="p">,</span>
+                                                                                            <span class="n">hypMortGen</span> <span class="o">=</span> <span class="n">hypMortGen</span><span class="p">,</span>
+                                                                                            <span class="n">hypMort</span> <span class="o">=</span> <span class="n">hypMort</span><span class="p">,</span> 
+                                                                                            <span class="n">gseOutputIndicesPerfT</span> <span class="o">=</span> <span class="n">gseOutputIndicesPerf</span><span class="p">)</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">mpPassifEpProj</span><span class="p">,</span> <span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpPassifEpInitProj&quot;</span><span class="p">,</span><span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitPassif</span><span class="p">)</span>
+
+
+        <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpPassifEpProj&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpPassifEpProj</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctInitPassif</span><span class="p">)</span>
+        <span class="n">prdAdPassifEp</span> <span class="o">=</span> <span class="n">prdAdPassifBuild</span><span class="p">(</span><span class="n">mpPassifEpProj</span><span class="p">)</span>
+        <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;prdAdPassifEp&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">prdAdPassifEp</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputPrdAd</span><span class="p">)</span>
+
+
+    <span class="k">with</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span> <span class="k">as</span> <span class="n">prProj</span><span class="p">:</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;****************************&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Début de la projection&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;****************************&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">period</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">trtCfg</span><span class="o">.</span><span class="n">projCfg</span><span class="o">.</span><span class="n">projHorizon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perf (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perf Passif&quot;</span><span class="p">)</span>
+            <span class="n">mpPassifEpProjPerf</span><span class="p">,</span> <span class="n">mpActifCashInputCfPerfPassif</span> <span class="o">=</span> <span class="n">perfPassifEp</span><span class="p">(</span><span class="n">mpPassifEpProj</span><span class="o">=</span><span class="n">mpPassifEpProj</span><span class="p">,</span> 
+                              <span class="n">mpPassifEpProjHypsIcFgxT</span><span class="o">=</span><span class="n">mpPassifEpProjHypsIcFgx</span><span class="p">,</span>
+                              <span class="n">mpPassifEpProjHypsPrstT</span><span class="o">=</span><span class="n">mpPassifEpProjHypsPrst</span><span class="p">,</span>
+                              <span class="n">period</span> <span class="o">=</span> <span class="n">period</span> <span class="p">)</span>
+            
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpPassifEpProj&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpPassifEpProjPerf</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctProjPassif</span><span class="p">)</span>
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifCashInputCf&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifCashInputCfPerfPassif</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctProjActif</span><span class="p">)</span>
+            <span class="n">prdAdPassifEp</span> <span class="o">=</span> <span class="n">prdAdPassifBuild</span><span class="p">(</span><span class="n">mpPassifEpProj</span><span class="p">)</span>
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;prdAdPassifEp&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">prdAdPassifEp</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputPrdAd</span><span class="p">)</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perf Actif&quot;</span><span class="p">)</span>
+            <span class="n">mpActifIndicesProj</span> <span class="o">=</span> <span class="n">perfActif</span><span class="p">(</span><span class="n">mpActifIndicesProj</span><span class="o">=</span><span class="n">mpActifIndicesProj</span><span class="p">,</span>
+                                        <span class="n">gseCtRefCashPerfT</span><span class="o">=</span><span class="n">gseCtRefCashPerf</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarProj</span><span class="o">.</span><span class="n">period</span><span class="p">)</span><span class="o">==</span><span class="n">period</span><span class="p">),</span>
+                                        <span class="n">gseOutputIndicesPerfT</span><span class="o">=</span><span class="n">gseOutputIndicesPerf</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">VarProj</span><span class="o">.</span><span class="n">period</span><span class="p">)</span><span class="o">==</span><span class="n">period</span><span class="p">),</span>
+                                        <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">)</span>
+            
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifIndicesProj&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifIndicesProj</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctProjActif</span><span class="p">)</span>
+            <span class="n">prdAdActif</span> <span class="o">=</span> <span class="n">prdAdActifBuild</span><span class="p">(</span><span class="n">mpActifIndicesProj</span><span class="p">)</span>
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;prdAdActif&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">prdAdActif</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputPrdAd</span><span class="p">)</span>
+        
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;StratInv (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+            <span class="n">stratInvInputOutput</span><span class="p">,</span><span class="n">mpActifIndicesProj</span> <span class="o">=</span> <span class="n">stratInv</span><span class="p">(</span>
+                <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span>
+                <span class="n">dfCdChocS2Sc</span><span class="o">=</span><span class="n">projCfg</span><span class="o">.</span><span class="n">dfCdChocS2Sc</span><span class="p">,</span>
+                <span class="n">mpActifIndicesProj</span><span class="o">=</span><span class="n">mpActifIndicesProj</span><span class="p">,</span>
+                <span class="n">hypStratInvTxAllocCible</span><span class="o">=</span><span class="n">hypStratInvTxAllocCible</span>
+            <span class="p">)</span>
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;stratInvInputOutput&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">stratInvInputOutput</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctProjStratInv</span><span class="p">)</span>
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;mpActifIndicesProj&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">mpActifIndicesProj</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputRctProjActif</span><span class="p">)</span>
+            <span class="n">prdAdActif</span> <span class="o">=</span> <span class="n">prdAdActifBuild</span><span class="p">(</span><span class="n">mpActifIndicesProj</span><span class="p">)</span>
+            <span class="n">projResults</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tableName</span><span class="o">=</span><span class="s2">&quot;prdAdActif&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">prdAdActif</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">outputCfg</span><span class="o">.</span><span class="n">genererOutputPrdAd</span><span class="p">)</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Alm &amp; Cr (</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">) : Algorithme de détermination du txServiBrt&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">projCfg</span><span class="o">.</span><span class="n">projModeProjection</span> <span class="o">==</span> <span class="n">ModeProjection</span><span class="o">.</span><span class="n">ALM</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Construction des outputs Qrt&#39;</span><span class="p">)</span>
+
+            <span class="c1"># ResultsWriter().projResults.projResultPrdQrt.buildOutputPrdQrtBeScPeriodTypeFluxCf()</span>
+            <span class="c1"># ResultsWriter().writeOutputPrdQrtBeScPeriodTypeFluxCf()</span>
+            <span class="c1"># ResultsWriter().projResults.projResultPrdQrt.outputPrdQrtBeScPeriodTypeFlux = prdQrtBeScPeriodTypeFluxBuild(</span>
+            <span class="c1">#     dfCdChocS2=projCfg.dfCdChocS2,</span>
+            <span class="c1">#     prdQrtBeScPeriodTypeFluxCf=ResultsWriter().projResults.projResultPrdQrt.outputPrdQrtBeScPeriodTypeFluxCf, </span>
+            <span class="c1">#     gseOutputDeflateur=gseOutputDeflateur)</span>
+            
+            <span class="c1"># ResultsWriter().projResults.projResultPrdQrt.outputPrdQrtBeSc = prdQrtBeScBuild(</span>
+            <span class="c1">#     ResultsWriter().projResults.projResultPrdQrt.outputPrdQrtBeScPeriodTypeFlux)</span>
+            
+            <span class="c1"># ResultsWriter().projResults.projResultPrdQrt.outputPrdQrtBe = prdQrtBeBuild(</span>
+            <span class="c1">#     ResultsWriter().projResults.projResultPrdQrt.outputPrdQrtBeSc)</span>
+
+            <span class="c1"># ResultsWriter().writeOutputPrdQrt()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ecriture des résultats&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">outputName</span><span class="p">,</span> <span class="n">dfList</span> <span class="ow">in</span> <span class="n">projResults</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">dfList</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfList</span> <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">dfList</span> <span class="o">!=</span> <span class="p">[]:</span>
+                <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeData</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfList</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;diagonal&#39;</span><span class="p">),</span> <span class="n">tableName</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outputName</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logs des performances associées à l&#39;initialistion !&quot;</span><span class="p">)</span>
+        <span class="n">prResultsInit</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="n">prInit</span><span class="p">)</span>
+        <span class="n">prResultsInit</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="n">pstats</span><span class="o">.</span><span class="n">SortKey</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+        <span class="n">prResultsInit</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="n">prResultsInit</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeLogFile</span><span class="p">(</span><span class="n">fName</span><span class="o">=</span><span class="s2">&quot;perf_initialisation.txt&quot;</span><span class="p">,</span> <span class="n">fContent</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+        
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logs des performances associées à la projection !&quot;</span><span class="p">)</span>
+        <span class="n">prResultsProj</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="n">prProj</span><span class="p">)</span>
+        <span class="n">prResultsProj</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="n">pstats</span><span class="o">.</span><span class="n">SortKey</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+        <span class="n">prResultsProj</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="n">prResultsProj</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+        <span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">writeLogFile</span><span class="p">(</span><span class="n">fName</span><span class="o">=</span><span class="s2">&quot;perf_projection.txt&quot;</span><span class="p">,</span> <span class="n">fContent</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fin de la projection !&#39;</span><span class="p">)</span></div>
+
+        
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

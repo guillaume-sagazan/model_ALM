@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modélisation des passifs &mdash; Documentation Accenture - Modèle ALM 24.05</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=33ab68f8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/gantt.css?v=a69dc5fd" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99ce763d"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=bf059b8c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+        <script>window.MathJax = {"chtml": {"scale": ".8", "minScale": ".3", "matchFontHeight": "true", "mtextInheritFont": "false", "merrorInheritFont": "true", "mathmlSpacing": "false", "skipAttributes": "{}", "exFactor": ".5", "displayAlign": "left", "displayIndent": "0"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../_static/js/mermaid.js?v=0767b86b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Modélisation des actifs" href="sfd-actif.html" />
+    <link rel="prev" title="Variables économiques" href="sfd-var-ecos.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Accenture - Modèle ALM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cadrage/cadrage.html">Cadrage du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gouvernance/gouvernance.html">Gouvernance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reglementation-normes/reglementation-normes.html">Textes règlementaires &amp; Normes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sfd.html">Spécifications</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modele-alm.html">Modele ALM</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sfd-conception-generale.html">Conception générale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-config.html">Configuration d’un traitement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-var-ecos.html">Variables économiques</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Modélisation des passifs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#choix-de-modelisation-des-differents-produits">Choix de modélisation des différents produits</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#epargne-individuelle-multisupport">Epargne individuelle multisupport</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#calculs-realises-a-l-initialisation-du-modele">Calculs réalisés à l’initialisation du modèle</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#precalcul-associes-a-la-diffusion-technique-des-pm">Précalcul associés à la diffusion technique des PM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#precalcul-des-taux-de-frais-generaux-inflates-et-taux-d-interets-credites">Précalcul des taux de frais généraux inflatés et taux d’intérêts crédités</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#application-des-chocs-s2-sur-les-pm-uc">Application des chocs S2 sur les PM UC</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#performance-pour-les-contrats-supports">Performance pour les contrats / supports</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#outputs">Outputs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calculs-realises-initialisation">Calculs réalisés : Initialisation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calculs-realises-gestion-des-rachats-totaux">Calculs réalisés : Gestion des rachats totaux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calculs-des-totaux">Calculs des totaux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calcul-des-interets-credites-pm-ap-perf-et-preparation-des-inputs-de-la-strategie-alm">Calcul des intérêts crédités, PM ap Perf et préparation des inputs de la stratégie ALM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calcul-des-frais-generaux">Calcul des frais généraux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calcul-des-frais-de-gestion-sur-encours">Calcul des Frais de Gestion Sur Encours</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#calcul-des-cashflows-a-integrer-au-cash">Calcul des cashflows à intégrer au cash</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#construction-des-outputs-attendus">Construction des outputs attendus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-actif.html">Modélisation des actifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-stratalm.html">Stratégie ALM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-indicateurs.html">Calcul des indicateurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sfd-tests-modele-alm.html">Modèle ALM - Tests de cohérence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata/metadata.html">Description des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilisation/utilisation.html">Utilisation du modèle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Documentation du code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bonnes-pratiques/bonnes-pratiques.html">Bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutos/tutos.html">Tutoriels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../liens-externes/liens-externes.html">Liens externes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Accenture - Modèle ALM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../sfd.html">Spécifications</a></li>
+          <li class="breadcrumb-item"><a href="modele-alm.html">Modele ALM</a></li>
+      <li class="breadcrumb-item active">Modélisation des passifs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sfd/modele-alm/sfd-passif.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modelisation-des-passifs">
+<h1>Modélisation des passifs<a class="headerlink" href="#modelisation-des-passifs" title="Lien vers cette rubrique"></a></h1>
+<section id="choix-de-modelisation-des-differents-produits">
+<h2>Choix de modélisation des différents produits<a class="headerlink" href="#choix-de-modelisation-des-differents-produits" title="Lien vers cette rubrique"></a></h2>
+<section id="epargne-individuelle-multisupport">
+<h3>Epargne individuelle multisupport<a class="headerlink" href="#epargne-individuelle-multisupport" title="Lien vers cette rubrique"></a></h3>
+<p>Pour AAVI, l’évolution des différents agrégats suit la logique générale du modèle.</p>
+</section>
+</section>
+<section id="calculs-realises-a-l-initialisation-du-modele">
+<h2>Calculs réalisés à l’initialisation du modèle<a class="headerlink" href="#calculs-realises-a-l-initialisation-du-modele" title="Lien vers cette rubrique"></a></h2>
+<section id="precalcul-associes-a-la-diffusion-technique-des-pm">
+<h3>Précalcul associés à la diffusion technique des PM<a class="headerlink" href="#precalcul-associes-a-la-diffusion-technique-des-pm" title="Lien vers cette rubrique"></a></h3>
+<p>A l’initialisation du modèle sont calculés :</p>
+<ul class="simple">
+<li><p>Les taux de rachat en fonction de t éventuellement choqués en fonction du choc S2</p></li>
+<li><p>Les nombres de contrats en vigueur à chaque t</p></li>
+<li><p>Les taux de décès des assurés / bénéficiaires en fonction de t , éventuellement choqués en fonction du choc S2</p></li>
+<li><p>Les nombres d’assurés / nombres de bénéficiaires à prendre en compte d’une part dans les calculs de PM unitaires et ceux diffusés compte tenu des taux de décès à appliquer compte tenu du choc S2</p></li>
+<li><p>Les nombres d’arrérage, utilisés pour calculer les prestations de rente</p></li>
+<li><p>Les montants de PM unitaires utilisés pour le calcul de PM pour FONLIB en fonction de t</p></li>
+</ul>
+<p>L’ensemble de ces éléments dépendent du choc S2 mais pas du scenario économique.</p>
+<p>On stocke l’ensemble de ces résultats dans un dataframe nommé <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjHypsPrst">mpPassifEpProjHypsPrst</a></p>
+</section>
+<section id="precalcul-des-taux-de-frais-generaux-inflates-et-taux-d-interets-credites">
+<h3>Précalcul des taux de frais généraux inflatés et taux d’intérêts crédités<a class="headerlink" href="#precalcul-des-taux-de-frais-generaux-inflates-et-taux-d-interets-credites" title="Lien vers cette rubrique"></a></h3>
+<p>Certaines données associés à la diffusion des contrats supports dépendent en plus du scenario économique.</p>
+<p>C’est le cas par exemple des taux de frais généraux à appliquer qui sont impactés par l’inflation, ou encore des taux d’intérêts crédités qui pour les supports uc dépendent des taux de performance des actifs indiciels.</p>
+<p>On stocke l’ensemble de ces données dans un dataframe nommé <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjHypsIcFgx">mpPassifEpProjHypsIcFgx</a></p>
+</section>
+<section id="application-des-chocs-s2-sur-les-pm-uc">
+<h3>Application des chocs S2 sur les PM UC<a class="headerlink" href="#application-des-chocs-s2-sur-les-pm-uc" title="Lien vers cette rubrique"></a></h3>
+<p>Les chocs S2 ACTION, IMMO sont appliqués sur les PM UC en fonction de la classe d’actif de l’UC en question.</p>
+<p>Ainsi, si on est dans le cas chocS2 = « ACTION » ou « BEG_ACTION » et pour un support UC associé CdClasseActif = « ACTION » :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}mtPm_{UcChocS2Action} =
+\left\{\begin{array}{l} mtPm_{UcChocS2Action} *
+                        \\ ( 1
+                        \\ + txActionT1_{UcChocS2Action} * txChocActionT1
+                        \\ + txActionT2_{UcChocS2Action} * txChocActionT2
+                        \\ + txActionStrat_{UcChocS2Action} * txChocActionStrat
+                        \\ )
+\end{array}\right.\end{split}\]</div>
+<p>Ainsi, si on est dans le cas chocS2 = « IMMO » ou « BEG_IMMO » et pour un support UC associé CdClasseActif = « IMMO » :</p>
+<div class="math notranslate nohighlight">
+\[mtPm_{UcChocS2Immo} = mtPm_{UcChocS2Immo}  * (1 + txChocImmo)\]</div>
+</section>
+</section>
+<section id="performance-pour-les-contrats-supports">
+<h2>Performance pour les contrats / supports<a class="headerlink" href="#performance-pour-les-contrats-supports" title="Lien vers cette rubrique"></a></h2>
+<section id="inputs">
+<h3>Inputs<a class="headerlink" href="#inputs" title="Lien vers cette rubrique"></a></h3>
+<p>L’application de la performance sur les contrats supports nécessite de disposer :</p>
+<ul class="simple">
+<li><p>d’un dataframe d’origine au format <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProj">mpPassifEpProj</a>, résultat de l’évènement précédent</p></li>
+<li><p>du dataframe <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjHypsPrstT">mpPassifEpProjHypsPrstT</a> issu de l’initialisation du modèle</p></li>
+<li><p>du dataframe <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjHypsIcFgxT">mpPassifEpProjHypsIcFgxT</a>  issu de l’initialisation du modèle</p></li>
+</ul>
+</section>
+<section id="outputs">
+<h3>Outputs<a class="headerlink" href="#outputs" title="Lien vers cette rubrique"></a></h3>
+<p>Sont attendus en output de l’application de la performance :</p>
+<ul class="simple">
+<li><p>la mise à jour du dataframe <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjPerf">mpPassifEpProjPerf</a></p></li>
+<li><p>un dataframe mpActifCashInputCfPerfPassif au format <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpActifCashInputCfPerfPassif">mpActifCashInputCfPerfPassif</a> contenant les cashflows à intégrer au cash des cantons en représentation des passifs</p></li>
+</ul>
+</section>
+<section id="calculs-realises-initialisation">
+<h3>Calculs réalisés : Initialisation<a class="headerlink" href="#calculs-realises-initialisation" title="Lien vers cette rubrique"></a></h3>
+<p>Soit une copie du dataframe <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjPerf">mpPassifEpProjPerf</a> en input dans lequel :</p>
+<ul class="simple">
+<li><p>le pas de temps t et l’évènement ont été mis à jour</p></li>
+<li><p>les agrégats avant évènement sont définis à partir des agrégats après évènement</p></li>
+</ul>
+<p>On peut faire la jointure de ce dataframe avec les dataframes <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjHypsPrstT">mpPassifEpProjHypsPrstT</a> et <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjHypsIcFgxT">mpPassifEpProjHypsIcFgxT</a> de sorte à disposer de l’ensemble des hypothèses à appliquer pour le pas de temps.</p>
+<p>Le résultat de cette fusion est stockée temporairement dans le dataframe nommé mpPassifEpProjPerf.</p>
+</section>
+<section id="calculs-realises-gestion-des-rachats-totaux">
+<h3>Calculs réalisés : Gestion des rachats totaux<a class="headerlink" href="#calculs-realises-gestion-des-rachats-totaux" title="Lien vers cette rubrique"></a></h3>
+<p>On va ici réaliser tous les calculs à mi-période (c’est un choix de modélisation)
+Ainsi, nous avons du calculer le taux équivalent de demi période associé :
+<span class="math notranslate nohighlight">\(txIcDemiPeriode = \sqrt{1+txIc} - 1\)</span></p>
+<p>On actualise les PM (UC et EU) à mi période :
+<span class="math notranslate nohighlight">\(mtPm = mtPmAv * (1+txIcDemiPeriode)\)</span></p>
+<p>On calcule le montant de rachats totaux, les chargements associés et on met à jour les PM en milieu de période.</p>
+<p><span class="math notranslate nohighlight">\(mtPrstRtBrt = mtPmAv * txPrstRt\)</span></p>
+<p><span class="math notranslate nohighlight">\(mtPrstRtChgt = mtPrstRtBrt * txPrstChgt\)</span></p>
+<p><span class="math notranslate nohighlight">\(mtPrstRtNet = mtPrstRtBrt - mtPrstRtChgt\)</span></p>
+<p>On met à jour le montant de la PM puis on calcule les mêmes indicateurs pour les prestations décès.</p>
+<p><span class="math notranslate nohighlight">\(mtPm = mtPm - mtPrstRtBrt\)</span></p>
+<p><span class="math notranslate nohighlight">\(mtPrstDcChgt = mtPrstDcBrt * txPrstChgt\)</span></p>
+<p><span class="math notranslate nohighlight">\(mtPrstDcNet = mtPrstRtBrt - mtPrstDcChgt\)</span></p>
+<p>On met désormais à jour le montant de la PM en retranchant la prestation décès.</p>
+<p><span class="math notranslate nohighlight">\(mtPm = mtPm - mtPrstDcBrt\)</span></p>
+<p>On actualise les PM jusqu’à fin de période :</p>
+<p><span class="math notranslate nohighlight">\(mtPm = mtPm * (1+txIcDemiPeriode)\)</span></p>
+</section>
+<section id="calculs-des-totaux">
+<h3>Calculs des totaux<a class="headerlink" href="#calculs-des-totaux" title="Lien vers cette rubrique"></a></h3>
+<p>Une fois ces premiers éléments calculés on peut calculer les totaux :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}mtPrstTotBrt =
+\begin{cases}
+    mtPrstRtBrt \\
+    + mtPrstDcBrt
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}mtPrstTotNet =
+\begin{cases}
+    mtPrstRtNet \\
+    + mtPrstDcNet
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}mtPrstTotChgt =
+\begin{cases}
+    mtPrstRtChgt \\
+    + mtPrstDcChgt
+\end{cases}\end{split}\]</div>
+</section>
+<section id="calcul-des-interets-credites-pm-ap-perf-et-preparation-des-inputs-de-la-strategie-alm">
+<h3>Calcul des intérêts crédités, PM ap Perf et préparation des inputs de la stratégie ALM<a class="headerlink" href="#calcul-des-interets-credites-pm-ap-perf-et-preparation-des-inputs-de-la-strategie-alm" title="Lien vers cette rubrique"></a></h3>
+<p>Les calculs de PB sont réalisés à l’aide d’une assiette de calcul de la PB nommée mtPbAss.
+Est à noter que ce montant de PB correspond à un complément de rémunération en plus des intérêts crédités versés.</p>
+<p>On définit :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(mtIcRest\)</span> les intérêts crédités versés aux contrats encore en cours en fin d’année</p></li>
+<li><p><span class="math notranslate nohighlight">\(mtIcSort\)</span> les intérêts crédités versés aux contrats sortis en cours d’année</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(mtIcRest = mtPm * txIcDemiPeriode\)</span>
+<span class="math notranslate nohighlight">\(mtIcSort = (mtPmAv * (1 + txIcDemiPeriode) - mtPm)*txIcDemiPeriode\)</span></p>
+</section>
+<section id="calcul-des-frais-generaux">
+<h3>Calcul des frais généraux<a class="headerlink" href="#calcul-des-frais-generaux" title="Lien vers cette rubrique"></a></h3>
+<p>Sur la base des éléments calculés jusqu’à présent, est possible de calculer les frais généraux sur PM et sur prestations.</p>
+<p><span class="math notranslate nohighlight">\(mtFgxPm = txFgxPm * mtPm\)</span></p>
+<p><span class="math notranslate nohighlight">\(mtFgxPrst = txFgxPrst * mtPrstTotBrt\)</span></p>
+</section>
+<section id="calcul-des-frais-de-gestion-sur-encours">
+<h3>Calcul des Frais de Gestion Sur Encours<a class="headerlink" href="#calcul-des-frais-de-gestion-sur-encours" title="Lien vers cette rubrique"></a></h3>
+<p>On calcule le montant des frais de gestion sur encours des types de contrats.</p>
+<p><span class="math notranslate nohighlight">\(mtFgse_{SupportUC} = mtPm_{SupportUC} * tfgse_{SupportUC}\)</span></p>
+<p><span class="math notranslate nohighlight">\(mtPm_{SupportUC} = mtPm_{SupportUC} - mtFgse_{SupportUC}\)</span></p>
+</section>
+<section id="calcul-des-cashflows-a-integrer-au-cash">
+<h3>Calcul des cashflows à intégrer au cash<a class="headerlink" href="#calcul-des-cashflows-a-integrer-au-cash" title="Lien vers cette rubrique"></a></h3>
+<p>On définit ctarisCashPerfInputCfAsse le dataframe au format <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#ProjActifCashInputCf">ProjActifCashInputCf</a> contenant les flux suivants : [mtPrstRtNet, mtPrstDcNet, mtPrstArrNet, mtPrstRtChgt, mtPrstDcChgt, mtPrstArrChgt]</p>
+<p>Ces flux sont indiqués comme tombant en début de période.</p>
+</section>
+<section id="construction-des-outputs-attendus">
+<h3>Construction des outputs attendus<a class="headerlink" href="#construction-des-outputs-attendus" title="Lien vers cette rubrique"></a></h3>
+<p>A ce stade, toutes les données sont présentes dans un unique dataframe ctarisMp.</p>
+<p>On peut construire les outputs attendus dans <a class="reference external" href="file:///C:/Users/lionel.aldebert/Repositories/modele-alm-polars-v2/doc/build/html/metadata/dataframes.html#mpPassifEpProjPerf">mpPassifEpProjPerf</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="sfd-var-ecos.html" class="btn btn-neutral float-left" title="Variables économiques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="sfd-actif.html" class="btn btn-neutral float-right" title="Modélisation des actifs" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, L. Aldebert / G. Legris.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

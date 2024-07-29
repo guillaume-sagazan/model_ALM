@@ -1,0 +1,113 @@
+/* Couleurs principales */
+:root {
+    --accenture-purple: #A100FF;
+    --accenture-dark-purple: #660099;
+    --accenture-light-gray: #F2F2F2;
+    --white: #FFFFFF;
+}
+
+.wy-nav-content-wrap {
+    margin: 50;
+    padding: 0;
+}
+
+.wy-nav-content {
+    max-width: 80%;
+    padding: 20px;
+}
+
+.rst-content {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+}
+
+/* Style général du corps */
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: var(--accenture-light-gray); */
+    /* color: var(--accenture-dark-purple); */
+    margin: 0;
+    padding: 0;
+}
+
+/* Style pour l'en-tête */
+header {
+    background-color: var(--accenture-purple);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    border-radius: 15px; /* Coins arrondis */
+}
+
+.caption-text {
+    /* color: var(--accenture-dark-purple); */
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 1.5em;
+}
+
+/* Style pour les tables personnalisées */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    text-align: left;
+}
+
+.table-custom caption {
+    text-align: left;
+}
+
+.table-custom th, .table-custom td {
+    padding: 12px 15px;
+}
+
+.table-custom thead tr {
+    background-color: var(--accenture-dark-purple);
+    color: var(--white);
+    border-radius: 15px;
+    /* border: 1px solid var(--accenture-dark-purple); */
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: var(--white);
+    /* border: 1px solid var(--accenture-dark-purple); */
+}
+
+.table-custom tbody tr:nth-child(odd) {
+    background-color: var(--accenture-light-gray);
+    /* border: 1px solid var(--accenture-dark-purple); */
+}
+
+.table-custom tbody tr:hover {
+    color: var(--accenture-purple);
+}
+
+/* Liens */
+a {
+    color: var(--accenture-purple);
+    text-decoration: none;
+}
+
+a:hover {
+    /* color: var(--accenture-dark-purple); */
+    text-decoration: underline;
+}
+
+/* Boutons */
+button {
+    background-color: var(--accenture-purple);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: var(--accenture-dark-purple);
+}
