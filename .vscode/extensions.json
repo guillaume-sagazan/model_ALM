@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        "lextudio.restructuredtext",
+        "trond-snekvik.simple-rst",
+        "gitlab.gitlab-workflow",
+        "github.copilot",
+        "vivaxy.vscode-conventional-commits",
+        "ms-toolsai.jupyter",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "swyddfa.esbonio",
+        "mechatroner.rainbow-csv",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "ms-toolsai.datawrangler"
+    ]
+}

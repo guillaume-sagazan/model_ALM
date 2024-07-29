@@ -1,0 +1,41 @@
+{
+    "isGitignoreExtActive": true,
+    "editor.language": "fr",
+    "autoDocstring.template": {
+        "annotationStyle": "reST"
+    },
+    "autoDocstring.language": "fr",
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/src",
+        "PYTHONPYCACHEPREFIX": "${workspaceFolder}/.pycache"
+    },
+    "conventionalCommits.scopes": [
+        "Doc",
+        "Doc - Cadrage",
+        "Doc - Gouvernance",
+        "Doc - Règlementation et normes",
+        "Doc - Spécifications",
+        "Doc - Utilisation",
+        "Doc - DocGen",
+        "Src - Config",
+        "Src - Dao",
+        "Src - Domaines - Commun",
+        "Src - Domaines - Gse",
+        "Src - Domaines - Actifs",
+        "Src - Domaines - Passif",
+        "Src - Domaines - Provisions",
+        "Src - Domaines - StratInv",
+        "Src - Domaines - AlmCr",
+        "Src - Domaines - S2",
+        "Src - Utils",
+        "Src - Metadata",
+        "Dao",
+        "Utils - logs",
+        "Src - Outputs"
+    ],
+    
+    "restructuredtext.confPath": "${workspaceFolder}/doc/source",
+    "restructuredtext.sphinxBuildPath": "${workspaceFolder}/doc/build",
+    "restructuredtext.linter.rstcheck.enabled": true,
+    "restructuredtext.preview.mathjax": true
+}

@@ -1,0 +1,110 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "perf_varcatalog",
+            "justMyCode": true,
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".\\misc\\perf_varcatalog.py",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+            }
+        },
+        {
+            "name": "pl_test",
+            "justMyCode": true,
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".\\misc\\pl_test.py",
+            "args": ["Alm_DetRn_Central_2212"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+            }
+        },
+        {
+            "name": "alm_detrnauto_central_2212",
+            "justMyCode": true,
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".\\tools\\lancerTraitement.py",
+            "args": ["alm_detrnauto_central_2212"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+            }
+        },
+        {
+            "name": "alm_detrnauto_allchocs_2212",
+            "justMyCode": true,
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".\\tools\\lancerTraitement.py",
+            "args": ["alm_detrnauto_allchocs_2212"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+            }
+        },
+        // {
+        //     "name": "Prd alm_detrn_central_2212",
+        //     "justMyCode": true,
+        //     "type": "python",
+        //     "request": "launch",
+        //     "program": ".\\tools\\lancerTraitement.py",
+        //     "args": ["alm_detrn_central_2212"],
+        //     "cwd": "${workspaceFolder}",
+        //     "console": "integratedTerminal",
+        //     "env": {
+        //         "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+        //     }
+        // },
+        {
+            "name": "Créer TrtConfig",
+            "justMyCode": true,
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".\\tools\\creerTrtConfig.py",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+            }
+        },
+        {
+            "name": "Générer Doc",
+            "justMyCode": true,
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".\\tools\\genererDocumentation.py",
+            "args": ["html"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+            }
+        },
+        // {
+        //     "name": "Site Web Doc",
+        //     "justMyCode": true,
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "program": ".\\tools\\voirDocumentation.py",
+        //     "args": ["html"],
+        //     "cwd": "${workspaceFolder}\\doc\\build\\html",
+        //     "console": "integratedTerminal",
+        //     "env": {
+        //         "Path":"${workspaceFolder}\\.venv;${workspaceFolder}\\.venv\\Scripts"
+        //     }
+        // },
+    ]
+}
